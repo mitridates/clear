@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller\Backend;
 use App\Entity\Area;
 use App\Form\backend\Area\AreaSearchType;
