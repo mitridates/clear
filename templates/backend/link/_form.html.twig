@@ -1,0 +1,69 @@
+{#
+Link form render new/edit
+@var FormView form
+#}
+{% set md = {row_attr:{class:'col-md'}} %}
+{% set md4 = {row_attr:{class:'col-md-4'}} %}
+{% set md2 = {row_attr:{class:'col-md-2'}} %}
+
+{{ form_start(form) }}
+
+<div class="row">
+    {{ form_row(form.title, md)}}
+    {{ form_row(form.mime, dataSuggest('mimetype')|merge(md4))}}
+</div>
+
+
+<div class="row">
+    <div class="form-group col-md">
+        <div>
+            <input id="ownerradioid" type="radio" name="ownerradio" data-selector="#{{ form.organisation.vars.id }}">
+            <label for="ownerradioid">{{ 'field.lookup'|trans({},'cavemessages')|raw }}</label>
+        </div>
+        {{ form_row(form.organisation, dataSuggest('organisation'))}}
+    </div>
+
+    <div class="form-group col-md">
+        <div>
+            <input id="ownerradiotext" type="radio" name="ownerradio" data-selector="#{{ form.organisationname.vars.id }}">
+            <label for="ownerradiotext">{{ 'field.freetext'|trans({},'cavemessages')|raw }}</label>
+        </div>
+        {{ form_row(form.organisationname)}}
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="form-group col-md">
+        <div>
+            <input id="authorradioid" type="radio" name="authorradio" data-selector="#{{ form.author.vars.id }}">
+            <label for="authorradioid">{{ 'field.lookup'|trans({},'cavemessages')|raw }}</label>
+        </div>
+        {{ form_row(form.author, dataSuggest('person'))}}
+    </div>
+
+    <div class="form-group col-md">
+        <div>
+            <input id="authorradiotext" type="radio" name="authorradio" data-selector="#{{ form.authorname.vars.id }}">
+            <label for="authorradiotext">{{ 'field.freetext'|trans({},'cavemessages')|raw }}</label>
+        </div>
+        {{ form_row(form.authorname)}}
+    </div>
+</div>
+<div class="row">
+    {{ form_row(form.url, md)}}
+
+     <div class="col-2 bottom-0"><i class="fa fa-window-maximize"></i> </div>
+
+    {{ form_row(form.accessed, md2)}}
+</div>
+<br>
+
+
+
+
+<div class="form-row d-flex justify-content-center mt-2">
+    {% include '@object/bttn/bttn_save.html.twig' with {'class': 'js-submit'}%}
+</div>
+{{ form_end(form) }}

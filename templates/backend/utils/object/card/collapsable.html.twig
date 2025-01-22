@@ -1,0 +1,31 @@
+{#
+    Collapsable card
+    @package object
+    @subpackage card
+    @param string|null id
+    @param string|null title
+    @param string|null body
+    @param string|null class
+#}
+{% set card= {
+    'id': id|default('collapsable'~random()),
+    'title': title|default('Collapsable Card Example'),
+    'body': body|default('This is a collapsable card example using Bootstrap'),
+    'class': class|default('')
+} %}
+<!-- Collapsable Card -->
+<div class="card shadow mb-4 {{ card.class }}">
+    <!-- Card Header - Accordion -->
+    <a href="#{{ card.id }}" class="d-block card-header py-3" data-toggle="collapse"
+       role="button" aria-expanded="true" aria-controls="{{ card.id }}">
+        <h6 class="m-0 font-weight-bold text-primary">
+            {% block title %}{{ card.title }}{% endblock %}
+        </h6>
+    </a>
+    <!-- Card Content - Collapse -->
+    <div class="collapse show" id="{{ card.id }}">
+        <div class="card-body">
+            {% block body %}{{ card.body }}{% endblock %}
+        </div>
+    </div>
+</div>

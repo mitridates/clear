@@ -1,0 +1,41 @@
+{#
+citation. New
+@controller BackendcitationController:newAction
+@route admin/citation/new
+@path admin_citation_new
+@var FormView form
+#}
+{% do addCrumb('citation.types.title'|trans({},'cavepages'),  path('admin_citation_new')) %}
+
+{% set page= initPage(
+    'citation',
+    'new',
+    'citation.new.'~type~'.title'|trans({},'cavepages'),
+    path('admin_citation_new'))
+    .set('heading', 'citation.new.'~type~'.title'|trans({},'cavepages'))
+%}
+{% extends '@admin/base.html.twig' %}
+{% block subheading %}
+    {% include '@admin/citation/subheading_buttons.html.twig'%}
+{% endblock %}
+
+{% block content %}
+    {% include '@admin/citation/citation_form.html.twig' %}
+    {% if not form.vars.valid %}
+        {% include '@object/modal/errors.html.twig'%}
+    {% endif %}
+{% endblock %}
+{% block footer_javascripts %}
+    <script src="{{asset('admin_asset/js/InputGroupCollection.iife.1.0.0.js')}}"></script>
+    <script src="{{asset('admin_asset/js/Citation.js')}}"></script>
+
+    <script>
+        {% if not form.vars.valid %}
+            bootstrap.Modal.getOrCreateInstance(document.querySelector('#modal-errors')).show();
+        {% endif %}
+        new Citation("{{form.vars.attr.id }}");
+    </script>
+    {% if form['contributor'] is defined %}
+    {% include '@admin/citation/contributor/script.html.twig'%}
+    {% endif %}
+{% endblock %}

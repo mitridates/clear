@@ -1,0 +1,95 @@
+{#
+/**
+ * Footer script
+ * @file footertexttypejs.html.twig
+ * @parent ./base.html.twig
+ */
+#}
+<script type="text/javascript">
+
+    function setPostSessionLocale(current, route){
+        JXhrSubmit(null, {action: route})
+            .on('jxhr.request.success', (res)=>{
+                location.reload();
+            }).submit();
+    }
+
+    window.addEventListener('DOMContentLoaded', event => {
+        document.querySelectorAll('[data-toggle="popover"]').forEach(function (elm){
+            new bootstrap.Popover(elm);
+        })
+        document.querySelectorAll('.dropdown-toggle').forEach(function (elm){
+            new bootstrap.Dropdown(elm);
+        })
+    });
+
+        //prevent manytoone close dropdown when click in padding area
+        document.querySelectorAll('.js-dropdown-content').forEach(function (item)
+        {
+            item.addEventListener('click', function (ev){
+                // ev.preventDefault()
+                ev.stopPropagation()
+            })
+        })
+
+    /**
+     *
+     * @param {JsonApiSpec} jas
+     * @param {HTMLElement} elm
+     * @constructor
+     */
+        FielddefinitionFunctionCallback= function (jas, elm)
+        {
+            let titlestr = jas.toString() + `<sup>(${jas.id})</sup>`,
+                elmTitle= jas.id + ' - ' + jas.toString(),
+                html = Handlebars.compile(document.querySelector("#fielddefinition-tpl").innerHTML)(jas),
+                popoverTitle= titlestr + '<button type="button" class="btn-close float-end" aria-label="Close"></button>'
+            ;
+
+            elm.classList.remove('fa','fa-regular','fa-comment')
+            elm.classList.add('fa','fa-cog','fa-spin','fa-fw')
+
+            let inst = new bootstrap.Popover(elm, {
+                trigger: 'click',
+                html: true,
+                sanitize: false,/*allow javascript*/
+                content:html
+            })
+
+
+            elm.setAttribute('data-bs-original-title', popoverTitle);//popover title
+            elm.setAttribute('title', elmTitle);//title attribute
+            elm.dataset.toggle= 'popover';
+
+            setTimeout(function () {//must wait to popover func
+               inst.show()
+                elm.classList.add('fa','fa-regular','fa-comment')
+                elm.classList.remove('fa','fa-cog','fa-spin','fa-fw')
+            }, 10);
+
+            //popover create a dynamic div, so after "shown.bs.popover" get the div and add event to the button
+            elm.addEventListener('shown.bs.popover', function (ev) {
+                let popoverElm= document.getElementById(elm.getAttribute('aria-describedby'));
+                let closeElm= popoverElm.querySelector('.btn-close');
+                elm.setAttribute('title', elmTitle);//Avoid renaming
+                // popoverElm.addEventListener('click', function (ev){//prevent propagation (close dropdowns...)
+                //     ev.stopPropagation()
+                // })
+                closeElm.addEventListener('click', function (ev){
+                    inst.hide();
+                });
+            })
+
+            // close popover on esc
+            document.addEventListener("keyup", function (ev) {
+                if (ev.key === 'Escape') {
+                    let inst= bootstrap.Popover.getInstance(elm)
+                    inst.hide();
+                }})
+        }
+        FielddefinitionFunctionCallback[0]= '{{ path('serialize_json_fielddefinition_by_code_') }}'
+
+        FieldDefinitionGetter(document.querySelectorAll("[data-fdget='popover']"), FIELDEFINITION_PATH_JSON, REQUEST_LOCALE)
+            .on('fdget.success.request', FielddefinitionFunctionCallback)
+
+</script>

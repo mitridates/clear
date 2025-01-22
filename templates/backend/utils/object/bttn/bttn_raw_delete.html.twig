@@ -1,0 +1,12 @@
+{#
+@see ./bttn_.html.twig
+#}
+{%- set attr= (attr ?? {})|merge({
+    'class':  'btn btn-danger btn-outline-default js-delete'~(' '~attr.class ?? '')~(' '~class??''),
+}) -%}
+{%- set type= (type ?? 'submit') -%}
+{%- set clear=  clear|default(false) -%}
+{%- set title=  title|default('btn.delete'|trans({},'cavemessages'))|raw -%}
+<button type="{{ type }}" title="{{ title }}"
+    {% for key, value in attr %} {{ key }}="{{ value|raw }}" {% endfor %}
+{% if clear%} {% endif %}><i class="fa fa-trash"></i></button>

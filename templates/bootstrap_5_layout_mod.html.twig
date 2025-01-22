@@ -1,0 +1,149 @@
+{#
+/**
+ * @file bootstrap_5_layout_mod.html.twig
+ * Modificación al layout bootstrap
+ ^ Añadimos atributos a etiquetas del formulario html
+ * para mostrar una descripción obtenida de la base de datos
+ * mediante XHR
+ */
+#}
+{#{% use '@Dashboard/symfony/bootstrap_3_layout.html.twig' %}#}
+{% use 'bootstrap_5_layout.html.twig' %}
+
+
+{#{% block form_help -%}#}
+{#    {% set help= 'Tómate algo' %}#}
+{#    {{- parent() -}}#}
+{#{%- endblock form_help %}#}
+
+{% block form_label -%}
+{#  En FormType añadimos el  atributo  "code_id" a cualquier objeto del formulario
+    que se corresponde con el ID en la tabla Fielddefinition.
+    Mediante la extensión twig "get_fielddefinition_name(attr.code_id,locale=null,abbreviation=false)" añadimos información extra.
+#}
+{% if attr.code_id is defined and attr.code_id %}
+    {% set translation_domain= false %}
+    {%- set fd_value_name = get_fielddefinition_name(attr.code_id,app.request.locale, true) -%}
+    {% if fd_value_name  %}
+        {% set label= fd_value_name %}
+    {% endif %}
+{#    {{ dump(label) }}#}
+{#    {%- set label_attr = label_attr|default({})|merge({#}
+{#        'title': attr.code_id ~' - ' ~fd_value_name#}
+{#    }) -%}#}
+    {{- parent() }}
+    {% if fd_value_name  %}
+        {% include '@fd_popover/field_definiton_popover_tag.html.twig' with {'id': attr.code_id , 'name': null, 'title': attr.code_id~' - '~fd_value_name} only %}
+    {% endif %}
+{%else%}
+    {{- parent() -}}
+{%-endif-%}
+
+{# aplicamos estilos distintos a los campos obligatorios#}
+{%if required== true and label%}
+    <i class="fa fa-xs fa-asterisk" title="{{ 'field.required'|trans({},'cavemessages')|raw }}" style="display: inline-block" ></i>
+
+{%endif%}
+    {# add element for field json errors #}
+    <a class="js-error js-error-id-{{ id }}"
+       style="display: none;"
+       data-id="{{ id }}"
+       data-toggle="popover"
+       data-bs-html="true"
+       data-bs-trigger="hover focus manual"
+       data-bs-title="<span class='text-danger'>{{ fd_value_name ?? name }}</span>"
+       title="{{ fd_value_name ?? name }}"
+       data-bs-content="{%- if errors  -%}
+           <ul class='list-unstyled'>
+           {% for error in errors %}
+                {{ error.message }}
+           {% endfor %}
+           </ul>
+            {%- endif -%}">
+        <i class="fa fa-exclamation-triangle color-danger"></i></a>
+{%- endblock form_label %}
+
+{#    Errores todo se puede eliminar repetición?#}
+{% block checkbox_radio_label -%}
+    {{ parent() }}
+    <a class="js-error js-error-id-{{ id }}"
+       data-id="{{ id }}"
+       data-bs-toggle="popover"
+       data-bs-html="true"
+       data-bs-trigger="hover focus"
+       data-bs-title="<span class='text-danger'>{{ fd_value_name ?? name }}</span>"
+       title="{{ fd_value_name ?? name }}"
+       data-bs-content="{%- if errors  -%}
+           <ul class='list-unstyled'>
+           {% for error in errors %}
+                {{ error.message }}
+           {% endfor %}
+           </ul>
+            {%- endif -%}">
+        <i class="fa fa-exclamation-triangle color-danger"></i></a>
+{% endblock %}
+
+{% block checkbox_widget %}
+{% if attr.code_id is defined and attr.code_id%}
+    {%- set fd_label_name = get_fielddefinition_name(attr.code_id,app.request.locale) -%}
+        {% if fd_label_name %}
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"
+                        {{ block('widget_attributes') }}
+                        {% if value is defined %}
+                            value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %}
+                />
+                {{ fd_label_name }}
+                &nbsp;{% include '@fd_popover/field_definiton_popover_tag.html.twig' with {'id': attr.code_id , 'name': fd_label_name, 'title': attr.code_id~' - '~fd_label_name} only %}
+            </label>
+        </div>
+        {%else%}
+        {{- parent() -}}
+        {%-endif-%}
+{%else%}
+    {{- parent() -}}
+{%-endif-%}
+
+{% endblock checkbox_widget %}
+
+{#{% block file_widget -%}#}
+{#    {%- set type = type|default('file') -%}#}
+{#    {%- set input_lang = 'en' -%}#}
+
+{#    {%- set translation_domain = translation_domain is same as(null) ? 'cavemessages' : translation_domain-%}#}
+{#    {%- if attr.placeholder is not defined-%}#}
+{#        {%- set attr = {placeholder: 'btn.file'} | merge(attr) -%}#}
+{#    {%- endif -%}#}
+
+{#    {% if app is defined and app.request is defined %}{%- set input_lang = app.request.locale -%}{%- endif -%}#}
+{#    {%- set attr = {lang: input_lang, class: ''} | merge(attr) -%}#}
+{#    {%- set label_attr = label_attr|merge({ class: (label_attr.class|default('') ~ ' input-group-text bg-secondary text-gray-100')|trim })|filter((value, key) => key != 'id') -%}#}
+{#    <div class="input-group">#}
+{#    <label for="{{ form.vars.id }}" {% with { attr: label_attr } %}{{ block('attributes') }}{% endwith %}>#}
+{#        <i class="fa fa-cloud-upload"></i>&nbsp;#}
+{#        {%- if attr.placeholder is defined and attr.placeholder is not none -%}#}
+{#            {{- translation_domain is same as(false) ? attr.placeholder : attr.placeholder|trans({}, translation_domain) -}}#}
+{#        {%- endif -%}#}
+{#    </label>#}
+{#    {{- block('form_widget_simple') -}}#}
+{#    </div>#}
+{#{% endblock %}#}
+
+{% block form_widget_simple -%}
+    {%- if type is not defined or type != 'hidden' -%}
+        {%- set className = ' form-control' -%}
+        {%- if type|default('') == 'file' -%}
+            {%- set className = 'js-bsfileinput' -%}
+        {%- elseif type|default('') == 'range' -%}
+            {%- set className = ' form-control-range' -%}
+        {%- endif -%}
+        {%- set attr = attr|merge({class: (attr.class|default('') ~ className)|trim}) -%}
+    {%- endif -%}
+    {%- if type is defined and (type == 'range' or type == 'color') %}
+        {# Attribute "required" is not supported #}
+        {%- set required = false -%}
+    {% endif %}
+
+    {{- parent() -}}
+{%- endblock form_widget_simple %}

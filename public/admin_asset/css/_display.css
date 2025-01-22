@@ -1,0 +1,11 @@
+.hidden{display: none;}
+.cursor-pointer{cursor: pointer}
+.w-input-1 input{width: 4em;}
+.ipl-em-1 *{padding-left: 1em !important;}
+.mt-checkbox{
+    margin-top: 2.5rem!important;
+}
+.mt-bttn{
+    margin-top: 2rem!important;
+}
+

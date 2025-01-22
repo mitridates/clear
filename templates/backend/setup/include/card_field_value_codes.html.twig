@@ -1,0 +1,12 @@
+{#
+Field value codes card
+@var array data
+#}
+{% embed '@object/card/line.html.twig' with {
+    'title':  'setup.index.box.fieldvaluecode.title'|trans({},'cavepages')|raw ,
+    'icon': 'fa-book'
+}%}
+    {% block body %}
+            Total: {{ data.fvcCount }}. Group by Field definition: {{ data.fvcCountField }}
+    {% endblock %}
+{% endembed %}

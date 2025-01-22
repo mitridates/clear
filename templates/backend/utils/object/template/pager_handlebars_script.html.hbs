@@ -1,0 +1,68 @@
+{#
+Handlebars Pager script
+@package object
+@subpackage pager
+@param string|null class
+#}
+
+<!-- Handlebars pagination script -->
+<script id="pagination-tpl" class="script-navbar" type="text/x-handlebars-template">
+<div style="display: flex; width: 100%">
+{% verbatim %}
+<div>
+{{#pagination currentPage totalPages parameters data}}
+  <ul class="pagination pagination-sm mb-0">
+  {{#unless gotoInit}}
+   <li class="page-item"><a data-page="1" class="page-link" href="JavaScript:void(0);">&lt;&lt;</a></li>
+  {{/unless}}
+  {{#unless startFromFirstPage}}
+    <li class="page-item"><a aria-label="Previous" data-page="{{prev}}" class="page-link" href="JavaScript:void(0);">&lt;</a></li>
+  {{/unless}}
+  {{#each pages}}
+    {{#if isCurrent}}
+     <li class="page-item active"><a data-page="{{page}}" class="page-link active" href="JavaScript:void(0);">{{page}}</a></li>
+    {{/if}}
+    {{#unless isCurrent}}
+      <li class="page-item"><a data-page="{{page}}" class="page-link" href="JavaScript:void(0);">{{page}}</a></li>
+    {{/unless}}
+  {{/each}}
+
+  {{#unless endAtLastPage}}
+   <li class="page-item"><a data-page="{{next}}" class="page-link" href="JavaScript:void(0);">&gt;</a></li>
+  {{/unless}}
+
+  {{#unless gotoEnd}}
+   <li class="page-item"><a data-page="{{data.totalPages}}" class="page-link" href="JavaScript:void(0);">&gt;&gt;</a></li>
+  {{/unless}}
+
+</ul>
+{{/pagination}}
+</div>
+
+{%endverbatim%}
+{% block center%}{% endblock %}
+{% block right %}{% endblock %}
+{% block rightdefaults %}
+<div style="margin-left: auto;">
+<i class="fas fa-info-circle m-2" title="
+{{ 'pager.page'|trans([],'cavemessages') }}: {{'{{'}}currentPage{{'}}'}}
+{{ 'pager.totalPages'|trans([],'cavemessages') }}: {{'{{'}}data.totalPages{{'}}'}}
+{{ 'pager.itemsperpage'|trans([],'cavemessages') }}: {{'{{'}}data.itemsPerPage{{'}}'}}
+{{ 'pager.currentPageRows'|trans([],'cavemessages') }}: {{'{{'}}data.currentPageRows{{'}}'}}
+{{ 'pager.totalRows'|trans([],'cavemessages') }}: {{'{{'}}data.totalRows{{'}}'}}
+"></i>
+
+<select class="pager-size" name='pager:size' style="margin: 0 0.5rem">
+ <option disabled selected>{{ 'pager.ipp'|trans([],'cavemessages') }}</option>
+ <option value="10">10</option>
+ <option value="20">20</option>
+ <option value="30">30</option>
+ <option value="50">50</option>
+ <option value="0">&#x221e;</option>
+</select>
+
+<i class="fas fa-sync js-sync cursor-pointer" style="margin-right:.5rem"></i>
+{% endblock %}
+</div>
+</div>
+</script>

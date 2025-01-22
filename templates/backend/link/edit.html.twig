@@ -1,0 +1,42 @@
+{#
+Link. Edit
+@controller BackendLinkController:editAction
+@route admin/link/edit/{id}
+@path admin_link_edit
+@var FormView form
+@var Link entity
+#}
+{% do addCrumb('link.index.title'|trans({},'cavepages'), path('admin_link_index')) %}
+{% set page= initPage(
+    'link',
+    'edit',
+    'link.edit.title'|trans({},'cavepages'),
+    path('admin_link_index', {'id': form.vars.value.id}))
+        .set('heading', 'link.edit.heading'|trans({},'cavepages')~' - '~entity.title)
+%}
+{% extends '@admin/base.html.twig' %}
+{% block subheading %}
+    {% include '@admin/link/subheading_buttons.html.twig'%}
+{% endblock %}
+{% block content %}
+    {% include '@admin/link/_form.html.twig' %}
+{% endblock %}
+{% block footer_javascripts %}
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.jsuggest-select').forEach(function (elm){
+            if(elm.classList.contains('js-mime')){
+                JSuggest(elm, {'minLen':2})
+            }else{
+                JSuggest(elm)
+            }
+        })
+        JSimas('input[name=ownerradio]').toggleRadioByDataset();
+        JSimas('input[name=authorradio]').toggleRadioByDataset();
+        JXhrSubmit("#{{form.vars.attr.id }}")
+        shortcut.add("Ctrl+F1",function() {
+            JSimas.copy(document.getElementById('{{form.vars.attr.id }}'))
+        });
+    });
+</script>
+{% endblock %}

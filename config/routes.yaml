@@ -1,0 +1,21 @@
+#Comentamos para que no duplique rutas /prefix/controller/action,  controller/action
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+#https://symfony.com/doc/current/routing.html#route-groups-and-prefixes
+#cave_backend:
+#    resource: '../src/Controller/Backend*'
+#    type: annotation
+#    # this is added to the beginning of all imported route URLs
+#    prefix: /admin
+#    # this is added to the beginning of all imported route names
+#    name_prefix: 'admin_'
+#cave_json:
+#    resource: '../src/Controller/Json*'
+#    type: annotation
+#    # this is added to the beginning of all imported route URLs
+#    prefix: /admin
+#    # this is added to the beginning of all imported route names
+#    name_prefix: 'json_'

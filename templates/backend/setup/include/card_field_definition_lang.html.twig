@@ -1,0 +1,12 @@
+{#
+Field definition lang card
+@var array data
+#}
+{% embed '@object/card/line.html.twig' with {
+    'title':  'setup.index.box.fielddefinitionlang.title'|trans({},'cavepages')|raw ,
+    'icon': 'fa-language'
+}%}
+    {% block body %}
+            Total {{ data.fdlCount }}, locales: {{ data.fdlCountLocales }}
+    {% endblock %}
+{% endembed %}

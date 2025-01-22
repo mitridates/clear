@@ -1,0 +1,22 @@
+{#
+@see ./bttn_.html.twig
+#}
+{%- set attr= (attr ?? {})|merge({
+        type: 'button',
+        'title': attr.title ?? title|default(''),
+        'class':  'btn btn-light'~(' '~attr.class ?? '')~(' '~class??''),
+}) -%}
+{%- set checkbox= (checkbox ?? {})|merge({
+        type:  checkbox.type ?? type|default('checkbox'),
+        value:  checkbox.value ?? value|default(false),
+        autocomplete:  checkbox.autocomplete ?? autocomplete|default('off'),
+        name: checkbox.name ?? name|default('thumbtack'),
+        id: checkbox.id ?? id|default(''),
+        onClick:  checkbox.onClick ?? onClick|default(''),
+        class:  'js-checkbox'~(' '~checkbox.class ?? '')~(' '~checkboxClass??''),
+}) -%}
+
+<button {% for key, value in attr|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %}>
+        <input {% for key, value in checkbox|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %}>
+{% block icon %}<i class="fa fa-thumbtack"></i>{% endblock %}
+</button>

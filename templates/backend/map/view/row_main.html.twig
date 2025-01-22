@@ -1,0 +1,67 @@
+{#
+Map. main table
+@controller BackendMapController:viewAction
+@route admin/map/view/{id}
+@path dashboard_map_view
+@var ?
+#}
+<div class="card">
+    <div class="card-header">
+        map.name
+        "created" => "2024-04-29 14:39:02"
+        "updated" => "2024-05-29 08:42:22"
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-3 col-sm">
+                map.subsheetname: -<br>
+                map.mapserie: -<br>
+                map.scale: -<br>
+                map.type: -<br>
+                map.sourcetype: -<br>
+                map.number: -<br>
+                map.edition: -<br>
+            </div>
+
+            <div class="col-lg-3 col-sm">
+                map.country: -<br>
+                map.admin1: -<br>
+                map.admin2: -<br>
+                map.admin3: -<br>
+                map.area: -<br>
+
+            </div>
+            <div class="col-lg-3 col-sm">
+                map.principalsurveyorid: -<br>
+                map.principaldrafterid: -<br>
+                map.surveystartyear: -<br>
+                map.surveyfinishyear: -<br>
+                map.surveygradeorg: -<br>
+                map.surveygradevalue: -<br>
+                map.latestupdateyear: -<br>
+            </div>
+            <div class="col-lg-3 col-sm">
+                map.sourcecountry: -<br>
+                map.sourceorg: -<br>
+                map.sourceifnoid: -<br>
+                map.sourcetype: -<br>
+            </div>
+
+
+        </div>
+        "geodeticdatum" => null
+        "heightdatum" => null
+        "grid" => null
+        "maphostarea" => null
+        "worldregion" => null
+        "northlatitude" => null
+        "southlatitude" => null
+        "eastlongitude" => null
+        "westlongitude" => null
+        "geogcoordsshown" => null
+        {{ dump(cache) }}
+    </div>
+</div>
+{# JXhrPopulate#}
+{# /JXhrPopulate#}
+data???

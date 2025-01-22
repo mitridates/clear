@@ -1,0 +1,101 @@
+{#
+Pagination base class with Handlebars
+@package object
+@subpackage pager
+
+@param string id - Wrapper id
+@param string|undefined action - Url in wrapper (else use source)
+@param string|undefined source - Url/Request parameters in source (form ID)
+
+--El resto de parámetros son opcionales--
+
+@param string|undefined template - Modify default Handlebars navbar pagination template. Not required
+@param string|undefined class - Default wrapper class
+@param undefined|Object msgDiv - Attr key=>val for <div class="js-message ...
+#}
+{%- set pager= pager is defined ? pager : 'top' -%}
+{%- set message= message|default('bottom') -%}
+{%- set wrapper= {
+    id:   id|default('paginatorWrapper'),
+    'data-action': action|default(''),
+    'data-source': source|default(''),
+    'data-template': template|default('HandlebarsScriptId'),
+    class:  'js-pagination'~(class is defined? ' '~class:'')
+} -%}
+
+{#check some translations #}
+{%- set tr= {
+    k:{
+        'nores': 'pager.noresultfound',
+        'res': 'pager.rresult',
+        'pager': 'pager.rpager',
+    },
+    loc:{
+        'nores': 'pager.noresultfound'|trans({},'cavemessages'),
+        'res': 'pager.rresult'|trans({},'cavemessages'),
+        'pager': 'pager.rpager'|trans({},'cavemessages'),
+    },
+    def:{
+        'nores': "No results found",
+        'res': 'Results: {totalRows}',
+        'pager': 'Page {currentPage} of {totalPages}. Showing {currentPageRows} of {totalRows} results',
+    },
+} -%}
+
+{%- set msgDiv= (msgDiv ?? {})|merge({
+    'aria-label':'Paginator message',
+    'data-rnoresultfound': (tr.loc.nores is same as tr.k.nores) ? tr.def.nores : tr.loc.nores,
+    'data-rresult': (tr.loc.res is same as tr.k.res) ? tr.def.res : tr.loc.res,
+    'data-rpager': (tr.loc.pager is same as tr.k.pager) ? tr.def.pager : tr.loc.pager,
+    class:"js-message text-center"
+}) -%}
+
+<!-- Handlebars paginator wrapper -->
+<div class="js-pagination" {% for key, value in wrapper|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %}>
+{% if pager and pager in ['top', 'both'] %}
+<nav class="js-navbar" aria-label="Pagination links"></nav>
+{% endif %}
+
+{% block top %}
+{% endblock top %}
+
+{% if message in ['top', 'both'] %}
+    <div {% for key, value in msgDiv|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %}></div>
+{% endif %}
+
+{% block pagination %}
+{% endblock pagination %}
+{% block down %}
+{% endblock down %}
+{% if message in ['bottom', 'both'] %}
+<div {% for key, value in msgDiv|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %}></div>
+{% endif %}
+{% if pager and pager in ['bottom', 'both'] %}
+<nav class="js-navbar" aria-label="Pagination links"></nav>
+{% endif %}
+<script type="text/x-handlebars-template" class="body">
+{% verbatim %}
+{{#if data}}
+{{#each data}}
+{% endverbatim %}
+{% block templateBody %}
+{% endblock templateBody %}
+{% verbatim %}
+{{/each}}
+{{/if}}
+{% endverbatim %}
+</script>
+
+<script type="text/x-handlebars-template" class="foot">
+{%- verbatim -%}
+{{#if data}}
+{{#each data}}
+{% endverbatim %}
+{%- block templateFoot -%}
+{%- endblock templateFoot -%}
+{%- verbatim -%}
+{{/each}}
+{{/if}}
+{%- endverbatim %}
+</script>
+</div>

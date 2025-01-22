@@ -1,0 +1,26 @@
+{#
+Person form render new/edit
+@var FormView form
+#}
+
+{% set md = {row_attr:{class:'col-md'}} %}
+{% set md4 = {row_attr:{class:'col-md-4'}} %}
+{{ form_start(form) }}
+<div class="row">
+    {{ form_row(form.name, md)}}
+    {{ form_row(form.commonname, md) }}
+    {{ form_row(form.genus, md)}}
+</div>
+
+
+<div class="row">
+    {{ form_row(form.family, md)}}
+    {{ form_row(form.orden, md)}}
+    {{ form_row(form.class, md)}}
+    {{ form_row(form.phylum, md)}}
+</div>
+
+<div class="form-row d-flex justify-content-center mt-2">
+    {% include '@object/bttn/bttn_save.html.twig' with {'class': 'js-submit'}%}
+</div>
+{{ form_end(form) }}

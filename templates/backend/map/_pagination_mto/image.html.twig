@@ -1,0 +1,85 @@
+{#
+Map image tab.
+@var FormView form - image form
+@var FormView editForm - image edit form
+@var Map map
+#}
+{#    <div class="d-flex align-items-center justify-content-between py-2  my-2 border-top border-bottom border-secondary">#}
+{#        <div>#}
+{#            <div data-sort="" data-orderby="name" class="d-inline mx-2" >Name</div>#}
+{#            <div data-sort="" data-orderby="created" class="d-inline mx-2">Created</div>#}
+{#            <div data-sort="" data-orderby="updated" class="d-inline mx-2">Updated</div>#}
+{#            <div data-sort="" data-orderby="mimetype" class="d-inline mx-2">Mime type</div>#}
+{#            <div data-sort="" data-orderby="filesize" class="d-inline mx-2" >File size</div>#}
+{#        </div>#}
+{#        <i class="fas fa-sync mr-3 js-sync"></i>#}
+{#    </div>#}
+{#{% endblock head %}#}
+{#{% block script %}#}
+{% verbatim %}
+{{#with this.attributes}}
+{{log this}}
+        <!-- Gallery item -->
+        <div class="jgallery col-xl-2 col-lg-2 col-md-3 m-1 p-1 rounded border border-secondary ">
+            <div class="rounded">
+
+                <img
+                    src="{{#if thumbfilename}}{% endverbatim %}{{ asset('upload/map/thumbnail/') }}{% verbatim %}{{thumbfilename}}
+                    {{else}}{% endverbatim %}{{ asset('img/default-img.png') }}{% verbatim %}{{/if}}"
+                    onClick="window.open('{% endverbatim %}{{ asset('upload/map/') }}{% verbatim %}{{filename}}', '_blank')"
+                    class="img-fluid card-img-top cursor-pointer"
+                    title="ID: {{map}}/{{../id}}"
+                    >
+             </div>
+                <div class="">
+                    <p class="mb-0 small ellipsis font-weight-bold"
+                    title="{{join '. ' name comment}}">{{coalesce (join '. ' '' name comment) (join '. ' '' filename (formatbytes filesize))}}</p>
+                    <div class="d-flex align-items-center justify-content-between ">
+                        <p class="small mb-0 ga-info">
+                        <i title="Mime: {{mimetype}}. Size: {{formatbytes filesize}}"
+                        class="fa
+                        {{#if (contains 'image' mimetype)}}
+                        fa-image
+                        {{else}}
+                            {{#if (contains 'pdf' mimetype)}}
+                                fa-file-pdf
+                            {{else}}
+                                fa-file
+                            {{/if}}
+                        {{/if}}">
+                        </i>
+
+                        {{#ifIsset reference citation}}
+                        <i class="fa fa-copyright" title="{{coalesce reference citation}}"></i>
+                        {{/ifIsset}}
+                        <i title="{% endverbatim %}{{ 'registry.created'|trans([], 'cavemessages') }}{% verbatim %}: {{created~}}
+                        {{#ifNotEquals created updated}}. {% endverbatim %}{{ 'registry.updated'|trans([], 'cavemessages') }}{% verbatim %}: {{updated}}{{/ifNotEquals}}" class="fa fa-clock"></i></p>
+                        <div data-id="{{../id}}" class="btn btn-secondary btn-xs js-delete"><i class="fa fa-trash"></i> </div>
+                        <div data-id="{{../id}}" class="btn btn-primary btn-xs js-edit"><i class="fa fa-pen"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       {{/with}}
+        <!-- End -->
+{% endverbatim %}
+{#{% endblock script%}#}
+{#{% endembed %}#}
+{# /paginator#}
+
+{# Edit form#}
+{#{% embed '@Dashboard/object/modal/modal.html.twig' with{#}
+{#    id: 'js-image-modal',#}
+{#    dialogClass: 'modal-lg',#}
+{#    title:  'map.manytoone.image'|trans({},'cavepages')|capitalize,#}
+{#} %}#}
+{#    {% block body %}#}
+{#        {% include '@Dashboard/content/map/forms/image.html.twig' with {#}
+{#            form: editForm,#}
+{#            bttns: ['close', 'submit'],#}
+{#            type: 'edit'#}
+{#        } only %}#}
+{#    {% endblock body %}#}
+{#{% endembed %}#}
+{# /Edit form#}
+

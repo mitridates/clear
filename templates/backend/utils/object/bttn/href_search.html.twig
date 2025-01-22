@@ -1,0 +1,8 @@
+{#
+@see ./bttn_.html.twig
+#}
+{%- set attr= (attr ?? {})|merge({
+    'class':  'btn btn-default btn-outline-success js-search'~(' '~attr.class ?? '')~(' '~class??''),
+    'href': href ?? attr.href|default('javascript:void(0);')
+}) -%}
+<a {% for key, value in attr %} {{ key }}="{{ value|raw }}" {% endfor %}><i class="fa fa-search"></i> {{ text|default('btn.search'|trans({},'cavemessages'))|raw -}}</a>

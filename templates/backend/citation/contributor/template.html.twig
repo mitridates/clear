@@ -1,0 +1,150 @@
+<!--Navbar outside template -->
+<template id="template-nav">
+    <div class="fic-navbar  d-flex flex-row bg-light">
+        <div class="p-1"><button type="button" class="btn m-0 p-0 fic-navbar_trash" style="line-height: 0em;"><i class="fa fa-trash"></i></button></div>
+        <div class="py-2 flex-grow-1 fic-navbar_txt" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis; cursor:pointer"></div>
+        <div class="p-1" data-arrow="down"><button type="button" class="btn m-0 p-0 fic-navbar_down" style="line-height: 0em;"><i class="fa fa-arrow-down" aria-hidden="true"></i></button></div>
+        <div class="p-1" data-arrow="up"><button type="button" class="btn m-0 p-0 fic-navbar_up" style="line-height: 0em;"><i class="fa fa-arrow-up" aria-hidden="true"></i></button></div>
+        <div class="p-1"><button type="button" class="btn m-0 p-0 fic-navbar_toggle" style="line-height: 0em;"><i class="fa fa-angle-down"></i></button></div>
+    </div>
+</template>
+<!--End Navbar template-->
+
+
+<!--Person template.  ID is defined in button dataset -->
+<template id="template-person">
+    <div class="border border-grey">
+        <!--Form wrapper -->
+        <div class="fic-group">
+            <div  class="row m-2" >
+                <div class="col-md-3"><div class="fw-bold">Title</div></div>
+                <div class="col-md"><input type="text" data-name="title" class="form-control" value=""></div>
+            </div>
+
+            <div  class="row m-2">
+                <div class="col-md-3 d-flex flex-column" style="line-height: 1em">
+                    <span class="fw-bold">Initials</span> <small style="font-size: 0.7em" class="small text-muted">Recommended</small>
+                </div>
+                <div class="col-md"><input type="text" data-recommended="true" data-name="initials" class="form-control" value=""></div>
+            </div>
+
+            <div  class="row m-2">
+                <div class="col-md-3">
+                    <div class="fw-bold">First name(s)</div>
+                </div>
+                <div class="col-md">
+                    <input type="text" data-name="firstname" class="form-control" value="">
+                </div>
+            </div>
+
+            <div  class="row m-2">
+                <div class="col-md-3">
+                    <div class="fw-bold">Infix</div>
+                </div>
+                <div class="col-md">
+                    <input type="text" data-name="infix" class="form-control" value="">
+                </div>
+            </div>
+
+            <div  class="row m-2">
+                <div class="col-md-3 d-flex flex-column" style="line-height: 1em">
+                    <div class="fw-bold p-0">Last name</div> <small style="font-size: 0.7em" class="small text-muted">Recommended</small>
+                </div>
+                <div class="col-md">
+                    <input type="text" data-name="lastname" data-recommended="true" class="form-control" value="">
+                </div>
+            </div>
+
+            <div  class="row m-2">
+                <div class="col-md-3">
+                    <div class="fw-bold">Suffix</div>
+                </div>
+                <div class="col-md">
+                    <input type="text" data-name="suffix" class="form-control" value="">
+                </div>
+            </div>
+
+            <div  class="row m-2">
+                <div class="col-md-3">
+                    <div class="fw-bold">Screen name</div>
+                </div>
+                <div class="col-md">
+                    <input type="text" data-name="screenname" class="form-control" value="">
+                </div>
+            </div>
+
+            <div  class="row m-2">
+                <div class="col-md-3">
+                    <div class="fw-bold">Role</div>
+                </div>
+                <div class="col-md">
+                    <select data-name="role" tabindex="-1" class="form-control">
+                        <option value="author">Author</option>
+                        <option value="editor">Editor</option>
+                        <option value="translator">Translator</option>
+                        <option disabled style="color: grey;">other</option>
+                        <option value="container-author">Author of container </option>
+                        <option value="director">Director</option>
+                        <option value="illustrator">Illustrator</option>
+                        <option value="interviewer">Interviewer</option>
+                        <option value="uploader">Uploader</option>
+                    </select>
+                </div>
+                <input type="text" data-name="__type" hidden class="form-control" value="person">
+
+            </div>
+        </div>
+        <!--End form wrapper -->
+    </div>
+</template>
+<!--end Person template-->
+
+
+<!--Organisation template.  ID is defined in button dataset -->
+<template id="template-org">
+    <div data-name="contributor" class="contributor border border-grey">
+        <!--Form wrapper -->
+        <div class="fic-group">
+            <div  class="row m-2">
+                <div class="col-md-3 d-flex flex-column" style="line-height: 1em">
+                    <span class="fw-bold">Name</span> <small style="font-size: 0.7em" class="small text-muted">Required</small>
+                </div>
+                <div class="col-md">
+                    <input type="text" data-name="name" required class="form-control" value="">
+                </div>
+            </div>
+
+            <div  class="row m-2">
+                <div class="col-md-3 fw-bold">
+                    Screen name
+                </div>
+                <div class="col-md">
+                    <input type="text" data-name="screenname" class="form-control" value="">
+                </div>
+            </div>
+
+            <div  class="row m-2">
+                <div class="col-md-3 fw-bold">
+                    Role
+                </div>
+                <div class="col-md">
+                    <select data-name="role" tabindex="-1" class="form-control">
+                        <option value="author">Author</option>
+                        <option value="editor">Editor</option>
+                        <option value="translator">Translator</option>
+                        <option disabled style="color: grey;">other</option>
+                        <option value="container-author">Author of container </option>
+                        <option value="director">Director</option>
+                        <option value="illustrator">Illustrator</option>
+                        <option value="interviewer">Interviewer</option>
+                        <option value="uploader">Uploader</option>
+                    </select>
+                </div>
+                <input type="text" data-name="__type" hidden  class="form-control" value="org">
+
+            </div>
+        </div>
+        <!--End form wrapper -->
+    </div>
+</template>
+<!--end Organisation template-->

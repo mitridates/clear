@@ -1,0 +1,43 @@
+{#
+Map pagination list.
+@var FormView form
+@var Map entity
+@var string id
+@var string relationship
+#}
+{# paginator#}
+<div style="display: block;overflow-x: auto;white-space: nowrap;">
+    {% embed '@object/pager/paginator_table.html.twig' with{
+        id: 'paginatorWrapper',
+        action: path('admin_map_mto_list', {'relationship': relationship, 'id':id})
+    } %}
+        {% block head %}
+            <th class="minrow"></th>
+            <th>{{ 'map.manytoone.'~relationship|trans({},'cavepages')|capitalize }}
+            <th class="minrow"><i class="fa fa-trash"></i></th>
+        {% endblock head %}
+        {% block script %}
+
+            <td class="minrow">
+                <a data-mto-btn="edit"
+                   data-id="{{'{{'}}this.id{{'}}'}}"
+                   href="javascript:void(0);">
+                    <i class="fa fa-square-pen"></i>
+                </a>
+            </td>
+            <td>
+                {% include '@admin/map/_pagination_mto/'~relationship~'.html.twig'%}
+            </td>
+            <td class="text-center" >
+                <a class="ml-1"
+                   style="color: tomato"
+                   data-oto-btn="delete"
+                   data-id="{{'{{'}}this.id{{'}}'}}"
+                   href="javascript:void(0);">
+                    <i class="fa fa-trash"></i>
+                </a>
+            </td>
+        {% endblock script%}
+    {% endembed %}
+</div>
+{# /paginator#}

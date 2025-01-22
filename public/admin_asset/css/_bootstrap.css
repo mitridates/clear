@@ -1,0 +1,4 @@
+/*modificación para Bootstrap navbar*/
+.nav-item>a:hover{
+    cursor: pointer
+}

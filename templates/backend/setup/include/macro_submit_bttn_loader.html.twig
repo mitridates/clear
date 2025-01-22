@@ -1,0 +1,12 @@
+{#
+Field value codes table
+@extend /admin/setup/index.html.twig
+@var array data
+#}
+{% macro loaderFormButton(loader, text='texto') %}
+    <form action="{{ url(loader.route) }}" method="post" class="d-inline">
+        <input type="hidden" name="token" value="{{ csrf_token(loader.token) }}">
+        <input type="hidden" name="type" value="{{ loader.type }}">
+        <button type="submit" class="btn btn-secondary btn-sm" onclick="this.form.submit();Array.from(this.form.elements).forEach(formElement => formElement.disabled = true);">{{ text }}</button>
+    </form>
+{% endmacro %}

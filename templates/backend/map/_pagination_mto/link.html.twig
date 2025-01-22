@@ -1,0 +1,13 @@
+
+{% verbatim %}
+<div class="row">
+{{#with this.attributes}}
+    <div class="col">
+    {{link}}<a href="{{../this.links.link}}"><i class="fa fa-link"></i></a>
+<!--    {{var "auth" (coalesce  link.attributes.author link.attributes.authorname)}}-->
+<!--    {{#if auth}}<i class="fa fa-circle-question" title="{{auth}}"></i>{{/if}}-->
+    </div>
+    {{#if comment}}<div class="col text-muted">{{comment}}</div>{{/if}}
+{{/with}}
+</div>
+{% endverbatim %}

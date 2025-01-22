@@ -1,0 +1,22 @@
+{#
+Map controller form.
+@var FormView form
+#}
+{% set md6 = {row_attr:{class:' col-md-12'}} %}
+{% set inline = {row_attr:{class:'d-inline'}} %}
+<div class="row">
+    <div class="col-md-4 col-sm mb-2">
+        <input type="radio" id="ctrl-orgid" name="controller-radio" value="ctrl-orgid" data-selector="#{{ form.organisation.vars.id }}" checked>
+        {{ form_row(form.organisation, dataSuggest('organisation')|merge(inline))}}
+    </div>
+    <div class="col-md-4 col-sm mb-2">
+        <input type="radio" id="ctrl-prsid" name="controller-radio" value="ctrl-prsid" data-selector="#{{ form.person.vars.id }}" >
+        {{ form_row(form.person, dataSuggest('person')|merge(inline))}}
+    </div>
+
+    <div class="col-md-4 col-sm mb-2">
+        <input type="radio" id="ctrl-noid" name="controller-radio" value="ctrl-noid" data-selector="#{{ form.controllerifnoid.vars.id }}" >
+        {{ form_row(form.controllerifnoid, inline) }}
+    </div>
+</div>
+{{ form_row(form.comment, md6) }}

@@ -1,0 +1,25 @@
+{#
+Map coordinates.
+@var FormView form
+#}
+{% set md = {row_attr:{class:'col-md'}} %}
+{% set md3 = {row_attr:{class:'col-md-3'}} %}
+{% set mdcheck = {row_attr:{class:'mt-checkbox col-md'}} %}
+{% set dividerAttr='class="p-2 my-2 border-bottom border-secondary h5" '  %}
+
+<div {{ dividerAttr|raw }}>{{ 'map.divider.survey'|trans([], 'cavepages')}}</div>
+
+<div class="row">
+    {{ form_row(form.principalsurveyorid, dataSuggest('person')|merge(md))}}
+    {{ form_row(form.principaldrafterid, dataSuggest('person')|merge(md))}}
+
+</div>
+<div class="row">
+    {{ form_row(form.surveystartyear, md3)}}
+    {{ form_row(form.surveyfinishyear, md3)}}
+    {{ form_row(form.latestupdateyear, md3)}}
+</div>
+<div class="row">
+    {{ form_row(form.surveygradeorg, dataSuggest('organisation')|merge(md))}}
+    {{ form_row(form.surveygradevalue, md3)}}
+</div>

@@ -1,0 +1,17 @@
+/*Dos formatos de botón algo más grandes o algo más pequeños para formularios y listados*/
+.btn-group-xss>.btn,.btn-xss{
+    padding: .2rem .3rem;
+    font-size: .520rem;
+}
+
+.btn-group-xs>.btn,.btn-xs{
+    padding: .2rem .3rem;
+    font-size: .720rem;
+}
+
+.btn-group-xl>.btn, .btn-xl {
+    font-size: 2.25rem;
+    padding: .2rem 2.5rem;
+}
+
+.w-input-2 input{width: 8em;}

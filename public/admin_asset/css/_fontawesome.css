@@ -1,0 +1,51 @@
+.fas[data-count], .fa[data-count], *[data-count]{
+    position:relative;
+}
+/*.fa[data-count]:after,.fas[data-count]:after{*/
+/*    position: absolute;*/
+/*    right: -0.75em;*/
+/*    top: -.75em;*/
+/*    content: attr(data-count);*/
+/*    padding: .5em;*/
+/*    border-radius: 10em;*/
+/*    line-height: .9em;*/
+/*    color: white;*/
+/*    background: rgba(255,0,0,.75);*/
+/*    text-align: center;*/
+/*    min-width: 2em;*/
+/*    font: bold .5em sans-serif;*/
+/*}*/
+
+*[data-count]:after,.fa[data-count]:after,.fas[data-count]:after{
+    position: absolute;
+    right: -1em;
+    top: -1em;
+    content: attr(data-count);
+    padding: .2em;
+    border-radius: 0.5em;
+    line-height: .9em;
+    color: white;
+    /*background: rgba(255,0,0,.75);*/
+    background: seagreen;
+    text-align: center;
+    min-width: 2em;
+    font: bold .6em sans-serif;
+}
+
+.check-js-badge{
+    position:relative;
+}
+.check-js-badge:after{
+    position: absolute;
+    font-family: FontAwesome;
+    content: "\f111";
+    font-size: 0.5em;
+    right: -1em;
+    top: -1em;
+    content:  "\f00c";
+    padding: .5em;
+    border-radius: 10em;
+    color: white;
+    background: seagreen;
+}
+

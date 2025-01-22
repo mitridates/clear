@@ -1,0 +1,63 @@
+{# @parent ./base.html.twig #}
+
+<script>
+
+//constants
+const REQUEST_LOCALE = '{{ app.request.getLocale() }}'
+const FIELDEFINITION_PATH_JSON= '{{ path('serialize_json_fielddefinition_by_code_', {'lang': app.request.getLocale()}) }}'
+const IS_MOBILE_DEVICE=  /Android|webOS|iPhone|iPad|BlackBerry|Windows Phone|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent)
+</script>
+{#polyfill#}
+{#<script type="text/javascript" src="{{ asset('bundles/dashboard/js/polyfill.js') }}"></script>#}
+<!-- Custom toast standalone requere jtoast.css-->
+<script src="{{asset('admin_asset/vendor/shortcut/shortcut.js')}}"></script>
+
+<script type="module" src="{{asset('admin_asset/js/JToast.1.0.0.js')}}"></script>
+<script src="{{asset('admin_asset/js/JTooltip.1.0.0.js')}}"></script>
+
+<!-- Event Emitter eventos everywhere  standalone-->
+<script type="text/javascript" src="{{asset('admin_asset/js/EventEmitter.1.0.0.js')}}"></script>
+<!-- Json Api y dependencias standalone-->
+<script type="text/javascript" src="{{ asset('admin_asset/js/JsonApiManager.1.0.2.js') }}"></script>
+<!-- Nuevos JsonApiSpec types requiere JsonApiManager-->
+<script type="text/javascript" src="{{ asset('admin_asset/js/JsonApiSpec.app.types.1.0.0.js') }}"></script>
+<script type="text/javascript" src="{{ asset('admin_asset/js/JsonApiSpec.citation.types.1.0.0.js') }}"></script>
+
+<script type="text/javascript" src="{{asset('admin_asset/js/JSimas.0.2.js')}}"></script>
+
+<!-- requiere  Event Emitter, JsonApiManager, (JError si descomentamos para debug)-->
+<script type="text/javascript" src="{{asset('admin_asset/js/FieldDefinitionGetter.1.0.0.js')}}"></script>
+
+<!-- Repopulate: nested selects requiere Event Emitter, JsonApiManager-->
+<script type="text/javascript" src="{{asset('admin_asset/js/Repopulate.1.0.0.js')}}"></script>
+<!-- Suggest requiere  JsonApiManager (JError si descomentamos para debug)-->
+{#<script type="text/javascript" src="{{asset('admin_asset/js/JSuggest.0.2.js')}}"></script>#}
+<script type="text/javascript" src="{{asset('admin_asset/JSuggest/JSuggest.iife.1.0.js')}}"></script>
+{#<script type="text/javascript" src="http://localhost/js/JSuggest/dist/JSuggest.iife.1.0.js"></script>#}
+
+<!-- Suggest con más info require JSuggest, JsonApiManager-->
+<script type="text/javascript" src="{{asset('admin_asset/JSuggest/JSuggestTemplates.1.0.0.js')}}"></script>
+
+
+<!-- jquery y dependencias-->
+<script type="text/javascript" src="{{asset('admin_asset/vendor/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('admin_asset/vendor/Bootstrap5SBAdmin/scripts.js')}}"></script>
+
+<!-- requiere Jtoast,  bootstrap si hay formulario con popover, Jsuggest si el formulario contiene ese tipo de campo-->
+<script type="text/javascript" src="{{asset('admin_asset/js/JError.1.0.0.js')}}"></script>
+<!-- Para mensajes de error recomendado Jtoast y JError, si no, utiliza alert()-->
+<script type="text/javascript" src="{{asset('admin_asset/js/JXhrSubmit.1.0.0.js')}}"></script>
+
+
+<script type="text/javascript" src="{{asset('admin_asset/vendor/handlebars/handlebars-v4.7.7.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('admin_asset/vendor/handlebars/handlebars-pagination-helper.js')}}"></script>
+<script type="text/javascript" src="{{asset('admin_asset/js/HandlebarsHelpers.0.0.1.js')}}"></script>
+<!-- Paginación mediante handlebars, requiere <script>template<script> en la página, puede requerir helper-->
+<script type="text/javascript" src="{{asset('admin_asset/js/Pagination.0.4.js')}}"></script>
+<script type="text/javascript" src="{{asset('admin_asset/js/Citation.js')}}"></script>
+<script type="text/javascript" src="{{asset('admin_asset/js/JXhrPopulate.0.1.js')}}"></script>
+
+{#### Dependientes de $ #}
+{# NavBar Paginator links script#}
+{% include '@object/template/pager_handlebars_script.html.hbs' %}
+

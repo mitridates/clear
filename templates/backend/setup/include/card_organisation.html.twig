@@ -1,0 +1,13 @@
+{#
+Organisations
+@var array data
+@var array|bool formBttn
+#}
+{% embed '@object/card/line.html.twig' with {
+    title: 'setup.index.box.organisation.title'|trans({},'cavepages')|raw ,
+    icon: 'fa-users-cog'
+}%}
+    {% block body %}
+        Total: {{ data.orgCount }}
+    {% endblock %}
+{% endembed %}

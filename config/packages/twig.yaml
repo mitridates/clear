@@ -1,0 +1,15 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    #Custom form fields with extra data
+    form_themes: [ 'bootstrap_5_layout_mod.html.twig']
+
+    paths:
+        # directories are relative to the project root dir (but you
+        # can also use absolute directories)
+        'templates/backend': 'admin'
+        'templates/backend/utils/object': 'object'
+        'templates/backend/utils/partial': 'partial'
+        'templates/backend/utils/field_definition_popover': 'fd_popover'
+when@test:
+    twig:
+        strict_variables: true

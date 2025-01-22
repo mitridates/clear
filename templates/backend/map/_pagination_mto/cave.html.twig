@@ -1,0 +1,50 @@
+{#
+Map Cave tab.
+@var FormView form - Cave form
+@var FormView editForm - Cave edit form
+@var Map map
+#}
+{# Dropdown form #}
+{% embed '@Dashboard/object/dropdown/manytoone_dropdown_form.html.twig' with {
+    id: form.vars.attr.id,
+    name: 'map.manytoone.caves'|trans({},'cavepages')
+} %}
+    {% block form  %}
+        {% include '@Dashboard/content/map/forms/cave.html.twig' with {
+            form: form,
+            bttns: ['clear', 'add', 'checkbox']
+        } only %}
+    {% endblock %}
+{% endembed %}
+{# /Dropdown form #}
+
+
+{# paginator#}
+{% embed '@Dashboard/object/pager/paginator_mto.html.twig' with{
+    id: 'js-caveTable',
+    action: path('dashboard_map_getmanytoonejson', {map: map.getId(), name: 'cave'})
+} %}
+{% block head %}
+    <th>{{ 'map.manytoone.cave'|trans({},'cavepages')|capitalize }}</th>
+{% endblock head %}
+{% block script %}
+{% verbatim %}
+    <td>{{#if this.links.cave }}<a href="{{this.links.cave}}">{{this.attributes.cave}}</a>{{else}}{{this}}{{/if}}</td>
+{% endverbatim %}
+{% endblock script%}
+{% endembed %}
+{# /paginator#}
+
+{# Edit form#}
+{% embed '@Dashboard/object/modal/modal.html.twig' with{
+    id: 'js-cave-modal',
+    title:  'map.manytoone.cave'|trans({},'cavepages')|capitalize,
+} %}
+    {% block body %}
+        {% include '@Dashboard/content/map/forms/cave.html.twig' with {
+            form: editForm,
+            bttns: ['close', 'submit']
+        } only %}
+    {% endblock body %}
+{% endembed %}
+{# /Edit form#}

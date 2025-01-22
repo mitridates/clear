@@ -1,0 +1,20 @@
+{#
+Surveyor form render new/edit
+@var FormView form
+#}
+{% set inline = {row_attr:{class:'d-inline'}} %}
+{% set small = {row_attr:{style:'width:3em'}} %}
+
+<div class="row">
+    <div class="col-md-4 col-sm mb-2">
+        <input type="radio" id="ctrl-orgid" name="surveyor-radio" value="ctrl-orgid" data-selector="#{{ form.surveyorid.vars.id }}" checked>
+        {{ form_row(form.surveyorid, dataSuggest('person')|merge(inline))}}
+    </div>
+    <div class="col-md-4 col-sm mb-2">
+        <input type="radio" id="ctrl-noid" name="surveyor-radio" value="ctrl-noid" data-selector="#{{ form.surveyor.vars.id }}" >
+        {{ form_row(form.surveyor, inline) }}
+    </div>
+    <div class="col-md-4 col-sm mb-2 w-input-1">
+        {{ form_row(form.position) }}
+    </div>
+</div>

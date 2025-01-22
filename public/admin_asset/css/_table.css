@@ -1,0 +1,31 @@
+/*Centrar elementos de una fila dando estilo a la columna */
+.text-center-row > th,.text-center-row > td{
+    text-align: center;
+}
+
+.minrow, td.minrow, .minrow > th,.minrow > td{
+    width: 1% !important;
+    white-space: nowrap;
+}
+.minrow-notfirst > th:not(:first-child), .minrow-notfirst > td:not(:first-child){
+    width: 1%;
+    white-space: nowrap;
+}
+.minrow-10, .minrow-notfirst-10 > th:not(:first-child), .minrow-notfirst-10 > td:not(:first-child){
+    width: 10%;
+    white-space: nowrap;
+}
+.minrow-12, .minrow-notfirst-12 > th:not(:first-child), .minrow-notfirst-12 > td:not(:first-child){
+    width: 12%;
+    white-space: nowrap;
+}
+/*Buscador de dataTable flotando a la derecha de la columna para que aparezca sobre la tabla*/
+
+/*.dataTables_filter {*/
+/*    float: left !important;*/
+/*}*/
+
+/*.ptr {}*/
+/*.ptr__tfoot tr :first-child{text-align: center;}*/
+/*.ptr__panel {}*/
+/*.ptr__panel th > .js-refresh, .ptr__panel td > .js-refresh { color: rebeccapurple}*/

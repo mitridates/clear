@@ -1,0 +1,26 @@
+{#
+Common manytoone dropdown
+@var FormView form
+@var Map map
+@var string id - Form ID*
+@var string name - Button name
+@var string class - Button group class
+@var string bttnClass - Button classes
+@block form
+#}
+{%- set attr= (attr ?? {})|merge({
+    id: attr.id ?? id|default(''),
+    name: attr.name ?? name|default('NONAME'),
+}) -%}
+<div class="dropdown" style="z-index: auto">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="{{attr.id}}Dropdown"
+            data-bs-toggle="dropdown">
+       + {{ attr.name }}
+    </button>
+    <div class="dropdown-menu" style="width: max-content"  aria-labelledby="{{attr.id}}Dropdown">
+        <div class="p-4 m-1 js-dropdown-content">
+            {% block form %}
+            {% endblock form %}
+        </div>
+    </div>
+</div>

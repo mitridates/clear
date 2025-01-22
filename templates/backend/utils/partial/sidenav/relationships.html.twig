@@ -1,0 +1,17 @@
+{% set collapse = getPage('section') not in ['organisation', 'person', 'area', 'article', 'link', 'specie', 'mapserie', 'citation'] %}
+<!--Relationships cave-->
+<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRelationship" aria-expanded="{{ collapse? 'false' : 'true' }}" aria-controls="collapseRelationship">
+    <div class="sb-nav-link-icon"><i class="fas fa-diagram-project"></i></div>Relaciones<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+</a>
+<div class="collapse {{collapse ? '' : 'show' }}" id="collapseRelationship" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+    <nav class="sb-sidenav-menu-nested nav">
+        <a class="nav-link  {{ getPage('section')=='organisation'?'active'}}" href="{{ path('admin_organisation_index')  }}"><i class="fa fa-users-cog"></i>&nbsp;{{ 'organisation.menu.index'|trans([], 'cavepages') }}</a>
+        <a class="nav-link {{ getPage('section')=='citation'?'active'}}" href="{{ path('admin_citation_index')  }}"><i class="fa  fa-feather"></i>&nbsp;{{ 'citation.menu.index'|trans([], 'cavepages') }}</a>
+        <a class="nav-link  {{ getPage('section')=='person'?'active'}}" href="{{path('admin_person_index')}}"><i class="fa fa-user"></i>&nbsp;{{ 'person.menu.index'|trans([], 'cavepages') }}</a>
+        <a class="nav-link  {{ getPage('section')=='link'?'active'}}" href="{{ path('admin_link_index')  }}"><i class="fa fa-link"></i>&nbsp;{{ 'link.menu.index'|trans([], 'cavepages') }}</a>
+        <a class="nav-link  {{ getPage('section')=='mapserie'?'active'}}" href="{{ path('admin_map_index')}}"><i class="fa fa-map"></i>&nbsp;{{ 'map.menu.index'|trans([], 'cavepages') }}</a>
+        <a class="nav-link  {{ getPage('section')=='area'?'active'}}" href="{{ path('admin_area_index')  }}"><i class="fa fa-object-ungroup"></i>&nbsp;{{ 'area.menu.index'|trans([], 'cavepages') }}</a>
+        <a class="nav-link  {{ getPage('section')=='mapserie'?'active'}}" href="{{ path('admin_mapserie_index')}}"><i class="fa fa-atlas"></i>&nbsp;{{ 'mapserie.menu.index'|trans([], 'cavepages') }}</a>
+        <a class="nav-link  {{ getPage('section')=='specie'?'active'}}" href="{{ path('admin_specie_index')  }}"><i class="fa fa-spider"></i>&nbsp;{{ 'specie.menu.index'|trans([], 'cavepages') }}</a>
+    </nav>
+</div>

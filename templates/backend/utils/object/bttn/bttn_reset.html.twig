@@ -1,0 +1,7 @@
+{#
+@see ./bttn_.html.twig
+#}
+{%- set attr= (attr ?? {})|merge({
+    'class':  'btn btn-warning'~(' '~attr.class ?? '')~(' '~class??'')
+}) -%}
+<button type="reset" {% for key, value in attr %} {{ key }}="{{ value|raw }}" {% endfor %}><i class="fa fa-undo"></i> {{ text|default('btn.reset'|trans({},'cavemessages'))|raw -}}</button>

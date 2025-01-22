@@ -1,0 +1,20 @@
+{#
+Image/file form render new/edit
+@var FormView form
+#}
+{% set md = {row_attr:{class:'col-md'}} %}
+{% set md3 = {row_attr:{class:'col-md-3 w-input-1'}} %}
+
+
+{% set attr = ('Edit' in form.vars.attr.id) ? {required:false} : {} %}
+{% set md6 = {row_attr:{class:'col-md-6'}} %}
+<div class="row">
+    {{ form_row(form.mapfile, attr|merge(md6)) }}
+    {{ form_row(form.thumbnail, md6) }}
+</div>
+<div class="row">
+    {{ form_row(form.name, md6) }}
+    {{ form_row(form.comment, md6) }}
+</div>
+{{ form_row(form.citation, md6) }}
+ {{ form_row(form.reference) }}

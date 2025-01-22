@@ -1,0 +1,68 @@
+<?php
+
+namespace App\Services\Cache\FilesCache\Map;
+
+use App\Entity\Map\Map;
+use App\Services\Cache\FilesCache;
+use App\Utils\Helper\MapControllerHelper;
+use App\Utils\Json\Serializers\Map\MapSerializer;
+use App\vendor\tobscure\jsonapi\Collection;
+use App\vendor\tobscure\jsonapi\Document;
+use App\vendor\tobscure\jsonapi\Relationship;
+use App\vendor\tobscure\jsonapi\Resource;
+use PharIo\Version\Exception;
+use Psr\Cache\InvalidArgumentException;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Contracts\Cache\ItemInterface;
+
+class MapSerializedCache extends FilesCache
+{
+    public function __construct(#[Autowire('%kernel.project_dir%')] private readonly string $projectDir, #[Autowire('%kernel.environment%')] private readonly string $env)
+    {
+        parent::__construct($this->projectDir, $this->env);
+    }
+
+    const PREFIX= 'map.id.';
+
+    public function updateSerializedMap(Map $map, UrlGeneratorInterface $urlGenerator):array
+    {
+        $prefix= self::PREFIX.$map->getId();
+        /*******SERIALIZE MAP*******/
+        /** @var MapSerializer $class*/
+        $class= MapControllerHelper::MAP_SERIALIZER;
+        $serializer= new $class($urlGenerator);
+        $resource = new Resource($map, $serializer);
+
+        $resource->with(
+            MapControllerHelper::MAP_SERIALIZER_FIELDS['with']
+        )
+        ->fields(
+            MapControllerHelper::MAP_SERIALIZER_FIELDS['fields']
+        )
+        ;
+        $document = new Document($resource);
+
+        $this->cache->clear($prefix);
+        return $this->cache->get($prefix, function(ItemInterface $item) use ($document, $prefix){
+            $item->tag($prefix);//same tag as prefix to all relationship allow to remove all items related.
+            return $document->toArray();
+        });
+    }
+
+    /**
+     * @param string $id
+     * @return array
+     */
+    public function getSerializedMap(string $id): array
+    {
+        $data= [];
+        try {
+            $item = $this->cache->getItem(self::PREFIX.$id);
+            $data= $item->isHit()? $item->get() : [];
+        }catch (\Exception|InvalidArgumentException $e){}
+        return $data;
+    }
+
+}

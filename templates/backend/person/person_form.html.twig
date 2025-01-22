@@ -1,0 +1,62 @@
+{#
+Person form render new/edit
+@var FormView form
+#}
+
+{{ form_start(form) }}
+
+{% set md = {row_attr:{class:'col-md'}} %}
+{% set md4 = {row_attr:{class:'col-md-4'}} %}
+{% set md2 = {row_attr:{class:'col-md-2'}} %}
+
+<div class="row">
+    {{ form_row(form.name, md4)}}
+    {{ form_row(form.surname, md) }}
+</div>
+
+<div class="row">
+    {{ form_row(form.initialforgivennames, md2)}}
+    {{ form_row(form.middleinitial, md2) }}
+    {{ form_row(form.title, md2) }}
+{#    {{ form_row(form.gender, md)}}#}
+</div>
+<hr/>
+<div class="row">
+    {{ form_row(form.country, dataRepopulate('country', '#'~form.admin1.vars.id)|merge(md))}}
+    {{ form_row(form.admin1, dataRepopulate('admin1', '#'~form.admin2.vars.id)|merge(md))}}
+    {{ form_row(form.admin2, dataRepopulate('admin2', '#'~form.admin3.vars.id)|merge(md))}}
+    {{ form_row(form.admin3, dataRepopulate('admin3')|merge(md))}}
+</div>
+<div class="row">
+    {{ form_row(form.cityorsuburb, md)}}
+    {{ form_row(form.postcode, md)}}
+    {{ form_row(form.email, md)}}
+</div>
+<div class="row">
+    {{ form_row(form.addressline1, md)}}
+    {{ form_row(form.addressline2, md)}}
+    {{ form_row(form.addressline3, md)}}
+    {{ form_row(form.addressline4, md)}}
+</div>
+<hr/>
+<div class="row">
+    {{ form_row(form.phoneprefix, md)}}
+    {{ form_row(form.mobilephonenumber, md)}}
+    {{ form_row(form.faxphonenumber, md)}}
+</div>
+<div class="row">
+    {{ form_row(form.homephonenumber, md)}}
+    {{ form_row(form.workphonenumber, md)}}
+    {{ form_row(form.pagerphonenumber, md)}}
+</div>
+<hr/>
+<div class="row">
+    {{ form_row(form.organisation, dataSuggest('organisation')|merge(md))}}
+    {{ form_row(form.organisation2, dataSuggest('organisation')|merge(md))}}
+    {{ form_row(form.organisation3, dataSuggest('organisation')|merge(md))}}
+</div>
+
+<div class="form-row d-flex justify-content-center mt-2">
+    {% include '@object/bttn/bttn_save.html.twig' with {'class': 'js-submit'}%}
+</div>
+{{ form_end(form) }}

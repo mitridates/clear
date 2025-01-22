@@ -1,0 +1,33 @@
+{#
+Specie. New
+@controller BackendSpecieController:newAction
+@route admin/specie/new/
+@path admin_specie_new
+@var FormView form
+#}
+{% do addCrumb('specie.index.title'|trans({},'cavepages'), path('admin_specie_index')) %}
+{% set page= initPage(
+    'specie',
+    'new',
+    'specie.new.title'|trans({},'cavepages'),
+    path('admin_specie_new'))
+    .set('heading', 'specie.new.heading'|trans({},'cavepages'))
+%}
+{% extends '@admin/base.html.twig' %}
+{% block subheading %}
+    {% include '@admin/specie/subheading_buttons.html.twig'%}
+{% endblock %}
+{% block content %}
+    {% include '@admin/specie/specie_form.html.twig' %}
+    {% if not form.vars.valid %}
+        {% include '@object/modal/errors.html.twig'%}
+    {% endif %}
+{% endblock %}
+
+{% block footer_javascripts %}
+<script>
+    {% if not form.vars.valid %}
+    bootstrap.Modal.getOrCreateInstance(document.querySelector('#modal-errors')).show();
+    {% endif %}
+</script>
+{% endblock %}

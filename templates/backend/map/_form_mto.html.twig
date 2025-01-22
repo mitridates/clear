@@ -1,0 +1,42 @@
+{#
+Map search form MTO relationship
+@var FormView form
+@var string relType (oto/mto)
+@var string relationship
+#}
+<div class="h4">Nuevo Título de relación {{ relationship }}</div>
+
+<div class="collapse collapseForm" id="collapseExample">
+
+    <button data-bs-toggle="collapse" type="button" class="btn-close float-end" aria-label="Close"
+            data-bs-target=".collapseForm" aria-expanded="false" aria-controls="collapseExample"
+    ></button>
+    {{ form_start(form, {
+        'action': path('admin_map_mto_new', {'id':entity.id, 'relationship':relationship})
+    })
+    }}
+
+{% include '@admin/map/_form_mto/'~relationship~'.html.twig' %}
+<div class="d-flex justify-content-between pt-2">
+    {% include '@object/bttn/bttn_reset.html.twig'%}
+    {% include '@object/bttn/bttn_save.html.twig' with {class: 'js-submit'}%}
+</div>
+{{ form_rest(form) }}
+{{ form_end(form) }}
+<hr/>
+</div>
+
+<div class="collapse show collapseForm text-center" style="transition: 1ms;" aria-expanded="true" id="collapseBttn">
+{% include '@object/bttn/href_new.html.twig' with {
+    'href':"javascript:void(0)",
+    text:'bttn.add'|trans({},'cavepages')~' '~relationship,
+    attr:{
+        role:"button",
+        'id': 'collapseForm',
+        'data-bs-toggle':"collapse",
+        'data-bs-target':".collapseForm",
+    }
+}%}
+</div>
+{% include '@admin/map/_html_modal.html.twig' %}
+{% include '@admin/map/_pagination_mto/mto_pagination_base.html.twig' %}

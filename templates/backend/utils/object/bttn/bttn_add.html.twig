@@ -1,0 +1,11 @@
+{#
+    @see ./bttn_.html.twig
+#}
+{%- set attr= (attr ?? {})|merge({
+    'type':   attr.type ?? type|default('button'),
+    'id': attr.id ?? id|default(''),
+    'title': attr.title ?? title|default(''),
+    'class':   'btn btn-primary btn-outline-default js-add'~(' '~attr.class ?? '')~(' '~class??''),
+    'onClick':  attr.onClick ?? onClick|default(''),
+}) -%}
+<button {% for key, value in attr|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %}><i class="fa fa-plus"></i>&nbsp;{{ text|default('btn.add'|trans({},'cavemessages'))|raw -}}</button>

@@ -1,0 +1,33 @@
+{#
+Render Journal Article fields
+@var FormView form
+#}
+{% set fields= [
+    'title', 'subtitle', 'containertitle', 'contributor', 'source', 'page', 'edition', 'volume',
+    'medium',  'date', 'country', 'publisher', 'issue',  'ldn', 'href', 'comment', 'content'
+]%}
+{% import '@admin/citation/input_render/macro_input.html.twig' as macroInput %}
+
+{% for name in fields%}
+      {% if name=='subtitle' %}
+        {{ macroInput.renderSubtitleInput(form, {inline:true}) }}
+        {% elseif name=='date' %}
+            {{ macroInput.renderDate(form, 'publication') }}
+        {% elseif name=='page' %}
+            {{ macroInput.renderPageInput(form) }}
+        {% elseif name=='volume' %}
+            {{ macroInput.renderVolumeInput(form) }}
+        {% elseif name in ['isbn', 'issn', 'copyright', 'ldn'] %}
+            {{ macroInput.renderRegisteredNumberInput(form) }}
+        {% elseif name=='href' %}
+            {{ macroInput.renderHrefInput(form) }}
+        {% elseif name=='contributor'%}
+            {{ macroInput.renderRegularInput(form[name]) }}
+        {% elseif name in ['comment', 'content'] %}
+            {{ macroInput.renderComment(form[name]) }}
+        {% endif %}
+
+        {% if form[name] is defined and form[name].rendered==false %}
+            {{ macroInput.renderRegularInput(form[name], {inline:true})}}
+        {% endif %}
+{% endfor %}

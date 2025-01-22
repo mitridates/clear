@@ -1,0 +1,44 @@
+{#
+    system_parameter. Nuevo
+    @controller Dashboard:SetupController:newAction
+    @route /system_parameter
+    @path admin_system_parameter_new
+    @package system_parameter
+    @var FormView form
+#}
+{% do addCrumb('system_parameter.index.title'|trans({},'cavepages'), path('admin_system_parameter_index')) %}
+{% set page= initPage(
+    'system_parameter',
+    'new',
+    'system_parameter.new.title'|trans({},'cavepages'))
+        .set('heading', 'system_parameter.new.heading'|trans({},'cavepages'))
+%}
+
+{% extends '@admin/base.html.twig' %}
+{% block subheading %}
+    {% include '@admin/system_parameter/subheading_buttons.html.twig'%}
+{% endblock %}
+
+{% block content %}
+    {{ form_start(form) }}
+    {% include '@admin/system_parameter/system_parameter_form.html.twig' %}
+    <div class="form-row d-flex justify-content-center mt-2">
+        {% include '@object/bttn/bttn_save.html.twig' with {'class': 'js-submit'}%}
+    </div>
+        {{ form_end(form) }}
+    {% if not form.vars.valid %}
+        {% include '@object/modal/errors.html.twig'%}
+    {% endif %}
+
+{% endblock %}
+{% block footer_javascripts %}
+    <script>
+        {% if not form.vars.valid %}
+            bootstrap.Modal.getOrCreateInstance(document.querySelector('#modal-errors')).show();
+        {% endif %}
+        let organisations= document.querySelectorAll('.js-organisation');
+        for(let i=0; i<organisations.length; i++){
+            JSuggest(organisations[i]);
+        }
+    </script>
+{% endblock %}

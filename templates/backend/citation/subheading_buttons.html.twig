@@ -1,0 +1,14 @@
+{% set name= getPage('name') %}
+{#{% if name not in ['edit'] %}#}
+    {% include '@admin/citation/citation_toggle_type_select.html.twig' %}
+{#{% endif %}#}
+
+{% if name is not same as 'index' %}
+        {%include '@object/bttn/href_search.html.twig' with {'href': path('admin_citation_index')} only%}
+{% endif %}
+{% if name == 'edit' %}
+    {%include '@object/bttn/href_delete.html.twig' with {
+        'href': path('admin_citation_delete', {'id': entity.id, '_token': csrf_token('delete' ~ entity.id)}),
+        attr:{onclick:"return confirm('Confirm to delete');"}
+    } only%}
+{% endif %}

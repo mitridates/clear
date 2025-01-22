@@ -1,0 +1,10 @@
+{#
+@see ./bttn_.html.twig
+#}
+{%- set attr= (attr ?? {})|merge({
+    'type':   attr.type ?? type|default('submit'),
+    'id': attr.id ?? id|default(''),
+    'title': '',
+    'class':  'btn btn-danger js-delete'~(' '~attr.class ?? '')~(' '~class??''),
+}) -%}
+<button {% for key, value in attr|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %}><i class="fa fa-trash"></i>&nbsp;{{ text|default('btn.delete'|trans({},'cavemessages'))|raw -}}</button>

@@ -1,0 +1,123 @@
+{#
+Map. Edit
+@controller BackendMapController:editAction
+@route admin/map/edit/{id}
+@path dashboard_map_edit
+@var FormView form
+@var Map entity
+#}
+{% do addCrumb('map.index.title'|trans({},'cavepages'), path('admin_map_index')) %}
+{% set id= id ?? entity.id %}
+{% set page= initPage(
+    'map',
+    'edit',
+    'map.edit.title'|trans({},'cavepages'),
+    path('admin_map_index', {'id': entity.id}))
+        .set('heading', 'map.edit.heading'|trans({},'cavepages')~' - '~entity.name)
+%}
+{% extends '@admin/base.html.twig' %}
+
+{% block subheading %}
+    {% include '@admin/map/subheading_buttons.html.twig'%}
+{% endblock %}
+
+{% block content %}
+    {% include '@admin/map/nav_icons/nav.html.twig' %}
+    {% if relType is defined %}
+        {% include '@admin/map/_form_'~relType~'.html.twig' %}
+    {% else %}
+        {% include '@admin/map/_form.html.twig' %}
+    {% endif %}
+{% endblock %}
+
+{% block footer_javascripts %}
+<script>
+    let modal;
+    let ret= JSimas.initForm(document.getElementById('{{ form.vars.attr.id }}'));
+    let modalDiv = document.getElementById('mtoModal');
+
+
+
+    if(modalDiv){
+        //get modal
+        modal = bootstrap.Modal.getOrCreateInstance(modalDiv);
+        //clear modal body on hide
+        modalDiv.addEventListener('hidden.bs.modal', function (event) {
+            modalDiv.querySelector('.modal-body').innerHTML='';
+        })
+    }
+
+
+    //mto pagination
+    if(document.querySelector('#paginatorWrapper')){
+        let pgr= Pagination('#paginatorWrapper', {sort:'ASC',orderby: 'name'}).submit();
+        if(ret){
+            ret.xhr.on('jxhr.request.success', function (res, data){
+                pgr.submit();
+            });
+        }
+        pgr.on('jpager.show.response',
+            /**
+             * @param {JsonApiManager} jam
+             * @param {HTMLElement} body
+             */
+            function (jam, body)
+        {
+            //bind edit buttons
+            body.querySelectorAll('[data-mto-btn="edit"]').forEach(function (elm)
+            {
+                //get JsonApiSpec by data-id
+                let jas= jam.findById(elm.dataset.id);
+                //bind button
+                elm.addEventListener('click', function (ev) {
+                    modal.show();
+                    let jxhr= new JXhrSubmit(null, {//get modal content, no form
+                        silent:true,
+                        action: jas.links.get,
+                    });
+                    jxhr.on('jxhr.request.success', function (res, data){//add form and init fields
+                        let body= modalDiv.querySelector('.modal-body');
+                        body.innerHTML=res;
+                        let editForm= body.getElementsByTagName('form')[0];
+                        let retEditModalForm= JSimas.initForm(editForm);
+
+                        retEditModalForm['xhr'].on('jxhr.request.success', function (res, data){
+                            body.innerHTML='';
+                            modal.hide();
+                            pgr.submit();
+                        }).on('jxhr.request.error', function () {
+                            // console.log('errroroororooror');
+                        });
+                    }).submit()//send request
+
+                })
+            })
+
+            //bind delete buttons
+            body.querySelectorAll('[data-oto-btn="delete"]').forEach(function (elm)
+            {
+                let jas= jam.findById(elm.dataset.id);
+                elm.addEventListener('click', function (ev) {
+                    if(!confirm('btn.confirmToDelete')) return;
+                    //delete XMLHttpRequest
+                    JXhrSubmit(null, {
+                        silent:true,
+                        action: jas.links.delete,
+                    }).on('jxhr.request.success', function (res, data){
+                        pgr.submit();
+                    }).submit();
+                });
+            })
+        })
+        //end pager
+    }
+
+    {% if relType is defined and relType=='partial' %}
+    ret.form.querySelectorAll('.js-delete').forEach(function (el){
+        el.addEventListener('click', function (ev){
+        });
+    });
+
+    {% endif %}
+</script>
+{% endblock %}

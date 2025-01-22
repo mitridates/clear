@@ -1,0 +1,20 @@
+{#
+Map search form MTO relationship
+@var FormView form
+@var string relType (mto)
+@var string relationship
+#}
+<!-- Modal mto-->
+<div class="modal fade" id="mtoModal" tabindex="-1" aria-labelledby="mtoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen	">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mtoModalLabel">Modificar {{ relationship|trans({}) }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                loading...
+            </div>
+        </div>
+    </div>
+</div>

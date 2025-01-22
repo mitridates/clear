@@ -1,0 +1,72 @@
+{#
+    Organisation form render new/edit
+    @var FormView form
+#}
+    {{ form_start(form) }}
+
+    {% set md = {row_attr:{class:'col-md'}} %}
+    {% set mdcheck = {row_attr:{class:'mt-checkbox col-md'}} %}
+    {% set md6 = {row_attr:{class:'col-md-6'}} %}
+
+<div class="row">
+    {{ form_row(form.name, md6)}}
+    {{ form_row(form.code, md) }}
+    {{ form_row(form.initials, md)}}
+    {{ form_row(form.isgenerator, mdcheck) }}
+</div>
+
+<div class="row">
+    {{ form_row(form.type, md) }}
+    {{ form_row(form.coverage, md)}}
+    {{ form_row(form.grouping, md) }}
+</div>
+<div class="row">
+    {{ form_row(form.country, dataRepopulate('country', '#'~form.admin1.vars.id)|merge(md))}}
+    {{ form_row(form.admin1, dataRepopulate('admin1', '#'~form.admin2.vars.id)|merge(md))}}
+    {{ form_row(form.admin2, dataRepopulate('admin2', '#'~form.admin3.vars.id)|merge(md))}}
+    {{ form_row(form.admin3, dataRepopulate('admin3')|merge(md))}}
+</div>
+
+<hr/>
+
+<div class="row">
+{#        {{ form_row(form.countryaddress, dataRepopulate('country', '#'~form.admin1address.vars.id)|merge(md))}}#}
+{#        {{ form_row(form.admin1address, dataRepopulate('admin1', '#'~form.admin2address.vars.id)|merge(md))}}#}
+{#        {{ form_row(form.admin2address, dataRepopulate('admin2', '#'~form.admin3address.vars.id)|merge(md))}}#}
+{#        {{ form_row(form.admin3address, dataRepopulate('admin3')|merge(md))}}#}
+</div>
+
+<div class="row">
+    {{ form_row(form.countryaddress, md)}}
+    {{ form_row(form.addressline0, md)}}
+        {{ form_row(form.addressline1, md)}}
+        {{ form_row(form.addressline2, md)}}
+</div>
+<div class="row">
+    {{ form_row(form.addressline3, md)}}
+        {{ form_row(form.addressline4, md)}}
+        {{ form_row(form.postcode, md) }}
+        {{ form_row(form.postcodefist, md|merge(mdcheck)) }}
+
+</div>
+
+<hr/>
+
+<div class="row">
+
+    {{ form_row(form.email, md) }}
+    {{ form_row(form.webpage, md) }}
+</div>
+
+<hr/>
+
+<div class="row">
+    {{ form_row(form.defunct, mdcheck) }}
+    {{ form_row(form.currentidifdefunct, dataSuggest('organisation')|merge(md6)) }}
+    {{ form_row(form.defunctyear, md) }}
+</div>
+
+<div class="form-row d-flex justify-content-center mt-2">
+    {% include '@object/bttn/bttn_save.html.twig' with {'class': 'js-submit'}%}
+</div>
+{{ form_end(form) }}

@@ -1,0 +1,19 @@
+{#
+citation selector
+@var FormView form
+#}
+{% set type= type|default(null)%}
+<div class="input-group  mb-0 input-group-sm" style="max-width:20em">
+{#        <label class="input-group-text" for="toggleCitationType">{{ 'citation.select.add'|trans() }}</label>#}
+        <select id="toggleCitationType" class="form-select border-info">
+                {% if type %}
+                        <option disabled selected>{{ type|capitalize }}</option>
+                {% else %}
+                        <option selected>{{ 'citation.new.type.selector'|trans() }}</option>
+                {% endif %}
+                {% set types=['book', 'book-carpet', 'journal-article',  'webpage', 'website'] %}
+                {% for k, val in types|filter(val=>val!=type)%}
+                        <option value="{{ path('admin_citation_new', {'type': val}) }}">{{ val|capitalize }}</option>
+                {% endfor %}
+        </select>
+</div>

@@ -1,0 +1,26 @@
+{#
+Map coordinates.
+@var FormView form
+#}
+{% set md = {row_attr:{class:'col-md'}} %}
+{% set mdcheck = {row_attr:{class:'mt-checkbox col-md'}} %}
+{% set dividerAttr='class="p-2 my-2 border-bottom border-secondary h5" '  %}
+
+<h5 {{ dividerAttr|raw }}>{{ 'map.divider.coords'|trans([], 'cavepages')}}</h5>
+<div class="row">
+    {% for f in ['geodeticdatum', 'heightdatum','grid'] %}
+        <div class="col-md">
+            {{ form_row(form[f], md)}}
+        </div>
+    {% endfor %}
+    <div class="col-md">
+        {{ form_row(form.geogcoordsshown, mdcheck)}}
+    </div>
+</div>
+
+<div {{ dividerAttr|raw }}>{{ 'map.divider.scope'|trans([], 'cavepages')}}</div>
+<div class="row">
+    {% for f in ['northlatitude', 'southlatitude', 'eastlongitude', 'westlongitude'] %}
+        {{ form_row(form[f], md)}}
+    {% endfor %}
+</div>

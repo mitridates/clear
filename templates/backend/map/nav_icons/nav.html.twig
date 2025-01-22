@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow mb-3">
+    <a class="navbar-brand {{getPage('name')=='view'? 'active':'muted'}}" href="{{ path('admin_map_view', {'id':id}) }}">   </a>
+    <div class="container-fluid">
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar-content">
+            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+
+                <li class="nav-item ">
+                    <a class="nav-link {{getPage('name')=='view'? 'active':'muted'}} href=" href="{{ path('admin_map_view', {id:id}) }}"><i class="fas fa-passport"></i> Vista</a>
+                </li>
+                <li class="nav-item me-1 me-lg-0">
+                    <a class="nav-link" href="{{ path('admin_map_edit', {id:id}) }}"><i class="fas fa-passport"></i> Identity</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-plus"></i>
+                        Details
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="nav-link" href="{{ path('admin_map_partial_edit', {'relationship':'source', 'id':id}) }}"><i class="fas fa-flag"></i> source</a></li>
+                        <li><a class="nav-link" href="{{ path('admin_map_partial_edit', {'relationship':'coordinates', 'id':id}) }}"><i class="fas fa-map-location"></i> coordinates</a></li>
+                        <li><a class="nav-link" href="{{ path('admin_map_partial_edit', {'relationship':'survey', 'id':id}) }}"><i class="fas fa-computer-mouse"></i> survey</a></li>
+                        <li><a class="nav-link" href="{{ path('admin_map_oto_edit', {'relationship':'controller', 'id':id}) }}"><i class="fas fa-eye"></i> controller</a></li>
+                        <li><a class="nav-link" href="{{ path('admin_map_oto_edit', {'relationship':'specialmapsheet', 'id':id}) }}"><i class="fas fa-paperclip"></i> specialmapsheet</a></li>
+                        <li><a class="nav-link" href="{{ path('admin_map_oto_edit', {'relationship':'comment', 'id':id}) }}"><i class="fas fa-comment-alt"></i> comment</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-newspaper"></i>
+                        Citation
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="nav-link" href="{{ path('admin_map_oto_edit', {'relationship':'publicationtext', 'id':id}) }}"><i class="fas fa-comment-alt"></i> Publicationtext</a></li>
+                        <li><a class="nav-link" href="{{ path('admin_map_mto_index', {'relationship':'citation', 'id':id}) }}"><i class="fas fa-newspaper"></i> citations</a></li>
+
+
+                    </ul>
+                </li>
+
+
+                <li class="nav-item me-1 me-lg-0">
+                <a class="nav-link" href="{{ path('admin_map_mto_index', {'relationship':'image', 'id':id}) }}">
+                    <i class="fas fa-cloud-upload"></i> Files
+                </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-cog"></i>
+                        design
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="nav-link" href="{{ path('admin_map_mto_index', {'relationship':'surveyor', 'id':id}) }}"><i class="fas fa-pen-ruler"></i> surveyors</a></li>
+                        <li><a class="nav-link" href="{{ path('admin_map_mto_index', {'relationship':'drafter', 'id':id}) }}"><i class="fas fa-compass-drafting"></i> drafters</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-globe"></i>
+                        globe
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="nav-link" href="{{ path('admin_map_mto_index', {'relationship':'link', 'id':id}) }}"><i class="fas fa-link"></i> links</a></li>
+                        <li><a class="nav-link" href="{{ path('admin_map_mto_index', {'relationship':'furtherpc', 'id':id}) }}"><i class="fas fa-map"></i> furtherpc</a></li>
+                        <li><a class="nav-link" href="{{ path('admin_map_mto_index', {'relationship':'furthergc', 'id':id}) }}"><i class="fas fa-map"></i> furthergc</a></li>
+                    </ul>
+                </li>
+               {% include '@admin/map/nav_icons/mega.html.twig' %}
+            </ul>
+        </div>
+    </div>
+</nav>

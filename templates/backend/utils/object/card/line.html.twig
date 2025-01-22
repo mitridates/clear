@@ -1,0 +1,37 @@
+{#
+    Card line
+    @package object
+    @subpackage card
+    @param string|null id
+    @param string|null title
+    @param string|null body
+    @param string|null class
+#}
+{% set card= {
+    'id': id|default('line'~random()),
+    'title': title|default('Default Card Example'),
+    'body': body|default('This is a default card example using Bootstrap'),
+    'class': class|default(''),
+    'icon': icon|default('fa-question')
+} %}
+<!-- Card -->
+{#4/2 cols: <div class="col-xl-3 col-md-6 mb-4">#}
+<div class="card border-left-primary shadow h-100 py-2 {{ card.class }}" id="{{ card.id }}">
+    <div class="card-body">
+        <div class="row">
+            <div class="col mr-2">
+                <div class="text-uppercase mb-1">
+                    <i class="fas fa text-gray-300 {% block icon %}{{ card.icon }}{% endblock %}"></i>
+                    {% block title %}{{ card.title }}{% endblock %}
+                </div>
+                <div class="mb-0 d-inline">{% block body %}{{ card.body }}{% endblock %}</div>
+                {% block footer %}{% endblock %}
+            </div>
+
+        </div>
+    </div>
+</div>
+{#</div>#}
+
+
+

@@ -1,0 +1,22 @@
+{#
+Map form render new/edit OTO relationship
+@var FormView form
+@var string relType (oto/mto)
+@var string relationship
+#}
+{{ form_start(form) }}
+{% include '@admin/map/_form_oto/'~relationship~'.html.twig' %}
+<div class="d-flex justify-content-between">
+    {% include '@object/bttn//href_delete.html.twig' with {
+        text: 'btn.deletethisform'|trans([], 'cavemessages'),
+        href: path('admin_map_oto_delete', {
+                'id': entity.id,
+                'relationship': relationship,
+                '_token':csrf_token('delete_oto_'~relationship~'_'~id)
+                })
+        }
+    %}
+{% include '@object/bttn/bttn_save.html.twig' with {'class': 'js-submit'}%}
+</div>
+{{ form_rest(form) }}
+{{ form_end(form) }}

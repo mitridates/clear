@@ -1,0 +1,24 @@
+<!--wrapper-->
+{#<div>Contributor</div>#}
+<div class="py-2 contributor-wrapper-json border border-dark"
+     data-mode="jform"
+     data-prefix="contributor"
+     data-navbar="#template-nav">
+    <!--add .fic-container as first node dynamically <div class="fic-container"></div>-->
+    <!--Buttons to add new collection to container -->
+    <div class="p-2">
+        <!--buttons have a data-template selector, the script will load this-->
+        <!--.fic-button is the default fallback, else, define data-buttons selector in wrapper -->
+        <!--Each button has his own dataset __type & template.-->
+        <button type="button"
+                data-template="#template-person"
+                data-__type="person"
+                class="fic-button btn btn-outline-primary btn-sm"><i class="fa fa-user" ></i>&nbsp;&nbsp;Add person</button>
+        <button type="button"
+                data-template="#template-org"
+                data-__type="org"
+                class="fic-button btn btn-outline-primary btn-sm"><i class="fa fa-building"></i>&nbsp;&nbsp;Add organisation</button>
+    </div>
+
+</div>
+<!--End wrapper-->

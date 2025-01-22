@@ -1,0 +1,32 @@
+{#
+Area form render new/edit
+@var FormView form
+#}
+    {{ form_start(form) }}
+
+    {% set md = {row_attr:{class:'col-md'}} %}
+    {% set md6 = {row_attr:{class:'col-md-6'}} %}
+    {% set md2 = {row_attr:{class:'col-md-2'}} %}
+
+
+<div class="row">
+    {{ form_row(form.name, md6)}}
+    {{ form_row(form.code, md2) }}
+    {{ form_row(form.mapsheet, md2)}}
+</div>
+
+<div class="row">
+
+</div>
+<hr/>
+<div class="row">
+    {{ form_row(form.country, dataRepopulate('country', '#'~form.admin1.vars.id)|merge(md))}}
+    {{ form_row(form.admin1, dataRepopulate('admin1')|merge(md))}}
+</div>
+<div class="row">
+    {{ form_row(form.comment, md)}}
+</div>
+<div class="form-row d-flex justify-content-center mt-2">
+    {% include '@object/bttn/bttn_save.html.twig' with {'class': 'js-submit'}%}
+</div>
+{{ form_end(form) }}

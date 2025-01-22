@@ -1,0 +1,26 @@
+{#
+    Página inicial para carga de datos
+    @controller BackendSetupController:installFieldDefinitionAction
+    @path admin_install_field_definition
+    @var array data Estado de las tablas
+#}
+{% do addCrumb('setup.install.field_definition.title'|trans({},'cavepages'), path('admin_setup_index')) %}
+{% set page= initPage('setup','install','setup.install.field_definition.title'|trans({},'cavepages'))
+    .set('heading', 'setup.install.field_definition.heading'|trans({},'cavepages'))
+%}
+{% extends '@admin/base_simple.html.twig' %}
+{% block subheading %}{% endblock subheading %}
+
+{% block content %}
+        <h5 class="mt-3">Load Field definitions and its valuecodes.</h5>
+        {%
+            set loader={
+            token: 'install_token',
+            type: 'all',
+            textLoad: 'Load Field definitions',
+            route:'admin_install_field_definition'
+        }
+        %}
+        {% import "@admin/setup/include/macro_submit_bttn_loader.html.twig" as bttn %}
+        {{ bttn.loaderFormButton(loader, loader.textLoad) }}
+{% endblock content %}

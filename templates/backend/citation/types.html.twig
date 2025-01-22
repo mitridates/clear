@@ -1,0 +1,70 @@
+{#
+    citation types
+    @controller BackendcitationController:typesAction
+    @route admin/citation/types
+    @path admin_citation_types
+    @var FormView form
+#}
+{% do addCrumb('citation.index.title'|trans({},'cavepages'), path('admin_citation_index')) %}
+{% set page= initPage(
+    'citation',
+    'types',
+    'citation.types.title'|trans({},'cavepages'),
+    path('admin_citation_new', {'type': app.request.get('type')}))
+    .set('heading', 'citation.types.heading'|trans({},'cavepages'))
+%}
+{% set bttns=[
+    {
+        type: 'journal-article',
+        title: 'Journal Article',
+        desc: 'Cite un artículo publicado en una revista.'
+    },
+    {
+        type: 'website',
+        title: 'Website',
+        desc: 'Cite un sitio web o conjunto de páginas web bajo una url.'
+    },
+    {
+        type: 'webpage',
+        title: 'Webpage',
+        desc: 'Cite una página web.'
+    },
+    {
+        type: 'book',
+        title: 'Libro',
+        desc: 'Cite libro o parte de él.'
+    }
+]
+%}
+
+{% extends '@admin/base.html.twig' %}
+{% block subheading %}
+    {% include '@admin/citation/subheading_buttons.html.twig'%}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+{% for btn in bttns %}
+{% embed '@object/card/default.html.twig' with
+    {
+        title: null,
+        class: 'col-lg-4 col-sm link-primary cursor-pointer',
+        url: path('admin_citation_new', {'type':btn.type})
+    }
+%}
+    {% block body %}
+        <h5 class="card-title">{{ btn.title }}</h5>
+        <p class="card-text small">
+            {{ btn.desc }}
+        </p>
+    {% endblock %}
+{% endembed %}
+{% endfor %}
+</div>
+{% endblock %}
+
+{% block footer_javascripts %}
+<script>
+    new Citation();
+</script>
+{% endblock %}

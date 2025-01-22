@@ -1,0 +1,109 @@
+ {#
+Handlebars template script
+@package object
+@subpackage template
+#}
+{% verbatim %}
+<script id="fielddefinition-tpl" type="text/x-handlebars-template">
+<div id="{{this.meta._randid}}">
+<div>{{this.attributes.definition}}</div>
+{%endverbatim%}
+{#{% if is_granted('ROLE_ADMIN') %}#}
+{% verbatim %}
+<div>
+    <a href="javascript:void(0)" data-target="attr{{this.meta._randid}}" onclick="document.querySelector('#attr{{this.meta._randid}}').classList.toggle('hidden');">
+        Attributes<span class="fa fa-caret-down "></span>
+    </a>
+</div>
+<div id="attr{{this.meta._randid}}" class="hidden">
+    Code: {{this.id}}<br/>
+    {{#if this.meta.source}}
+    Original name: {{this.meta.source.name}}<br/>
+    {{/if}}
+   {{#with this.attributes}}
+<!--        Name: {{name}}<br/>-->
+        {{#if abbreviation}}
+        Abbreviation: {{abbreviation}}<br/>
+        {{/if}}
+        Entity: <u title="{{s_entity}}">{{entity}}</u><br/>
+        Datatype: <u title="{{s_datatype}}">{{datatype}}</u><br/>
+        Maxlength: {{maxlength}}<br/>
+        Coding: <u title="{{s_coding}}">{{coding}}</u><br/>
+        Single / multi valued:  <u title="{{s_singlemultivalued}}">{{singlemultivalued}}</u>
+    {{/with}}
+</div>
+{%endverbatim%}
+{#{% endif %}#}
+{% verbatim %}
+
+    {{#if  this.meta.fieldValueCodes.length}}
+
+    <div>
+        <a href="javascript:void(0)" data-target="vcod{{this.meta._randid}}" onclick="document.querySelector('#vcod{{this.meta._randid}}').classList.toggle('hidden');">
+            Value codes ({{this.meta.fieldValueCodes.length}}) <span class="fa fa-caret-down"></span>
+        </a>
+    </div>
+    <div id="vcod{{this.meta._randid}}" class="hidden">
+    {{#with this.meta.fieldValueCodes}}
+                  {{#each this}}
+                        {{code}}: {{value}}<br/>
+                  {{/each}}
+    {{/with}}
+    </div>
+    {{/if}}
+
+
+    {{#if  this.attributes.comment}}
+    <div>
+        <a data-target="comment{{this.meta._randid}}" href="javascript:void(0)"
+        onclick="document.querySelector('#comment{{this.meta._randid}}').classList.toggle('hidden');">
+        Comment: <span class="fa fa-caret-down"></span>
+        </a>
+    </div>
+        <div id="comment{{this.meta._randid}}" class="hidden">
+    {{this.attributes.comment}}
+    </div>
+    {{/if}}
+
+
+    {{#if  this.attributes.uso}}
+    <div>
+        <a data-target="uso{{this.meta._randid}}" href="javascript:void(0)"
+        onclick="document.querySelector('#uso{{this.meta._randid}}').classList.toggle('hidden');">
+            Use: <span class="fa fa-caret-down"></span>
+        </a>
+    </div>
+    <div id="uso{{this.meta._randid}}" class="hidden">
+    {{this.attributes.uso}}
+    </div>
+    {{/if}}
+
+
+    {{#if  this.attributes.example}}
+    <div>
+        <a data-target="example{{this.meta._randid}}" href="javascript:void(0)"
+        onclick="document.querySelector('#example{{this.meta._randid}}').classList.toggle('hidden');">
+            Example: <span class="fa fa-caret-down"></span>
+        </a>
+    </div>
+    <div id="example{{this.meta._randid}}" class="hidden">
+    {{this.attributes.example}}
+    </div>
+    {{/if}}
+
+
+
+
+<div>
+<a href="http://www.uisic.uis-speleo.org/exchange/atendefn.html#{{{this.id}}}" target="_blank">Source</a>
+{%endverbatim%}
+{#{% if is_granted('ROLE_ADMIN') %}#}
+{% verbatim %}
+| <a href="{{this.links.self}}" target="_self">Editar</a>
+{%endverbatim%}
+{#{% endif %}#}
+{% verbatim %}
+</div>
+</div>
+{%endverbatim%}
+</script>

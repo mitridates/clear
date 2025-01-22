@@ -1,0 +1,54 @@
+{#
+/**
+ * Example modal
+ * @param ?array attr
+ * @param ?array dialog
+ * @param ?array header
+ * @param ?string id
+ * @param string title
+ * @param ?string class
+ * @param ?string dialogClass
+ * @param ?string headerClass
+ */
+ #}
+<!-- Modal -->
+{%- set title=  title|default('Default title') %}
+{%- set id=  id|default('exampleModal') %}
+{%- set footer=  footer|default(false) %}
+
+{%- set attr= (attr ?? {})|merge({
+        class:  'modal fade'~(' '~attr.class ?? '')~(' '~class??''),
+        id: id
+}) -%}
+{%- set content= (content ?? {})|merge({
+        class:  'modal-content  p-4'~(' '~content.class ?? '')~(' '~contentClass??''),
+}) -%}
+
+{%- set dialog= (dialog ?? {})|merge({
+        class:  'modal-dialog'~(dialogClass is defined? ' '~dialogClass :''),
+        style: dialogStyle??'',
+}) -%}
+{%- set body= (body ?? {})|merge({
+        class:  'modal-body'~(' '~body.class ?? '')~(' '~bodyClass??''),
+}) -%}
+
+<div {% for key, value in attr|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %} tabindex="-1" role="dialog">
+        <div {% for key, value in dialog|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %} role="document">
+                <div {% for key, value in content|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %}>
+                        <div class="modal-header">
+                                <h4 class="modal-title font-weight-bold">{{ title }}</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-error"></div>
+                        <div {% for key, value in body|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %}></div>
+                        {% block body %}
+                        {%  endblock body %}
+                        {% if footer %}
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-primary modal-save">Save changes</button>
+                        <button type="button" class="btn btn-secondary modal-close" data-dismiss="modal">{{ 'btn.close'|trans({},'cavemessages')|raw -}}</button>
+                        </div>
+                        {% endif %}
+                </div>
+        </div>
+</div>

@@ -1,0 +1,5 @@
+/*Dos formatos de botón algo más grandes o algo más pequeños para formularios y listados*/
+/* The max width is dependant on the container (more info below) */
+.popover{
+    max-width: 500px; /* Max Width of the popover (depending on the container!) */
+}

@@ -1,0 +1,59 @@
+{# @parent ./base.html.twig #}
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <div class="sb-sidenav-menu-heading">Gestión de cavidades</div>
+
+                    <a class="nav-link {{ getPage('section')=='cave'?'active'}}" href="{#{{  path('dashboard_cave_index')  }}#}"><div class="sb-nav-link-icon"></div><i class="fa fa-icicles"></i>&nbsp;{{ 'cave.menu.index'|trans([], 'cavepages') }}</a>
+
+
+                    {% if getPage('section')=='map' and entity is defined %}
+                        {% include '@partial/sidenav/map.html.twig' %}
+
+                    {% else %}
+                        <a class="nav-link {{ getPage('section')=='map'?'active'}}" href="{{ path('admin_map_index')  }}">
+                            <div class="sb-nav-link-icon"></div>
+                            <i class="fa  fa-map"></i>&nbsp;{{ 'map.menu.index'|trans([], 'cavepages') }}
+                        </a>
+                    {% endif %}
+
+
+                    {#                    <div class="sb-sidenav-menu-heading">Relaciones</div>#}
+
+                    {% include '@partial/sidenav/relationships.html.twig' %}
+                    {#                <hr class="sidebar-divider">#}
+
+                    {#                <hr class="sidebar-divider">#}
+                    <div class="sb-sidenav-menu-heading">Management</div>
+
+
+                  
+{#                    <!--App-->#}
+{#                    {% set collapse = getPage('section')!='parameters' %}#}
+{#                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseApp" aria-expanded="false" aria-controls="collapseApp">#}
+{#                        <div class="sb-nav-link-icon"><i class="fas fa-box-archive"></i></div>App<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>#}
+{#                    </a>#}
+{#                    <div class="{{collapse ? 'collapse' }}" id="collapseApp" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">#}
+{#                        <nav class="sb-sidenav-menu-nested nav">#}
+{#                            <a class="nav-link  {{ getPage('section')=='fielddefinition'?'active'}}" href="#}{#{{ path('dashboard_fielddefinition_index')  }}#}{#">#}
+{#                                <i class="fa fa-book"></i>&nbsp;{{ 'fielddefinition.menu.index'|trans([], 'cavepages') }}#}
+{#                            </a>#}
+{#                        </nav>#}
+{#                    </div>#}
+
+
+                    {% include '@partial/sidenav/system_parameter.html.twig' %}
+
+
+                    {% include '@partial/sidenav/setup.html.twig' %}
+
+{#                    <a class="nav-link {{ getPage('section')=='setup'?'active'}}" href="#}{#{{ path('dashboard_setup_index')  }}#}{#"><div class="sb-nav-link-icon"><i class="fa fa-cog"></i></div>{{ 'setup.menu.index'|trans([], 'cavepages') }}</a>#}
+{#                    <a class="nav-link {{ getPage('section')=='syspa'?'active'}}" href="#}{#{{ path('dashboard_sysparam_index')  }}#}{#"><div class="sb-nav-link-icon"><i class="fa fa-fw fa-wrench"></i></div>{{ 'sysparam.menu.index'|trans([], 'cavepages') }}</a>#}
+                </div>
+            </div>
+            
+            <div class="sb-sidenav-footer">
+                <div class="small">Logged in as:</div>{#{{ app.user.username() }}#}</div>
+        </nav>
+    </div>

@@ -1,0 +1,35 @@
+{#
+    Setup. Geonames country
+    @controller BackendSetupController:geonamesAction
+    @route /admin/setup/geonames
+    @path admin_setup_geonames
+    @var array data
+    @var formType form
+#}
+{% do addCrumb('setup.index.title'|trans({},'cavepages'), path('admin_setup_index')) %}
+{% do initPage('setup', 'geonames','setup.geonames.title'|trans({},'cavepages'))
+    .set('heading', 'setup.geonames.heading'|trans({},'cavepages'))
+%}
+{% extends '@admin/base.html.twig' %}
+
+{% block subheading %}
+    <div><a class="btn btn-secondary" href="{{  path('admin_setup_index')}}" role="button">Go to setup</a></div>
+{% endblock %}
+
+{% block content %}
+    {{ form_start(form)}}
+    <div class="row mt-4">
+        <div class="col-6">
+            {{ form_widget(form.country) }}
+        </div>
+        <div class="col-6">
+            {% include '@object/bttn/bttn_save.html.twig' with {
+                'onClick': 'this.form.submit();Array.from(this.form.elements).forEach(formElement => formElement.disabled = true);'
+            }%}
+        </div>
+    </div>
+    {{ form_end(form) }}
+    <br>
+   <!-- Geonames table -->
+    {% include '@admin/setup/include/table_geonames.html.twig' with {'geonames': data.geonames} only %}
+{% endblock content %}

@@ -1,0 +1,37 @@
+{#
+Map. Edit
+@controller BackendMapController:editAction
+@route admin/map/edit/{id}
+@path dashboard_map_edit
+@var FormView form
+@var Map entity
+#}
+{% do addCrumb('map.index.title'|trans({},'cavepages'), path('admin_map_index')) %}
+{% set page= initPage(
+    'map',
+    'view',
+    'map.view.title'|trans({},'cavepages'),
+    path('admin_map_view', {'id': id}))
+        .set('heading', 'map.view.heading'|trans({},'cavepages')~' - '~id)
+%}
+{% extends '@admin/base.html.twig' %}
+{% block subheading %}
+    {% include '@admin/map/subheading_buttons.html.twig'%}
+{% endblock %}
+{% block content %}
+    {% include '@admin/map/nav_icons/nav.html.twig' %}
+
+    {% include '@admin/map/view/row_main.html.twig' %}
+{% endblock %}
+{% block footer_javascripts %}
+    <script>
+
+//data-repopulate para el primer elm
+document.querySelectorAll('[data-jxhr-populate]').forEach(function (elm, k)
+{
+new JXhrPopulate(elm).submit();
+});
+
+
+    </script>
+{% endblock %}

@@ -1,0 +1,148 @@
+{#
+Render input fields
+@var FormView form
+#}
+
+{% macro renderRegularInput(child, opt)%}
+{% set is_checkbox= child.vars.checked is defined %}
+{%- set opt= {inline: false, 'label': true}|merge((opt ?? {})) -%}
+{% set attr={label_attr:{
+    class:'font-weight-bold mb-0'
+}} %}
+{% if opt.label %}
+{% if opt.inline %}
+    <div class="row py-2">
+{% endif %}
+    <div style="" class="pt-2 {{opt.inline? 'col-lg-2 col-md-3 col-sm text-lg-start':''}}">
+        {{form_label(child, null, attr) }} {% if child.vars.help%}<i class="fa fa-info-circle fa-sm" title="{{ child.vars.help }}"></i>{% endif %}
+    {% if child.vars.required%}
+        <div style="font-size: 0.8rem; line-height: 20%" class="text-muted mb-1">Required</div>
+    {%endif %}
+    </div>
+{% endif %}
+{% if opt.inline %}
+<div class="col">
+{% endif %}
+    {{ form_widget(child) }}
+    {% if child.vars.name =='contributor' %}
+        {% include '@admin/citation/contributor/wrapper.html.twig'%}
+        {% include '@admin/citation/contributor/template.html.twig'%}
+    {% endif %}
+    <div class="form-error error-{{ child.vars.id }}">
+        {{ form_errors(child) }}
+    </div>
+{% if opt.inline %}
+    </div>
+{% endif %}
+
+{% if opt.inline %}
+    </div>
+{% endif %}
+{% endmacro %}
+
+{% macro renderDate(form, type, today) %}
+    {% set names= {
+        'publication': ['year', 'month', 'day'],
+        'access': ['ayear', 'amonth', 'aday']
+    } %}
+    {% set text= {
+        'publication': 'Publication date',
+        'access': 'Access date',
+    } %}
+    <div class="js-{{ type }}-date">
+    <div class="fw-bold p-3">{{ text[type]}}</div>
+    <div class="row">
+        {% for el in names[type]|filter(el=> form[el] is defined)%}
+            <div class="col">
+                {{ _self.renderRegularInput(form[el] , {label:false}) }}
+            </div>
+        {% endfor %}
+    </div>
+    {% if today %}
+        <div class="row">
+            <div class="col mt-auto">
+                <button type="button" class="btn btn-link btn-sm js-today">Set to today</button>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+{% endmacro %}
+
+
+{% macro renderPageInput(form) %}
+<div class="row">
+    {% for el in ['page', 'page_end', 'page_range'] |filter(el=> form[el] is defined)%}
+        {% set elm=  form[el] %}
+            {% set end= (el == 'page_end')%}
+        <div class="col mt-auto {{ end?' js-pend-container':'' }}" >
+            {{ _self.renderRegularInput(form[el] ) }}
+        </div>
+    {% endfor %}
+</div>
+{% endmacro %}
+
+
+{% macro renderSubtitleInput(form, opt) %}
+    <div class="col js-subtitle-container py-2">
+        {{ _self.renderRegularInput(form['subtitle'], opt) }}
+    </div>
+    {% if form['showsubtitle'] is defined %}
+    {{ _self.renderRegularInput(form['showsubtitle'], opt ) }}
+    {% endif %}
+{% endmacro %}
+
+{% macro renderComment(node, toggleText) %}
+{% set v= node.vars.value!='' %}
+{% set toggleText= toggleText|default(node.vars.label)|capitalize %}
+    <div class="row js-comment-container">
+        <div class="col mt-auto js-textarea-container {{ v?'':'hidden'}}" aria-hidden="{{ v?'false':'true'}}">
+            {{ _self.renderRegularInput(node) }}
+        </div>
+       <div class="row">
+            <div class="col mt-2 js-toggle-container">
+                  <button type="button"
+                          data-isopen="{{ v?'true':'false'}}"
+                          data-on="{{ 'bible.add'|trans()|capitalize }} {{ toggleText }}"
+                          data-off="{{ 'bible.remove'|trans()|capitalize}} {{ toggleText }}"
+                          class="btn btn-outline-primary btn-sm js-toggle"></button>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+
+
+
+{% macro renderVolumeInput(form) %}
+    <div class="row">
+        {% for el in ['volume', 'volume_end', 'volume_range'] |filter(el=> form[el] is defined)%}
+            {% set elm=  form[el] %}
+            {% set end= (el == 'volume_end')%}
+            <div class="col mt-auto js-volume{{ end?' js-vend-container':'' }}">
+                {{ _self.renderRegularInput(form[el] ) }}
+            </div>
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+
+{% macro renderRegisteredNumberInput(form) %}
+    <div class="row">
+        {% for el in ['isbn', 'issn', 'copyright', 'ldn'] |filter(el=> form[el] is defined and form[el].rendered==false)%}
+            <div class="col-lg-4 col-sm mt-auto">
+                {{ _self.renderRegularInput(form[el]) }}
+            </div>
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+
+{% macro renderHrefInput(form, opt) %}
+    <div class="row">
+        {% for el in ['url', 'pdf'] |filter(el=> form[el] is defined and form[el].rendered==false)%}
+            <div class="col-lg-6 col-sm">
+                {{ _self.renderRegularInput(form[el]) }}
+            </div>
+        {% endfor %}
+    </div>
+{% endmacro %}

@@ -1,0 +1,13 @@
+
+{% if getPage('name') is not same as 'index' %}
+        {%include '@object/bttn/href_search.html.twig' with {'href': path('admin_specie_index')} only%}
+{% endif %}
+{% if getPage('name') is not same as 'new' %}
+        {%include '@object/bttn/href_new.html.twig' with {'href': path('admin_specie_new')} only%}
+{% endif %}
+{% if getPage('name') == 'edit' %}
+        {% include '@object/delete/delete_form.html.twig' with {
+            action: path('admin_specie_delete', {'id': entity.id}),
+            token: csrf_token('delete' ~ entity.id)
+        } %}
+{% endif %}

@@ -1,0 +1,73 @@
+{#  esqueleto de la pagina de administracion #}
+{# Prepend home crumb  #}
+{% set page = issetPage()? false : initPage('default', 'default', 'Not defined', path('admin_parameters_index'))%}
+{% do prependCrumb('Home')%}
+{# Prepend home crumb  #}
+<!DOCTYPE html>
+<html lang="{{app.request.locale}}">
+<head>
+    {% block head %}
+        {%- include '@partial/metadata.html.twig' -%}
+    {% endblock head%}
+    <!-- Css files -->
+    {% block stylesheets %}
+        {%- include '@partial/headercss.html.twig'%}
+    {% endblock stylesheets %}
+    {% block css %}
+    {% endblock css %}
+    {% block javascripts %}
+        {% include '@partial/headertexttypejs.html.twig'%}
+    {% endblock javascripts %}
+</head>
+<body class="sb-nav-fixed">
+{% include '@partial/topbar.html.twig' %}
+
+<div id="layoutSidenav">
+    <!-- Sidebar -->
+    {% include '@partial/sidebar.html.twig' %}
+    <!--/Sidebar -->
+    <!-- Content Wrapper -->
+    <div id="layoutSidenav_content">
+        <!-- Main Content -->
+        <main>
+            <div class="container-fluid px-4">
+                {%- include '@partial/breadcrumb.html.twig' with {breadcrumb: get_breadcrumb() } only%}
+
+                <h2>{% block heading %}{{ getPage('heading', null)|default('Añadir page:heading')}}{% endblock heading %}</h2>
+                {% block heading_text %}{% endblock heading_text %}
+                <div class="d-flex justify-content-between mb-2">
+                    {% block subheading %}{% endblock subheading %}
+                </div>
+                {# read and display all flash messages #}
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                            {{ message|trans }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                <!-- Text content -->
+                {% block content %}
+                {% endblock content %}
+                <!--/ Text content -->
+            </div>
+        </main>
+        <!--/Main Content -->
+        <!--Footer -->
+        {% include '@partial/footer.html.twig' %}
+        <!--/Footer -->
+    </div>
+</div>
+<!-- popover fielddefinition template-->
+{% block html_templates %}
+{% endblock html_templates%}
+{# NavBar Paginator links script#}
+{% include '@object/template/pager_handlebars_script.html.hbs' %}
+{%- include '@object/template/handlebars_fielddefinition_popover.html.twig'%}
+{%- include '@partial/footertexttypejs.html.twig'%}
+{% block footer_javascripts %}
+{% endblock footer_javascripts%}
+</body>
+</html>

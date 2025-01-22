@@ -1,0 +1,17 @@
+{% set collapse = getPage('section')!='setup' %}
+<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSetup" aria-expanded="{{ collapse? 'false' : 'true' }}" aria-controls="collapseSetup">
+    <div class="sb-nav-link-icon"><i class="fas fa-gear"></i></div>Setup<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+</a>
+<div class="collapse {{collapse ? '' : 'show' }}" id="collapseSetup" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+    <nav class="sb-sidenav-menu-nested nav">
+        <a class="nav-link  {{collapse==false and getPage('name')=='index'?'active'}}" href="{{ path('admin_setup_index')  }}">
+            <i class="fa fa-cog"></i>&nbsp;{{ 'setup.menu.index'|trans([], 'cavepages') }}
+        </a>
+        <a class="nav-link  {{collapse==false and  getPage('name')=='fielddefinition'?'active'}}" href="{{ path('admin_setup_field_definition')  }}">
+            <i class="fa fa-book"></i>&nbsp;{{ 'setup.fielddefinition.index'|trans([], 'cavepages') }}
+        </a>
+        <a class="nav-link  {{collapse==false and  getPage('name')=='geonames'?'active'}}" href="{{ path('admin_setup_geonames')  }}">
+            <i class="fa fa-map"></i>&nbsp;{{ 'setup.geonames.index'|trans([], 'cavepages') }}
+        </a>
+    </nav>
+</div>

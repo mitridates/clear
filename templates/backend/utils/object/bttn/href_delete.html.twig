@@ -1,0 +1,10 @@
+{#
+@see ./bttn_.html.twig
+#}
+{%- set attr= (attr ?? {})|merge({
+    class:  'btn btn-danger'~(' '~attr.class ?? '')~(' '~class??''),
+    role: 'button',
+    href: href ?? attr.href|default('javascript:void(0);'),
+    onclick:"return confirm('"~'btn.confirmToDelete'|trans({},'cavemessages')|raw~"');"
+}) -%}
+<a {% for key, value in attr %} {{ key }}="{{ value|raw }}" {% endfor %}><i class="fa fa-trash"></i> {{ text|default('btn.delete'|trans({},'cavemessages'))|raw -}}</a>

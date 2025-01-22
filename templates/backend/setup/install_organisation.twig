@@ -1,0 +1,24 @@
+{#
+    Página inicial para carga de datos
+    @controller BackendSetupController:installAction
+    @route /admin/setup/install
+    @path admin_setup_install
+    @var array data Estado de las tablas
+#}
+{% do addCrumb('setup.install.organisation.title'|trans({},'cavepages'), path('admin_setup_index')) %}
+{% set page= initPage('setup','install','setup.install.organisation.title'|trans({},'cavepages'))
+    .set('heading', 'setup.install.organisation.heading'|trans({},'cavepages'))
+%}
+{% extends '@admin/base_simple.html.twig' %}
+{% block subheading %}{% endblock subheading %}
+
+{% block content %}
+    <h5 class="mt-3">Create a DB manager organisation</h5>
+    {% include '@admin/setup/include/organisation_form.html.twig' %}
+
+{% endblock content %}
+{% block footer_javascripts %}
+<script>
+    (new Repopulate('#{{ form.country.vars.id }}')).populate();
+</script>
+{% endblock footer_javascripts %}

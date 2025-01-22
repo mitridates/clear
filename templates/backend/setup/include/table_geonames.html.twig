@@ -1,0 +1,39 @@
+{#
+    Countries table
+    @extend /admin/setup/index.html.twig
+    @var array geonames
+#}
+    <div class="col mb-4">
+    <!-- Countryes table -->
+        <div class="card shadow ">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary"> {{ 'government.level.countries'|trans({}, 'cavemessages') }}</h6>
+            </div>
+            <div class="card-body p-0">
+                    <table class="table table-bordered mb-0" id="dataTable">
+                <tr class="text-center-row bg-gray-200">
+                    <th>CC2</th>
+                    <th>A1</th>
+                    <th>A2</th>
+                    <th>A3</th>
+                </tr>
+
+                {% if geonames|length>0 %}
+                {% for c in geonames%}
+                    <tr class="text-center-row">
+                        <td title="{{ c.name }}">{{ c.id }}</td>
+                        <td>{{c.admin1}}</td>
+                        <td>{{c.admin2}}</td>
+                        <td>{{c.admin3}}</td>
+                    </tr>
+                {% endfor %}
+                {% else %}
+                    <tr class="text-center-row">
+                        <td colspan="4"><span class="badge bg-warning"> <i class="fa fa-exclamation-triangle" ></i> {{ 'notavailable'|trans({}, 'cavemessages') }}</span></td>
+                    </tr>
+                {% endif %}
+            </table>
+
+            </div>
+        </div>
+    </div>

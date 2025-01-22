@@ -1,0 +1,32 @@
+{#
+citation form render new/edit
+@var FormView form
+#}
+    {{ form_start(form) }}
+
+{#<select id="toggleType" class="form-control form-select-sm" onchange="#}
+{#         let inp= document.createElement('input');#}
+{#         inp.name='toggle';#}
+{#        inp.value=this.form.name;#}
+{#        this.form.appendChild(inp);#}
+{#         this.form.action=this.options[this.selectedIndex].value;#}
+{#         this.form.noValidate=true;#}
+{#         this.form.submit();">;#}
+{#        <option>citation.change.select.type</option>#}
+{#    {% set types=['journal-article', 'book', 'webpage', 'website'] %}#}
+{#    {% for k, val in types|filter(val=>val!=type)%}#}
+{#        <option value="{{ path('admin_citation_new', {'type': val}) }}">{{ val|capitalize }}</option>#}
+{#    {% endfor %}#}
+{#</select>#}
+
+{% include '@admin/citation/input_render/'~type~'.html.twig'%}
+
+{#{% if form['contributor'] is defined %}#}
+{#    {% include '@admin/citation/contributor/wrapper.html.twig'%}#}
+{#    {% include '@admin/citation/contributor/template.html.twig'%}#}
+{#{% endif %}#}
+{{ form_rest(form) }}
+<div class="form-row d-flex justify-content-center mt-2">
+    {% include '@object/bttn/bttn_save.html.twig' with {'class': 'js-submit'} %}
+</div>
+{{ form_end(form) }}

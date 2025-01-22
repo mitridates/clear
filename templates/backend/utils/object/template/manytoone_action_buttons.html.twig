@@ -1,0 +1,10 @@
+{#
+Contenido común de todos los listados. La última celda de cada fila tiene un btn-group para editar/borrar
+#}
+{% verbatim %}
+    <div class="btn-group btn-group-xs" role="group" aria-label="Action buttons">
+    <button type="button" class="btn btn-primary js-edit"  data-id="{{this.id}}"><i class="fa fa-pen"></i></button>
+    <button type="button" class="btn mr-0 ml-0 pr-1 pl-0" disabled></button>
+    <button data-id="{{this.id}}" type="button" class="btn btn-secondary js-delete"><i class="fa fa-trash"></i></button>
+    </div>
+{% endverbatim %}

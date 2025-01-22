@@ -1,0 +1,84 @@
+parameters:
+  cave:
+    ################
+    ##  Locales disponibles por orden de preferencia expresado en  ISO 2-letter
+    ## Usado para idioma primera sesión, menu idiomas, perfil de usuario, parámetros del sistema...
+    #################
+    locales:
+      es: "Español"
+      en: "English"
+    format:
+      date: 'd/m/Y'
+      datehour: 'd/m/Y H:i:s'
+      lastlogin: 'd/m/Y H:i:s'
+      lastused: 'd/m/Y H:i:s'
+    upload:
+      kernelProjectDir: '%kernel.project_dir%'
+#      options:
+#        fileNameProperties:
+#          maxLength: 50
+#          uidLength: 5
+#      # GD auto generated thumbnail properties
+#      # Anchor (Crop image from this point): 'center', 'top', 'bottom', 'left', 'right', 'top left', 'top right', 'bottom left', 'bottom right' (default 'center').
+#        thumbnailProperties: {
+#          anchor: 'center', width: 255, height: 170, minWidth: 180, minHeight: 120, mime: 'image/jpeg', quality: 75
+#        }
+      resource:
+        map:
+          prefix: 'map_'
+          uploadDir: '/public/upload/map'
+          thumbDir: '/thumbnail'
+    #################
+    ## Eliminar registros
+    ## Las espeficaciones dicen que no se deben borrar registros (Cave ID, Organisation Id ...) de las
+    ## entidades principales para evitar duplicidades en otros servidores.
+    ## Ver Fielddefinition Cave ID http://www.uisic.uis-speleo.org/exchange/atendefn.html#227
+    #################
+    ondelete:
+      remove: false # Hide if false. Default false.
+      backup: true # Default true.
+    ####################################
+    #         TWIG THEME                #
+    ####################################
+    theme:
+      title: 'Administración de cavidades' #suffix en todos los títulos
+      description: 'Panel de administración'
+    #Directorios de assets Twig: asset(params.webasset.js~file)
+    webasset:
+        img: 'bundles/dashboard/img/'
+    #Find csv for setup
+    install:
+      dir: '%kernel.project_dir%/src/Resources/install/'
+      files:
+        field_definition:
+          name: 'Field definition'
+          file: 'Fielddefinition.sql'
+        field_definition_es:
+          name: 'Field definition translation (spanish)'
+          file: 'Fielddefinitionlang_es.sql'
+        field_value_code:
+          name: 'Field value codes'
+          file: 'Fieldvaluecode.sql'
+        field_value_code_es:
+          name: 'Field value codes translation (spanish)'
+          file: 'Fieldvaluecodelang_es.sql'
+        organisations:
+          name: 'Organizaciones tabla anterior'
+          file: 'Organisation.sql'
+#    uploads:
+#      map: '%kernel.project_dir%/src/Mitridates/Dashboard/Resources/public/map/'
+  ####################################
+  #  CONFIGURACIÓN POR SECCIONES     #
+  ####################################
+    #  Section configuration. Add section:[] to overwrite default/s parameters
+    section:
+      default: #por defecto para todas las demás
+        ipp: 20 #items per page
+      cave: []
+      fielddefinition:
+        ################
+        ##  El array 'languages' en fielddefinition muestra los idiomas disponibles para traducir o editar
+        ##    - La traducción puede existir en la base de datos, pero si no se encuentra en este array no será posible editarlo.
+        ##    - Para un nuevo idioma, las opciones para añadir/editar aparecerán cuando el idioma se añada al array.
+        #################
+        languages: [es, de, fr, ru]

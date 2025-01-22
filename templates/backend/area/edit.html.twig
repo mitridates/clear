@@ -1,0 +1,29 @@
+{#
+Area. Edit
+@controller BackendAreaController:editAction
+@route admin/area/edit/{id}
+@path dashboard_area_edit
+@var FormView form
+@var Area entity
+#}
+{% do addCrumb('area.index.title'|trans({},'cavepages'), path('admin_area_index')) %}
+{% set page= initPage(
+    'area',
+    'edit',
+    'area.edit.title'|trans({},'cavepages'),
+    path('admin_area_index', {'id': form.vars.value.id}))
+        .set('heading', 'area.edit.heading'|trans({},'cavepages')~' - '~entity.name)
+%}
+{% extends '@admin/base.html.twig' %}
+{% block subheading %}
+    {% include '@admin/area/subheading_buttons.html.twig'%}
+{% endblock %}
+{% block content %}
+    {% include '@admin/area/_form.html.twig' %}
+{% endblock %}
+{% block footer_javascripts %}
+<script>
+        (new Repopulate('#{{ form.country.vars.id }}')).populate()
+        JXhrSubmit("#{{form.vars.attr.id }}");
+</script>
+{% endblock %}

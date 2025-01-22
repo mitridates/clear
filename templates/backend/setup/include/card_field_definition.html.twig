@@ -1,0 +1,14 @@
+{#
+Field definition card
+@var array data
+#}
+{% embed '@object/card/line.html.twig' with {
+    title:  'setup.index.box.fielddefinition.title'|trans({},'cavepages')|raw ,
+    icon: 'fa-book'
+}%}
+    {% block body %}
+            Total: {{ data.fdCount }}
+    {% endblock %}
+    {% block footer %}
+    {% endblock %}
+{% endembed %}

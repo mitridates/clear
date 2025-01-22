@@ -1,0 +1,16 @@
+{#
+Surveyor form render new/edit
+@var FormView form
+#}
+{% set md3 = {row_attr:{class:' col-md'}} %}
+
+<div class="row">
+    {{ form_row(form.country, dataRepopulate('country', '#'~form.admin1.vars.id~',#'~form.area.vars.id)|merge(md3))}}
+    {{ form_row(form.admin1, dataRepopulate('admin1', '#'~form.area.vars.id)|merge(md3))}}
+    {{ form_row(form.area,  dataRepopulate('area')|merge(md3))}}
+</div>
+<div class="row">
+    <div class="col-md-4 col-sm mb-2 w-input-1">
+        {{ form_row(form.position) }}
+    </div>
+</div>

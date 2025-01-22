@@ -1,0 +1,16 @@
+{# @parent ./base.html.twig #}
+
+                <!-- Navigation breadcrumb .breadcrumb -->
+            {% if breadcrumb %}
+    <ol class="breadcrumb">
+        {% for crumb in breadcrumb %}
+            <li class="breadcrumb-item{{ loop.last?' active'}}">
+                {%- if crumb.path is defined and crumb.path!= false -%}
+                    <a title="{{crumb.title|default(crumb.text)|raw}}" href="{{ crumb.path }}">{{ crumb.text|raw }}</a>
+                {%- else -%}
+                    {{ crumb.text|raw }}
+                {%- endif %}</li>
+        {% endfor %}
+        </ol>
+{% endif %}
+                <!--/.breadcrumb -->

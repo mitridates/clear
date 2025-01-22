@@ -1,0 +1,34 @@
+{#
+Citation. Edit
+@controller BackendcitationController:editAction
+@route admin/citation/edit/{id}
+@path dashboard_citation_edit
+@var FormView form
+@var citation entity
+#}
+{% do addCrumb('citation.index.title'|trans({},'cavepages'), path('admin_citation_index')) %}
+{% set page= initPage(
+    'citation',
+    'edit',
+    'citation.edit.title'|trans({},'cavepages')~' :: '~type,
+    path('admin_citation_index', {'id': form.vars.value.id}))
+        .set('heading', 'citation.edit.heading'|trans({},'cavepages')~' :: '~type)
+%}
+{% extends '@admin/base.html.twig' %}
+{% block subheading %}
+    {% include '@admin/citation/subheading_buttons.html.twig'%}
+{% endblock %}
+{% block content %}
+    {% include '@admin/citation/citation_form.html.twig' %}
+{% endblock %}
+{% block footer_javascripts %}
+    {% if form['contributor'] is defined %}
+        <script src="{{asset('admin_asset/js/InputGroupCollection.iife.1.0.0.js')}}"></script>
+        {% include '@admin/citation/contributor/script.html.twig'%}
+    {% endif %}
+    <script>
+        new Citation("{{form.vars.attr.id }}");
+        JXhrSubmit("#{{form.vars.attr.id }}");
+    </script>
+
+{% endblock %}

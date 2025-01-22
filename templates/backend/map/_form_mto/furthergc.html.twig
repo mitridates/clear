@@ -1,0 +1,16 @@
+{#
+Surveyor form render new/edit
+@var FormView form
+#}
+{% set md = {row_attr:{class:'col-md'}} %}
+<div class="row">
+    {{ form_row(form.northlatitude, md)}}
+    {{ form_row(form.southlatitude, md)}}
+    {{ form_row(form.eastlongitude, md)}}
+    {{ form_row(form.westlongitude, md)}}
+</div>
+<div class="row">
+    <div class="col-md-4 col-sm mb-2 w-input-1">
+        {{ form_row(form.position) }}
+    </div>
+</div>

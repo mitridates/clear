@@ -1,0 +1,11 @@
+{#
+@see ./bttn_.html.twig
+#}
+{%- set attr= (attr ?? {})|merge({
+    'type':   attr.type ?? type|default('submit'),
+    'id': attr.id ?? id|default(''),
+    'title': attr.title ?? title|default(''),
+    'class':  'btn btn-warning js-reload'~(' '~attr.class ?? '')~(' '~class??''),
+    'onClick':  attr.onClick ?? onClick|default(''),
+}) -%}
+<button {% for key, value in attr|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %}><i class="fa fa-sync"></i> {{ text|default('btn.reload'|trans({},'cavemessages'))|raw -}}</button>

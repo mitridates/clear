@@ -1,0 +1,32 @@
+{#
+Map coordinates.
+@var FormView form
+#}
+{% set dividerAttr='class="p-2 my-2 border-bottom border-secondary h5" '  %}
+{% set inline = {row_attr:{class:'d-inline'}} %}
+
+<div {{ dividerAttr|raw }}>{{ 'map.divider.source'|trans([], 'cavepages')}}</div>
+
+<div class="row">
+    <div class="col-md-6 col-sm mb-2">
+        {{ form_row(form.sourcecountry)}}
+    </div>
+    <div class="col-md-6 col-sm mb-2">
+        {{ form_row(form.sourcetype)}}
+    </div>
+    <div class="col-md-4 col-sm mb-2">
+        <input type="radio" id="ctrl-elmId" name="surveyor-radio" value="ctrl-elmId" data-selector="#{{ form.sourceorg.vars.id }}" checked>
+        {{ form_row(form.sourceorg, dataSuggest('person')|merge(inline))}}
+    </div>
+    <div class="col-md-4 col-sm mb-2">
+        <input type="radio" id="ctrl-elmNoId" name="surveyor-radio" value="ctrl-elmNoId" data-selector="#{{ form.sourceifnoid.vars.id }}" >
+        {{ form_row(form.sourceifnoid, inline) }}
+    </div>
+</div>
+
+
+
+
+
+
+

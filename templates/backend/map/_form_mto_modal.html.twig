@@ -1,0 +1,26 @@
+{#
+Map search form MTO relationship
+@var FormView form
+@var string relType (oto/mto)
+@var string relationship
+#}
+    {{ form_start(form, {
+        'action': path('admin_map_mto_update', {
+            'id':entity.id,
+            'relationship':relationship,
+            'sequence':sequence,
+            'req':'set'
+        })
+    })
+    }}
+
+{% include '@admin/map/_form_mto/'~relationship~'.html.twig' %}
+<div class="d-flex justify-content-evenly">
+
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'btn.close'|trans() }}</button>
+    {% include '@object/bttn/bttn_save.html.twig' with {class: 'js-submit'}%}
+</div>
+{{ form_rest(form) }}
+{{ form_end(form) }}
+
+

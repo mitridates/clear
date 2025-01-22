@@ -1,0 +1,23 @@
+{#
+    Para tamaños de botones usar btn-xs btn-sm btn-lg btn-xl
+    Para aplicar a grupo usar o-btn-group-xs btn-group-sm btn-group-lg o-btn-group-xl
+    @package object
+    @subpackage bttn
+    @param array|null attr
+    @param string|null type
+    @param string|null id
+    @param string|null title
+    @param string|null class
+    @param string|null onClick
+    @example
+        {%include '@Cavebackend/partial/form/bttn/bttn_.html.twig'  with {'class': 'btn-xs'}%}
+        {%include '@Cavebackend/partial/form/bttn/bttn_.html.twig'  with {'attr': {'class': 'btn-xs', 'title': 'some title'}}%}
+#}
+{%- set attr= (attr ?? {})|merge({
+    'type':   attr.type ?? type|default('button'),
+    'id': attr.id ?? id|default(''),
+    'title': attr.title ?? title|default(''),
+    'class':  'btn'~(' '~attr.class ?? '')~(' '~class??''),
+    'onClick':  attr.onClick ?? onClick|default(''),
+}) -%}
+<button {% for key, value in attr|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %}> {{ text|default('button text')-}}</button>

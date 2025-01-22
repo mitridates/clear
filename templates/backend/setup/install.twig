@@ -1,0 +1,64 @@
+{#
+    Página inicial para carga de datos
+    @controller BackendSetupController:installAction
+    @route /admin/setup/install
+    @path admin_setup_install
+    @var array data Estado de las tablas
+#}
+{% do addCrumb('setup.index.title'|trans({},'cavepages'), path('admin_setup_index')) %}
+{% set page= initPage(
+    'setup',
+    'install',
+    'setup.install.title'|trans({},'cavepages'),
+    path('admin_setup_install'))
+    .set('heading', 'setup.install.heading'|trans({},'cavepages'))
+%}
+{% extends '@admin/base_simple.html.twig' %}
+
+{% block subheading %}
+
+{% endblock subheading %}
+
+{% block content %}
+    {{ dump(data) }}
+    {% if data.geonames|length == 0 and country_form%}
+    <h5 class="m-3">Load country and administrative divisions.</h5>
+        {{ form_start(country_form)}}
+        <div class="row mt-4">
+            <div class="col-6">
+                {{ form_widget(country_form.country) }}
+            </div>
+            <div class="col-6">
+                {% include '@object/bttn/bttn_save.html.twig' with {
+                    'onClick': 'this.form.submit();Array.from(this.form.elements).forEach(formElement => formElement.disabled = true);'
+                }%}
+            </div>
+        </div>
+        {{ form_rest(country_form) }}
+        {{ form_end(country_form) }}
+        <br>
+    {% elseif data.fdCount == 0 or data.fvcCount == 0  %}
+        <h5 class="m-3">Load Field definitions and its valuecodes.</h5>
+        {%
+            set loader={
+            token: 'install_token',
+            type: 'all',
+            textLoad: 'Load Field definitions',
+            route:'admin_setup_install'
+        }
+        %}
+
+        {% import "@admin/setup/include/macro_submit_bttn_loader.html.twig" as bttn %}
+        {{ bttn.loaderFormButton(loader, loader.textLoad) }}
+            {% elseif  data.orgCount==0  %}
+{#                {% include '@admin/setup/include/card_organisation.html.twig' with {'data': data, 'formBttn': {route: 'admin_setup_install'}} only %}#}
+
+                <div class="row mt-4">
+                    {% include '@admin/setup/include/organisation_form.html.twig' with {'form': organisation_form} only %}
+                </div>
+    {% endif %}
+
+{#        <div><a class="btn btn-secondary" href="{{  path('admin_setup_index')}}" role="button">Go to setup</a></div>#}
+{#    {% endif %}#}
+
+{% endblock content %}

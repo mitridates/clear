@@ -1,0 +1,35 @@
+{#
+    @controller Dashboard:SetupController:organisationAction
+    @route /setup/organisation
+    @path dashboard_setup_organisation
+    @package setup
+    @var FormTypeInterface form
+#}
+    {% set md = {row_attr:{class:'col-md'}} %}
+    {% set md6 = {row_attr:{class:'col-md-6'}} %}
+    {{ form_start(form) }}
+
+    <div class="row">
+        {{ form_row(form.name, md6)}}
+        {{ form_row(form.code, md) }}
+        {{ form_row(form.initials, md)}}
+    </div>
+
+    <div class="row">
+        {{ form_row(form.type, md) }}
+        {{ form_row(form.coverage, md)}}
+        {{ form_row(form.grouping, md) }}
+    </div>
+    <div class="row">
+        {{ form_row(form.country, dataRepopulate('country', '#'~form.admin1.vars.id)|merge(md))}}
+        {{ form_row(form.admin1, dataRepopulate('admin1', '#'~form.admin2.vars.id)|merge(md))}}
+    </div>
+    <div class="row">
+        {{ form_row(form.admin2, dataRepopulate('admin2', '#'~form.admin3.vars.id)|merge(md))}}
+        {{ form_row(form.admin3, dataRepopulate('admin3')|merge(md))}}
+    </div>
+    <div class="mt-2 text-center">
+        {% include '@object/bttn/bttn_save.html.twig' with {'class': 'btn-block'}%}
+    </div>
+{{ form_rest(form) }}
+{{ form_end(form) }}

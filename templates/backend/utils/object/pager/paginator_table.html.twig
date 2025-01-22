@@ -1,0 +1,57 @@
+{#
+@see paginator_skeleton.html.twig
+@param undefined|Object tableAttr - Attr key=>val para <table>
+@param undefined|Object headAttr - Attr key=>val para <thead>
+@param undefined|Object bodyAttr - Attr key=>val para <tbody>
+@param undefined|Object footAttr - Attr key=>val para <tfoot>
+#}
+{% extends '@object/pager/paginator_skeleton.html.twig' %}
+{%- set tableAttr= (tableAttr ?? {})|merge({
+    'id':   tableAttr.id ?? tableId|default(''),
+    'class':  'table table-bordered table-responsive-md mb-0 js-table table-hover'~(' '~tableAttr.class ?? '')~(' '~tableClass??''),
+    'style':  style|default(''),
+}) -%}
+{%- set headAttr= (headAttr ?? {})|merge({
+    'class':  'js-head'~(' '~headAttr.class ?? '')~(' '~headClass??''),
+}) -%}
+{%- set bodyAttr= (bodyAttr ?? {})|merge({
+    id:  bodyAttr.id ?? bodyId|default(''),
+    class:  'js-body'~(' '~bodyAttr.class ?? '')~(' '~bodyClass??'')
+}) -%}
+{%- set rowAttr= (rowAttr ?? {})|merge({
+    class:  'js-row'~(' '~rowAttr.class ?? '')~(' '~rowClass??''),
+    role:'row'
+}) -%}
+{%- set footAttr= (footAttr ?? {})|merge({
+    class:  'js-foot'~(' '~footAttr.class ?? '')~(' '~footClass??''),
+}) -%}
+{% block pagination %}
+    <table {% for key, value in tableAttr|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %} >
+    <thead {% for key, value in headAttr|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %} >
+    <tr class="text-center-row bg-gray-200 ">
+    {% block head %}
+    {%  endblock head %}
+    </tr>
+    </thead>
+    <tbody {% for key, value in bodyAttr|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %} >
+    </tbody>
+    <tfoot {% for key, value in footAttr|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %}>
+    {% block foot %}
+    {%  endblock foot %}
+    </tfoot>
+    </table>
+{% endblock  pagination%}
+{% block templateBody %}
+    <tr {% for key, value in rowAttr|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %} >
+        {% block script %}
+        {%  endblock script %}
+    </tr>
+{% endblock templateBody %}
+
+{% block templateFoot %}
+<tr role="row">
+{%- block footScript -%}
+{%- endblock footScript -%}
+</tr>
+{% endblock templateFoot %}
+

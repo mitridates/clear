@@ -1,0 +1,14 @@
+{% verbatim %}
+{{#with this.attributes}}
+<div class="row">
+    <div class="col text-start">
+    [<abbr title="{{citation.attributes.cType}}">{{run citation 'getAbbrType'}}</abbr>]
+     {{textContent (run citation 'getListItem' 6)}}
+      <a href="{{../this.links.citation}}"><i class="fa fa-link"></i></a>
+     <i class="fa fa-circle-question" title="{{textContent (run citation 'getReference' 6)}}"></i>
+      {{#if page}}(p.{{page}}){{/if}}
+    </div>
+{{#if comment}}<div class="col text-muted">{{comment}}</div>{{/if}}
+</div>
+{{/with}}
+{% endverbatim %}

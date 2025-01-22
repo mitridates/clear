@@ -1,0 +1,18 @@
+/*Dos formatos de botón algo más grandes o algo más pequeños para formularios y listados*/
+.text-divider{
+    background-color:#eaecf4!important;
+    /*padding-left:.5rem!important;*/
+    padding: .5rem!important;
+    margin: .3rem 0 ;
+}
+
+/* caja de texto tipo tag cloud para paginación de campos de texto simples mediante div*/
+.tag-box{
+    border:1px solid #dee2e6!important;
+    border-radius:.35rem!important;
+    color: rgba(0, 0, 0, 1) !important;
+    margin: 0.25rem !important;
+    padding-right:.25rem!important;padding-left:.25rem!important;
+    display:inline-block!important;
+    font-size: 0.9em;
+}

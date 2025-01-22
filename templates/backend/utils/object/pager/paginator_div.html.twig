@@ -1,0 +1,37 @@
+{#
+@see paginator_skeleton.html.twig
+@param undefined|Object headAttr - Attr key=>val for <div class="js-head ...
+@param undefined|Object bodyAttr - Attr key=>val for <div class="js-body ...
+@param undefined|Object footAttr - Attr key=>val for <div class="js-foot ...
+#}
+{% extends '@Dashboard/object/pager/paginator_skeleton.html.twig' %}
+{%- set headAttr= (headAttr ?? {})|merge({
+    'class':  'js-head'~(' '~headAttr.class ?? '')~(' '~headClass??''),
+}) -%}
+{%- set bodyAttr= (bodyAttr ?? {})|merge({
+    'id':  bodyAttr.id ?? bodyId|default(''),
+    'class':  'js-body'~(' '~bodyAttr.class ?? '')~(' '~bodyClass??'')
+}) -%}
+{%- set footAttr= (footAttr ?? {})|merge({
+    'class':  'js-foot'~(' '~footAttr.class ?? '')~(' '~footClass??''),
+}) -%}
+{% block pagination %}
+    <div {% for key, value in headAttr|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %} >
+    {% block head %}
+    {%  endblock head %}
+    </div>
+    <div {% for key, value in bodyAttr|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %} ></div>
+    <div {% for key, value in footAttr|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %}>
+    {% block foot %}
+    {%  endblock foot %}
+    </div>
+{% endblock  pagination%}
+{% block templateBody %}
+    {% block script %}
+    {%  endblock script %}
+{% endblock templateBody %}
+
+{% block templateFoot %}
+        {% block footScript %}
+        {%  endblock footScript %}
+{% endblock templateFoot %}

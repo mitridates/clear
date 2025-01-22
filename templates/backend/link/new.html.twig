@@ -1,0 +1,53 @@
+{#
+Link. New
+@controller BackendLinkController:newAction
+@route admin/link/new
+@path admin_link_new
+@var FormView form
+#}
+{% do addCrumb('link.index.title'|trans({},'cavepages'), path('admin_link_index')) %}
+{% set page= initPage(
+    'link',
+    'new',
+    'link.new.title'|trans({},'cavepages'),
+    path('admin_link_new'))
+    .set('heading', 'link.new.heading'|trans({},'cavepages'))
+%}
+{% extends '@admin/base.html.twig' %}
+{% block subheading %}
+    {% include '@admin/link/subheading_buttons.html.twig'%}
+{% endblock %}
+
+{% block content %}
+    {% include '@admin/link/_form_oto.html.twig' %}
+    {% if not form.vars.valid %}
+        {% include '@object/modal/errors.html.twig'%}
+    {% endif %}
+{% endblock %}
+{% block footer_javascripts %}
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            let form= document.getElementById('{{ form.vars.attr.id }}');
+            form.querySelectorAll('.jsuggest-select').forEach(function (elm){
+                if(elm.classList.contains('js-mime')){
+                    JSuggest(elm, {'minLen':2})
+                }else{
+                   JSuggest(elm)
+                }
+            });
+
+            JSimas('input[name=ownerradio]', form).toggleRadioByDataset();
+            JSimas('input[name=authorradio]', form).toggleRadioByDataset();
+
+            shortcut.add("Ctrl+F1",function() {
+                JSimas.copy(form)
+            });
+            shortcut.add("Ctrl+F2",function() {
+                JSimas.paste(form, true)
+            });
+            {% if not form.vars.valid %}
+            bootstrap.Modal.getOrCreateInstance(document.querySelector('#modal-errors')).show();
+            {% endif %}
+        });
+    </script>
+{% endblock %}

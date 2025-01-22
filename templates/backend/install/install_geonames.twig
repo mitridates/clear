@@ -1,0 +1,31 @@
+{#
+    Página inicial para carga de datos
+    @controller BackendSetupController:installGeonamesAction
+    @path admin_install_geonames
+    @var array data Estado de las tablas
+#}
+{% do addCrumb('setup.index.title'|trans({},'cavepages'), path('admin_setup_index')) %}
+{% set page= initPage('setup','install_geonames','setup.install.geonames.title'|trans({},'cavepages'))
+    .set('heading', 'setup.install.geonames.heading'|trans({},'cavepages'))
+%}
+{% extends '@admin/base_simple.html.twig' %}
+
+{% block subheading %}
+{% endblock subheading %}
+
+{% block content %}
+    <h5 class="m-3">Load country and administrative divisions.</h5>
+            {{ form_start(form)}}
+        <div class="row mt-4">
+            <div class="col-6">
+                {{ form_widget(form.country) }}
+            </div>
+            <div class="col-6">
+                {% include '@object/bttn/bttn_save.html.twig' with {
+                    'onClick': 'this.form.submit();Array.from(this.form.elements).forEach(formElement => formElement.disabled = true);'
+                }%}
+            </div>
+        </div>
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+{% endblock content %}

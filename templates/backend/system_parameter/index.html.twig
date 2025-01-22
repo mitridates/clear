@@ -1,0 +1,71 @@
+{#
+System parameter. Index
+@controller backend:BackendSystemParametersController:indexAction
+@route admin/parameter
+@path admin_parameteres_index
+@package system_parameter
+@var FormView form
+#}
+{% set page= initPage(
+        'system_parameter',
+        'index',
+        'system_parameter.index.title'|trans({},'cavepages'),
+        path('admin_system_parameter_index'))
+        .set('heading', 'system_parameter.index.heading'|trans({},'cavepages'))
+%}
+{% extends '@admin/base.html.twig' %}
+
+{% block subheading %}
+    {% include '@admin/system_parameter/subheading_buttons.html.twig'%}
+{% endblock %}
+{% block content %}
+            {{ form_start(form) }}
+    {% set md = {row_attr:{class:'col-md'}} %}
+    <div class="row">
+        {{ form_row(form.name, md) }}
+        {{ form_row(form.language, md) }}
+        {{ form_row(form.country,md ) }}
+        {{ form_row(form.organisationdbm,dataSuggest('organisation')|merge(md) ) }}
+    </div>
+
+        <div class="row text-end mt-2">
+            <div>{% include '@object/bttn/bttn_search.html.twig' with {'id': 'js-search'}%}</div>
+        </div>
+        {{ form_end(form) }}
+<hr/>
+
+{# paginator#}
+<div style="display: block;overflow-x: auto;white-space: nowrap;">
+{% embed '@object/pager/paginator_table.html.twig' with{
+    id: 'paginatorWrapper',
+    action: path('admin_system_parameter_index_list_json'),
+    source: '#'~form.vars.attr.id
+} %}
+{% block head %}
+    <th data-sort="" data-orderby="name" class="cursor-pointer">Name</th>
+    <th data-sort="" data-orderby="country" class="cursor-pointer" >{{ 'government.level.country'|trans({}, 'cavemessages')}}</th>
+    <th>Organisation DBM</th>
+    <th>Active</th>
+{% endblock head %}
+{% block script %}
+{% verbatim %}
+    <td><a href="{{this.links.self}}">{{this.attributes.name}}</a></td>
+    <td>{{this.attributes.country}}</td>
+    <td>{{this.attributes.organisationdbm}}</td>
+    <td style="width: 0px">{{#if this.attributes.active}}<i class="fa fa-check"></i>{{/if}}</td>
+{% endverbatim %}
+{% endblock script%}
+{% endembed %}
+</div>
+{# /paginator#}
+
+{% endblock %}
+{% block footer_javascripts %}
+    <script>
+        let organisations= document.querySelectorAll('.js-organisation');
+        for(let i=0; i<organisations.length; i++){
+            JSuggest(organisations[i])
+        }
+        Pagination('#paginatorWrapper', {sort:'ASC',orderby: 'name'}).submit();
+        </script>
+{% endblock %}

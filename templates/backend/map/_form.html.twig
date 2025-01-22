@@ -1,0 +1,50 @@
+{#
+Map form render new/edit
+@var FormView form
+#}
+    {{ form_start(form) }}
+
+    {% set md = {row_attr:{class:'col-md'}} %}
+    {% set md2 = {row_attr:{class:'col-md-2'}} %}
+    {% set md3 = {row_attr:{class:'col-md-3'}} %}
+    {% set mdcheck = {row_attr:{class:'mt-checkbox col-md'}} %}
+    {% set dividerAttr='class="p-2 my-2 border-bottom border-secondary h5" '  %}
+<div {{ dividerAttr|raw }}>{{ 'map.divider.identity'|trans([], 'cavepages')}}</div>
+<div class="row">
+    {{ form_row(form.name, md)}}
+    {{ form_row(form.subsheetname, md)}}
+    {{ form_row(form.mapserie, dataSuggest('mapserie')|merge(md))}}
+</div>
+<div class="row">
+    {% for f in ['scale', 'type'] %}
+        {{ form_row(form[f], md3)}}
+    {% endfor %}
+
+</div>
+<div class="row">
+    {% for f in ['number','edition',] %}
+        {{ form_row(form[f], md3)}}
+    {% endfor %}
+
+</div>
+
+
+<div {{ dividerAttr|raw }}>{{ 'map.divider.location'|trans([], 'cavepages')}}</div>
+<div class="row">
+    {{ form_row(form.country, dataRepopulate('country', '#'~form.admin1.vars.id ~', #'~form.area.vars.id)|merge(md))}}
+    {{ form_row(form.admin1, dataRepopulate('admin1', '#'~form.admin2.vars.id~', #'~form.area.vars.id)|merge(md))}}
+</div>
+<div class="row">
+    {{ form_row(form.admin2, dataRepopulate('admin2', '#'~form.admin3.vars.id)|merge(md))}}
+    {{ form_row(form.admin3, dataRepopulate('admin3')|merge(md))}}
+</div>
+<div class="row">
+{{ form_row(form.area, dataRepopulate('area'))}}
+</div>
+
+    {{ form_rest(form)}}
+
+<div class="form-row d-flex justify-content-center mt-2">
+    {% include '@object/bttn/bttn_save.html.twig' with {class: 'js-submit'}%}
+</div>
+{{ form_end(form) }}

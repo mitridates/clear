@@ -1,0 +1,143 @@
+{#
+Link. Index
+@controller BackendLinkController:indexAction
+@route /link
+@path admin_link_index
+@var FormView form
+#}
+{% set page= initPage(
+    'link',
+    'index',
+    'link.index.title'|trans({},'cavepages'),
+    path('admin_link_index'))
+    .set('heading', 'link.index.heading'|trans({},'cavepages'))
+%}
+{% set md = {row_attr:{class:'col-md'}} %}
+{% set mdcheck = {row_attr:{class:'mt-checkbox col-md'}} %}
+{% set md6 = {row_attr:{class:'col-md-6'}} %}
+
+{% extends '@admin/base.html.twig' %}
+{% block subheading %}
+    {% include '@admin/link/subheading_buttons.html.twig'%}
+{% endblock %}
+
+{% block content %}
+    {% set md = {row_attr:{class:'col-md'}} %}
+    {% set md4 = {row_attr:{class:'col-md-4'}} %}
+
+    {{ form_start(form) }}
+    <div class="row">
+    {{ form_row(form.title, md)}}
+    {{ form_row(form.mime, dataSuggest('mimetype')|merge(md4))}}
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md">
+            <div>
+                <input id="ownerradioid" type="radio" name="ownerradio" data-selector="#{{ form.organisation.vars.id }}">
+                <label for="ownerradioid">{{ 'field.lookup'|trans({},'cavemessages')|raw }}</label>
+            </div>
+            {{ form_row(form.organisation, dataSuggest('organisation'))}}
+        </div>
+
+        <div class="form-group col-md">
+            <div>
+                <input id="ownerradiotext" type="radio" name="ownerradio" data-selector="#{{ form.organisationname.vars.id }}">
+                <label for="ownerradiotext">{{ 'field.freetext'|trans({},'cavemessages')|raw }}</label>
+            </div>
+            {{ form_row(form.organisationname)}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md">
+            <div>
+                <input id="authorradioid" type="radio" name="authorradio" data-selector="#{{ form.author.vars.id }}">
+                <label for="authorradioid">{{ 'field.lookup'|trans({},'cavemessages')|raw }}</label>
+            </div>
+            {{ form_row(form.author, dataSuggest('person'))}}
+        </div>
+
+        <div class="form-group col-md">
+            <div>
+                <input id="authorradiotext" type="radio" name="authorradio" data-selector="#{{ form.authorname.vars.id }}">
+                <label for="authorradiotext">{{ 'field.freetext'|trans({},'cavemessages')|raw }}</label>
+            </div>
+            {{ form_row(form.authorname)}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            {% include '@object/bttn/bttn_reset.html.twig'%}
+            {% include '@object/bttn/bttn_search.html.twig' with {'id': 'js-search'}%}
+        </div>
+    </div>
+    {{ form_end(form) }}
+    <hr/>
+
+{# paginator#}
+<div style="display: block;overflow-x: auto;white-space: nowrap;">
+{% embed '@object/pager/paginator_table.html.twig' with{
+    id: 'paginatorWrapper',
+    action: path('admin_link_list_json'),
+    source: '#'~form.vars.attr.id,
+} %}
+{% block head %}
+    <th data-sort data-orderby="title">Title</th>
+    <th style="width: 0" data-sort data-orderby="author">Author</th>
+    <th style="width: 0">
+        <span data-sort data-orderby="organisation" >{{ 'organisation'|trans({}, 'cavemessages')|capitalize}}</span>
+        <span data-sort data-orderby="organisationname" >{{ 'organisation'|trans({}, 'cavemessages')|capitalize}}(texto)</span>
+    </th>
+    <th style="width: 0">Mime</th>
+    <th style="width: 0">URL</th>
+    <th style="width: 0">Accessed</th>
+{% endblock head %}
+{% block script %}
+{% verbatim %}
+{{#with this.attributes}}
+    <td><a href="{{../links.self}}">{{title}}</a></td>
+    <td style="text-overflow: clip;" class="text-center">{{coalesce author authorname}}</td>
+    <td style="text-overflow: clip;" class="text-center">
+    {{#if organisation}}
+        {{#if organisation.attributes.initials}}
+        <abbr title="{{organisation.attributes.name}}">{{organisation.attributes.initials}}</abbr>
+        {{else}}
+        {{organisation.attributes.name}}
+        {{/if}}
+    {{else}}
+        {{organisationname}}
+    {{/if}}
+    </td>
+    <td class="text-center">{{mime}}</td>
+    <td class="text-center"><a href="{{url}}" target="_blank"><i class="fa fa-link"></i></a></td>
+    <td class="text-center">{{accessed}}</td>
+{{/with}}
+{% endverbatim %}
+{% endblock script%}
+{% endembed %}
+</div>
+{# /paginator#}
+{% endblock %}
+
+{% block footer_javascripts %}
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            <!-- Paginación mediante handlebars, requiere helper y JSpager-->
+            Pagination('#paginatorWrapper', {sort:'ASC',orderby: 'title'}).submit();
+
+            document.querySelectorAll('.jsuggest-select').forEach(function (elm){
+                if(elm.classList.contains('js-mime')){
+                    JSuggest(elm, {'minLen':2})
+                }else{
+                    JSuggest(elm)
+                }
+            })
+
+            JSimas('input[name=ownerradio]').toggleRadioByDataset();
+            JSimas('input[name=authorradio]').toggleRadioByDataset();
+        });
+
+    </script>
+{% endblock %}

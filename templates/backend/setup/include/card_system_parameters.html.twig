@@ -1,0 +1,12 @@
+{#
+System parameters card
+@var array data
+#}
+{% embed '@object/card/line.html.twig' with {
+    'title': 'setup.index.box.systemparameter.title'|trans({},'cavepages')|raw ,
+    'icon': 'fa-cog'
+}%}
+    {% block body %}
+        Total: {{ data.systemParameterCount }}, active: {{ data.systemParameterCountActive }}
+    {% endblock %}
+{% endembed %}

@@ -1,0 +1,43 @@
+{#
+    Setup. Field definitions
+    @controller BackendSetupController:fieldDefinitionAction
+    @route /admin/setup/fielddefinition
+    @path admin_setup_field_definition
+    @var array data
+#}
+{% do addCrumb('setup.index.title'|trans({},'cavepages'), path('admin_setup_index')) %}
+{% do initPage('setup','fielddefinition','setup.fielddefinition.title'|trans({},'cavepages'))
+    .set('heading', 'setup.fielddefinition.heading'|trans({},'cavepages'))
+%}
+{% extends '@admin/base.html.twig' %}
+{% block subheading %}
+    <a class="btn btn-secondary" href="{{  path('admin_setup_index')}}" role="button">Go to setup</a>
+{% endblock %}
+
+{% block content %}
+    {{ form_start(form)}}
+    <div class="row mt-4">
+        <h5 class="mt-3 d-inline">Choose to install/overwrite</h5>
+        <div class="col-6">
+
+            {{ form_widget(form.files) }}
+        </div>
+        <div class="col-6">
+            {% include '@object/bttn/bttn_save.html.twig' with {
+                'onClick': 'this.form.submit();Array.from(this.form.elements).forEach(formElement => formElement.disabled = true);'
+            }%}
+        </div>
+    </div>
+    {{ form_end(form) }}
+    <div class="mb-5"></div>
+    <div class="mt-3"></div>
+    {% include '@admin/setup/include/card_field_definition.html.twig' with {'data': data, formBttn:true} only %}
+    <div class="mt-3"></div>
+    {% include '@admin/setup/include/card_field_value_codes.html.twig' with {'data': data, formBttn:true} only %}
+    <div class="mt-3"></div>
+    {% include '@admin/setup/include/card_field_definition_lang.html.twig' with {'data': data, formBttn:true} only %}
+    <div class="mt-3"></div>
+    {% include '@admin/setup/include/card_field_value_codes_lang.html.twig' with {'data': data, formBttn:true} only %}
+
+
+{% endblock content %}

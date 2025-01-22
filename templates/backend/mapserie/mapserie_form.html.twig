@@ -1,0 +1,26 @@
+{#
+Mapserie form render new/edit
+@var FormView form
+#}
+
+{{ form_start(form) }}
+{% set md = {row_attr:{class:'col-md'}} %}
+<div class="row">
+    {{ form_row(form.name, md)}}
+    {{ form_row(form.abbreviation, md)}}
+    {{ form_row(form.publisher, dataSuggest('organisation')|merge(md)) }}
+</div>
+
+<div class="row">
+    {{ form_row(form.code, md)}}
+    {{ form_row(form.lengthunits, md)}}
+    {{ form_row(form.maptype, md)}}
+    {{ form_row(form.scale, md)}}
+</div>
+<div class="row">
+    {{ form_row(form.comment, md)}}
+</div>
+<div class="form-row d-flex justify-content-center mt-2">
+    {% include '@object/bttn/bttn_save.html.twig' with {'class': 'js-submit'}%}
+</div>
+{{ form_end(form) }}

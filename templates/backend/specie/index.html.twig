@@ -1,0 +1,79 @@
+{#
+Specie. Index
+@controller BackendSpecieController:indexAction
+@route admin/specie
+@path admin_specie_index
+@var FormView form
+#}
+{% set page= initPage(
+        'specie',
+        'index',
+        'specie.index.title'|trans({},'cavepages'),
+        path('admin_specie_index'))
+        .set('heading', 'specie.index.heading'|trans({},'cavepages'))
+%}
+    {% set md = {row_attr:{class:'col-md'}} %}
+    {% set mdcheck = {row_attr:{class:'mt-checkbox col-md'}} %}
+    {% set md6 = {row_attr:{class:'col-md-6'}} %}
+{% extends '@admin/base.html.twig' %}
+
+{% block subheading %}
+    {% include '@admin/specie/subheading_buttons.html.twig'%}
+{% endblock %}
+{% block content %}
+    {{ form_start(form) }}
+    <div class="row">
+        {{ form_row(form.name, md)}}
+        {{ form_row(form.commonname, md) }}
+        {{ form_row(form.genus, md)}}
+    </div>
+
+    <div class="row">
+        {{ form_row(form.family, md)}}
+        {{ form_row(form.orden, md)}}
+        {{ form_row(form.class, md)}}
+        {{ form_row(form.phylum, md)}}
+    </div>
+    <div class="row">
+        <div class="form-group">
+            {% include '@object/bttn/bttn_reset.html.twig'%}
+            {% include '@object/bttn/bttn_search.html.twig' with {'id': 'js-search'}%}
+        </div>
+    </div>
+    {{ form_end(form) }}
+<hr/>
+
+{# paginator#}
+<div style="display: block;overflow-x: auto;white-space: nowrap;">
+{% embed '@object/pager/paginator_table.html.twig' with{
+    id: 'paginatorWrapper',
+    action: path('admin_specie_list_json'),
+    source: '#'~form.vars.attr.id
+} %}
+    {% block head %}
+        <th data-sort="" data-orderby="name">Name</th>
+        <th data-sort="" data-orderby="commonname">Common name</th>
+        <th data-sort="" data-orderby="genus">Genus</th>
+        <th data-sort="" data-orderby="order">Order</th>
+        <th data-sort="" data-orderby="class">Class</th>
+        <th data-sort="" data-orderby="phylum">Phylum</th>
+    {% endblock head %}
+    {% block script %}
+        {% verbatim %}
+    <td><a href="{{this.links.self}}">{{this.attributes.name}}</a></td>
+    <td>{{this.attributes.commonname}}</td>
+    <td>{{this.attributes.genus}}</td>
+    <td>{{this.attributes.orden}}</td>
+    <td>{{this.attributes.class}}</td>
+    <td>{{this.attributes.phylum}}</td>
+{% endverbatim %}
+{% endblock script%}
+{% endembed %}
+</div>
+    {# /paginator#}
+{% endblock %}
+{% block footer_javascripts %}
+    <script>
+        Pagination('#paginatorWrapper', {sort:'ASC',orderby: 'name'}).submit();
+    </script>
+{% endblock %}

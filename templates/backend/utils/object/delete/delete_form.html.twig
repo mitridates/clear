@@ -1,0 +1,8 @@
+{#
+@see ./bttn_*.html.twig
+#}
+<form method="POST" id="{{ id|default('defaultDeleteId') }}" action="{{ action }}" class="w-100"
+      {% if confirm is defined and confirm %} onsubmit="return confirm('{{ 'msg.confirm'|trans({}, 'cavemessages') }}');"{% endif %}>
+    <input type="hidden" name="_token" value="{{ token }}">
+    {%include '@object/bttn/bttn_delete.html.twig'%}
+</form>

@@ -1,0 +1,38 @@
+{#
+    Setup. Página de inicio
+    @controller BackendSetupController:indexAction
+    @route /admin/setup/
+    @path admin_setup_index
+    @var array data
+#}
+{% do initPage(
+    'setup', 'index', 'setup.index.title'|trans({},'cavepages'))
+    .set('heading', 'setup.index.heading'|trans({},'cavepages'))
+%}
+{% extends '@admin/base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col mb-4 col-lg-6 col-md-6 col-xs-12">
+            {% include '@admin/setup/include/card_system_parameters.html.twig' with {'data': data} only %}
+        </div>
+        <div class="col mb-4 col-lg-6 col-md-6 col-xs-12">
+            {% include '@admin/setup/include/card_organisation.html.twig' with {'data': data} only %}
+        </div>
+        <div class="col mb-4 col-lg-6 col-md-6 col-xs-12">
+            {% include '@admin/setup/include/card_field_definition.html.twig' with {'data': data} only %}
+        </div>
+        <div class="col mb-4 col-lg-6 col-md-6 col-xs-12">
+            {% include '@admin/setup/include/card_field_definition_lang.html.twig' with {'data': data} only %}
+        </div>
+        <div class="col mb-4 col-lg-6 col-md-6 col-xs-12">
+            {% include '@admin/setup/include/card_field_value_codes.html.twig' with {'data': data} only %}
+        </div>
+        <div class="col mb-4 col-lg-6 col-md-6 col-xs-12">
+            {% include '@admin/setup/include/card_field_value_codes_lang.html.twig' with {'data': data} only %}
+        </div>
+    </div>
+
+   <!-- Geonames table -->
+    {% include '@admin/setup/include/table_geonames.html.twig' with {'geonames': data.geonames} only %}
+{% endblock content %}

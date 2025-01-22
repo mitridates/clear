@@ -1,0 +1,11 @@
+{% set collapse = getPage('section') not in ['map', 'mapserie'] %}
+<!--Relationships cave-->
+<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseMap" aria-expanded="{{ collapse? 'false' : 'true' }}" aria-controls="collapseMap">
+    <div class="sb-nav-link-icon"><i class="fas fa-diagram-project"></i></div>Map<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+</a>
+<div class="collapse {{collapse ? '' : 'show' }}" id="collapseMap" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+    <nav class="sb-sidenav-menu-nested nav">
+        <a class="nav-link  {{ getPage('section')=='map'?'active'}}" href="{{ path('admin_map_index')}}"><i class="fa fa-atlas"></i>&nbsp;{{ 'map.menu.index'|trans([], 'cavepages') }}</a>
+        <a class="nav-link  {{ getPage('section')=='mapserie'?'active'}}" href="{{ path('admin_mapserie_index')  }}">[ <i class="fa fa-atlas"></i> ,...]&nbsp;{{ 'mapserie.menu.index'|trans([], 'cavepages') }}</a>
+    </nav>
+</div>

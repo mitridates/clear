@@ -1,0 +1,56 @@
+{#
+    System parameter form render new/edit
+    @var FormView form
+#}
+    {% set md = {row_attr:{class:'col-md'}} %}
+    {% set mdcheck = {row_attr:{class:'col-md mt-checkbox'}} %}
+
+<div class="row">
+    {{ form_row(form.name, {row_attr:{class:'col-md-8'}}) }}
+    {{ form_row(form.organisationdbm, dataSuggest('organisation')|merge(md)) }}
+</div>
+
+<div class="row">
+    {{ form_row(form.country,md ) }}
+    {{ form_row(form.language, md) }}
+    {{ form_row(form.organisationsite, dataSuggest('organisation')|merge({row_attr:{class:'col-md-6'}})) }}
+</div>
+
+<div class="row">
+    {{ form_row(form.refunits,md ) }}
+    {{ form_row(form.altitudeunit, md) }}
+    {{ form_row(form.active, mdcheck) }}
+</div>
+
+<hr/>
+
+<div class="row">
+    {{ form_row(form.mapserie,md ) }}
+    {{ form_row(form.mapgrid, md) }}
+    {{ form_row(form.grrefqualifier, md) }}
+</div>
+
+<div class="row">
+    {{ form_row(form.geogprecision,md ) }}
+    {{ form_row(form.grefprecision, md) }}
+    {{ form_row(form.altitudeprecision, md) }}
+</div>
+
+<div class="row">
+    {{ form_row(form.geodeticdatum,md ) }}
+    {{ form_row(form.heightdatum, md) }}
+    {{ form_row(form.landunit, md) }}
+</div>
+
+<hr/>
+
+<div class="row">
+    {{ form_row(form.version,md ) }}
+    {{ form_row(form.softwarelevel, md) }}
+    {{ form_row(form.transcodes, mdcheck) }}
+</div>
+
+<div class="row">
+    {{ form_row(form.mapdir,md ) }}
+    {{ form_row(form.topodir, md) }}
+</div>

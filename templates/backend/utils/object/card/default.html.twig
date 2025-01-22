@@ -1,0 +1,28 @@
+{#
+Default card
+@package object
+@subpackage card
+@param string|null id
+@param string|null title
+@param string|null body
+@param string|null class
+#}
+{% set card= {
+    'id': id|default('card_default_'~random()),
+    'title': title|default(false),
+    'url': url|default(false),
+    'body': body|default('This is a default card example using Bootstrap'),
+    'class': class|default('')
+} %}
+<!-- Default Card -->
+<div class="card {{ card.class }}" id="{{ card.id }}"{% if url %} onclick="window.open('{{url}}', '_self')"{% endif %}>
+    {% if card.title!=false %}
+    <div class="card-header">
+        {% block title %}{{ card.title }}{% endblock %}
+    </div>
+    {% endif %}
+    <div class="card-body">
+        {% block body %}{{ card.body }}{% endblock %}
+    </div>
+
+</div>

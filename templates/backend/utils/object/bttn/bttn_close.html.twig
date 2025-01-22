@@ -1,0 +1,11 @@
+{#
+    @see ./bttn_.html.twig
+#}
+{%- set attr= {
+    'type':   attr.type ?? type|default('button'),
+    'id': attr.id ?? id|default(''),
+    'title': attr.title ?? title|default(''),
+    'class':   'btn btn-warning btn-outline-default js-close'~(' '~attr.class ?? '')~(' '~class??''),
+    'onClick':  attr.onClick ?? onClick|default(''),
+}|merge((attr ?? {})) -%}
+<button {% for key, value in attr|filter(value => value != '') %} {{ key }}="{{ value|raw }}" {% endfor %}><i class="fa fa-close"></i>&nbsp;{{ text|default('btn.close'|trans({},'cavemessages'))|raw -}}</button>

@@ -1,0 +1,14 @@
+
+
+{% if getPage('name') is not same as 'index' %}
+        {%include '@object/bttn/href_search.html.twig' with {'href': path('admin_map_index')} only%}
+{% endif %}
+{% if getPage('name') is not same as 'new' %}
+        {%include '@object/bttn/href_new.html.twig' with {'href': path('admin_map_new')} only%}
+{% endif %}
+{% if getPage('name') == 'edit' %}
+    {%include '@object/bttn/href_delete.html.twig' with {
+        'href': path('admin_map_delete', {'id': entity.id, '_token': csrf_token('delete' ~ entity.id)}),
+        attr:{onclick:"return confirm('Confirm to delete');"}
+    } only%}
+{% endif %}

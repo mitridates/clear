@@ -1,0 +1,13 @@
+{#
+Citation form render new/edit
+@var FormView form
+#}
+{% set md = {row_attr:{class:'col-md'}} %}
+{% set md3 = {row_attr:{class:'col-md-3 w-input-1'}} %}
+
+<div class="row">
+{{ form_row(form.citation, dataSuggest('citation')|merge(md))}}
+{{ form_row(form.page, md3) }}
+{{ form_row(form.comment) }}
+{{ form_row(form.position, md3) }}
+</div>

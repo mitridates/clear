@@ -1,0 +1,79 @@
+{#
+Area. Index
+@controller BackendAreaController:indexAction
+@route /area
+@path admin_area_index
+@var FormView form
+#}
+{% set page= initPage(
+    'area',
+    'index',
+    'area.index.title'|trans({},'cavepages'),
+    path('admin_area_index'))
+    .set('heading', 'area.index.heading'|trans({},'cavepages'))
+%}
+{% set md = {row_attr:{class:'col-md'}} %}
+{% set mdcheck = {row_attr:{class:'mt-checkbox col-md'}} %}
+{% set md6 = {row_attr:{class:'col-md-6'}} %}
+
+{% extends '@admin/base.html.twig' %}
+{% block subheading %}
+    {% include '@admin/area/subheading_buttons.html.twig'%}
+{% endblock %}
+
+{% block content %}
+    {{ form_start(form) }}
+    <div class="row">
+        {{ form_row(form.name, md6)}}
+        {{ form_row(form.code, md)}}
+        {{ form_row(form.mapsheet, md)}}
+    </div>
+
+    <div class="row">
+        {{ form_row(form.country, dataRepopulate('country', '#'~form.admin1.vars.id)|merge(md))}}
+        {{ form_row(form.admin1, dataRepopulate('admin1')|merge(md))}}
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            {% include '@object/bttn/bttn_reset.html.twig'%}
+            {% include '@object/bttn/bttn_search.html.twig' with {'id': 'js-search'}%}
+        </div>
+    </div>
+    {{ form_end(form) }}
+    <hr/>
+
+{# paginator#}
+<div style="display: block;overflow-x: auto;white-space: nowrap;">
+{% embed '@object/pager/paginator_table.html.twig' with{
+    id: 'paginatorWrapper',
+    action: path('admin_area_list_json'),
+    source: '#'~form.vars.attr.id,
+} %}
+{% block head %}
+    <th data-sort data-orderby="name" class="cursor-pointer" >Name</th>
+    <th data-sort data-orderby="country" class="cursor-pointer" >{{ 'government.level.country'|trans({}, 'cavemessages')}}</th>
+    <th data-sort data-orderby="admin1" class="cursor-pointer" >{{ 'government.level.admin1'|trans({}, 'cavemessages')}}</th>
+    <th>comment</th>
+{% endblock head %}
+{% block script %}
+{% verbatim %}
+    <td><a href="{{this.links.self}}">{{this.attributes.name}}</a></td>
+    <td>{{this.attributes.country}}</td>
+    <td>{{this.attributes.admin1}}</td>
+    <td>{{this.attributes.comment}}</td>
+
+{% endverbatim %}
+{% endblock script%}
+{% endembed %}
+</div>
+{# /paginator#}
+{% endblock %}
+
+{% block footer_javascripts %}
+    <script>
+        (new Repopulate('#{{ form.country.vars.id }}')).populate();
+        <!-- Paginación mediante handlebars, requiere helper y JSpager-->
+        Pagination('#paginatorWrapper', {sort:'ASC',orderby: 'name'}).submit();
+    </script>
+{% endblock %}

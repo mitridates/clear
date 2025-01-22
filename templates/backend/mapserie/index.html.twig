@@ -1,0 +1,87 @@
+{#
+Mapserie parameter. Index
+@controller BackendMapserieController:indexAction
+@route admin/mapserie
+@path admin_mapserie_index
+@var FormView form
+#}
+{% set page= initPage(
+        'mapserie',
+        'index',
+        'mapserie.index.title'|trans({},'cavepages'),
+        path('admin_mapserie_index'))
+        .set('heading', 'mapserie.index.heading'|trans({},'cavepages'))
+%}
+    {% set md = {row_attr:{class:'col-md'}} %}
+    {% set mdcheck = {row_attr:{class:'mt-checkbox col-md'}} %}
+    {% set md6 = {row_attr:{class:'col-md-6'}} %}
+{% extends '@admin/base.html.twig' %}
+
+{% block subheading %}
+    {% include '@admin/mapserie/subheading_buttons.html.twig'%}
+{% endblock %}
+{% block content %}
+    {% set md = {row_attr:{class:'col-md'}} %}
+    {% set md4 = {row_attr:{class:'col-md-4'}} %}
+    {{ form_start(form) }}
+    <div class="row">
+        {{ form_row(form.name, md)}}
+        {{ form_row(form.publisher, dataSuggest('organisation')|merge(md4)) }}
+    </div>
+    <div class="row">
+        {{ form_row(form.scale, md)}}
+        {{ form_row(form.lengthunits, md)}}
+        {{ form_row(form.maptype, md)}}
+    </div>
+    <div class="row">
+        <div class="form-group">
+            {% include '@object/bttn/bttn_reset.html.twig'%}
+            {% include '@object/bttn/bttn_search.html.twig' with {'id': 'js-search'}%}
+        </div>
+    </div>
+    {{ form_end(form) }}
+<hr/>
+
+{# paginator#}
+<div style="display: block;overflow-x: auto;white-space: nowrap;">
+{% embed '@object/pager/paginator_table.html.twig' with{
+    id: 'paginatorWrapper',
+    action: path('admin_mapserie_list_json'),
+    source: '#'~form.vars.attr.id
+} %}
+    {% block head %}
+        <th data-sort="" data-orderby="name" class="cursor-pointer" >Name</th>
+        <th data-sort="" data-orderby="publisher" class="cursor-pointer" >publisher</th>
+        <th data-sort="" data-orderby="lengthunits" class="cursor-pointer" >lengthunits</th>
+        <th data-sort="" data-orderby="maptype" class="cursor-pointer" >maptype</th>
+        <th data-sort="" data-orderby="scale" class="cursor-pointer" >scale</th>
+    {% endblock head %}
+    {% block script %}
+        {% verbatim %}
+    <td><a href="{{this.links.self}}">{{this.attributes.name}}</a></td>
+    <td class="text-center">
+        {{#if this.attributes.publisher}}
+            {{#with this.attributes.publisher.attributes}}
+                {{#if initials}}
+                    <abbr title="{{name}}">{{initials}}</abbr>
+                {{else}}
+                    {{name}}
+                {{/if}}
+            {{/with}}
+        {{/if}}
+    </td>
+    <td>{{this.attributes.lengthunits}}</td>
+    <td>{{this.attributes.maptype}}</td>
+    <td>{{this.attributes.scale}}</td>
+{% endverbatim %}
+    {% endblock script%}
+{% endembed %}
+</div>
+    {# /paginator#}
+{% endblock %}
+{% block footer_javascripts %}
+    <script>
+        Pagination('#paginatorWrapper', {sort:'ASC',orderby: 'name'}).submit();
+        JSuggest(document.querySelector('.js-organisation'))
+    </script>
+{% endblock %}

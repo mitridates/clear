@@ -1,0 +1,26 @@
+{#
+/**
+    Global & child errors in modal
+    @file errors.html.twig
+    @package object
+    @subpackage modal
+    @param FormView form
+#}
+<div class="modal" id="modal-errors" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title color-danger">{{ 'form.haserrors'|trans({},'validators') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% import '@admin/utils/macro/macro_form_error_messages.html.twig' as errors %}
+                {{errors.get_global(form)}}
+                {{errors.get_child(form)}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'close'|trans([], 'cavemessages') }}</button>
+            </div>
+        </div>
+    </div>
+</div>

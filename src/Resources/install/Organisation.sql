@@ -1,0 +1,66 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: localhost
+-- Tiempo de generación: 20-12-2023 a las 22:50:00
+-- Versión del servidor: 8.0.35
+-- Versión de PHP: 8.1.2-1ubuntu2.14
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `cavern`
+--
+
+--
+-- Volcado de datos para la tabla `Organisation`
+--
+
+INSERT IGNORE INTO `organisation` VALUES
+('ESFNE00000', NULL, NULL, 'ES', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'FNE', NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'FNE', 'Federación Nacional de Espeleología', NULL, NULL, '2018-03-21 23:12:30', '2019-08-16 13:16:40', 0),
+('ESGPT00000', '381.02', NULL, 'ES', 'ES.31', 'ES.31.MU', 'ES.31.MU.30030', 'ES', 'ES.31', 'ES.31.MU', 'ES.31.MU.30030', '393.04', '394.2', 1, 'GPT', NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'GPT', 'Grupo de Espeleología Proteus', NULL, NULL, '2017-12-08 18:23:11', '2022-12-11 10:43:25', 0),
+('ESGPT00001', NULL, NULL, 'ES', 'ES.31', 'ES.31.MU', 'ES.31.MU.30016', 'ES', 'ES.31', 'ES.31.MU', 'ES.31.MU.30016', NULL, NULL, 1, 'CEC', NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Centro Excursionista de Cartagena', 'cexcartagena@gmail.com', 'cexcartagena.wordpress.com', '2019-07-26 22:15:02', '2019-08-28 22:27:59', 0),
+('ESGPT00002', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'CUM', NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Club Universitario de Montaña', 'cumm@cumm.info', 'www.cumm.es', '2019-07-26 22:15:02', '2018-03-22 22:21:45', 0),
+('ESGPT00003', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Grupo Hinneni', 'info@grupohinneni.es', 'www.grupohinneni.es', '2019-07-26 22:15:02', '2019-07-26 22:15:02', 0),
+('ESGPT00004', NULL, NULL, 'ES', 'ES.31', 'ES.31.MU', 'ES.31.MU.30043', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Centro Excursionista de Yecla', 'centroyecla@hotmail.com', 'www.centroexcursionistayecla.es', '2019-07-26 22:15:02', '2017-12-17 01:36:39', 0),
+('ESGPT00005', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'ADENOW', 'Asociación deportiva ADENOW', 'adenow@hotmail.com', 'adenow.blogspot.com.es', '2019-07-26 22:15:02', '2022-12-11 11:25:16', 0),
+('ESGPT00006', NULL, NULL, 'ES', 'ES.31', 'ES.31.MU', 'ES.31.MU.30030', NULL, NULL, NULL, NULL, NULL, NULL, 0, 'VTG', NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Grupo Vértigo', 'club@grupovertigo.es', 'www.grupovertigo.es', '2019-07-26 22:15:02', '2018-03-22 22:22:27', 0),
+('ESGPT00007', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Centro de Estudios de la Naturaleza y el Mar', 'cenm@cenm.es', 'www.cenm.es', '2019-07-26 22:15:02', '2019-07-26 22:15:02', 0),
+('ESGPT00008', NULL, NULL, 'ES', 'ES.31', 'ES.31.MU', 'ES.31.MU.30024', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Grupo Espeleológico de Lorca', 'grupoespeleolorca@hotmail.com', 'www.grupoespeleolorca.com', '2019-07-26 22:15:02', '2017-12-17 02:07:04', 0),
+('ESGPT00009', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Club Deportivo GREM de Cieza', 'gremcieza@gmail.com', '', '2019-07-26 22:15:02', '2019-07-26 22:15:02', 0),
+('ESGPT00010', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Espeleoclub Resaltes Murcia', 'resaltes@hotmail.com', '', '2019-07-26 22:15:02', '2019-07-26 22:15:02', 0),
+('ESGPT00011', NULL, NULL, 'ES', 'ES.31', 'ES.31.MU', 'ES.31.MU.30009', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Club Montaña y Espeleología Arxhilasis', 'grupoarxhilasis@gmail.com', 'grupoarxhilasis.blogspot.com.es', '2019-07-26 22:15:02', '2022-09-03 20:02:42', 0),
+('ESGPT00012', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Grupo Espeleológico Ciudad de Aguilas', 'miguelangelsab@gmail.com', '', '2019-07-26 22:15:02', '2019-07-26 22:15:02', 0),
+('ESGPT00013', '381.02', NULL, 'ES', 'ES.31', 'ES.31.MU', 'ES.31.MU.30005', NULL, NULL, NULL, NULL, '393.04', '394.2', 0, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'GEVA', 'Grupo Excursionista Villa de Alcantarilla', 'club@espeleogeva.com', 'www.espeleogeva.com', '2019-07-26 22:15:02', '2018-02-28 18:17:55', 0),
+('ESGPT00014', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Club Espeleocarche', 'clubespeleocarche@gmail.com', '', '2019-07-26 22:15:02', '2019-07-26 22:15:02', 0),
+('ESGPT00015', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Club Pliego Espuña', 'guilomar@yahoo.es', '', '2019-07-26 22:15:02', '2019-07-26 22:15:02', 0),
+('ESGPT00016', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Grupo de Espeleología Ciezano Atalaya OJE Cieza', 'gecaoje@yahoo.es', '', '2019-07-26 22:15:02', '2019-07-26 22:15:02', 0),
+('ESGPT00017', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Hangers Club, Deportes de Aventura', 'hangersclubaventura@hotmail.com', 'hangersclub.blogspot.com.es', '2019-07-26 22:15:02', '2019-07-26 22:15:02', 0),
+('ESGPT00019', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Asociación Deportiva Bomberos Murcia', 'adbombmur@gmail.com', '', '2019-07-26 22:15:02', '2019-07-26 22:15:02', 0),
+('ESGPT00023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'C.D. AlAl-baran', 'ojeabaran@gmail.com', '', '2019-07-26 22:15:02', '2019-07-26 22:15:02', 0),
+('ESGPT00024', NULL, NULL, 'ES', 'ES.31', 'ES.31.MU', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Akawi Sports', 'cdakawi@gmail.com', 'www.akawisports.es', '2019-07-26 22:15:02', '2017-12-17 01:37:35', 0),
+('ESGPT00025', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Club Espeleo Águilas', 'espeleoaguilas@hotmail.com', 'www.facebook.com/espeleoaguilas-112413838926361', '2019-07-26 22:15:02', '2019-07-26 22:15:02', 0),
+('ESGPT00026', NULL, NULL, 'ES', 'ES.31', 'ES.31.MU', 'ES.31.MU.30016', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Espeleo Cuatro Picos', NULL, NULL, '2017-12-16 23:21:15', '2017-12-16 23:21:45', 0),
+('ESGPT00027', NULL, NULL, 'ES', 'ES.31', 'ES.31.MU', 'ES.31.MU.30030', 'ES', 'ES.31', 'ES.31.MU', 'ES.31.MU.30030', NULL, NULL, 0, NULL, '30833', 0, 1, NULL, 'Sangonera la Verde', NULL, NULL, NULL, NULL, 'GCE', 'Grupo Carrascoy de Espeleología', NULL, NULL, '2017-12-16 23:31:39', '2017-12-16 23:35:10', 0),
+('ESGPT00028', NULL, NULL, 'ES', 'ES.31', 'ES.31.MU', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Servicio de Exploraciones e Investigaciones Subterráneas', NULL, NULL, '2017-12-16 23:40:32', '2017-12-16 23:44:51', 0),
+('ESGPT00029', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Espeleo Club Atlantida', NULL, NULL, '2017-12-17 00:06:14', '2017-12-17 00:06:19', 0),
+('ESGPT00030', NULL, NULL, 'ES', 'ES.31', 'ES.31.MU', 'ES.31.MU.30030', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Centro Excursionista de Beniajan', NULL, NULL, '2017-12-17 00:10:58', '2017-12-17 00:11:20', 0),
+('ESGPT00031', NULL, NULL, 'ES', 'ES.60', 'ES.60.A', 'ES.60.A.03065', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Grupo de Espeleología y Paleontología Cordillera Sur', NULL, NULL, '2017-12-17 00:21:04', '2017-12-17 00:25:23', 0),
+('ESGPT00032', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Centro Elfo', NULL, NULL, '2017-12-17 20:37:06', '2017-12-17 20:37:13', 0),
+('ESGPT00033', NULL, NULL, 'ES', 'ES.60', 'ES.60.A', 'ES.60.A.03065', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Grupo Ilicitano De Montaña Y Espeleologia', 'clubgimelx@gmail.com', 'http://gim-elx.blogspot.com.es/', '2017-12-17 20:44:14', '2017-12-17 20:46:55', 0),
+('ESGPT00034', '381.02', NULL, 'ES', 'ES.31', 'ES.31.MU', NULL, NULL, 'ES.31', 'ES.31.MU', NULL, '393.04', '394.4', 0, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'FERM', 'Federación de Espeleología de la Región de Murcia', NULL, NULL, '2018-02-05 17:21:52', '2022-12-11 10:17:46', 0),
+('ESGPT00035', '381.12', NULL, 'ES', 'ES.31', NULL, NULL, NULL, NULL, NULL, NULL, '393.10', '394.2', 0, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'CARM', 'Comunidad Autónoma de la Región de Murcia', NULL, NULL, '2022-12-19 10:12:20', '2022-12-19 10:12:20', 1);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
