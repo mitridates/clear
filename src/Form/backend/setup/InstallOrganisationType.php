@@ -25,10 +25,10 @@ class InstallOrganisationType extends AbstractType
     {
         $factory = $builder->getFormFactory();
 
-        $countrySubscriber = new AddCountryFieldSubscriber($factory, ['options'=>['required' => true,'attr'=>['code_id'=>376]]]);
+        $countrySubscriber = new AddCountryFieldSubscriber($factory, ['options'=>['required' => true,'attr'=>['field_id'=>376]]]);
         $builder->addEventSubscriber($countrySubscriber);
 
-        $admin1Subscriber = new AddAdmin1FieldSubscriber($factory, $countrySubscriber->getCountry(), ['options'=>['attr'=>['code_id'=>377]]]);
+        $admin1Subscriber = new AddAdmin1FieldSubscriber($factory, $countrySubscriber->getCountry(), ['options'=>['attr'=>['field_id'=>377]]]);
         $builder->addEventSubscriber($admin1Subscriber);
 
         $admin2Subscriber = new AddAdmin2FieldSubscriber($factory, $admin1Subscriber->getCountry(), $admin1Subscriber->getAdmin1());
@@ -40,7 +40,7 @@ class InstallOrganisationType extends AbstractType
         foreach(explode(',', 'code:178,initials:390,name:391') as $el)
         {
             $field = explode(':', $el);
-            $arr = ['attr'=>['code_id'=>$field[1]]];
+            $arr = ['attr'=>['field_id'=>$field[1]]];
             $builder->add($field[0], NULL, $arr);
         }
 
@@ -51,7 +51,7 @@ class InstallOrganisationType extends AbstractType
             $builder->add(
                 $field[0], EntityType::class, array(
                     'class'=>Fieldvaluecode::class,
-                    'attr'=>array('code_id'=>$field[1]),
+                    'attr'=>array('field_id'=>$field[1]),
                     'required' => false,//show empty option
                     'choice_label' => 'value',
                     'choice_value'=>'id',
@@ -65,13 +65,13 @@ class InstallOrganisationType extends AbstractType
             );
         }
 
-        $builder->add('code', NULL, array('attr'=>array('code_id'=>391),'required' => true) )
+        $builder->add('code', NULL, array('attr'=>array('field_id'=>391),'required' => true) )
             ->add('code', NULL, array(
                 'attr'=>array(
                     'maxlength'=> 3,
                     'pattern'=>'[A-Z]{3}',
                     'title'=>'ABC',
-                    'code_id'=>178
+                    'field_id'=>178
                 ),'required' => true) );
 
         $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event){

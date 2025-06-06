@@ -91,7 +91,7 @@ class FieldDefinitionManager extends AbstractManager
     /**
      * @return array|null [name][abbreviation]
      */
-    public function getFielddefinitionNameById(int $id, ?string $locale): ?array
+    public function getFieldDefinitionById(int $id, ?string $locale): ?array
     {
         $qb= $this->repo
             ->createQueryBuilder('q')

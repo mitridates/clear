@@ -10,7 +10,7 @@ class MapPublicationtextType extends AbstractType implements OneToOneFormTypeInt
     /** @inheritDoc */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('publicationtext', null, ['attr'=>['code_id'=>219], 'required'=>true]);
+        $builder->add('publicationtext', null, ['attr'=>['field_id'=>219], 'required'=>true]);
     }
 
     /** @inheritDoc */

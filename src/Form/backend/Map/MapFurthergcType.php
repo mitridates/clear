@@ -13,11 +13,11 @@ class MapFurthergcType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $fields= [
-            ['northlatitude', NumberType::class, ['attr'=>['code_id'=>397]]],
-            ['southlatitude', NumberType::class, ['attr'=>['code_id'=>398]]],
-            ['eastlongitude', NumberType::class, ['attr'=>['code_id'=>399]]],
-            ['westlongitude', NumberType::class, ['attr'=>['code_id'=>400]]],
-            ['position', NumberType::class, ['attr'=>['code_id'=>10001]]],
+            ['northlatitude', NumberType::class, ['attr'=>['field_id'=>397]]],
+            ['southlatitude', NumberType::class, ['attr'=>['field_id'=>398]]],
+            ['eastlongitude', NumberType::class, ['attr'=>['field_id'=>399]]],
+            ['westlongitude', NumberType::class, ['attr'=>['field_id'=>400]]],
+            ['position', NumberType::class, ['attr'=>['field_id'=>10001]]],
         ];
         foreach ($fields as $field) {
             call_user_func_array([$builder, 'add'], $field);

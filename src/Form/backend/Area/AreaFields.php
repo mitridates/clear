@@ -15,22 +15,22 @@ public function __construct()
 {
     $this->fields= [
         //textType
-        ['name', null, ['label'=>'Area name','required' => true,'attr'=>['code_id'=>80]]],
-        ['code', null, ['label'=>'','required' => true,'attr'=>['code_id'=>81]]],
-        ['comment', null, ['label'=>'','attr'=>['code_id'=>621]]],
-        ['mapsheet', null, ['label'=>'','attr'=>['code_id'=>618]]]
+        ['name', null, ['label'=>'Area name','required' => true,'attr'=>['field_id'=>80]]],
+        ['code', null, ['label'=>'','required' => true,'attr'=>['field_id'=>81]]],
+        ['comment', null, ['label'=>'','attr'=>['field_id'=>621]]],
+        ['mapsheet', null, ['label'=>'','attr'=>['field_id'=>618]]]
     ];
 
     $this->subscribers= [
         [ 'country', AddCountryFieldSubscriber::class, ['options'=>[
             'label'=>'',
             'required' => true,
-            'attr'=>['code_id'=>224]
+            'attr'=>['field_id'=>224]
         ]]],
         ['admin1',AddAdmin1FieldSubscriber::class, ['options'=>[
             'label'=>'',
             'required' => true,
-            'attr'=>['code_id'=>225]
+            'attr'=>['field_id'=>225]
         ]]]
     ];
 }

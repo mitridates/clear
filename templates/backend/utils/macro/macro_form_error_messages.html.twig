@@ -28,7 +28,7 @@
         {%- if child.vars.errors is defined -%}
             {%- for error in child.vars.errors -%}
                 {#intentamos traducir#}
-                {%-set name = (child.vars.attr.code_id is defined)? get_fielddefinition_name(child.vars.attr.code_id, app.request.locale) : child.vars.label -%}
+                {%-set name = (child.vars.attr.field_id is defined)? get_field_definition_json_by_id(child.vars.attr.field_id, app.request.locale) : child.vars.label -%}
 <ul class="list-unstyled pt-1">
     <li># {{ name|default(child.vars.name)|raw }}: {{ error.message|raw }} {#{child.vars.value}#}</li>
 </ul>

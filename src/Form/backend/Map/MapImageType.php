@@ -22,7 +22,7 @@ class MapImageType extends AbstractType implements ManyToOneFormTypeInterface
                 'mapped' => false,
                 'required'=> true,
                 'attr'=>[
-                    'code_id' => 589,
+                    'field_id' => 589,
                     'accept'=> '.jpg, .gif, .png, .pdf, .svc, .tiff, image/*, application/pdf',
                     'data-max-size'=>'8MI'//check bites max size in javascript
                 ],
@@ -47,7 +47,7 @@ class MapImageType extends AbstractType implements ManyToOneFormTypeInterface
                 'mapped' => false,
                 'required'=> false,
                 'attr'=>[
-                    'code_id' => 5891,
+                    'field_id' => 5891,
                     'accept'=> '.jpg, .gif, .png, image/jpeg, image/gif, image/png',
                     'data-max-size'=>'10000 '//check bites max size in javascript
                 ],
@@ -64,10 +64,10 @@ class MapImageType extends AbstractType implements ManyToOneFormTypeInterface
                 ]
             ]
             ],
-            ['reference', TextareaType::class, ['attr'=>['code_id'=>3072], 'required'=>false]],
-            ['comment', null, ['attr'=>['code_id'=>597]]],
-            ['citation', null, ['attr'=>['code_id'=>3071]]],
-            ['name', null, ['attr'=>['code_id'=>10108]]],
+            ['reference', TextareaType::class, ['attr'=>['field_id'=>3072], 'required'=>false]],
+            ['comment', null, ['attr'=>['field_id'=>597]]],
+            ['citation', null, ['attr'=>['field_id'=>3071]]],
+            ['name', null, ['attr'=>['field_id'=>10108]]],
         ];
 
         foreach ($fields as $field){

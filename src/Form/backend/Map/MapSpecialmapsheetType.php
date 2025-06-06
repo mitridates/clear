@@ -10,7 +10,7 @@ class MapSpecialmapsheetType extends AbstractType implements ManyToOneFormTypeIn
     /** @inheritDoc */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('name', null, ['attr'=>['code_id'=>558], 'required'=>true]);
+        $builder->add('name', null, ['attr'=>['field_id'=>558], 'required'=>true]);
     }
 
     /** @inheritDoc */

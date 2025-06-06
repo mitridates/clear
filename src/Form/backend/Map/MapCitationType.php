@@ -15,7 +15,7 @@ class MapCitationType extends AbstractType implements OneToManyFormTypeInterface
         $factory = $builder->getFormFactory();
 
         $builder->addEventSubscriber(new AddCitationFieldSubscriber($factory, array(
-            'options'=>['attr'=>['code_id'=>335], 'required'=>true]
+            'options'=>['attr'=>['field_id'=>335], 'required'=>true]
         )));
 
          
@@ -24,7 +24,7 @@ class MapCitationType extends AbstractType implements OneToManyFormTypeInterface
         foreach(explode(',', $fields) as $el)
         {
             $field = explode(':', $el);
-            $arr = ['attr'=>['code_id'=>$field[0]]];
+            $arr = ['attr'=>['field_id'=>$field[0]]];
             $builder->add($field[1], NULL, $arr);
         }
     }

@@ -21,6 +21,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 trait BackendControllerTrait
 {
 
+
+    private function _getBackendParameters(): Arraypath
+    {
+        return new Arraypath($this->getParameter('cave'));
+    }
     public function _createRequest(FormInterface $form, EntityManagerInterface $em, AbstractController $controller,string $routeEdit, string $viewNew, array $twigArgs=[]): Response
     {
 
@@ -39,7 +44,19 @@ trait BackendControllerTrait
         $twigArgs['form']=$form->createView();
         return $controller->render($viewNew, $twigArgs);
     }
-    public function _updateRequest(Request $request, Object $entity, AbstractController $controller, FormInterface $form, EntityManagerInterface $em, string $view, array $twigArgs=[]): Response|JsonResponse
+
+    /**
+     * @param Request $request
+     * @param Object $entity
+     * @param AbstractController $controller
+     * @param FormInterface $form
+     * @param EntityManagerInterface $em
+     * @param string $view
+     * @param array $twigArgs
+     * @param array $callBack
+     * @return Response
+     */
+    public function _updateRequest(Request $request, Object $entity, AbstractController $controller, FormInterface $form, EntityManagerInterface $em, string $view, array $twigArgs=[], ?array $callBack=[]): Response
     {
 
         if (!$request->isXmlHttpRequest()){
@@ -52,6 +69,7 @@ trait BackendControllerTrait
 
         try{
             $em->persist($form->getData());
+            if(isset($callBack['onFlush'])) $callBack['onFlush']($em, $form, $entity);
             $em->flush();
             $em->clear();
             return new JsonResponse(null , 200);
@@ -70,9 +88,9 @@ trait BackendControllerTrait
         array $options=[]
     ): JsonResponse
     {
-        if(!$request->isXmlHttpRequest()) {
-            throw new BadRequestHttpException('Not XmlHttpRequest');
-        }
+     
+        $this->onlyXmlHttpRequest($request);
+        
         $caveParameters= new Arraypath($bag->get('cave'));
         $listOptions= [
             'page'      => $request->get('page', 1),
@@ -119,9 +137,8 @@ trait BackendControllerTrait
 
     public function _deleteXmlHttpRequest(Request $request, Object $entity, EntityManagerInterface $em, AbstractController $controller, TranslatorInterface $translator, string|array $routeError, string|array $routeSuccess, ?string $tokenId): JsonResponse
     {
-        if(!$request->isXmlHttpRequest()) {
-            throw new BadRequestHttpException('Not XmlHttpRequest');
-        }
+        $this->onlyXmlHttpRequest($request);
+        
         if ($controller->isCsrfTokenValid($tokenId?: 'delete'.$entity->getId(), $request->get('_token')))
         {
             try{

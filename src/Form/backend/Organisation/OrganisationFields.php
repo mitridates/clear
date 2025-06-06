@@ -23,30 +23,30 @@ class OrganisationFields extends AbstractFormFields
         $this->fields=
             [
                 //textType
-                ['code', null, ['label'=>'Organisation code','attr'=>['code_id'=>178]]],
-                ['defunct', null, ['label'=>'Organisation defunct Y/N','attr'=>['code_id'=>382]]],
-                ['defunctyear', null, ['label'=>'Final year if defunct','attr'=>['code_id'=>383]]],
-                ['postcode', null, ['label'=>'Postcode','attr'=>['code_id'=>378]]],
-                ['postcodefist', null, ['label'=>'Postcode first Y/N','attr'=>['code_id'=>379]]],
-                ['addressline0', null, ['label'=>'Organisation address line','attr'=>['code_id'=>385]]],
-                ['addressline1', null, ['label'=>'Address line 1','attr'=>['code_id'=>386]]],
-                ['addressline2', null, ['label'=>'Address line 2','attr'=>['code_id'=>387]]],
-                ['addressline3', null, ['label'=>'Address line 3','attr'=>['code_id'=>388]]],
-                ['addressline4', null, ['label'=>'Address line 4','attr'=>['code_id'=>389]]],
-                ['initials', null, ['label'=>'Organisation initials','attr'=>['code_id'=>390]]],
-                ['name', null, ['label'=>'Organisation name','attr'=>['code_id'=>391]]],
-                ['email', null, ['label'=>'Org contact email address','attr'=>['code_id'=>614]]],
-                ['webpage', null, ['label'=>'Org web page address','attr'=>['code_id'=>615]]],
+                ['code', null, ['label'=>'Organisation code','attr'=>['field_id'=>178]]],
+                ['defunct', null, ['label'=>'Organisation defunct Y/N','attr'=>['field_id'=>382]]],
+                ['defunctyear', null, ['label'=>'Final year if defunct','attr'=>['field_id'=>383]]],
+                ['postcode', null, ['label'=>'Postcode','attr'=>['field_id'=>378]]],
+                ['postcodefist', null, ['label'=>'Postcode first Y/N','attr'=>['field_id'=>379]]],
+                ['addressline0', null, ['label'=>'Organisation address line','attr'=>['field_id'=>385]]],
+                ['addressline1', null, ['label'=>'Address line 1','attr'=>['field_id'=>386]]],
+                ['addressline2', null, ['label'=>'Address line 2','attr'=>['field_id'=>387]]],
+                ['addressline3', null, ['label'=>'Address line 3','attr'=>['field_id'=>388]]],
+                ['addressline4', null, ['label'=>'Address line 4','attr'=>['field_id'=>389]]],
+                ['initials', null, ['label'=>'Organisation initials','attr'=>['field_id'=>390]]],
+                ['name', null, ['label'=>'Organisation name','attr'=>['field_id'=>391]]],
+                ['email', null, ['label'=>'Org contact email address','attr'=>['field_id'=>614]]],
+                ['webpage', null, ['label'=>'Org web page address','attr'=>['field_id'=>615]]],
                 //checkbox
                 ['isgenerator', CheckboxType::class, [
                     'label'=>'',
                     'required' => false,//default false
-                    'attr'=>['code_id'=>10002]]
+                    'attr'=>['field_id'=>10002]]
                 ],
 //                EntityType
                 ['type', EntityType::class, [
                 'class'=>Fieldvaluecode::class,
-                'attr'=>['code_id'=>381],
+                'attr'=>['field_id'=>381],
                 'label'=>'Organisation type',
                 'required' => false,//show empty option
                 'choice_label' => 'value',
@@ -61,7 +61,7 @@ class OrganisationFields extends AbstractFormFields
             ]],
         ['coverage', EntityType::class, [
             'class'=>Fieldvaluecode::class,
-            'attr'=>['code_id'=>393],
+            'attr'=>['field_id'=>393],
             'label'=>'Organisation coverage',
             'required' => false,//show empty option
             'choice_label' => 'value',
@@ -76,7 +76,7 @@ class OrganisationFields extends AbstractFormFields
         ]],
         ['grouping', EntityType::class, [
             'class'=>Fieldvaluecode::class,
-            'attr'=>['code_id'=>394],
+            'attr'=>['field_id'=>394],
             'label'=>'Organisation grouping',
             'required' => false,//show empty option
             'choice_label' => 'value',
@@ -95,11 +95,11 @@ class OrganisationFields extends AbstractFormFields
             [ 'country', AddCountryFieldSubscriber::class, ['options'=>[
                 'label'=>'Organisation country code',
                 'required' => true,
-                'attr'=>['code_id'=>376]
+                'attr'=>['field_id'=>376]
             ]]],
             ['admin1',AddAdmin1FieldSubscriber::class, ['options'=>[
                 'label'=>'State code',
-                'attr'=>['code_id'=>377]
+                'attr'=>['field_id'=>377]
             ]]],
             ['admin2',AddAdmin2FieldSubscriber::class],
             ['admin3',AddAdmin3FieldSubscriber::class],
@@ -107,14 +107,14 @@ class OrganisationFields extends AbstractFormFields
                 'name'=>'countryaddress',
                 'options'=>[
                     'label'=>'Address country code',
-                    'attr'=>['code_id'=>395]
+                    'attr'=>['field_id'=>395]
                 ]
             ]],
             ['admin1address',AddAdmin1FieldSubscriber::class, [
                 'name'=>'admin1address',
                 'options'=>[
                     'label'=>'State code',
-                    'attr'=>['code_id'=>377]
+                    'attr'=>['field_id'=>377]
                 ]
             ]],
             ['admin2address',AddAdmin2FieldSubscriber::class, [
@@ -127,7 +127,7 @@ class OrganisationFields extends AbstractFormFields
                 ['name'=>'currentidifdefunct',
                     'options'=>[
                         'label'=>'Current org ID if defunct',
-                        'attr'=>['code_id'=>384]]
+                        'attr'=>['field_id'=>384]]
                 ]
             ]
         ];

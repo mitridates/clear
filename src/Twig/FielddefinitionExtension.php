@@ -8,7 +8,7 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 /**
- * Fielddefinition in twig
+ * Fielddefinition twig extension
  *
  * @author mitridates
  */
@@ -23,23 +23,33 @@ class FielddefinitionExtension extends AbstractExtension
     {}
 
     /**
-     * Get Fielddefinition by code
+     * Get Fielddefinition in JSON:API spec format by code and locale
+     *
      * @param int $code
-     * @param null|string $locale
-     * @param bool $abbr Get Abbreviated
-     * @return string|null
+     * @param ?string $locale
+     * @return ?array
      * @throws InvalidArgumentException
      */
-    public function getFieldDefinitionName(int $code, ?string $locale, bool $abbr=false): ?string
+    public function getFieldDefinitionJsonByCode(int $code, ?string $locale = null): ?array
     {
-        $fd_json = $this->cache->getFieldDefinition($code);
-        if(!$fd_json){
-            $fd = $this->fdManager->repo->find($code);
-            if(!$fd) return null;
-            $fd_json= $this->cache->warmup($this->fdManager, $fd, $this->urlGenerator)->getFieldDefinition($code, $locale);
+        // Intenta obtener la definición desde la caché
+        $fdJson = $this->cache->getFieldDefinition($code);
+
+        if ($fdJson) {
+            return $fdJson;
         }
-        $attr= $fd_json['data']['attributes'];
-        return ($abbr && $attr['abbreviation'])? $attr['abbreviation']:$attr['name'];
+
+        // Si no está en la caché, intenta buscarlo en la base de datos
+        $fd = $this->fdManager->repo->find($code);
+        if (!$fd) {
+            return null;
+        }
+
+        // Genera y guarda la definición en la caché
+        $this->cache->warmup($this->fdManager, $fd, $this->urlGenerator);
+
+        // Recupera la definición ya con el posible locale si aplica
+        return $this->cache->getFieldDefinition($code, $locale);
     }
 
     /**
@@ -48,8 +58,7 @@ class FielddefinitionExtension extends AbstractExtension
     public function getFunctions() : array
     {
         return array(
-            new TwigFunction('get_fielddefinition_name',array($this, 'getFieldDefinitionName')),
-//            new TwigFunction('get_valuecodes',array($this, 'getValuecodes'))
+            new TwigFunction('get_field_definition_json_by_id',array($this, 'getFieldDefinitionJsonByCode')),
         );
     }
 }

@@ -6,8 +6,13 @@
         {%include '@object/bttn/href_new.html.twig' with {'href': path('admin_system_parameter_new')} only%}
 {% endif %}
 {% if getPage('name') == 'edit' %}
-        {% include '@object/delete/delete_form.html.twig' with {
-            action: path('admin_system_parameter_delete', {'id': systemParameter.id}),
-            token: csrf_token('delete' ~ systemParameter.id)
-        } %}
+
+{#        {% include '@object/delete/delete_form.html.twig' with {#}
+{#            action: path('admin_system_parameter_delete', {'id': systemParameter.id}),#}
+{#            token: csrf_token('delete' ~ systemParameter.id)#}
+{#        } %}#}
+    {%include '@object/bttn/href_delete.html.twig' with {
+        'href': path('admin_system_parameter_delete', {'id': systemParameter.id, '_token': csrf_token('delete' ~ systemParameter.id)}),
+        attr:{onclick:"return confirm('Confirm to delete');"}
+    } only%}
 {% endif %}

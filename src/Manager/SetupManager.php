@@ -11,6 +11,7 @@ use App\Entity\Geonames\Country;
 use App\Entity\Organisation;
 use App\Entity\SystemParameter;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\NonUniqueResultException;
 
 class SetupManager extends AbstractManager
 {
@@ -111,6 +112,9 @@ class SetupManager extends AbstractManager
     }
 
 
+    /**
+     * @throws NonUniqueResultException
+     */
     public function getSystemParameter(): array
     {
         return $this->em->createQueryBuilder()

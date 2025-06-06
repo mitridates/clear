@@ -19,33 +19,33 @@ class SystemParameterFields extends AbstractFormFields
     {
         $this->fields=[
             //textType
-            ['name', null, ['label'=>'System parameter name','attr'=>['code_id'=>0]]],
-            ['active', null, ['label'=>'Active','attr'=>['code_id'=>0]]],
-            ['altitudeprecision', null, ['label'=>'Coarse altitude precision','attr'=>['code_id'=>526]]],
-            ['altitudeunit', null, ['label'=>'','attr'=>['code_id'=>0]]],
-            ['country', null, ['label'=>'','attr'=>['code_id'=>0]]],
-            ['organisationsite', null, ['label'=>'','attr'=>['code_id'=>0]]],
-            ['organisationdbm', null, ['label'=>'','attr'=>['code_id'=>0]]],
-            ['geodeticdatum', null, ['label'=>'Geodetic Datum used','attr'=>['code_id'=>288]]],
-            ['mapgrid', null, ['label'=>'Map Grid used','attr'=>['code_id'=>289]]],
-            ['heightdatum', null, ['label'=>'Height Datum used','attr'=>['code_id'=>516]]],
-            ['mapserie', null, ['label'=>'Coarse - map series','attr'=>['code_id'=>412]]],
-            ['refunits', null, ['label'=>'','attr'=>['code_id'=>0]]],
-            ['grrefqualifier', null, ['label'=>'Coarse - gr.ref qualifier','attr'=>['code_id'=>413]]],
-            ['geogprecision', null, ['label'=>'Coarse - geogr. precision','attr'=>['code_id'=>294]]],
-            ['grefprecision', null, ['label'=>'Coarse - gr.ref precision','attr'=>['code_id'=>295]]],
-            ['landunit', null, ['label'=>'Coarse - land unit name','attr'=>['code_id'=>440]]],
-            ['softwarelevel', null, ['label'=>'Software upgrade level','attr'=>['code_id'=>529]]],
-            ['mapdir', null, ['label'=>'Map images directory path','attr'=>['code_id'=>596]]],
-            ['topodir', null, ['label'=>'','attr'=>['code_id'=>13079]]],
-            ['transcodes', null, ['label'=>'Code translations Y/N','attr'=>['code_id'=>291]]],
-            ['version', null, ['label'=>'Program version number','attr'=>['code_id'=>539]]],
+            ['name', null, ['label'=>'System parameter name','attr'=>['field_id'=>0]]],
+            ['active', null, ['label'=>'Active','attr'=>['field_id'=>0]]],
+            ['altitudeprecision', null, ['label'=>'Coarse altitude precision','attr'=>['field_id'=>526]]],
+            ['altitudeunit', null, ['label'=>'','attr'=>['field_id'=>0]]],
+            ['country', null, ['label'=>'','attr'=>['field_id'=>0]]],
+            ['organisationsite', null, ['label'=>'','attr'=>['field_id'=>0]]],
+            ['organisationdbm', null, ['label'=>'','attr'=>['field_id'=>0]]],
+            ['geodeticdatum', null, ['label'=>'Geodetic Datum used','attr'=>['field_id'=>288]]],
+            ['mapgrid', null, ['label'=>'Map Grid used','attr'=>['field_id'=>289]]],
+            ['heightdatum', null, ['label'=>'Height Datum used','attr'=>['field_id'=>516]]],
+            ['mapserie', null, ['label'=>'Coarse - map series','attr'=>['field_id'=>412]]],
+            ['refunits', null, ['label'=>'','attr'=>['field_id'=>0]]],
+            ['grrefqualifier', null, ['label'=>'Coarse - gr.ref qualifier','attr'=>['field_id'=>413]]],
+            ['geogprecision', null, ['label'=>'Coarse - geogr. precision','attr'=>['field_id'=>294]]],
+            ['grefprecision', null, ['label'=>'Coarse - gr.ref precision','attr'=>['field_id'=>295]]],
+            ['landunit', null, ['label'=>'Coarse - land unit name','attr'=>['field_id'=>440]]],
+            ['softwarelevel', null, ['label'=>'Software upgrade level','attr'=>['field_id'=>529]]],
+            ['mapdir', null, ['label'=>'Map images directory path','attr'=>['field_id'=>596]]],
+            ['topodir', null, ['label'=>'','attr'=>['field_id'=>13079]]],
+            ['transcodes', null, ['label'=>'Code translations Y/N','attr'=>['field_id'=>291]]],
+            ['version', null, ['label'=>'Program version number','attr'=>['field_id'=>539]]],
             //choiceType
-            ['language', choiceType::class, ['choices'=> array_flip($options['locales']), 'label'=>'','attr'=>['code_id'=>158]]],
+            ['language', choiceType::class, ['choices'=> array_flip($options['locales']), 'label'=>'','attr'=>['field_id'=>158]]],
             //EntityType
             ['refunits', EntityType::class, [
                 'class'=>Fieldvaluecode::class,
-                'attr'=>['code_id'=>296],
+                'attr'=>['field_id'=>296],
                 'label'=>'Coarse - grid ref units',
                 'required' => false,//show empty option
                 'choice_label' => 'value',
@@ -60,7 +60,7 @@ class SystemParameterFields extends AbstractFormFields
             ]],
             ['altitudeunit', EntityType::class, [
                 'class'=>Fieldvaluecode::class,
-                'attr'=>['code_id'=>446],
+                'attr'=>['field_id'=>446],
                 'label'=>'Coarse - altitude units',
                 'required' => false,//show empty option
                 'choice_label' => 'value',
@@ -83,7 +83,7 @@ class SystemParameterFields extends AbstractFormFields
                 [
                     'options'=>[
                         'required' => true,
-                        'attr'=>['code_id'=>156]]
+                        'attr'=>['field_id'=>156]]
                 ]
             ],
             [
@@ -94,7 +94,7 @@ class SystemParameterFields extends AbstractFormFields
                     'options'=>[
                         'label'=>'Database org',
                         'required' => true,
-                        'attr'=>['code_id'=>182]]
+                        'attr'=>['field_id'=>182]]
                 ]
             ],
             [
@@ -105,7 +105,7 @@ class SystemParameterFields extends AbstractFormFields
                     'getMethod'=>'getOrganisationsite',
                     'options'=>[
                         'label'=>'Site organisation',
-                        'attr'=>['code_id'=>157]]
+                        'attr'=>['field_id'=>157]]
                 ]
             ]
         ];

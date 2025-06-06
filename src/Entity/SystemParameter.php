@@ -314,7 +314,10 @@ class SystemParameter
     {
         return $this->geogprecision;
     }
-
+    /**
+     * Decimal fields cannot be type-hinted as float
+     * @link https://github.com/symfony/symfony/issues/32124
+     */
     public function setGeogprecision(?float $geogprecision): SystemParameter
     {
         $this->geogprecision = $geogprecision;

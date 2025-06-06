@@ -16,11 +16,11 @@ class MapLinkType extends AbstractType implements ManyToOneFormTypeInterface
         $factory = $builder->getFormFactory();
 
         $builder->addEventSubscriber(new AddLinkFieldSubscriber($factory, array(
-            'options'=>['attr'=>['code_id'=>587]]
+            'options'=>['attr'=>['field_id'=>587]]
         )));
 
         $builder->add('comment', NULL);
-        $builder->add('position', NULL, ['attr'=>['code_id'=>10001]]);
+        $builder->add('position', NULL, ['attr'=>['field_id'=>10001]]);
     }
 
         /** @inheritDoc */
