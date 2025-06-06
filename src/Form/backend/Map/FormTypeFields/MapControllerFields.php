@@ -29,16 +29,16 @@ class MapControllerFields extends AbstractFormFields
     {
 
         $this->fields= [
-            ['comment', null, ['attr'=>['code_id'=>408]]],
-            ['controllerifnoid', null, ['attr'=>['code_id'=>210]]],
+            ['comment', null, ['attr'=>['field_id'=>408]]],
+            ['controllerifnoid', null, ['attr'=>['field_id'=>210]]],
         ];
 
         $this->subscribers= [
             ['organisation',AddOrganisationFieldSubscriber::class, [
-                'options'=>['attr'=>['code_id'=>406]]
+                'options'=>['attr'=>['field_id'=>406]]
             ]],
             ['person',AddPersonFieldSubscriber::class, [
-                'options'=>['attr'=>['code_id'=>407]]
+                'options'=>['attr'=>['field_id'=>407]]
             ]]
         ];
     }

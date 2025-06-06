@@ -1,7 +1,8 @@
 {#
     System parameter form render new/edit
-    @var FormView form
 #}
+    {{ form_start(form) }}
+
     {% set md = {row_attr:{class:'col-md'}} %}
     {% set mdcheck = {row_attr:{class:'col-md mt-checkbox'}} %}
 
@@ -54,3 +55,8 @@
     {{ form_row(form.mapdir,md ) }}
     {{ form_row(form.topodir, md) }}
 </div>
+
+<div class="form-row d-flex justify-content-center mt-2">
+    {% include '@object/bttn/bttn_save.html.twig' with {'class': 'js-submit'}%}
+</div>
+{{ form_end(form) }}

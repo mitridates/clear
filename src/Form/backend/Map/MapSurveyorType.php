@@ -20,11 +20,11 @@ class MapSurveyorType extends AbstractType implements OneToOneFormTypeInterface
         $factory = $builder->getFormFactory();
         $builder->addEventSubscriber(new AddPersonFieldSubscriber($factory, array(
             'name'=>'surveyorid',
-            'options'=>['attr'=>['code_id'=>586]]
+            'options'=>['attr'=>['field_id'=>586]]
         )));
 
-        $builder->add('surveyor', NULL, ['attr'=>['code_id'=>584]])
-                ->add('position', NULL, ['attr'=>['code_id'=>10001]]);
+        $builder->add('surveyor', NULL, ['attr'=>['field_id'=>584]])
+                ->add('position', NULL, ['attr'=>['field_id'=>10001]]);
     }
 
     /**

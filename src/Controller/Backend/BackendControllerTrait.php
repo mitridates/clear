@@ -21,6 +21,10 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 trait BackendControllerTrait
 {
 
+    private function _getBackendParameters(): Arraypath
+    {
+        return new Arraypath($this->getParameter('cave'));
+    }
     public function _createRequest(FormInterface $form, EntityManagerInterface $em, AbstractController $controller,string $routeEdit, string $viewNew, array $twigArgs=[]): Response
     {
 
@@ -39,7 +43,19 @@ trait BackendControllerTrait
         $twigArgs['form']=$form->createView();
         return $controller->render($viewNew, $twigArgs);
     }
-    public function _updateRequest(Request $request, Object $entity, AbstractController $controller, FormInterface $form, EntityManagerInterface $em, string $view, array $twigArgs=[]): Response|JsonResponse
+
+    /**
+     * @param Request $request
+     * @param Object $entity
+     * @param AbstractController $controller
+     * @param FormInterface $form
+     * @param EntityManagerInterface $em
+     * @param string $view
+     * @param array $twigArgs
+     * @param array $callBack
+     * @return Response
+     */
+    public function _updateRequest(Request $request, Object $entity, AbstractController $controller, FormInterface $form, EntityManagerInterface $em, string $view, array $twigArgs=[], ?array $callBack=[]): Response
     {
 
         if (!$request->isXmlHttpRequest()){
@@ -53,6 +69,11 @@ trait BackendControllerTrait
         try{
             $em->persist($form->getData());
             $em->flush();
+            $response= new JsonResponse(null , 200);
+
+            if(count($callBack) && isset($callBack['onFlush']) && is_callable($callBack['onFlush'] )){
+                $callBack['onFlush']($em, $form, $entity, $response);
+            }
             $em->clear();
             return new JsonResponse(null , 200);
         }catch (\Exception $e){

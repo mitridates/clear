@@ -20,12 +20,12 @@ class MapCaveType extends AbstractType implements OneToManyFormTypeInterface
             'options'=>array(
                 'required'=>true,
                 'attr'=>array(
-                    'code_id'=>601
+                    'field_id'=>601
                 )
             )
         ));
         $builder->addEventSubscriber($caveSubscriber);
-        $builder->add('position', NULL, ['attr'=>['code_id'=>10001]]);
+        $builder->add('position', NULL, ['attr'=>['field_id'=>10001]]);
     }
 
     /**

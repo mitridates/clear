@@ -258,8 +258,8 @@
         if(name==='management')
         {
             let
-                clasifier= form.querySelector('[code_id="44"]'),
-                category= form.querySelector('[code_id="45"]')
+                clasifier= form.querySelector('[field_id="44"]'),
+                category= form.querySelector('[field_id="45"]')
             ;
             JSimas('input[name=management-radio]', form).toggleRadioByDataset();
 

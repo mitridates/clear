@@ -11,7 +11,7 @@ class MapCommentType extends AbstractType implements OneToOneFormTypeInterface
     /** @inheritDoc */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('comment', TextareaType::Class, ['attr'=>['code_id'=>579], 'required'=>true]);
+        $builder->add('comment', TextareaType::Class, ['attr'=>['field_id'=>579], 'required'=>true]);
     }
 
     /** @inheritDoc */

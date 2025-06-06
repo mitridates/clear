@@ -21,11 +21,11 @@ class MapDrafterTypeToOne extends AbstractType implements ManyToOneFormTypeInter
 
         $builder->addEventSubscriber(new AddPersonFieldSubscriber($factory, array(
             'name'=>'drafterid',
-            'options'=>['attr'=>['code_id'=>587]]
+            'options'=>['attr'=>['field_id'=>587]]
         )));
 
-        $builder->add('drafter', NULL, ['attr'=>['code_id'=>585]])
-                ->add('position', NULL, ['attr'=>['code_id'=>10001]]);
+        $builder->add('drafter', NULL, ['attr'=>['field_id'=>585]])
+                ->add('position', NULL, ['attr'=>['field_id'=>10001]]);
     }
 
     /**

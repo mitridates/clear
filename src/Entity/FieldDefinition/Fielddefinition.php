@@ -126,9 +126,4 @@ class Fielddefinition
     {
         return $this->translations;
     }
-
-    public function getCodes(): Collection
-    {
-        return $this->codes;
-    }
 }

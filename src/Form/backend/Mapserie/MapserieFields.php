@@ -19,18 +19,18 @@ class MapserieFields extends AbstractFormFields
          ['name', null, [
              'label'=>'',
              'required' => true,
-             'attr'=>['code_id'=>279]]
+             'attr'=>['field_id'=>279]]
          ],
          ['comment', null, [
              'label'=>'',
-             'attr'=>['code_id'=>10374]]
+             'attr'=>['field_id'=>10374]]
          ],
-         ['code', null, ['label'=>'','attr'=>['code_id'=>278]]],
-         ['abbreviation', null, ['label'=>'','attr'=>['code_id'=>372]]],
-         ['scale', null, ['label'=>'','required' => true,'attr'=>['code_id'=>373]]],
+         ['code', null, ['label'=>'','attr'=>['field_id'=>278]]],
+         ['abbreviation', null, ['label'=>'','attr'=>['field_id'=>372]]],
+         ['scale', null, ['label'=>'','required' => true,'attr'=>['field_id'=>373]]],
          ['lengthunits', EntityType::class, [
              'class'=>Fieldvaluecode::class,
-             'attr'=>['code_id'=>280],
+             'attr'=>['field_id'=>280],
              'label'=>'Length units',
              'required' => false,//show empty option
              'choice_label' => 'value',
@@ -45,7 +45,7 @@ class MapserieFields extends AbstractFormFields
          ]],
          ['maptype', EntityType::class, [
              'class'=>Fieldvaluecode::class,
-             'attr'=>['code_id'=>559],
+             'attr'=>['field_id'=>559],
              'label'=>'Organisation coverage',
              'required' => false,//show empty option
              'choice_label' => 'value',
@@ -66,7 +66,7 @@ class MapserieFields extends AbstractFormFields
                  'getMethod'=>'getPublisher',
                  'options'=>[
                      'label'=>'',
-                     'attr'=>['code_id'=>374]]
+                     'attr'=>['field_id'=>374]]
              ]
          ]
      ];

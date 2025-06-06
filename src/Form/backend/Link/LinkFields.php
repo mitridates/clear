@@ -18,17 +18,17 @@ public function __construct()
 {
     $this->fields= [
         //textType
-        ['title', null, ['attr'=>['code_id'=>1000]]],
-        ['organisationname', null, ['attr'=>['code_id'=>1002]]],
-        ['authorname', null, ['attr'=>['code_id'=>1004]]],
+        ['title', null, ['attr'=>['field_id'=>1000]]],
+        ['organisationname', null, ['attr'=>['field_id'=>1002]]],
+        ['authorname', null, ['attr'=>['field_id'=>1004]]],
         ['url', UrlType::class, [
-            'required'=>true,'attr'=>['code_id'=>1006]
+            'required'=>true,'attr'=>['field_id'=>1006]
         ]],
         ['accessed', DateType::class, [
             // renders it as a single text box
             'widget' => 'single_text',
             'required'=>false,
-            'attr'=>['code_id'=>1005]
+            'attr'=>['field_id'=>1005]
         ]]
 
     ];
@@ -36,17 +36,17 @@ public function __construct()
     $this->subscribers= [
         [ 'organisation', AddOrganisationFieldSubscriber::class, ['options'=>[
             'required' => false,
-            'attr'=>['code_id'=>1001]
+            'attr'=>['field_id'=>1001]
         ]]],
         ['author',AddPersonFieldSubscriber::class, [
             'name'=>'author',
             'getMethod'=>'getAuthor',
             'options'=>[
             'required' => false,
-            'attr'=>['code_id'=>1003]
+            'attr'=>['field_id'=>1003]
         ]]],
         ['mime', AddMimeTypeSubscriber::class, [
-            'options'=>['required' => false,'attr'=>['code_id'=>1007]]]
+            'options'=>['required' => false,'attr'=>['field_id'=>1007]]]
         ]
     ];
 }

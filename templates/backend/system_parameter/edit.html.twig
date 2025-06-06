@@ -20,15 +20,7 @@
 {% endblock %}
 
 {% block content %}
-    {{ form_start(form) }}
-
     {% include '@admin/system_parameter/system_parameter_form.html.twig' %}
-
-    <div class="form-row d-flex justify-content-center">
-        {% include '@object/bttn/bttn_save.html.twig' with {'class': 'js-submit'}%}
-    </div>
-        {{ form_end(form) }}
-
 {% endblock %}
 {% block footer_javascripts %}
 

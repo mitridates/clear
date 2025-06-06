@@ -40,7 +40,7 @@ class CitationEntityFields extends AbstractFormFields
                 'placeholder' => 'Choose country',
                 'preferred_choices' => ['ES'],
                 'required' => false,
-                'attr'=>['code_id'=>224]
+                'attr'=>['field_id'=>224]
             ]],
             ['contributor', null, ['label'=>'Contributor', 'attr'=>['class'=>'hidden']]],
             ['region', null, ['label'=>'Region']],

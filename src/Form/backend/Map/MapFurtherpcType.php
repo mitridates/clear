@@ -28,7 +28,7 @@ class MapFurtherpcType extends AbstractType implements ManyToOneFormTypeInterfac
         $area= $fields->getSubscriberData('area');
         $areaSubscriber = new AddAreaFieldSubscriber($factory, $adm['country']->getCountry(), $adm['admin1']->getAdmin1(), $area[2]);
         $builder->addEventSubscriber($areaSubscriber);
-        $builder->add('position', NULL, ['attr'=>['code_id'=>10001]]);
+        $builder->add('position', NULL, ['attr'=>['field_id'=>10001]]);
 
     }
 

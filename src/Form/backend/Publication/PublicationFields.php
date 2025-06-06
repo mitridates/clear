@@ -12,20 +12,20 @@ class PublicationFields extends AbstractFormFields
     public static function getFields(): array
     {
         return [
-            ['publicationyear', null, ['label'=>'','attr'=>['code_id'=>10308]]],
-            ['publicationyearsuffix', null, ['label'=>'','attr'=>['code_id'=>309]]],
-            ['volumenumber', null, ['label'=>'','attr'=>['code_id'=>10312]]],
-            ['issuenumber', null, ['label'=>'','attr'=>['code_id'=>10313]]],
-            ['bookpublisherandcity', null, ['label'=>'','attr'=>['code_id'=>314]]],
-            ['pagerange', null, ['label'=>'','attr'=>['code_id'=>10315]]],
-            ['authororeditor', null, ['label'=>'','attr'=>['code_id'=>10310]]],
-            ['isbn', null, ['label'=>'','attr'=>['code_id'=>608]]],
-            ['issn', null, ['label'=>'','attr'=>['code_id'=>320]]],
-            ['publicationname', null, ['label'=>'','attr'=>['code_id'=>10311]]],
-            ['legaldepositnumber', null, ['label'=>'','attr'=>['code_id'=>10608]]],
-            ['description', null, ['label'=>'','attr'=>['code_id'=>10609]]],
-            ['content', null, ['label'=>'','attr'=>['code_id'=>10610]]],
-            ['url', null, ['label'=>'','attr'=>['code_id'=>1008]]]
+            ['publicationyear', null, ['label'=>'','attr'=>['field_id'=>10308]]],
+            ['publicationyearsuffix', null, ['label'=>'','attr'=>['field_id'=>309]]],
+            ['volumenumber', null, ['label'=>'','attr'=>['field_id'=>10312]]],
+            ['issuenumber', null, ['label'=>'','attr'=>['field_id'=>10313]]],
+            ['bookpublisherandcity', null, ['label'=>'','attr'=>['field_id'=>314]]],
+            ['pagerange', null, ['label'=>'','attr'=>['field_id'=>10315]]],
+            ['authororeditor', null, ['label'=>'','attr'=>['field_id'=>10310]]],
+            ['isbn', null, ['label'=>'','attr'=>['field_id'=>608]]],
+            ['issn', null, ['label'=>'','attr'=>['field_id'=>320]]],
+            ['publicationname', null, ['label'=>'','attr'=>['field_id'=>10311]]],
+            ['legaldepositnumber', null, ['label'=>'','attr'=>['field_id'=>10608]]],
+            ['description', null, ['label'=>'','attr'=>['field_id'=>10609]]],
+            ['content', null, ['label'=>'','attr'=>['field_id'=>10610]]],
+            ['url', null, ['label'=>'','attr'=>['field_id'=>1008]]]
 
         ];
     }
@@ -37,15 +37,15 @@ class PublicationFields extends AbstractFormFields
             [ 'country', AddCountryFieldSubscriber::class, ['options'=>[
                 'label'=>'',
                 'required' => true,
-                'attr'=>['code_id'=>10319]
+                'attr'=>['field_id'=>10319]
             ]]],
             ['admin1',AddAdmin1FieldSubscriber::class, ['options'=>[
                 'label'=>'',
-                'attr'=>['code_id'=>10321]
+                'attr'=>['field_id'=>10321]
             ]]],
             ['link',AddLinkFieldSubscriber::class, ['options'=>[
                 'label'=>'',
-                'attr'=>['code_id'=>10320]
+                'attr'=>['field_id'=>10320]
             ]]]
         ];
     }
