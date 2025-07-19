@@ -9,8 +9,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class MapPartialSourceType extends AbstractType implements PartialFormTypeInterface
 {
-    const FIELDS=['sourceifnoid', 'sourcetype', 'sourcecountry','sourceorg'];
-
 
     /** @inheritDoc */
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -19,7 +17,7 @@ class MapPartialSourceType extends AbstractType implements PartialFormTypeInterf
         $mapFields= new MapFields();
         $subscribers= ['sourcecountry', 'sourceorg' ];
 
-        foreach (self::FIELDS as $name){
+        foreach (self::getFieldNames() as $name){
             if(in_array($name, $subscribers)){
                 $builder->addEventSubscriber($mapFields->getSubscriber($factory, $name));
             }else{
@@ -37,9 +35,9 @@ class MapPartialSourceType extends AbstractType implements PartialFormTypeInterf
         ));
     }
 
-    static function getFormTypeFieldNames(): array
+    static function getFieldNames(): array
     {
-        return self::FIELDS;
+        return ['sourceifnoid', 'sourcetype', 'sourcecountry','sourceorg'];
     }
 }
 

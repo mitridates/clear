@@ -7,6 +7,7 @@ use App\Utils\Json\Serializers\Geonames\Admin1Serializer;
 use App\Utils\Json\Serializers\Geonames\Admin2Serializer;
 use App\Utils\Json\Serializers\Geonames\Admin3Serializer;
 use App\Utils\Json\Serializers\Geonames\CountrySerializer;
+use App\Utils\Json\Serializers\OrganisationSerializer;
 use App\Utils\Json\Serializers\PersonSerializer;
 use App\Utils\reflection\EntityReflectionHelper;
 use App\vendor\tobscure\jsonapi\AbstractSerializer;
@@ -17,12 +18,11 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class MapSerializer extends AbstractSerializer
 {
     protected $type = 'map';
-    protected UrlGeneratorInterface $router;
     protected array $fields;
 
-    public function __construct(UrlGeneratorInterface $router= null)
+    public function __construct(protected  ?UrlGeneratorInterface $router= null)
     {
-        $this->router = $router;
+
     }
 
     /**
@@ -33,7 +33,7 @@ class MapSerializer extends AbstractSerializer
     public function getAttributes($model, array $fields = null): array
     {
         $data= EntityReflectionHelper::serializeClassProperties($model, $fields);
-        $identity= ['sourceorg', 'country', 'admin1', 'admin2', 'admin3', 'principalsurveyorid', 'principaldrafterid'];
+        $identity= ['sourcecountry','sourceorg', 'country', 'admin1', 'admin2', 'admin3', 'principalsurveyorid', 'principaldrafterid'];
         $intersect= $fields?  array_intersect($fields ,$identity) : $identity;
 
         if(!$fields || !empty($intersect))
@@ -78,6 +78,23 @@ class MapSerializer extends AbstractSerializer
          return $model->getCountry()? new Relationship(new Resource($model->getCountry(), new CountrySerializer())) : null;
     }
 
+    /**
+     * Relationship country
+     * @param Map $model
+     * @return Relationship|null
+     */
+    public function sourcecountry(Map $model): ?Relationship
+    {
+        return $model->getSourcecountry()? new Relationship(new Resource($model->getSourcecountry(), new CountrySerializer())) : null;
+    }
+
+    /**
+     * Relationship Organisation
+     */
+    public function sourceorg(Map $model): ?Relationship
+    {
+        return $model->getSourceorg()? new Relationship(new Resource($model->getSourceorg(), new OrganisationSerializer($this->router))) : null;
+    }
     /**
      * Relationship Admin1
      * @param Map $model
@@ -125,7 +142,7 @@ class MapSerializer extends AbstractSerializer
      */
     public function sourcetype(Map $model): ?Relationship
     {
-        return $model->getType()? new Relationship(new Resource($model->getType(), new FieldValueCodeSerializer())) : null;
+        return $model->getSourcetype()? new Relationship(new Resource($model->getSourcetype(), new FieldValueCodeSerializer())) : null;
     }
 
     public function getLinks($model): array

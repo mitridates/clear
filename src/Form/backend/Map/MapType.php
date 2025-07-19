@@ -14,9 +14,9 @@ class MapType extends AbstractType
         $factory = $builder->getFormFactory();
         $fields= new MapFields();
         $notIn=array_merge(
-            MapPartialSurveyType::getFormTypeFieldNames(),
-            MapPartialCoordinatesType::getFormTypeFieldNames(),
-            MapPartialSourceType::getFormTypeFieldNames()
+            MapPartialSurveyType::getFieldNames(),
+            MapPartialCoordinatesType::getFieldNames(),
+            MapPartialSourceType::getFieldNames()
         );
        foreach ($fields->getFields() as $field){
             //partial form as details

@@ -1,6 +1,6 @@
 /**
- * Immediately-Invoked Function Expression (IIFE).
- * @module DummyModule
+ * Immediately Invoked Function Expression (IIFE).
+ * @module JsonApi
  *  @return window.{JsonApiManager, JsonApiSpec}
  * @function
  * @param {object} window - Global window object.

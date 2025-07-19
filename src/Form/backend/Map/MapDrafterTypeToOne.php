@@ -1,6 +1,8 @@
 <?php
 namespace App\Form\backend\Map;
 use App\Entity\Map\Mapdrafter;
+use App\Form\backend\Map\FormTypeFields\MapControllerFields;
+use App\Form\backend\Map\FormTypeFields\MapFields;
 use App\Form\backend\Map\Model\ManyToOneFormTypeInterface;
 use App\Form\EventListener\AddPersonFieldSubscriber;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -18,7 +20,8 @@ class MapDrafterTypeToOne extends AbstractType implements ManyToOneFormTypeInter
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $factory = $builder->getFormFactory();
-
+//        $fields= new MapFields();
+//        $builder->addEventSubscriber($fields->getSubscriber($factory,'drafterid'));
         $builder->addEventSubscriber(new AddPersonFieldSubscriber($factory, array(
             'name'=>'drafterid',
             'options'=>['attr'=>['field_id'=>587]]

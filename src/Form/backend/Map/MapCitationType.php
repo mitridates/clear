@@ -1,11 +1,12 @@
 <?php
 namespace App\Form\backend\Map;
+use App\Form\backend\Map\Model\ManyToOneFormTypeInterface;
 use App\Form\EventListener\AddCitationFieldSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class MapCitationType extends AbstractType implements OneToManyFormTypeInterface
+class MapCitationType extends AbstractType implements ManyToOneFormTypeInterface
 {
     /**
      * @inheritDoc

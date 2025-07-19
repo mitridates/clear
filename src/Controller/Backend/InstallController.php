@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/admin/install')]
-class BackendInstallController extends AbstractController
+class InstallController extends AbstractController
 {
     #[Route(path: '/geonames', name: 'admin_install_geonames')]
     public function installGeonamesAction(Request $request,EntityManagerInterface $em, ParameterBagInterface $bag, DbStatusCache $cache): Response

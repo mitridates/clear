@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller\Backend;
 
+use App\Controller\BackendController;
 use App\Entity\Citation\Citation;
 use App\Form\backend\Citation\BookCarpetType;
 use App\Form\backend\Citation\BookType;
@@ -9,11 +10,12 @@ use App\Form\backend\Citation\JournalArticleType;
 use App\Form\backend\Citation\WebpageType;
 use App\Form\backend\Citation\WebsiteType;
 use App\Manager\CitationManager;
+use App\Utils\Json\JsonErrorSerializer\JsonErrorBag;
 use App\Utils\Json\Serializers\CitationSerializer;
 use App\vendor\tobscure\jsonapi\Collection;
+use App\vendor\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,9 +24,9 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route('/admin/citation')]
-class BackendCitationController extends AbstractController
+class CitationController extends BackendController
 {
-    use BackendControllerTrait;
+
     #[Route(path: '/', name: 'admin_citation_index')]
     public function indexAction(Request $request): Response
     {
@@ -32,20 +34,25 @@ class BackendCitationController extends AbstractController
         return $this->render('@admin/citation/index.html.twig',['form'   => $form->createView()]);
     }
 
+    /**
+     * @throws \Exception
+     */
     #[Route(path: '/list', name: 'admin_citation_list_json')]
-    public function listCitationsAction(Request $request, CitationManager $manager, ParameterBagInterface $bag,  UrlGeneratorInterface $urlGenerator,): Response
+    public function listJsonAction(Request $request, CitationManager $manager,  UrlGeneratorInterface $urlGenerator,): JsonResponse
     {
-        return call_user_func_array([$this, '_listJsonRequest'], [
-            'request'=>$request,
-            'getCollection'=>function ($data) use ($urlGenerator){
-                return (new Collection($data, new CitationSerializer($urlGenerator)))
-//                    ->fields(['citation'=>['id','title','subtitle','jsondata']])
-                    ;
-            },
-            'form'=>$this->createForm(CitationSearchType::class, new Citation())->handleRequest($request),
-            'bag'=>$bag,
-            'manager'=>$manager
-        ]);
+        $this->acceptOnlyXmlHttpRequest($request);
+        $listOptions= $this->getRequestListOptions($request);
+        $form= $this->createForm(CitationSearchType::class, new Citation())->handleRequest($request);
+        list($paginator, $data) = $manager->paginate($form->getData(), $listOptions);
+
+        $collection = (new Collection($data, new CitationSerializer($urlGenerator)))
+                    ->fields(['citation'=>['id','title','subtitle','jsondata']]);
+
+        $document = (new Document($collection));
+
+        $document->addMeta('pagination', $paginator->toArray());
+
+        return new JsonResponse($document , 200, ['Content-Type'=>$document::MEDIA_TYPE]);
     }
 
     #[Route(path: '/new/{type?}', name: 'admin_citation_new')]
@@ -80,29 +87,34 @@ class BackendCitationController extends AbstractController
     public function editAction(Request $request, Citation $entity, EntityManagerInterface $em): Response
     {
         $formType= $this->getFormType($entity->typeToString());
-        return call_user_func_array([$this, '_updateRequest'], [
-            'request'=>$request,
-            'entity'=>$entity,
-            'controller'=>$this,
-            'form'=> $this->createForm($formType, $entity)->handleRequest($request),
-            'em'=>$em,
-            'view'=>'@admin/citation/edit.html.twig',
-            'twigArgs'=>['type'=>$entity->typeToString()]
-        ]);
+
+        $form= $this->createForm($formType, $entity)->handleRequest($request);
+
+        if (!$request->isXmlHttpRequest()){
+            return $this->render(-'@admin/citation/edit.html.twig', ['form' => $form->createView(), 'entity' => $entity, 'type'=>$entity->typeToString()]);
+        }
+
+        if (!$form->isSubmitted() || !$form->isValid()){
+            return $this->getJsonFormErrorResponse($form);
+        }
+
+        try{
+            $em->persist($form->getData());
+            $em->flush();
+            return new JsonResponse(null , 200);
+        }catch (\Exception $e){
+            return $this->getJsonExceptionErrorResponse($e);
+        }
+
     }
 
     #[Route(path: '/citation/{id}/delete', name: 'admin_citation_delete')]
     public function deleteAction(Request $request, Citation $entity, EntityManagerInterface $em, TranslatorInterface $translator): RedirectResponse
     {
-        return call_user_func_array([$this, '_deleteRequest'], [
-            'entity'=>$entity,
-            'request'=>$request,
-            'em'=>$em,
-            'translator'=>$translator,
-            'controller'=>$this,
-            'routeError'=>['admin_citation_edit', array('id' => $entity->getId())],
-            'routeSuccess'=>'admin_citation_index'
-        ]);
+        return call_user_func_array([$this, 'CommonBackendDeleteAction'], array_merge(func_get_args(), [
+            'routeSuccess'=>'admin_citation_index',
+            'routeError'=>'admin_citation_edit',
+        ]));
     }
 
     private function getFormType(string|int $type): string
@@ -114,7 +126,7 @@ class BackendCitationController extends AbstractController
             Citation::WEBPAGE_TYPE, 'webpage' => WebpageType::class,
             Citation::WEBSITE_TYPE, 'website'=> WebsiteType::class,
             Citation::ONLINE_ARTICLE_TYPE, 'online_article', 'online-article' => WebpageType::class,
-            Citation::ONLINE_MAGAZINE_ARTICLE_TYPE, 'online_magazine_article' => false,
+           // Citation::ONLINE_MAGAZINE_ARTICLE_TYPE, 'online_magazine_article' => false,
             default => false,
         };
     }

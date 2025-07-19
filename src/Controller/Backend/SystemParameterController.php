@@ -1,22 +1,19 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
-use App\Controller\BaseController;
 use App\Entity\SystemParameter;
 use App\Form\backend\SystemParameter\SystemParameterSearchType;
 use App\Form\backend\SystemParameter\SystemParameterType;
 use App\Manager\SetupManager;
 use App\Manager\SystemParameterManager;
 use App\Services\Cache\FilesCache\DbStatusCache;
-use App\Utils\{Arraypath, Json\JsonErrorSerializer\JsonErrorBag, Json\Serializers\SystemParameterSerializer, Paginator};
+use App\Utils\{Json\Serializers\SystemParameterSerializer};
 use App\vendor\tobscure\jsonapi\{Collection, Document};
 use Doctrine\ORM\EntityManagerInterface;
-use phpDocumentor\Reflection\Types\Callable_;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\{DependencyInjection\ParameterBag\ParameterBagInterface,
-    Form\Extension\Core\Type\FormType,
     Form\FormError,
     Form\FormInterface,
+    HttpFoundation\JsonResponse,
     HttpFoundation\RedirectResponse,
     HttpFoundation\Request,
     HttpFoundation\Response,
@@ -28,7 +25,17 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class SystemParameterController extends BackendController
 
 {
-    use BackendControllerTrait;
+    private function getCollection(array $data, UrlGeneratorInterface $urlGenerator): Collection
+    {
+        return (new Collection($data, new SystemParameterSerializer($urlGenerator)))
+            ->fields([
+                'sysparam'=>['name', 'id','country', 'language', 'organisationdbm', 'organisationsite','active'],
+                'country'=>['id','name'],
+                'organisationdbm'=>['id','name'],
+                'organisationsite'=>['id','name']
+            ])
+            ->with(['country', 'admin1', 'admin2', 'admin3']);
+    }
 
     #[Route(path: '/', name: 'admin_system_parameter_index')]
     public function index(Request $request, ParameterBagInterface $bag): Response
@@ -45,68 +52,41 @@ class SystemParameterController extends BackendController
     }
 
     #[Route(path: '/list', name: 'admin_system_parameter_list_json')]
-    public function listSystemparameterAction(Request $request, SystemParameterManager $manager,  ParameterBagInterface $bag,  UrlGeneratorInterface $urlGenerator): Response
+    public function listJsonAction(Request $request, SystemParameterManager $manager,  UrlGeneratorInterface $urlGenerator): JsonResponse
     {
-        return call_user_func_array([$this, '_listJsonRequest'], [
-            'request'=>$request,
-            'getCollection'=>function ($data) use ($urlGenerator){
-                return (new Collection($data, new SystemParameterSerializer($urlGenerator)))
-                    ->fields([
-                        'sysparam'=>['name', 'id','country', 'language', 'organisationdbm', 'organisationsite','active'],
-                        'country'=>['id','name'],
-                        'organisationdbm'=>['id','name'],
-                        'organisationsite'=>['id','name']
-                    ])
-                    ->with(['country', 'admin1', 'admin2', 'admin3']);
-            },
-            'form'=>$this->createForm(SystemParameterSearchType::class, new SystemParameter())->handleRequest($request),
-            'bag'=>$bag,
-            'manager'=>$manager
-        ]);
+        $this->acceptOnlyXmlHttpRequest($request);
+        $listOptions= $this->getRequestListOptions($request);
+
+        $form= $this->createForm(SystemParameterSearchType::class, new SystemParameter())->handleRequest($request);
+        list($paginator, $data) = $manager->paginate($form->getData(), $listOptions);
+
+        $collection = $this->getCollection($data, $urlGenerator);
+        $document = (new Document($collection));
+        $document->addMeta('pagination', $paginator->toArray());
+
+        return new JsonResponse($document , 200, ['Content-Type'=>$document::MEDIA_TYPE]);
     }
     #[Route(path: '/new', name: 'admin_system_parameter_new')]
     public function newAction(Request $request, EntityManagerInterface $em): Response
     {
         $locales= ['locales'=>$this->_getBackendParameters()->get('locales', ['en'=>'English'])];
-        return call_user_func_array([$this, '_createRequest'], [
-            'form'=>$this->createForm(SystemParameterType::class, new SystemParameter(),$locales)
-                ->handleRequest($request),
-            'em'=>$em,
-            'controller'=>$this,
-            'routeEdit'=>'admin_system_parameter_edit',
-            'viewNew'=>'@admin/parameters/edit.html.twig'
-        ]);
+        $form= $this->createForm(SystemParameterType::class, new SystemParameter(),$locales)
+            ->handleRequest($request);
 
+        if($form->isSubmitted() && $form->isValid())
+        {
+            try {
+                $entity = $form->getData();
+                $em->persist($entity);
+                $em->flush();
+                $em->clear();
+                return $this->redirectToRoute('admin_system_parameter_edit', array('id' => $entity->getId()));
+            }catch (\Exception $ex){
+                $form->addError(new FormError($ex->getMessage()));
+            }
+        }
+        return $this->render('@admin/system_parameter/new.html.twig', ['form'=>$form->createView()]);
     }
-//    #[Route(path: '/new', name: 'admin_system_parameter_new')]
-//    public function newAction(Request $request, ParameterBagInterface $bag, EntityManagerInterface $em): Response
-//    {
-//        $manager = new SystemParameterManager($em);
-//        $caveParameters= new Arraypath($bag->get('cave'));
-//
-//        $form = $this->createForm(SystemParameterType::class, new SystemParameter(), [
-//            'locales'=>$caveParameters->get('locales', ['en'=>'English'])
-//
-//        ])->handleRequest($request);
-//
-//        if($form->isSubmitted() && $form->isValid())
-//        {
-//            try {
-//                $entity = $form->getData();
-//                $em->persist($entity);
-//                $em->flush();
-//                $em->clear();
-//                if($entity->getActive()) $manager->setActiveSystemParameter($entity);
-//                $this->updateCache($bag, $em);
-//                return $this->redirectToRoute('admin_system_parameter_edit', array('id' => $entity->getId()));
-//            }catch (\Exception $ex){
-//                    $form->addError(new FormError($ex->getMessage()));
-//            }
-//        }
-//
-//        return $this->render('@admin/system_parameter/new.html.twig',['form'   => $form->createView()]);
-//    }
-
 
     #[Route(path: '/edit/{id}', name: 'admin_system_parameter_edit')]
     public function editAction(Request $request, SystemParameter $entity, EntityManagerInterface $em, ParameterBagInterface $bag): Response

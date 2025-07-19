@@ -1,0 +1,103 @@
+<?php
+namespace App\Controller\Backend;
+use App\Controller\BackendController;
+use App\Entity\Map\Map;
+use App\Form\backend\Map\Model\PartialFormTypeInterface;
+use App\Services\Cache\FilesCache\Map\MapSerializedCache;
+use App\Utils\Helper\MapControllerHelper;
+use App\Utils\Json\Serializers\Map\MapSerializer;
+use App\Utils\reflection\EntityReflectionHelper;
+use App\vendor\tobscure\jsonapi\Document;
+use App\vendor\tobscure\jsonapi\Resource;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
+
+#[Route('/admin/map/partial')]
+class MapPartialController extends BackendController
+{
+
+    #[Route(path: '/edit/{relationship}/{id}', name: 'admin_map_partial_edit')]
+    public function editRelationshipAction(Request $request, Map $map, string $relationship, EntityManagerInterface $em, UrlGeneratorInterface $urlGenerator): Response
+    {
+        $classType= MapControllerHelper::PARTIAL_FORM_TYPE[$relationship];
+        $form= $this->createForm($classType, $map)->handleRequest($request);
+        $twigArgs=[
+            'entity' => $map,
+            'relationship'=>$relationship,
+//            'relEntity'=>$entity,
+            'relType'=>'partial',
+            'form'=>$form->createView(),
+        ];
+        if (!$request->isXmlHttpRequest()){
+            return $this->render('@admin/map/edit.html.twig', $twigArgs);
+        }
+        if (!$form->isSubmitted() || !$form->isValid())
+        {
+            return $this->getJsonFormErrorResponse($form);
+        }
+
+        try{
+
+            $entity= $form->getData();
+            $em->persist($entity);
+            $em->flush();
+            $em->clear();
+            //El formulario es un subconjunto de Map y por tanto actualizamos la cache de  Map
+            $this->updateCache($entity, $urlGenerator);
+            return new JsonResponse(null , 200);
+
+        }catch (\Exception $e){
+            return $this->getJsonExceptionErrorResponse($e);
+        }
+    }
+    
+    
+
+    #[Route(path: '/delete/{relationship}/{id}', name: 'admin_map_partial_delete',
+        requirements: ['id' => '\w+', 'relationship' => '(\w+)'])]
+    public function deletePartialAction(Request $request, Map $entity, string $relationship,  EntityManagerInterface $em, TranslatorInterface $translator, UrlGeneratorInterface $urlGenerator): RedirectResponse
+    {
+        if ($this->isCsrfTokenValid('delete_partial_'.$relationship.'_'.$entity->getId(), $request->get('_token')))
+        {
+            /**@var PartialFormTypeInterface $type */
+            $type= MapControllerHelper::PARTIAL_FORM_TYPE[$relationship];
+            EntityReflectionHelper::setNullProperties($entity, $type::FieldNames());
+            $em->persist($entity);
+            $em->flush();
+            $em->clear();
+            $this->updateCache($entity, $urlGenerator);
+        }else{
+            $this->addFlash('danger', $translator->trans('form.invalidtoken', [], 'validators'));
+        }
+        return $this->redirectToRoute('admin_map_partial_edit', ['id'=>$entity->getId(), 'relationship'=>$relationship]);
+
+    }
+    private function  serializeMap(Map $map, UrlGeneratorInterface $urlGenerator): Document
+    {
+        /*******SERIALIZE MAP*******/
+        $serializer= new MapSerializer($urlGenerator);
+        $resource = new Resource($map, $serializer);
+        $resource->with(
+            MapControllerHelper::MAP_SERIALIZER_FIELDS['with']
+        )->fields(
+            MapControllerHelper::MAP_SERIALIZER_FIELDS['fields']
+        )
+        ;
+        return new Document($resource);
+    }
+
+    private function updateCache(Map $map, UrlGeneratorInterface $urlGenerator): void
+    {
+        $project_dir= $this->getParameter('kernel.project_dir');
+        $project_env= $this->getParameter('kernel.environment');
+        $cache= new MapSerializedCache($project_dir, $project_env);
+        $document= $this->serializeMap($map, $urlGenerator);
+        $cache->updateSerializedMap($map, $document);
+    }
+}

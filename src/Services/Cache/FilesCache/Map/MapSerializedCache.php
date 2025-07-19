@@ -26,26 +26,12 @@ class MapSerializedCache extends FilesCache
 
     const PREFIX= 'map.id.';
 
-    public function updateSerializedMap(Map $map, UrlGeneratorInterface $urlGenerator):array
+    public function updateSerializedMap(Map $map, Document $document):array
     {
         $prefix= self::PREFIX.$map->getId();
-        /*******SERIALIZE MAP*******/
-        /** @var MapSerializer $class*/
-        $class= MapControllerHelper::MAP_SERIALIZER;
-        $serializer= new $class($urlGenerator);
-        $resource = new Resource($map, $serializer);
-
-        $resource->with(
-            MapControllerHelper::MAP_SERIALIZER_FIELDS['with']
-        )
-        ->fields(
-            MapControllerHelper::MAP_SERIALIZER_FIELDS['fields']
-        )
-        ;
-        $document = new Document($resource);
-
         $this->cache->clear($prefix);
-        return $this->cache->get($prefix, function(ItemInterface $item) use ($document, $prefix){
+        return $this->cache->get($prefix, function(ItemInterface $item) use ($document, $prefix)
+        {
             $item->tag($prefix);//same tag as prefix to all relationship allow to remove all items related.
             return $document->toArray();
         });

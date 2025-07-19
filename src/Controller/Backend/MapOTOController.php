@@ -12,10 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route('/admin/map/edit_oto')]
-class BackendMapOTOController extends AbstractController
+class MapOTOController extends AbstractController
 {
-    use BackendControllerTrait;
-
     #[Route(path: '/{relationship}/{id}', name: 'admin_map_oto_edit')]
     public function editRelationshipAction(Request $request, Map $entity, string $relationship, EntityManagerInterface $em, ParameterBagInterface $bag): Response
     {

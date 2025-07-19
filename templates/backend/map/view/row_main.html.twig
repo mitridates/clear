@@ -1,65 +1,79 @@
 {#
 Map. main table
-@controller BackendMapController:viewAction
+@controller MapController:viewAction
 @route admin/map/view/{id}
 @path dashboard_map_view
-@var ?
+@var JsonApiSpec jas
 #}
+{% set read= ['name', 'created', 'updated'] %}
+{% set attributes= jas.attributes %}
 <div class="card">
     <div class="card-header">
-        map.name
-        "created" => "2024-04-29 14:39:02"
-        "updated" => "2024-05-29 08:42:22"
+        {{ jas.get('name') }}
+
+        "created": "{{ jas.get('created')}}. "
+        "updated": "{{  jas.get('updated')}}. "
+        "country": "{{  jas.get('country')}}. "
     </div>
     <div class="card-body">
         <div class="row">
+        {% for group in attributes|batch(5) %}
             <div class="col-lg-3 col-sm">
-                map.subsheetname: -<br>
-                map.mapserie: -<br>
-                map.scale: -<br>
-                map.type: -<br>
-                map.sourcetype: -<br>
-                map.number: -<br>
-                map.edition: -<br>
+                {% for key, value in group %}
+                    <p><strong>{{ key }}:</strong> {{ value is not null ? value : '—' }}</p>
+                {% endfor %}
             </div>
-
-            <div class="col-lg-3 col-sm">
-                map.country: -<br>
-                map.admin1: -<br>
-                map.admin2: -<br>
-                map.admin3: -<br>
-                map.area: -<br>
-
-            </div>
-            <div class="col-lg-3 col-sm">
-                map.principalsurveyorid: -<br>
-                map.principaldrafterid: -<br>
-                map.surveystartyear: -<br>
-                map.surveyfinishyear: -<br>
-                map.surveygradeorg: -<br>
-                map.surveygradevalue: -<br>
-                map.latestupdateyear: -<br>
-            </div>
-            <div class="col-lg-3 col-sm">
-                map.sourcecountry: -<br>
-                map.sourceorg: -<br>
-                map.sourceifnoid: -<br>
-                map.sourcetype: -<br>
-            </div>
-
-
+        {% endfor %}
         </div>
-        "geodeticdatum" => null
-        "heightdatum" => null
-        "grid" => null
-        "maphostarea" => null
-        "worldregion" => null
-        "northlatitude" => null
-        "southlatitude" => null
-        "eastlongitude" => null
-        "westlongitude" => null
-        "geogcoordsshown" => null
-        {{ dump(cache) }}
+
+{#        <div class="row">#}
+{#            <div class="col-lg-3 col-sm">#}
+{#                map.subsheetname: -<br>#}
+{#                map.mapserie: -<br>#}
+{#                map.scale: -<br>#}
+{#                map.type: -<br>#}
+{#                map.sourcetype: -<br>#}
+{#                map.number: -<br>#}
+{#                map.edition: -<br>#}
+{#            </div>#}
+
+{#            <div class="col-lg-3 col-sm">#}
+{#                map.country: -<br>#}
+{#                map.admin1: -<br>#}
+{#                map.admin2: -<br>#}
+{#                map.admin3: -<br>#}
+{#                map.area: -<br>#}
+
+{#            </div>#}
+{#            <div class="col-lg-3 col-sm">#}
+{#                map.principalsurveyorid: -<br>#}
+{#                map.principaldrafterid: -<br>#}
+{#                map.surveystartyear: -<br>#}
+{#                map.surveyfinishyear: -<br>#}
+{#                map.surveygradeorg: -<br>#}
+{#                map.surveygradevalue: -<br>#}
+{#                map.latestupdateyear: -<br>#}
+{#            </div>#}
+{#            <div class="col-lg-3 col-sm">#}
+{#                map.sourcecountry: -<br>#}
+{#                map.sourceorg: -<br>#}
+{#                map.sourceifnoid: -<br>#}
+{#                map.sourcetype: -<br>#}
+{#            </div>#}
+
+
+{#        </div>#}
+{#        "geodeticdatum" => null#}
+{#        "heightdatum" => null#}
+{#        "grid" => null#}
+{#        "maphostarea" => null#}
+{#        "worldregion" => null#}
+{#        "northlatitude" => null#}
+{#        "southlatitude" => null#}
+{#        "eastlongitude" => null#}
+{#        "westlongitude" => null#}
+{#        "geogcoordsshown" => null#}
+{#        {{ dump(cache) }}#}
     </div>
 </div>
 {# JXhrPopulate#}

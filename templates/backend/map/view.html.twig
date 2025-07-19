@@ -1,18 +1,19 @@
 {#
 Map. Edit
-@controller BackendMapController:editAction
+@controller MapController:editAction
 @route admin/map/edit/{id}
 @path dashboard_map_edit
 @var FormView form
-@var Map entity
+@var array cache Serialized map as JSON API array
 #}
+{% set map= cache.data.attributes %}
 {% do addCrumb('map.index.title'|trans({},'cavepages'), path('admin_map_index')) %}
 {% set page= initPage(
     'map',
     'view',
     'map.view.title'|trans({},'cavepages'),
     path('admin_map_view', {'id': id}))
-        .set('heading', 'map.view.heading'|trans({},'cavepages')~' - '~id)
+        .set('heading', 'map.view.heading'|trans({},'cavepages')~' - '~map.name~' - '~id)
 %}
 {% extends '@admin/base.html.twig' %}
 {% block subheading %}
@@ -20,7 +21,6 @@ Map. Edit
 {% endblock %}
 {% block content %}
     {% include '@admin/map/nav_icons/nav.html.twig' %}
-
     {% include '@admin/map/view/row_main.html.twig' %}
 {% endblock %}
 {% block footer_javascripts %}

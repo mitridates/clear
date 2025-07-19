@@ -1,19 +1,15 @@
 <?php
 namespace App\Controller\Backend;
+use App\Controller\BackendController;
 use App\Entity\Map\Map;
 use App\Entity\Map\Mapimage;
 use App\Manager\MapManager;
-use App\Utils\Arraypath;
 use App\Utils\Helper\MapControllerHelper;
 use App\Utils\Helper\Upload\MapUploaderHelper;
-use App\Utils\Helper\Upload\UploaderHelper;
 use App\Utils\Json\JsonErrorSerializer\JsonErrorBag;
-use App\Utils\reflection\EntityReflectionHelper;
 use App\vendor\tobscure\jsonapi\Collection;
 use App\vendor\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;
-use PHPUnit\Util\Exception;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
@@ -27,9 +23,8 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route('/admin/map/edit_mto')]
-class BackendMapMTOController extends AbstractController
+class MapMTOController extends BackendController
 {
-    use BackendControllerTrait;
 
     #[Route(path: '/{relationship}/{id}', name: 'admin_map_mto_index')]
     public function indexAction(Request $request, Map $entity, string $relationship): Response
@@ -49,35 +44,30 @@ class BackendMapMTOController extends AbstractController
 
     #[Route(path: '/list/{relationship}/{id}', name: 'admin_map_mto_list',
         requirements: ['id'=>'\w+', 'relationship' => '(\w+)'])]
-    public function listMapRelationshipAction(Request $request, Map $entity, string $relationship, MapManager $manager, ParameterBagInterface $bag,  UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $tokenManager): Response
+    public function listJsonAction(Request $request, Map $entity, string $relationship, MapManager $manager, ParameterBagInterface $bag,  UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $tokenManager): Response
     {
         $class= MapControllerHelper::MTO_RELATIONSHIP[$relationship];
         $serializer= MapControllerHelper::MTO_SERIALIZER[$relationship];
         $serializerFields= MapControllerHelper::MTO_SERIALIZER_FIELDS[$relationship];
-        return call_user_func_array([$this, '_listJsonRequest'], [
-            'request'=>$request,
-            'form'=>null,//$form,
-            'bag'=>$bag,
-            'manager'=>$manager,
-            'entity'=> new $class($entity),
-            'options'=>[
-                'paginate'=>function ($entity, $listOptions) use ($manager)
-                {
-                   return $manager->paginateRelationship($entity, $listOptions, []);
-                }
-            ],
-            'getCollection'=>function ($data) use ($urlGenerator, $serializer, $serializerFields,  $tokenManager)
-            {
-                $collection= new Collection($data, new $serializer($urlGenerator ,  $tokenManager));
-                if(isset($serializerFields['fields'])){
-                    $collection->fields($serializerFields['fields']);
-                }
-                if(isset($serializerFields['with'])){
-                    $collection->with($serializerFields['with']);
-                }
-                return $collection;
-            }
-        ]);
+
+        $this->acceptOnlyXmlHttpRequest($request);
+        $listOptions= $this->getRequestListOptions($request);
+        list($paginator, $data) = $manager->paginateRelationship(new $class($entity), $listOptions);
+
+
+        $collection= new Collection($data, new $serializer($urlGenerator ,  $tokenManager));
+        if(isset($serializerFields['fields'])){
+            $collection->fields($serializerFields['fields']);
+        }
+        if(isset($serializerFields['with'])){
+            $collection->with($serializerFields['with']);
+        }
+
+
+        $document = (new Document($collection));
+        $document->addMeta('pagination', $paginator->toArray());
+        return new JsonResponse($document , 200, ['Content-Type'=>$document::MEDIA_TYPE]);
+
     }
 
     #[Route(path: '/json/new/{id}/{relationship}', name: 'admin_map_mto_new',
@@ -103,10 +93,10 @@ class BackendMapMTOController extends AbstractController
                 $em->clear();
                 return new JsonResponse(null , 200, ['Content-Type'=>Document::MEDIA_TYPE]);
             }catch (\Exception $e){
-                return (new JsonErrorBag($this->getParameter('kernel.environment')))->addException($e, null, true)->getJsonResponse();
+                return $this->getJsonExceptionErrorResponse($e);
             }
         }else{
-            return (new JsonErrorBag($this->getParameter('kernel.environment')))->addFormErrors($form)->getJsonResponse();
+            return $this->getJsonFormErrorResponse($form);
         }
     }
 
@@ -141,7 +131,7 @@ class BackendMapMTOController extends AbstractController
                 try {
                     $this->upload($form, $rel, $bag);
                 }catch (\Exception $e){
-                    return (new JsonErrorBag($this->getParameter('kernel.environment')))->addException($e, null, true)->getJsonResponse();
+                    return $this->getJsonExceptionErrorResponse($e);
                 }
             }
             try {
@@ -149,10 +139,10 @@ class BackendMapMTOController extends AbstractController
                 $em->flush();
                 $em->clear();
             }catch (\Exception $e){
-                return (new JsonErrorBag($this->getParameter('kernel.environment')))->addException($e, null, true)->getJsonResponse();
+                return $this->getJsonExceptionErrorResponse($e);
             }
         }else{
-            return (new JsonErrorBag($this->getParameter('kernel.environment')))->addFormErrors($form)->getJsonResponse();
+            return $this->getJsonFormErrorResponse($form);
         }
         return new JsonResponse(null , 200, ['Content-Type'=>Document::MEDIA_TYPE]);
     }
@@ -166,17 +156,11 @@ class BackendMapMTOController extends AbstractController
         $repo->findOneBy(['sequence'=>$sequence, 'map'=>$entity]);
         $tokenId=$relationship.$entity->getId().$sequence.'_delete_token';
 
-        return call_user_func_array([$this, '_deleteXmlHttpRequest'],
-            [
-            'entity'=>$repo->findOneBy(['sequence'=>$sequence, 'map'=>$entity]),
-            'request'=>$request,
-            'em'=>$em,
-            'translator'=>$translator,
-            'controller'=>$this,
-            'routeError'=>['admin_map_edit', array('id' => $entity->getId())],
-            'routeSuccess'=>'admin_map_index',
-            'tokenId'=>$tokenId
-            ]);
+        return call_user_func_array([$this, 'CommonBackendXmlHttpRequestDeleteAction'],
+            array_merge(func_get_args(), [
+                    'entity'=>$repo->findOneBy(['sequence'=>$sequence, 'map'=>$entity]),
+                    'tokenId'=>$tokenId
+            ]));
     }
 
 

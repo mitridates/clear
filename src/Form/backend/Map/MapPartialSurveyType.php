@@ -9,9 +9,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class MapPartialSurveyType extends AbstractType implements PartialFormTypeInterface
 {
-    const FIELDS=['surveygradevalue', 'surveygradeorg', 'surveystartyear','surveyfinishyear',
-            'latestupdateyear', 'principalsurveyorid', 'principaldrafterid']
-        ;
 
     /** @inheritDoc */
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -20,7 +17,7 @@ class MapPartialSurveyType extends AbstractType implements PartialFormTypeInterf
         $mapFields= new MapFields();
         $subscribers= ['principalsurveyorid', 'principaldrafterid', 'surveygradeorg' ];
 
-        foreach (self::FIELDS as $name){
+        foreach (self::getFieldNames() as $name){
             if(in_array($name, $subscribers)){
                 $builder->addEventSubscriber($mapFields->getSubscriber($factory, $name));
             }else{
@@ -38,9 +35,10 @@ class MapPartialSurveyType extends AbstractType implements PartialFormTypeInterf
         ));
     }
 
-    static function getFormTypeFieldNames(): array
+    static function getFieldNames(): array
     {
-        return self::FIELDS;
+        return ['surveygradevalue', 'surveygradeorg', 'surveystartyear','surveyfinishyear',
+            'latestupdateyear', 'principalsurveyorid', 'principaldrafterid'];
     }
 }
 

@@ -22,10 +22,7 @@
 {% block content %}
     {{ form_start(form) }}
     {% include '@admin/system_parameter/system_parameter_form.html.twig' %}
-    <div class="form-row d-flex justify-content-center mt-2">
-        {% include '@object/bttn/bttn_save.html.twig' with {'class': 'js-submit'}%}
-    </div>
-        {{ form_end(form) }}
+      {{ form_end(form) }}
     {% if not form.vars.valid %}
         {% include '@object/modal/errors.html.twig'%}
     {% endif %}

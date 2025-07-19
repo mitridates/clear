@@ -71,7 +71,7 @@ parameters:
   #  CONFIGURACIÓN POR SECCIONES     #
   ####################################
     #  Section configuration. Add section:[] to overwrite default/s parameters
-    section:
+    listOptions:
       default: #por defecto para todas las demás
         ipp: 20 #items per page
       cave: []

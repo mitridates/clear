@@ -1,0 +1,103 @@
+<?php
+
+namespace App\Controller\Backend;
+
+use App\Manager\AbstractManager;
+use App\Utils\Arraypath;
+use App\Utils\Json\JsonErrorSerializer\JsonErrorBag;
+use App\vendor\tobscure\jsonapi\Document;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\Form\FormError;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Contracts\Translation\TranslatorInterface;
+
+trait ControllerTrait
+{
+
+//    private function _getBackendParameters(): Arraypath
+//    {
+//        return new Arraypath($this->getParameter('cave'));
+//    }
+//
+//    /**
+//     * @param Request $request
+//     * @param Object $entity
+//     * @param AbstractController $controller
+//     * @param FormInterface $form
+//     * @param EntityManagerInterface $em
+//     * @param string $view
+//     * @param array $twigArgs
+//     * @param array $callBack
+//     * @return Response
+//     */
+//    public function _updateRequest(Request $request, Object $entity, AbstractController $controller, FormInterface $form, EntityManagerInterface $em, string $view, array $twigArgs=[], ?array $callBack=[]): Response
+//    {
+//
+//        if (!$request->isXmlHttpRequest()){
+//            return $controller->render($view, array_merge($twigArgs, ['form' => $form->createView(), 'entity' => $entity]));
+//        }
+//
+//        if (!$form->isSubmitted() || !$form->isValid()){
+//            return (new JsonErrorBag($controller->getParameter('kernel.environment')))->addFormErrors($form)->getJsonResponse();
+//        }
+//
+//        try{
+//            $em->persist($form->getData());
+//            $em->flush();
+//            $response= new JsonResponse(null , 200);
+//
+//            if(count($callBack) && isset($callBack['onFlush']) && is_callable($callBack['onFlush'] )){
+//                $callBack['onFlush']($em, $form, $entity, $response);
+//            }
+//            $em->clear();
+//            return new JsonResponse(null , 200);
+//        }catch (\Exception $e){
+//            return (new JsonErrorBag($controller->getParameter('kernel.environment')))->addException($e, null, true)->getJsonResponse();
+//        }
+//    }
+
+
+//    public function _deleteRequest(Request $request, Object $entity, EntityManagerInterface $em, AbstractController $controller, TranslatorInterface $translator, string|array $routeError, string|array $routeSuccess, ?string $tokenId): RedirectResponse
+//    {
+//        if ($controller->isCsrfTokenValid($tokenId? $tokenId : 'delete'.$entity->getId(), $request->get('_token')))
+//        {
+//            try{
+//                $em->remove($entity);
+//                $em->flush();
+//                $controller->addFlash('success', $translator->trans('msg.delete.success', [], 'cavemessages') );
+//            }catch(\Exception $ex){
+//                $this->addFlash('danger', $ex->getMessage() );
+//                return $controller->redirectToRoute($routeError);
+//            }
+//        }else{
+//            $controller->addFlash('danger', $translator->trans('form.invalidtoken', [], 'validators'));
+//        }
+//        return $controller->redirectToRoute($routeSuccess);
+//    }
+//
+//    public function _deleteXmlHttpRequest(Request $request, Object $entity, EntityManagerInterface $em, AbstractController $controller, TranslatorInterface $translator, string|array $routeError, string|array $routeSuccess, ?string $tokenId): JsonResponse
+//    {
+//        if(!$request->isXmlHttpRequest()) {
+//            throw new BadRequestHttpException('Not XmlHttpRequest');
+//        }
+//        if ($controller->isCsrfTokenValid($tokenId?: 'delete'.$entity->getId(), $request->get('_token')))
+//        {
+//            try{
+//                $em->remove($entity);
+//                $em->flush();
+//                return new JsonResponse(null , 200, ['Content-Type'=>Document::MEDIA_TYPE]);
+//            }catch(\Exception $ex){
+//                return (new JsonErrorBag($controller->getParameter('kernel.environment')))->addException($ex)->getJsonResponse();
+//            }
+//        }else{
+//            return (new JsonErrorBag($controller->getParameter('kernel.environment')))->addMsg( $translator->trans('msg.token.invalidToken', [], 'cavemessages'))->getJsonResponse();
+//        }
+//    }
+}

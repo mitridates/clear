@@ -16,7 +16,7 @@ Map coordinates.
     </div>
     <div class="col-md-4 col-sm mb-2">
         <input type="radio" id="ctrl-elmId" name="surveyor-radio" value="ctrl-elmId" data-selector="#{{ form.sourceorg.vars.id }}" checked>
-        {{ form_row(form.sourceorg, dataSuggest('person')|merge(inline))}}
+        {{ form_row(form.sourceorg, dataSuggest('organisation')|merge(inline))}}
     </div>
     <div class="col-md-4 col-sm mb-2">
         <input type="radio" id="ctrl-elmNoId" name="surveyor-radio" value="ctrl-elmNoId" data-selector="#{{ form.sourceifnoid.vars.id }}" >

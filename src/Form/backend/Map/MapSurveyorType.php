@@ -1,6 +1,7 @@
 <?php
 namespace App\Form\backend\Map;
 use App\Entity\Map\Mapsurveyor;
+use App\Form\backend\Map\FormTypeFields\MapControllerFields;
 use App\Form\backend\Map\Model\OneToOneFormTypeInterface;
 use App\Form\EventListener\AddPersonFieldSubscriber;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -18,6 +19,13 @@ class MapSurveyorType extends AbstractType implements OneToOneFormTypeInterface
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $factory = $builder->getFormFactory();
+
+        $fields= new MapControllerFields();
+        $builder->addEventSubscriber(new AddPersonFieldSubscriber($factory, array(
+            'name'=>'surveyorid',
+            'options'=>['attr'=>['field_id'=>586]]
+        )));
+
         $builder->addEventSubscriber(new AddPersonFieldSubscriber($factory, array(
             'name'=>'surveyorid',
             'options'=>['attr'=>['field_id'=>586]]

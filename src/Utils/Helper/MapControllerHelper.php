@@ -1,7 +1,6 @@
 <?php
 namespace App\Utils\Helper;
 
-use App\Entity\Map\Map;
 use App\Entity\Map\Mapcave;
 use App\Entity\Map\Mapcitation;
 use App\Entity\Map\Mapcomment;
@@ -113,16 +112,20 @@ class MapControllerHelper
     ];
 
     const MAP_SERIALIZER_FIELDS=[
-        'with'=>['country', 'admin1', 'admin2', 'admin3'],
+        'with'=>['country', 'admin1', 'admin2', 'admin3', 'sourcecountry', 'sourceorg', 'type',
+            'sourcetype', 'principalsurveyorid', 'principaldrafterid'],
         'fields'=>[
-            //'map'=>['name', 'number', 'country', 'country', 'admin1', 'admin2', 'admin3'],
             'country'=>['id','name'],
+            'sourcecountry'=>['id','name'],
+            'sourceorg'=>['id','name'],
             'admin1'=>['id','name'],
             'admin2'=>['id','name'],
-            'admin3'=>['id','name']
+            'admin3'=>['id','name'],
+            'type'=>['code', 'value'],
+            'sourcetype'=>['code', 'value'],
+
         ]
     ];
-
 
     const OTO_SERIALIZER_FIELDS=[
         'controller'=>['with'=>[],'fields'=>[]],

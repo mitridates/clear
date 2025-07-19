@@ -38,7 +38,7 @@ class MapPartialCoordinatesType extends AbstractType implements PartialFormTypeI
         ));
     }
 
-    static function getFormTypeFieldNames(): array
+    static function getFieldNames(): array
     {
         return self::FIELDS;
     }

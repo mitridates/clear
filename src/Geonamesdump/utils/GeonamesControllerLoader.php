@@ -51,5 +51,6 @@ class GeonamesControllerLoader
                 break;
             };
         }
+        return $this;
     }
 }

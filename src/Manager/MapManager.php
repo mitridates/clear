@@ -41,7 +41,7 @@ class MapManager extends AbstractManager
         return $this->getPagination($qb, $entity, $alias, $listOptions);
     }
 
-    public function paginateRelationship(object $entity, array $listOptions, array $exprFieldsFilter = []): array
+    public function paginateRelationship(object $entity, array $listOptions, ?array $exprFieldsFilter = []): array
     {
         $repo= $this->em->getRepository(get_class($entity));
         $alias = 'mapmto';
