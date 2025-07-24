@@ -4,17 +4,9 @@ namespace App\Services\Cache\FilesCache\Map;
 
 use App\Entity\Map\Map;
 use App\Services\Cache\FilesCache;
-use App\Utils\Helper\MapControllerHelper;
-use App\Utils\Json\Serializers\Map\MapSerializer;
-use App\vendor\tobscure\jsonapi\Collection;
-use App\vendor\tobscure\jsonapi\Document;
-use App\vendor\tobscure\jsonapi\Relationship;
-use App\vendor\tobscure\jsonapi\Resource;
-use PharIo\Version\Exception;
+use App\Shared\tobscure\jsonapi\Document;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 
 class MapSerializedCache extends FilesCache

@@ -2,7 +2,7 @@
 namespace App\Manager;
 use App\Entity\SystemParameter;
 use App\Manager\Expr\ExprFilter;
-use App\Utils\Paginator;
+use App\Shared\Paginator;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;

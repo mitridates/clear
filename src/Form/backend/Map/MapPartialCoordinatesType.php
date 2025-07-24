@@ -13,7 +13,9 @@ class MapPartialCoordinatesType extends AbstractType implements PartialFormTypeI
             'grid', 'northlatitude', 'southlatitude', 'eastlongitude', 'westlongitude']
         ;
 
-    /** @inheritDoc */
+    /** @inheritDoc
+     * @throws \Exception
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $fields= new MapFields();

@@ -1,11 +1,21 @@
 <?php
 
 namespace App\Controller\Json;
+use App\Domain\JsonApi\Serializers\{AreaSerializer};
+use App\Domain\JsonApi\Serializers\article\ArticleSerializer;
+use App\Domain\JsonApi\Serializers\cave\CaveSerializer;
+use App\Domain\JsonApi\Serializers\CitationSerializer;
+use App\Domain\JsonApi\Serializers\FieldDefinitionSerializer;
+use App\Domain\JsonApi\Serializers\LinkSerializer;
+use App\Domain\JsonApi\Serializers\Map\MapSerializer;
+use App\Domain\JsonApi\Serializers\MapserieSerializer;
+use App\Domain\JsonApi\Serializers\MimeTypeSerializer;
+use App\Domain\JsonApi\Serializers\OrganisationSerializer;
+use App\Domain\JsonApi\Serializers\PersonSerializer;
+use App\Domain\JsonApi\Serializers\SpecieSerializer;
 use App\Entity\Area;
 use App\Entity\Article\Article;
 use App\Entity\Citation\Citation;
-use App\Services\Cache\FilesCache\GeonamesJsonCache;
-use App\Utils\Json\JsonErrorSerializer\JsonErrorMessages;
 use App\Entity\FieldDefinition\{Fielddefinition};
 use App\Entity\Link;
 use App\Entity\Map\Map;
@@ -18,29 +28,15 @@ use App\Manager\{AreaManager,
     CaveManager,
     CitationManager,
     FieldDefinitionManager,
-    Geonames\Admin2Manager,
     LinkManager,
     MapManager,
     MapSerieManager,
     OrganisationManager,
     PersonManager};
 use App\Manager\SpecieManager;
-use App\Utils\Json\JsonErrorSerializer\JsonErrorBag;
-use App\Utils\Json\Serializers\{AreaSerializer,
-    article\ArticleSerializer,
-    cave\CaveSerializer,
-    CitationSerializer,
-    FieldDefinitionSerializer,
-    Geonames\GeonamesSerializable,
-    LinkSerializer,
-    Map\MapSerializer,
-    MapserieSerializer,
-    MimeTypeSerializer,
-    OrganisationSerializer,
-    PersonSerializer,
-    SpecieSerializer};
-use App\vendor\tobscure\jsonapi\Collection;
-use App\vendor\tobscure\jsonapi\Document;
+use App\Shared\JsonApi\ErrorSerializer\JsonErrorBag;
+use App\Shared\tobscure\jsonapi\Collection;
+use App\Shared\tobscure\jsonapi\Document;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -48,7 +44,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mime\MimeTypes;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Routing\RouterInterface;
 
 #[Route('/admin/json/autocomplete')]
 class JsonAutocompleteController extends AbstractController

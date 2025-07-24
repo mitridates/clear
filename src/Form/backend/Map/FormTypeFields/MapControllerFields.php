@@ -2,23 +2,12 @@
 
 namespace App\Form\backend\Map\FormTypeFields;
 
-use App\Entity\FieldDefinition\Fieldvaluecode;
 use App\Entity\Map\Mapcontroller;
-use App\Form\EventListener\AddAdmin1FieldSubscriber;
-use App\Form\EventListener\AddAdmin2FieldSubscriber;
-use App\Form\EventListener\AddAdmin3FieldSubscriber;
-use App\Form\EventListener\AddAreaFieldSubscriber;
-use App\Form\EventListener\AddCountryFieldSubscriber;
-use App\Form\EventListener\AddMapserieFieldSubscriber;
 use App\Form\EventListener\AddOrganisationFieldSubscriber;
 use App\Form\EventListener\AddPersonFieldSubscriber;
 use App\Form\FormFields\AbstractFormFields;
 use App\Form\FormFields\AdministrativeDivisionSubscriberTrait;
-use App\Form\FormFields\FormFieldsEventInterface;
-use App\Utils\reflection\EntityReflectionHelper;
-use Doctrine\ORM\EntityRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\FormEvent;
+use App\Shared\reflection\EntityReflectionHelper;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class MapControllerFields extends AbstractFormFields

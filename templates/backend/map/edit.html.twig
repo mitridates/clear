@@ -15,6 +15,7 @@ Map. Edit
     path('admin_map_index', {'id': entity.id}))
         .set('heading', 'map.edit.heading'|trans({},'cavepages')~' - '~entity.name)
 %}
+{% set dividerAttr='class="p-2 my-2 border-bottom border-secondary h5" '  %}
 {% extends '@admin/base.html.twig' %}
 
 {% block subheading %}

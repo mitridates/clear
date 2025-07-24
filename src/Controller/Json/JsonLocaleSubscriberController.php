@@ -2,7 +2,7 @@
 
 namespace App\Controller\Json;
 
-use App\Utils\Json\JsonErrorSerializer\JsonErrorBag;
+use App\Shared\JsonApi\ErrorSerializer\JsonErrorBag;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

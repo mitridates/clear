@@ -1,16 +1,14 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
+use App\Domain\JsonApi\Serializers\OrganisationSerializer;
 use App\Entity\Organisation;
 use App\Form\backend\Organisation\OrganisationSearchType;
 use App\Form\backend\Organisation\OrganisationType;
 use App\Manager\OrganisationManager;
-use App\Utils\Json\Serializers\OrganisationSerializer;
-use App\vendor\tobscure\jsonapi\Collection;
-use App\vendor\tobscure\jsonapi\Document;
+use App\Shared\tobscure\jsonapi\Collection;
+use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;

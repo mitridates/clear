@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Services\Cache\FilesCache;
+use App\Domain\JsonApi\Serializers\FieldDefinitionLangSerializer;
+use App\Domain\JsonApi\Serializers\FieldDefinitionSerializer;
 use App\Entity\FieldDefinition\Fielddefinition;
 use App\Entity\FieldDefinition\Fielddefinitionlang;
 use App\Manager\FieldDefinitionManager;
 use App\Services\Cache\FilesCache;
-use App\Utils\Json\Serializers\FieldDefinitionLangSerializer;
-use App\Utils\Json\Serializers\FieldDefinitionSerializer;
-use App\vendor\tobscure\jsonapi\Document;
-use App\vendor\tobscure\jsonapi\Resource;
+use App\Shared\tobscure\jsonapi\Document;
+use App\Shared\tobscure\jsonapi\Resource;
 use DateTime;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;

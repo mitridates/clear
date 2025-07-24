@@ -5,7 +5,7 @@ use App\Entity\CommonTrait\{CrupdatetimeTrait};
 use App\Entity\CommonTrait\HiddenTrait;
 use App\Entity\FieldDefinition\Fieldvaluecode;
 use App\Entity\Geonames\{Admin1, Admin2, Admin3, Country};
-use App\Utils\Doctrine\Orm\Id\CavernIdGenerator;
+use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 

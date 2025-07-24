@@ -3,12 +3,10 @@
 namespace App\Manager;
 use App\Entity\Citation\Citation;
 use App\Manager\Expr\ExprFilter;
-use App\Utils\Paginator;
-use Doctrine\ORM\AbstractQuery;
+use App\Shared\Paginator;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
-use Doctrine\ORM\Query\Expr;
 
 class CitationManager extends AbstractManager
 {

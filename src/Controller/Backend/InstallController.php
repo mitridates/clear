@@ -1,13 +1,13 @@
 <?php
 namespace App\Controller\Backend;
+use App\Domain\Geonames\Import\Sql\ImportSql;
 use App\Entity\{SystemParameter};
 use App\Entity\Organisation;
 use App\Form\backend\setup\{InstallOrganisationType, SetupCountryType};
 use App\Geonamesdump\utils\GeonamesControllerLoader;
 use App\Manager\SetupManager;
 use App\Services\Cache\FilesCache\DbStatusCache;
-use App\Utils\Arraypath;
-use App\Utils\Import\Sql\ImportSql;
+use App\Shared\Arraypath;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Id\AssignedGenerator;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;

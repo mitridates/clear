@@ -1,14 +1,31 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
+use App\Domain\Map\Upload\MapUploader;
 use App\Entity\Map\Map;
+use App\Entity\Map\Mapcave;
+use App\Entity\Map\Mapcitation;
+use App\Entity\Map\Mapcomment;
+use App\Entity\Map\Mapdrafter;
+use App\Entity\Map\Mapfurthergc;
+use App\Entity\Map\Mapfurtherpc;
 use App\Entity\Map\Mapimage;
+use App\Entity\Map\Maplink;
+use App\Entity\Map\Mapsurveyor;
+use App\Form\backend\Map\MapCaveType;
+use App\Form\backend\Map\MapCitationType;
+use App\Form\backend\Map\MapCommentType;
+use App\Form\backend\Map\MapDrafterTypeToOne;
+use App\Form\backend\Map\MapFurthergcType;
+use App\Form\backend\Map\MapFurtherpcType;
+use App\Form\backend\Map\MapImageType;
+use App\Form\backend\Map\MapLinkType;
+use App\Form\backend\Map\MapSurveyorType;
 use App\Manager\MapManager;
+use App\Shared\Upload\UploaderParameters;
 use App\Utils\Helper\MapControllerHelper;
-use App\Utils\Helper\Upload\MapUploaderHelper;
-use App\Utils\Json\JsonErrorSerializer\JsonErrorBag;
-use App\vendor\tobscure\jsonapi\Collection;
-use App\vendor\tobscure\jsonapi\Document;
+use App\Shared\tobscure\jsonapi\Collection;
+use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -25,12 +42,43 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/admin/map/edit_mto')]
 class MapMTOController extends BackendController
 {
+    private function getFormType($type): string
+    {
+        return match ($type) {
+            'cave'=> MapCaveType::class,
+            'citation'=>MapCitationType::class,
+            'comment'=>MapCommentType::class,
+            'drafter'=>MapDrafterTypeToOne::class,
+            'furthergc'=>MapFurthergcType::class,
+            'furtherpc'=>MapfurtherpcType::class,
+            'image'=>MapImageType::class,
+            'link'=>MapLinkType::class,
+            'surveyor'=>MapSurveyorType::class,
+            default => throw new \InvalidArgumentException("No existe formType para '{$type}'.")
+        };
+    }
 
+
+    private function getClass($name): string
+    {
+        return match ($name) {
+            'cave'=> Mapcave::class,
+            'citation'=>Mapcitation::class,
+            'comment'=>Mapcomment::class,
+            'drafter'=>Mapdrafter::class,
+            'furthergc'=>Mapfurthergc::class,
+            'furtherpc'=>Mapfurtherpc::class,
+            'image'=>Mapimage::class,
+            'link'=>Maplink::class,
+            'surveyor'=>Mapsurveyor::class,
+            default => throw new \InvalidArgumentException("No existe Entity para '{$name}'.")
+        };
+    }
     #[Route(path: '/{relationship}/{id}', name: 'admin_map_mto_index')]
     public function indexAction(Request $request, Map $entity, string $relationship): Response
     {
-        $type= MapControllerHelper::MTO_FORM_TYPE[$relationship];
-        $class= MapControllerHelper::MTO_RELATIONSHIP[$relationship];
+        $type= $this->getFormType($relationship);
+        $class= $this->getClass($relationship);
         $form = $this->createForm($type, new $class($entity));
         $twigArgs=[
             'relationship'=>$relationship,
@@ -42,11 +90,14 @@ class MapMTOController extends BackendController
         return $this->render('@admin/map/edit.html.twig',$twigArgs);
     }
 
+    /**
+     * @throws \Exception
+     */
     #[Route(path: '/list/{relationship}/{id}', name: 'admin_map_mto_list',
         requirements: ['id'=>'\w+', 'relationship' => '(\w+)'])]
     public function listJsonAction(Request $request, Map $entity, string $relationship, MapManager $manager, ParameterBagInterface $bag,  UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $tokenManager): Response
     {
-        $class= MapControllerHelper::MTO_RELATIONSHIP[$relationship];
+        $class= $this->getClass($relationship);
         $serializer= MapControllerHelper::MTO_SERIALIZER[$relationship];
         $serializerFields= MapControllerHelper::MTO_SERIALIZER_FIELDS[$relationship];
 
@@ -75,9 +126,9 @@ class MapMTOController extends BackendController
 
     public function newRelationshipAction(Request $request, Map $entity, string $relationship, EntityManagerInterface $em, ParameterBagInterface $bag,): Response
     {
-        $class= MapControllerHelper::MTO_RELATIONSHIP[$relationship];
-        $type= MapControllerHelper::MTO_FORM_TYPE[$relationship];
-        $form = $this->createForm($type, new $class($entity))->handleRequest($request);
+        $class= $this->getClass($relationship);
+        $form = $this->createForm($this->getFormType($relationship),
+            new $class($entity))->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
             $rel = $form->getData();
@@ -106,8 +157,8 @@ class MapMTOController extends BackendController
         requirements: ['id' => '\w+', 'relationship' => '(\w+)', 'sequence' => '\d+', 'req' => 'get|set'])]
     public function updateRelationshipAction(Request $request, Map $entity, string $relationship, string $sequence, string $req, EntityManagerInterface $em, ParameterBagInterface $bag, FormFactoryInterface $formFactory): Response
     {
-        $class= MapControllerHelper::MTO_RELATIONSHIP[$relationship];
-        $type= MapControllerHelper::MTO_FORM_TYPE[$relationship];
+        $class= $this->getClass($relationship);
+        $type= $this->getFormType($relationship);
         $repo= $em->getRepository($class);
         $data= $repo->findOneBy(['sequence'=>$sequence, 'map'=>$entity]);
         $nmsArr= explode("\\", $class);
@@ -151,7 +202,7 @@ class MapMTOController extends BackendController
         requirements: ['id' => '\w+', 'relationship' => '(\w+)', 'sequence' => '\d+'])]
     public function deleteRelationshipAction(Request $request, Map $entity, string $relationship, string $sequence, EntityManagerInterface $em, TranslatorInterface $translator): JsonResponse
     {
-        $class= MapControllerHelper::MTO_RELATIONSHIP[$relationship];
+        $class= $this->getClass($relationship);
         $repo= $em->getRepository($class);
         $repo->findOneBy(['sequence'=>$sequence, 'map'=>$entity]);
         $tokenId=$relationship.$entity->getId().$sequence.'_delete_token';
@@ -169,12 +220,18 @@ class MapMTOController extends BackendController
      */
     private function upload(FormInterface $form, Mapimage &$mapImage, ParameterBagInterface $bag): \Exception|Mapimage
     {
-        $mapUploaderHelper= new MapUploaderHelper($bag);
+
+        $mapUploaderHelper= new MapUploader(new UploaderParameters(
+            $this->getParameter('kernel.project_dir'),
+            $this->getBundleParameters(),
+            'map'
+        ));
+
         /** @var ?UploadedFile $uploadedFile */
         $uploadedFile = $form->get('mapfile')->getData();
         /** @var UploadedFile|null $thumbUploadedFile */
         $thumbUploadedFile = $form->get('thumbnail')->getData();
-        $updateThumb = $form->has('updatethumb')? $form->get('updatethumb') : null;
+       // $updateThumb = $form->has('updatethumb')? $form->get('updatethumb') : null;
         $is_new= $mapImage->getFilename()===null;
 
         if(!$uploadedFile && $is_new)

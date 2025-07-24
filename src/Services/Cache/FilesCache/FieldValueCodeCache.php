@@ -2,13 +2,13 @@
 
 namespace App\Services\Cache\FilesCache;
 
+use App\Domain\JsonApi\Serializers\FieldValueCodeLangSerializer;
+use App\Domain\JsonApi\Serializers\FieldValueCodeSerializer;
 use App\Entity\FieldDefinition\Fieldvaluecode;
 use App\Entity\FieldDefinition\Fieldvaluecodelang;
 use App\Manager\FieldDefinitionManager;
 use App\Services\Cache\FilesCache;
-use App\Utils\Json\Serializers\FieldValueCodeLangSerializer;
-use App\Utils\Json\Serializers\FieldValueCodeSerializer;
-use App\vendor\tobscure\jsonapi\Resource;
+use App\Shared\tobscure\jsonapi\Resource;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Contracts\Cache\ItemInterface;
 

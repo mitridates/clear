@@ -1,13 +1,13 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
+use App\Domain\JsonApi\Serializers\MapserieSerializer;
 use App\Entity\Mapserie;
 use App\Form\backend\Mapserie\MapserieSearchType;
 use App\Form\backend\Mapserie\MapserieType;
 use App\Manager\MapSerieManager;
-use App\Utils\Json\Serializers\MapserieSerializer;
-use App\vendor\tobscure\jsonapi\Collection;
-use App\vendor\tobscure\jsonapi\Document;
+use App\Shared\tobscure\jsonapi\Collection;
+use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\JsonResponse;

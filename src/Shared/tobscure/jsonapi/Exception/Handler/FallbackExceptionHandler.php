@@ -1,0 +1,62 @@
+<?php
+
+/*
+ * This file is part of JSON-API.
+ *
+ * (c) Toby Zerner <toby.zerner@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace App\Shared\tobscure\jsonapi\Exception\Handler;
+
+use Exception;
+
+class FallbackExceptionHandler implements ExceptionHandlerInterface
+{
+    /**
+     * @var bool
+     */
+    private $debug;
+
+    /**
+     * @param bool $debug
+     */
+    public function __construct(bool $debug= false)
+    {
+        $this->debug = $debug;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function manages(Exception $e)
+    {
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function handle(Exception $e): ResponseBag
+    {
+        $status = 500;
+        $error = $this->constructError($e, $status);
+
+        return new ResponseBag($status, [$error]);
+    }
+
+    /**
+     * @param \Exception $e
+     * @param $status
+     *
+     * @return array
+     */
+    private function constructError(Exception $e, $status): array
+    {
+        $error = ['code' => $status, 'title' => 'Internal server error'];
+        $error['detail'] = $this->debug ? (string) $e : $e->getMessage();
+        return $error;
+    }
+}

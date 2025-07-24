@@ -1,15 +1,15 @@
 <?php
 namespace App\Manager\Geonames;
+use App\Entity\Geonames\Admin1;
 use App\Manager\AbstractManager;
 use App\Manager\Expr\ExprFilter;
-use App\Utils\Paginator;
-use App\Entity\Geonames\Admin1;
+use App\Shared\Paginator;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query\Expr;
 
-    class Admin1Manager extends AbstractManager
+class Admin1Manager extends AbstractManager
 {
     public function __construct(protected EntityManagerInterface $em)
     {

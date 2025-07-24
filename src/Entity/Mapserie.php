@@ -3,7 +3,7 @@ namespace  App\Entity;
 use App\Entity\CommonTrait\CrupdatetimeTrait;
 use App\Entity\CommonTrait\HiddenTrait;
 use App\Entity\FieldDefinition\Fieldvaluecode;
-use App\Utils\Doctrine\Orm\Id\CavernIdGenerator;
+use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
 use Doctrine\ORM\Mapping as ORM;
 
 ;

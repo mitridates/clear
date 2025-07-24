@@ -9,7 +9,7 @@ use App\Entity\Map\Model\MapInterface;
 use App\Entity\Mapserie;
 use App\Entity\Organisation;
 use App\Entity\Person;
-use App\Utils\Doctrine\Orm\Id\CavernIdGenerator;
+use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 

@@ -1,14 +1,13 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
+use App\Domain\JsonApi\Serializers\AreaSerializer;
 use App\Entity\Area;
 use App\Form\backend\Area\AreaSearchType;
 use App\Form\backend\Area\AreaType;
 use App\Manager\AreaManager;
-use App\Utils\Json\JsonErrorSerializer\JsonErrorBag;
-use App\Utils\Json\Serializers\AreaSerializer;
-use App\vendor\tobscure\jsonapi\Collection;
-use App\vendor\tobscure\jsonapi\Document;
+use App\Shared\tobscure\jsonapi\Collection;
+use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\JsonResponse;

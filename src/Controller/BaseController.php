@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Utils\Arraypath;
+use App\Shared\Arraypath;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;

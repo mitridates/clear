@@ -1,6 +1,6 @@
 <?php
 namespace App\Twig;
-use App\Utils\Arraypath;
+use App\Shared\Arraypath;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Error\RuntimeError;

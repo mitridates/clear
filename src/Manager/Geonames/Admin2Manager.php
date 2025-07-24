@@ -3,7 +3,7 @@ namespace App\Manager\Geonames;
 use App\Entity\Geonames\Admin2;
 use App\Manager\AbstractManager;
 use App\Manager\Expr\ExprFilter;
-use App\Utils\Paginator;
+use App\Shared\Paginator;
 use Doctrine\ORM\{EntityManagerInterface, NonUniqueResultException, NoResultException, Query\Expr};
 
 class Admin2Manager extends AbstractManager

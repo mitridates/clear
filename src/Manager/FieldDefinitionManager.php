@@ -3,8 +3,8 @@ namespace App\Manager;
 use App\Entity\FieldDefinition\Fielddefinition;
 use App\Entity\FieldDefinition\Fieldvaluecode;
 use App\Manager\Expr\ExprFilter;
-use App\Utils\Paginator;
-use App\Utils\reflection\EntityReflectionHelper;
+use App\Shared\Paginator;
+use App\Shared\reflection\EntityReflectionHelper;
 use Doctrine\ORM\{AbstractQuery, EntityManagerInterface, NonUniqueResultException, NoResultException, Query\Expr};
 
 class FieldDefinitionManager extends AbstractManager

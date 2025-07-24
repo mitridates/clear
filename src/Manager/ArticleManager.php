@@ -3,7 +3,7 @@
 namespace App\Manager;
 use App\Entity\Article\Article;
 use App\Manager\Expr\ExprFilter;
-use App\Utils\Paginator;
+use App\Shared\Paginator;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;

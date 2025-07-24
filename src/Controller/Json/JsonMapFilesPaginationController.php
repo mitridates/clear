@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Controller\Json;
+use App\Domain\JsonApi\Serializers\Map\MapImageSerializer;
 use App\Entity\Cavern\Trait;
 use App\Entity\Map\Map;
 use App\Manager\MapManager;
-use App\Utils\Json\Serializers\Map\MapImageSerializer;
-use App\vendor\tobscure\jsonapi\{Collection, Document};
+use App\Shared\tobscure\jsonapi\{Collection, Document};
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

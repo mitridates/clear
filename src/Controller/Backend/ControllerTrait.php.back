@@ -5,7 +5,7 @@ namespace App\Controller\Backend;
 use App\Manager\AbstractManager;
 use App\Utils\Arraypath;
 use App\Utils\Json\JsonErrorSerializer\JsonErrorBag;
-use App\vendor\tobscure\jsonapi\Document;
+use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;

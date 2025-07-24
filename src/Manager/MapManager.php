@@ -2,15 +2,11 @@
 namespace App\Manager;
 use App\Entity\Cavern\Trait;
 use App\Entity\Map\Map;
-use App\Entity\Map\Mapcave;
-use App\Entity\Map\Mapimage;
 use App\Manager\Expr\ExprFilter;
-use App\Utils\Paginator;
+use App\Shared\Paginator;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
-use Doctrine\ORM\PersistentCollection;
-use Doctrine\ORM\Query\Expr;
 
 
 class MapManager extends AbstractManager

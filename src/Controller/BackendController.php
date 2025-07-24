@@ -4,8 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Area;
 use App\Entity\Person;
-use App\Utils\Json\JsonErrorSerializer\JsonErrorBag;
-use App\vendor\tobscure\jsonapi\Document;
+use App\Shared\JsonApi\ErrorSerializer\JsonErrorBag;
+use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormInterface;

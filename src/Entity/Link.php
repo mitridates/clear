@@ -2,11 +2,12 @@
 namespace  App\Entity;
 use App\Entity\CommonTrait\{CrupdatetimeTrait};
 use App\Entity\CommonTrait\HiddenTrait;
-use App\Utils\Doctrine\Orm\Id\CavernIdGenerator;
+use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * No PL. Inspired: https://www.student.unsw.edu.au/how-do-i-cite-electronic-sources
  */

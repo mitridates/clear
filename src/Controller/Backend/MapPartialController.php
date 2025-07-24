@@ -1,14 +1,17 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
+use App\Domain\JsonApi\Serializers\Map\MapSerializer;
 use App\Entity\Map\Map;
+use App\Form\backend\Map\MapPartialCoordinatesType;
+use App\Form\backend\Map\MapPartialSourceType;
+use App\Form\backend\Map\MapPartialSurveyType;
 use App\Form\backend\Map\Model\PartialFormTypeInterface;
 use App\Services\Cache\FilesCache\Map\MapSerializedCache;
+use App\Shared\reflection\EntityReflectionHelper;
 use App\Utils\Helper\MapControllerHelper;
-use App\Utils\Json\Serializers\Map\MapSerializer;
-use App\Utils\reflection\EntityReflectionHelper;
-use App\vendor\tobscure\jsonapi\Document;
-use App\vendor\tobscure\jsonapi\Resource;
+use App\Shared\tobscure\jsonapi\Document;
+use App\Shared\tobscure\jsonapi\Resource;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -22,15 +25,24 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class MapPartialController extends BackendController
 {
 
+    private function getFormType($type): string
+    {
+        return match ($type) {
+            'coordinates'=> MapPartialCoordinatesType::class,
+            'survey'=> MapPartialSurveyType::class,
+            'source'=> MapPartialSourceType::class,
+            default => throw new \InvalidArgumentException("No existe formType para '{$type}'.")
+        };
+    }
+
     #[Route(path: '/edit/{relationship}/{id}', name: 'admin_map_partial_edit')]
     public function editRelationshipAction(Request $request, Map $map, string $relationship, EntityManagerInterface $em, UrlGeneratorInterface $urlGenerator): Response
     {
-        $classType= MapControllerHelper::PARTIAL_FORM_TYPE[$relationship];
+        $classType= $this->getFormType($relationship);// MapControllerHelper::PARTIAL_FORM_TYPE[$relationship];
         $form= $this->createForm($classType, $map)->handleRequest($request);
         $twigArgs=[
             'entity' => $map,
             'relationship'=>$relationship,
-//            'relEntity'=>$entity,
             'relType'=>'partial',
             'form'=>$form->createView(),
         ];
@@ -66,7 +78,7 @@ class MapPartialController extends BackendController
         if ($this->isCsrfTokenValid('delete_partial_'.$relationship.'_'.$entity->getId(), $request->get('_token')))
         {
             /**@var PartialFormTypeInterface $type */
-            $type= MapControllerHelper::PARTIAL_FORM_TYPE[$relationship];
+            $type= $this->getFormType($relationship);
             EntityReflectionHelper::setNullProperties($entity, $type::FieldNames());
             $em->persist($entity);
             $em->flush();

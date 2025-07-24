@@ -4,6 +4,7 @@ Map controller form.
 #}
 {% set md6 = {row_attr:{class:' col-md-12'}} %}
 {% set inline = {row_attr:{class:'d-inline'}} %}
+<h5 {{ dividerAttr|raw }}>{{ 'map.divider.controller'|trans([], 'cavepages')}}</h5>
 <div class="row">
     <div class="col-md-4 col-sm mb-2">
         <input type="radio" id="ctrl-orgid" name="controller-radio" value="ctrl-orgid" data-selector="#{{ form.organisation.vars.id }}" checked>

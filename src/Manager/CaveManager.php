@@ -2,10 +2,10 @@
 namespace App\Manager;
 use App\Entity\Cavern\Trait;
 use App\Manager\Expr\ExprFilter;
-use App\Utils\Paginator;
 use App\Mitridates\Cavern\Entity\Cavename;
 use App\Mitridates\Cavern\Entity\Mapcave;
 use App\Mitridates\Cavern\Entity\Mapimage;
+use App\Shared\Paginator;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;

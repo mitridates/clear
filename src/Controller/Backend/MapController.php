@@ -1,26 +1,20 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
+use App\Domain\JsonApi\Serializers\Map\MapSerializer;
+use App\Domain\JsonApi\SpecTypes\JsonApiTypeRegistry;
 use App\Entity\Map\Map;
 use App\Form\backend\Map\MapSearchType;
 use App\Form\backend\Map\MapType;
 use App\Manager\MapManager;
 use App\Services\Cache\FilesCache\Map\MapSerializedCache;
+use App\Shared\JsonApi\Unserialize\JsonApiManager;
+use App\Shared\JsonApi\Unserialize\JsonApiSpec;
 use App\Utils\Helper\MapControllerHelper;
-use App\Utils\Json\JsonApi\JsonApiManager;
-use App\Utils\Json\JsonApi\JsonApiManagerFactory;
-use App\Utils\Json\JsonApi\JsonApiSpec;
-use App\Utils\Json\JsonApi\SpecTypes\FieldvaluecodeSpecType;
-use App\Utils\Json\JsonApi\SpecTypes\JsonApiTypeRegistry;
-use App\Utils\Json\JsonApi\SpecTypes\PersonSpecType;
-use App\Utils\Json\JsonErrorSerializer\JsonErrorBag;
-use App\Utils\Json\Serializers\Map\MapSerializer;
-use App\vendor\tobscure\jsonapi\Collection;
-use App\vendor\tobscure\jsonapi\Document;
-use App\vendor\tobscure\jsonapi\Resource;
+use App\Shared\tobscure\jsonapi\Collection;
+use App\Shared\tobscure\jsonapi\Document;
+use App\Shared\tobscure\jsonapi\Resource;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -115,7 +109,7 @@ class MapController extends BackendController
     }
 
     #[Route(path: '/edit/{id}', name: 'admin_map_edit')]
-    public function editAction(Request $request, Map $entity, EntityManagerInterface $em, ParameterBagInterface $bag, UrlGeneratorInterface $urlGenerator): Response
+    public function editAction(Request $request, Map $entity, EntityManagerInterface $em, UrlGeneratorInterface $urlGenerator): Response
     {
         $form= $this->createForm(MapType::class, $entity)->handleRequest($request);
 
@@ -134,7 +128,7 @@ class MapController extends BackendController
             $em->clear();
 
             /**
-             * para agregar nuevos elementos a la cache:
+             * para agregar nuevas propiedades a la cache:
              * MapControllerHelper::MAP_SERIALIZER_FIELDS['with']... propiedades
              * MapControllerHelper::MAP_SERIALIZER_FIELDS['fields']...campos de propiedad si es relationship con otra tabla.
              * En caso de relaciones, agregar en MapSerializer su correspondiente clase de serialización.

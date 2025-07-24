@@ -2,11 +2,7 @@
 
 namespace App\Services\Cache\FilesCache;
 
-use App\Manager\Geonames\Admin1Manager;
 use App\Services\Cache\FilesCache;
-use App\Utils\Json\Serializers\Geonames\GeonamesSerializable;
-use PHPUnit\Util\Json;
-use Psr\Cache\CacheItemInterface;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Contracts\Cache\ItemInterface;

@@ -1,14 +1,13 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
+use App\Domain\JsonApi\Serializers\LinkSerializer;
 use App\Entity\Link;
 use App\Form\backend\Link\LinkSearchType;
 use App\Form\backend\Link\LinkType;
 use App\Manager\LinkManager;
-use App\Utils\Json\JsonErrorSerializer\JsonErrorBag;
-use App\Utils\Json\Serializers\LinkSerializer;
-use App\vendor\tobscure\jsonapi\Collection;
-use App\vendor\tobscure\jsonapi\Document;
+use App\Shared\tobscure\jsonapi\Collection;
+use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\JsonResponse;

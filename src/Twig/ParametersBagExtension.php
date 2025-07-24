@@ -1,9 +1,10 @@
 <?php
 namespace App\Twig;
-use App\Utils\Arraypath;
+use App\Shared\Arraypath;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+
 /**
  * This Bundle parameters twig
  *

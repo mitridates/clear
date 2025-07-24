@@ -4,7 +4,7 @@ use App\Entity\Map\Mapfurtherpc;
 use App\Form\backend\Map\FormTypeFields\MapFields;
 use App\Form\backend\Map\Model\ManyToOneFormTypeInterface;
 use App\Form\EventListener\AddAreaFieldSubscriber;
-use App\Utils\reflection\EntityReflectionHelper;
+use App\Shared\reflection\EntityReflectionHelper;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

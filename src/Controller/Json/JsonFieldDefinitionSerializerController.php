@@ -4,7 +4,7 @@ namespace App\Controller\Json;
 use App\Entity\FieldDefinition\Fielddefinition;
 use App\Manager\FieldDefinitionManager;
 use App\Services\Cache\FilesCache\FieldDefinitionCache;
-use App\Utils\Json\JsonErrorSerializer\JsonErrorBag;
+use App\Shared\JsonApi\ErrorSerializer\JsonErrorBag;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;

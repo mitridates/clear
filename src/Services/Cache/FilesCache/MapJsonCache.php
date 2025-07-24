@@ -3,7 +3,7 @@
 namespace App\Services\Cache\FilesCache;
 
 use App\Services\Cache\FilesCache;
-use App\vendor\tobscure\jsonapi\Collection;
+use App\Shared\tobscure\jsonapi\Collection;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Contracts\Cache\ItemInterface;

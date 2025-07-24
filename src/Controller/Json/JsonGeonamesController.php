@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Controller\Json;
+use App\Domain\JsonApi\Serializers\Geonames\GeonamesSerializable;
 use App\Manager\Geonames\{Admin1Manager, Admin2Manager, Admin3Manager};
 use App\Services\Cache\FilesCache\GeonamesJsonCache;
-use App\Utils\Json\JsonErrorSerializer\{JsonErrorBag, JsonErrorMessages};
-use App\Utils\Json\Serializers\Geonames\GeonamesSerializable;
+use App\Shared\JsonApi\ErrorSerializer\{JsonErrorMessages};
+use App\Shared\JsonApi\ErrorSerializer\JsonErrorBag;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

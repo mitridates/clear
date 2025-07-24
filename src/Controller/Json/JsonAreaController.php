@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Controller\Json;
+use App\Domain\JsonApi\Serializers\{AreaSerializer};
 use App\Entity\{Area};
 use App\Entity\Geonames\{Admin1, Country};
 use App\Manager\{AreaManager};
-use App\Utils\Json\JsonErrorSerializer\JsonErrorBag;
-use App\Utils\Json\Serializers\{AreaSerializer};
-use App\vendor\tobscure\jsonapi\{Collection, Document};
+use App\Shared\JsonApi\ErrorSerializer\JsonErrorBag;
+use App\Shared\tobscure\jsonapi\{Collection, Document};
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Exception\ORMException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

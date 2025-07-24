@@ -2,5 +2,6 @@
 Map special map sheet form.
 @var FormView form
 #}
+<h5 {{ dividerAttr|raw }}>{{ 'map.divider.comment'|trans([], 'cavepages')}}</h5>
 {% set height = { 'attr': {'style': 'min-height: 300px'} }%}
 {{ form_row(form.comment, height) }}

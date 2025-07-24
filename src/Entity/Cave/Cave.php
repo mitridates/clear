@@ -1,17 +1,17 @@
 <?php
 namespace  App\Entity\Cave;
 use App\Entity\Area;
+use App\Entity\Cave\Trait\{CaveManyToOneRelationshipTrait, CavePartialManagementTrait};
 use App\Entity\Cave\Trait\CaveOneToOneRelationshipTrait;
+use App\Entity\Cave\Trait\CavePartialCoarseTrait;
 use App\Entity\Cave\Trait\CavePartialDimensionTrait;
 use App\Entity\Cave\Trait\CavePartialEnvironmentTrait;
-use App\Entity\Cave\Trait\CavePartialCoarseTrait;
-use App\Entity\Cave\Trait\{CaveManyToOneRelationshipTrait, CavePartialManagementTrait};
 use App\Entity\CommonTrait\{CrupdatetimeTrait};
 use App\Entity\CommonTrait\HiddenTrait;
 use App\Entity\FieldDefinition\Fieldvaluecode;
 use App\Entity\Geonames\{Admin1, Admin2, Admin3, Country};
-use App\Utils\Doctrine\Orm\Id\CavernIdGenerator;
-use App\Utils\reflection\EntityReflectionHelper;
+use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
+use App\Shared\reflection\EntityReflectionHelper;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 

@@ -1,12 +1,12 @@
 <?php
 namespace App\Controller\Backend;
+use App\Domain\Geonames\Import\Sql\ImportSql;
 use App\Form\backend\setup\SetupCountryType;
 use App\Form\backend\setup\SetupSqlLoaderType;
 use App\Geonamesdump\utils\GeonamesControllerLoader;
 use App\Manager\SetupManager;
 use App\Services\Cache\FilesCache\DbStatusCache;
-use App\Utils\Arraypath;
-use App\Utils\Import\Sql\ImportSql;
+use App\Shared\Arraypath;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

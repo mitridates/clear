@@ -2,6 +2,7 @@
 namespace App\Controller\Backend;
 
 use App\Controller\BackendController;
+use App\Domain\JsonApi\Serializers\CitationSerializer;
 use App\Entity\Citation\Citation;
 use App\Form\backend\Citation\BookCarpetType;
 use App\Form\backend\Citation\BookType;
@@ -10,10 +11,8 @@ use App\Form\backend\Citation\JournalArticleType;
 use App\Form\backend\Citation\WebpageType;
 use App\Form\backend\Citation\WebsiteType;
 use App\Manager\CitationManager;
-use App\Utils\Json\JsonErrorSerializer\JsonErrorBag;
-use App\Utils\Json\Serializers\CitationSerializer;
-use App\vendor\tobscure\jsonapi\Collection;
-use App\vendor\tobscure\jsonapi\Document;
+use App\Shared\tobscure\jsonapi\Collection;
+use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
