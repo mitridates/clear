@@ -2,7 +2,7 @@
 
 namespace App\Form\backend\Organisation;
 
-use App\Entity\FieldDefinition\Fieldvaluecode;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
 use App\Form\EventListener\AddAdmin1FieldSubscriber;
 use App\Form\EventListener\AddAdmin2FieldSubscriber;
 use App\Form\EventListener\AddAdmin3FieldSubscriber;

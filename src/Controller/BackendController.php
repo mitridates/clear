@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Area;
+use App\Domain\Area\Entity\Area;
 use App\Entity\Person;
 use App\Shared\JsonApi\ErrorSerializer\JsonErrorBag;
 use App\Shared\tobscure\jsonapi\Document;

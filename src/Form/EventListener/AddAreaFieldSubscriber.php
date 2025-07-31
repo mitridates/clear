@@ -1,8 +1,8 @@
 <?php
 namespace App\Form\EventListener;
-use App\Entity\Area;
-use App\Entity\Geonames\Admin1;
-use App\Entity\Geonames\Country;
+use App\Domain\Area\Entity\Area;
+use App\Domain\Geonames\Entity\Admin1;
+use App\Domain\Geonames\Entity\Country;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

@@ -2,11 +2,11 @@
 
 namespace App\Services\Cache\FilesCache;
 
+use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecodelang;
+use App\Domain\Fielddefinition\Manager\FieldDefinitionManager;
 use App\Domain\JsonApi\Serializers\FieldValueCodeLangSerializer;
 use App\Domain\JsonApi\Serializers\FieldValueCodeSerializer;
-use App\Entity\FieldDefinition\Fieldvaluecode;
-use App\Entity\FieldDefinition\Fieldvaluecodelang;
-use App\Manager\FieldDefinitionManager;
 use App\Services\Cache\FilesCache;
 use App\Shared\tobscure\jsonapi\Resource;
 use Psr\Cache\InvalidArgumentException;

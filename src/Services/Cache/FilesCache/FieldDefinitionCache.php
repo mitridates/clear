@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Services\Cache\FilesCache;
+use App\Domain\Fielddefinition\Entity\Fielddefinition;
+use App\Domain\Fielddefinition\Entity\Fielddefinitionlang;
+use App\Domain\Fielddefinition\Manager\FieldDefinitionManager;
 use App\Domain\JsonApi\Serializers\FieldDefinitionLangSerializer;
 use App\Domain\JsonApi\Serializers\FieldDefinitionSerializer;
-use App\Entity\FieldDefinition\Fielddefinition;
-use App\Entity\FieldDefinition\Fielddefinitionlang;
-use App\Manager\FieldDefinitionManager;
 use App\Services\Cache\FilesCache;
 use App\Shared\tobscure\jsonapi\Document;
 use App\Shared\tobscure\jsonapi\Resource;

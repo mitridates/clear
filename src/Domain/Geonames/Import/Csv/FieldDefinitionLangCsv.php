@@ -1,7 +1,7 @@
 <?php
 namespace App\Domain\Geonames\Import\Csv;
 
-use App\Entity\FieldDefinition\Fielddefinitionlang;
+use App\Domain\Fielddefinition\Entity\Fielddefinitionlang;
 use Doctrine\ORM\EntityRepository;
 
 class FieldDefinitionLangCsv extends AbstractCsv

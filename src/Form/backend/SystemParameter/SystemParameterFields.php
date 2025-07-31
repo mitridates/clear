@@ -2,7 +2,7 @@
 
 namespace App\Form\backend\SystemParameter;
 
-use App\Entity\FieldDefinition\Fieldvaluecode;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
 use App\Form\EventListener\AddCountryFieldSubscriber;
 use App\Form\EventListener\AddOrganisationFieldSubscriber;
 use App\Form\FormFields\AbstractFormFields;

@@ -1,6 +1,6 @@
 <?php
 namespace  App\Entity\Cave\Trait;
-use App\Entity\FieldDefinition\{Fieldvaluecode};
+use App\Domain\Fielddefinition\Entity\{Fieldvaluecode};
 use App\Entity\Organisation;
 use App\Entity\Person;
 use Doctrine\ORM\Mapping as ORM;

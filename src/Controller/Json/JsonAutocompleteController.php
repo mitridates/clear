@@ -1,6 +1,12 @@
 <?php
 
 namespace App\Controller\Json;
+use App\Domain\Area\Entity\Area;
+use App\Domain\Area\Manager\AreaManager;
+use App\Domain\Article\Entity\Article;
+use App\Domain\Article\Manager\ArticleManager;
+use App\Domain\Fielddefinition\Entity\{Fielddefinition};
+use App\Domain\Fielddefinition\Manager\FieldDefinitionManager;
 use App\Domain\JsonApi\Serializers\{AreaSerializer};
 use App\Domain\JsonApi\Serializers\article\ArticleSerializer;
 use App\Domain\JsonApi\Serializers\cave\CaveSerializer;
@@ -13,21 +19,15 @@ use App\Domain\JsonApi\Serializers\MimeTypeSerializer;
 use App\Domain\JsonApi\Serializers\OrganisationSerializer;
 use App\Domain\JsonApi\Serializers\PersonSerializer;
 use App\Domain\JsonApi\Serializers\SpecieSerializer;
-use App\Entity\Area;
-use App\Entity\Article\Article;
+use App\Domain\Map\Entity\Map\Map;
 use App\Entity\Citation\Citation;
-use App\Entity\FieldDefinition\{Fielddefinition};
 use App\Entity\Link;
-use App\Entity\Map\Map;
 use App\Entity\Mapserie;
 use App\Entity\Organisation;
 use App\Entity\Person;
 use App\Entity\Specie;
-use App\Manager\{AreaManager,
-    ArticleManager,
-    CaveManager,
+use App\Manager\{CaveManager,
     CitationManager,
-    FieldDefinitionManager,
     LinkManager,
     MapManager,
     MapSerieManager,

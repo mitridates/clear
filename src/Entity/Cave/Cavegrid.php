@@ -1,10 +1,10 @@
 <?php
 namespace  App\Entity\Cave;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
+use App\Domain\Map\Entity\Map\Map;
 use App\Entity\Cave\Trait\CaveManyToOneTrait;
 use App\Entity\CommonTrait\{CrupdatetimeTrait};
 use App\Entity\CommonTrait\SequenceTrait;
-use App\Entity\FieldDefinition\Fieldvaluecode;
-use App\Entity\Map\Map;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 

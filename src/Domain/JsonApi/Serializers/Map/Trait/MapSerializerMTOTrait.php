@@ -3,7 +3,7 @@
 namespace App\Domain\JsonApi\Serializers\Map\Trait;
 
 use App\Domain\JsonApi\Serializers\Map\MapSerializer;
-use App\Entity\Map\Model\MapManyToOneInterface;
+use App\Domain\Map\Entity\Map\Model\MapManyToOneInterface;
 use App\Shared\tobscure\jsonapi\Relationship;
 use App\Shared\tobscure\jsonapi\Resource;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;

@@ -1,11 +1,11 @@
 <?php
 namespace App\Domain\Geonames\Import\Csv;
 
-use App\Entity\FieldDefinition\Fieldvaluecode;
-use App\Entity\Geonames\Admin1;
-use App\Entity\Geonames\Admin2;
-use App\Entity\Geonames\Admin3;
-use App\Entity\Geonames\Country;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
+use App\Domain\Geonames\Entity\Admin1;
+use App\Domain\Geonames\Entity\Admin2;
+use App\Domain\Geonames\Entity\Admin3;
+use App\Domain\Geonames\Entity\Country;
 use App\Entity\Organisation;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;

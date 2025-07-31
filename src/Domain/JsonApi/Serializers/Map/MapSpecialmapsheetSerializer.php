@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers\Map;
-use App\Entity\Map\Mapspecialmapsheet;
+use App\Domain\Map\Entity\Map\Mapspecialmapsheet;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;

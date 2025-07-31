@@ -1,6 +1,11 @@
 <?php
 namespace  App\Entity\Cave;
-use App\Entity\Area;
+use App\Domain\Area\Entity\Area;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
+use App\Domain\Geonames\Entity\{Country};
+use App\Domain\Geonames\Entity\Admin1;
+use App\Domain\Geonames\Entity\Admin2;
+use App\Domain\Geonames\Entity\Admin3;
 use App\Entity\Cave\Trait\{CaveManyToOneRelationshipTrait, CavePartialManagementTrait};
 use App\Entity\Cave\Trait\CaveOneToOneRelationshipTrait;
 use App\Entity\Cave\Trait\CavePartialCoarseTrait;
@@ -8,8 +13,6 @@ use App\Entity\Cave\Trait\CavePartialDimensionTrait;
 use App\Entity\Cave\Trait\CavePartialEnvironmentTrait;
 use App\Entity\CommonTrait\{CrupdatetimeTrait};
 use App\Entity\CommonTrait\HiddenTrait;
-use App\Entity\FieldDefinition\Fieldvaluecode;
-use App\Entity\Geonames\{Admin1, Admin2, Admin3, Country};
 use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
 use App\Shared\reflection\EntityReflectionHelper;
 use Doctrine\ORM\Mapping as ORM;

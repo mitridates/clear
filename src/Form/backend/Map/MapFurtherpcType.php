@@ -1,6 +1,6 @@
 <?php
 namespace App\Form\backend\Map;
-use App\Entity\Map\Mapfurtherpc;
+use App\Domain\Map\Entity\Map\Mapfurtherpc;
 use App\Form\backend\Map\FormTypeFields\MapFields;
 use App\Form\backend\Map\Model\ManyToOneFormTypeInterface;
 use App\Form\EventListener\AddAreaFieldSubscriber;

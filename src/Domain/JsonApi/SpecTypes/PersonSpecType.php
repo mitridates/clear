@@ -2,7 +2,10 @@
 namespace App\Domain\JsonApi\SpecTypes;
 
 use App\Shared\JsonApi\Unserialize\JsonApiSpec;
-
+/**
+ * Entidad que, una vez registrada en JsonApiTypeRegistry, permite retornar
+ * algún dato personalizado
+ */
 class PersonSpecType extends JsonApiSpec
 {
     /**

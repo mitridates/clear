@@ -2,7 +2,7 @@
 
 namespace App\Form\backend\Mapserie;
 
-use App\Entity\FieldDefinition\Fieldvaluecode;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
 use App\Form\EventListener\AddOrganisationFieldSubscriber;
 use App\Form\FormFields\AbstractFormFields;
 use App\Form\FormFields\AdministrativeDivisionSubscriberTrait;

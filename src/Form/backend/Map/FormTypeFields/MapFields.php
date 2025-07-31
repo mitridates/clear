@@ -2,7 +2,7 @@
 
 namespace App\Form\backend\Map\FormTypeFields;
 
-use App\Entity\FieldDefinition\Fieldvaluecode;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
 use App\Form\EventListener\AddAdmin1FieldSubscriber;
 use App\Form\EventListener\AddAdmin2FieldSubscriber;
 use App\Form\EventListener\AddAdmin3FieldSubscriber;
@@ -15,9 +15,7 @@ use App\Form\FormFields\AbstractFormFields;
 use App\Form\FormFields\AdministrativeDivisionSubscriberTrait;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormFactoryInterface;
 
 class MapFields extends AbstractFormFields
 {

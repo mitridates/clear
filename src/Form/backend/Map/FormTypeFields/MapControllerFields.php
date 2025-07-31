@@ -2,7 +2,7 @@
 
 namespace App\Form\backend\Map\FormTypeFields;
 
-use App\Entity\Map\Mapcontroller;
+use App\Domain\Map\Entity\Map\Mapcontroller;
 use App\Form\EventListener\AddOrganisationFieldSubscriber;
 use App\Form\EventListener\AddPersonFieldSubscriber;
 use App\Form\FormFields\AbstractFormFields;

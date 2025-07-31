@@ -1,11 +1,11 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
+use App\Domain\Area\Entity\Area;
+use App\Domain\Area\Manager\AreaManager;
 use App\Domain\JsonApi\Serializers\AreaSerializer;
-use App\Entity\Area;
 use App\Form\backend\Area\AreaSearchType;
 use App\Form\backend\Area\AreaType;
-use App\Manager\AreaManager;
 use App\Shared\tobscure\jsonapi\Collection;
 use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;

@@ -1,10 +1,13 @@
 <?php
 namespace  App\Entity;
 
+use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
+use App\Domain\Geonames\Entity\{Country};
+use App\Domain\Geonames\Entity\Admin1;
+use App\Domain\Geonames\Entity\Admin2;
+use App\Domain\Geonames\Entity\Admin3;
 use App\Entity\CommonTrait\{CrupdatetimeTrait};
 use App\Entity\CommonTrait\HiddenTrait;
-use App\Entity\FieldDefinition\Fieldvaluecode;
-use App\Entity\Geonames\{Admin1, Admin2, Admin3, Country};
 use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;

@@ -1,8 +1,8 @@
 <?php
 namespace  App\Entity\Cave;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
 use App\Entity\Cave\Trait\CaveOneToOneTrait;
 use App\Entity\CommonTrait\CrupdatetimeTrait;
-use App\Entity\FieldDefinition\Fieldvaluecode;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 

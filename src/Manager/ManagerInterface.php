@@ -2,7 +2,7 @@
 
 namespace App\Manager;
 
-use App\Entity\Area;
+use App\Domain\Area\Entity\Area;
 
 interface ManagerInterface
 {

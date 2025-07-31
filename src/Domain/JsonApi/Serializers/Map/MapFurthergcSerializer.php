@@ -2,7 +2,7 @@
 
 namespace App\Domain\JsonApi\Serializers\Map;
 use App\Domain\JsonApi\Serializers\Map\Trait\MapSerializerMTOTrait;
-use App\Entity\Map\Mapfurthergc;
+use App\Domain\Map\Entity\Map\Mapfurthergc;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 

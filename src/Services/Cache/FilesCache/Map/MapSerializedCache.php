@@ -2,7 +2,7 @@
 
 namespace App\Services\Cache\FilesCache\Map;
 
-use App\Entity\Map\Map;
+use App\Domain\Map\Entity\Map\Map;
 use App\Services\Cache\FilesCache;
 use App\Shared\tobscure\jsonapi\Document;
 use Psr\Cache\InvalidArgumentException;

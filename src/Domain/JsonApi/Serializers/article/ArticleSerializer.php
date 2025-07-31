@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers\article;
+use App\Domain\Article\Entity\Article;
 use App\Domain\JsonApi\Serializers\Geonames\Admin1Serializer;
 use App\Domain\JsonApi\Serializers\Geonames\CountrySerializer;
-use App\Entity\Article\Article;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;

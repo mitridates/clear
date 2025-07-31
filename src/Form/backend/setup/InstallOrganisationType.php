@@ -1,6 +1,6 @@
 <?php
 namespace App\Form\backend\setup;
-use App\Entity\FieldDefinition\Fieldvaluecode;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
 use App\Entity\Organisation;
 use App\Form\EventListener\AddAdmin1FieldSubscriber;
 use App\Form\EventListener\AddAdmin2FieldSubscriber;

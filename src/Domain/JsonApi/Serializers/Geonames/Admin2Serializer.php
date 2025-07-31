@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers\Geonames;
-use App\Entity\Geonames\Admin2;
+use App\Domain\Geonames\Entity\Admin2;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 

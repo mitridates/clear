@@ -22,7 +22,7 @@ services:
             - '../src/Form/'
             - '../src/Utils/'
             - '../src/Share/'
-            - '../src/Domain/'
+
             - '../src/vendor/'
             - '../src/Resources/'
     # add more service definitions when explicit configuration is needed

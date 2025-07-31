@@ -1,7 +1,7 @@
 <?php
 namespace App\Manager;
+use App\Domain\Map\Entity\Map\Map;
 use App\Entity\Cavern\Trait;
-use App\Entity\Map\Map;
 use App\Manager\Expr\ExprFilter;
 use App\Shared\Paginator;
 use Doctrine\ORM\EntityManagerInterface;

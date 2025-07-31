@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers;
-use App\Entity\FieldDefinition\Fielddefinitionlang;
+use App\Domain\Fielddefinition\Entity\Fielddefinitionlang;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;

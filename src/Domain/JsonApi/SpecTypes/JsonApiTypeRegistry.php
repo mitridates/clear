@@ -5,8 +5,12 @@ namespace App\Domain\JsonApi\SpecTypes;
 use App\Shared\JsonApi\Unserialize\JsonApiManagerFactory;
 
 /**
- * Registra los tipos de este proyecto
+ * Registra de entidades del prouecto.
+ * La Entidad, una vez registrada, puede agregar funciones para
+ * personalizar sus atributos
+ *
  */
+
 class JsonApiTypeRegistry
 {
     public static function registerAll(): void
