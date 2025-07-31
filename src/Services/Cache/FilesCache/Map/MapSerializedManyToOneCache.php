@@ -2,13 +2,13 @@
 
 namespace App\Services\Cache\FilesCache\Map;
 
-use App\Entity\Map\Map;
-use App\Entity\Map\Model\MapManyToOneInterface;
+use App\Domain\Map\Entity\Map\Map;
+use App\Domain\Map\Entity\Map\Model\MapManyToOneInterface;
 use App\Services\Cache\FilesCache;
-use App\Utils\Helper\MapControllerHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Collection;
 use App\Shared\tobscure\jsonapi\Document;
+use App\Utils\Helper\MapControllerHelper;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\JsonResponse;

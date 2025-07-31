@@ -1,8 +1,6 @@
 <?php
 namespace App\Form\backend\Map;
-use App\Entity\Map\Mapdrafter;
-use App\Form\backend\Map\FormTypeFields\MapControllerFields;
-use App\Form\backend\Map\FormTypeFields\MapFields;
+use App\Domain\Map\Entity\Map\Mapdrafter;
 use App\Form\backend\Map\Model\ManyToOneFormTypeInterface;
 use App\Form\EventListener\AddPersonFieldSubscriber;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;

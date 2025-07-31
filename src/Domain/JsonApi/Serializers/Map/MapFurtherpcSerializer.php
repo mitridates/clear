@@ -5,7 +5,7 @@ use App\Domain\JsonApi\Serializers\AreaSerializer;
 use App\Domain\JsonApi\Serializers\Geonames\Admin1Serializer;
 use App\Domain\JsonApi\Serializers\Geonames\CountrySerializer;
 use App\Domain\JsonApi\Serializers\Map\Trait\MapSerializerMTOTrait;
-use App\Entity\Map\Mapfurtherpc;
+use App\Domain\Map\Entity\Map\Mapfurtherpc;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;

@@ -1,10 +1,11 @@
 <?php
 namespace  App\Entity\Cave;
-use App\Entity\Area;
+use App\Domain\Area\Entity\Area;
+use App\Domain\Geonames\Entity\{Country};
+use App\Domain\Geonames\Entity\Admin1;
 use App\Entity\Cave\Trait\CaveManyToOneTrait;
 use App\Entity\CommonTrait\{CrupdatetimeTrait};
 use App\Entity\CommonTrait\SequenceTrait;
-use App\Entity\Geonames\{Admin1, Country};
 use Doctrine\ORM\Mapping as ORM;
 
 /**

@@ -1,10 +1,10 @@
 <?php
 namespace App\Geonamesdump\utils;
-use App\Entity\Geonames\Admin1;
-use App\Entity\Geonames\Admin2;
-use App\Entity\Geonames\Admin3;
-use App\Entity\Geonames\Country;
-use App\Entity\Geonames\Geonames;
+use App\Domain\Geonames\Entity\Admin1;
+use App\Domain\Geonames\Entity\Admin2;
+use App\Domain\Geonames\Entity\Admin3;
+use App\Domain\Geonames\Entity\Country;
+use App\Domain\Geonames\Entity\Geonames;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
 

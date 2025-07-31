@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Controller\Json;
+use App\Domain\Geonames\Manager\{Admin3Manager};
+use App\Domain\Geonames\Manager\Admin1Manager;
+use App\Domain\Geonames\Manager\Admin2Manager;
 use App\Domain\JsonApi\Serializers\Geonames\GeonamesSerializable;
-use App\Manager\Geonames\{Admin1Manager, Admin2Manager, Admin3Manager};
 use App\Services\Cache\FilesCache\GeonamesJsonCache;
 use App\Shared\JsonApi\ErrorSerializer\{JsonErrorMessages};
 use App\Shared\JsonApi\ErrorSerializer\JsonErrorBag;

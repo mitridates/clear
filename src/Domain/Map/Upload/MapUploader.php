@@ -1,6 +1,6 @@
 <?php
 namespace App\Domain\Map\Upload;
-use App\Entity\Map\Mapimage;
+use App\Domain\Map\Entity\Map\Mapimage;
 use App\Shared\Upload\TmpFileCache;
 use App\Shared\Upload\UploaderParameters;
 use App\Shared\Upload\UploadImageTrait;

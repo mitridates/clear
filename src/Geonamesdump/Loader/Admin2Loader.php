@@ -1,6 +1,6 @@
 <?php
 namespace App\Geonamesdump\Loader;
-use App\Entity\Geonames\Admin2;
+use App\Domain\Geonames\Entity\Admin2;
 use App\Geonamesdump\Model\LoaderInteface;
 
 /**

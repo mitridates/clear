@@ -1,6 +1,6 @@
 <?php
 namespace App\Form\backend\Map;
-use App\Entity\Map\Mapsurveyor;
+use App\Domain\Map\Entity\Map\Mapsurveyor;
 use App\Form\backend\Map\FormTypeFields\MapControllerFields;
 use App\Form\backend\Map\Model\OneToOneFormTypeInterface;
 use App\Form\EventListener\AddPersonFieldSubscriber;

@@ -3,7 +3,7 @@
 namespace App\Domain\JsonApi\Serializers\Map;
 use App\Domain\JsonApi\Serializers\LinkSerializer;
 use App\Domain\JsonApi\Serializers\Map\Trait\MapSerializerMTOTrait;
-use App\Entity\Map\Maplink;
+use App\Domain\Map\Entity\Map\Maplink;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;

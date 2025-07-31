@@ -27,7 +27,30 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
-
+            Geonames:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/Domain/Geonames/Entity'
+                prefix: 'App\Domain\Geonames\Entity'
+                alias: Geonames
+            Map:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/Domain/Map/Entity'
+                prefix: 'App\Domain\Map\Entity'
+                alias: Map
+            Article:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/Domain/Article/Entity'
+                prefix: 'App\Domain\Article\Entity'
+                alias: Article
+            Fielddefinition:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/Domain/Fielddefinition/Entity'
+                prefix: 'App\Domain\Fielddefinition\Entity'
+                alias: Fielddefinition
 when@test:
     doctrine:
         dbal:

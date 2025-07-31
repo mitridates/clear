@@ -1,9 +1,9 @@
 <?php
 namespace  App\Entity\Cave;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
 use App\Entity\Cave\Trait\CaveManyToOneTrait;
 use App\Entity\CommonTrait\{CrupdatetimeTrait};
 use App\Entity\CommonTrait\SequenceTrait;
-use App\Entity\FieldDefinition\Fieldvaluecode;
 use App\Entity\Organisation;
 use App\Entity\Person;
 use Doctrine\ORM\Mapping as ORM;

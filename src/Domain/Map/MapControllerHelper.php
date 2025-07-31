@@ -13,8 +13,9 @@ use App\Domain\JsonApi\Serializers\Map\MapLinkSerializer;
 use App\Domain\JsonApi\Serializers\Map\MapPublicationtextSerializer;
 use App\Domain\JsonApi\Serializers\Map\MapSpecialmapsheetSerializer;
 use App\Domain\JsonApi\Serializers\Map\MapSurveyorSerializer;
-
-{
+//todo: Eliminar esta basura infecta
+class MapControllerHelper
+ {
 
     const OTO_SERIALIZER=[
         'controller'=>MapControllerSerializer::class,

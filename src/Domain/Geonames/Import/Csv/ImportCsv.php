@@ -2,10 +2,10 @@
 
 namespace App\Domain\Geonames\Import\Csv;
 
-use App\Entity\FieldDefinition\Fielddefinition;
-use App\Entity\FieldDefinition\Fielddefinitionlang;
-use App\Entity\FieldDefinition\Fieldvaluecode;
-use App\Entity\FieldDefinition\Fieldvaluecodelang;
+use App\Domain\Fielddefinition\Entity\Fielddefinition;
+use App\Domain\Fielddefinition\Entity\Fielddefinitionlang;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecodelang;
 use App\Entity\Organisation;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;

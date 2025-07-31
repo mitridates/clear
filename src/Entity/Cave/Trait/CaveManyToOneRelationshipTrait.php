@@ -1,6 +1,7 @@
 <?php
 namespace App\Entity\Cave\Trait;
 
+use App\Domain\Map\Entity\Map\Mapcave;
 use App\Entity\Cave\Caveaccess;
 use App\Entity\Cave\Cavecomment;
 use App\Entity\Cave\Cavecontent;
@@ -37,7 +38,6 @@ use App\Entity\Cave\Cavetodo;
 use App\Entity\Cave\Cavetype;
 use App\Entity\Cave\Caveuse;
 use App\Entity\Cave\Cavewidestmap;
-use App\Entity\Map\Mapcave;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

@@ -1,13 +1,13 @@
 <?php
 namespace App\Manager;
-use App\Entity\FieldDefinition\Fielddefinition;
-use App\Entity\FieldDefinition\Fielddefinitionlang;
-use App\Entity\FieldDefinition\Fieldvaluecode;
-use App\Entity\FieldDefinition\Fieldvaluecodelang;
-use App\Entity\Geonames\Admin1;
-use App\Entity\Geonames\Admin2;
-use App\Entity\Geonames\Admin3;
-use App\Entity\Geonames\Country;
+use App\Domain\Fielddefinition\Entity\Fielddefinition;
+use App\Domain\Fielddefinition\Entity\Fielddefinitionlang;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecodelang;
+use App\Domain\Geonames\Entity\Admin1;
+use App\Domain\Geonames\Entity\Admin2;
+use App\Domain\Geonames\Entity\Admin3;
+use App\Domain\Geonames\Entity\Country;
 use App\Entity\Organisation;
 use App\Entity\SystemParameter;
 use Doctrine\ORM\EntityManagerInterface;

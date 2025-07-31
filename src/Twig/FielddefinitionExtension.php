@@ -1,6 +1,6 @@
 <?php
 namespace App\Twig;
-use App\Manager\FieldDefinitionManager;
+use App\Domain\Fielddefinition\Manager\FieldDefinitionManager;
 use App\Services\Cache\FilesCache\FieldDefinitionCache;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;

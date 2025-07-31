@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers\Geonames;
-use App\Entity\Geonames\Country;
+use App\Domain\Geonames\Entity\Country;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 

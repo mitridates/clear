@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers\article;
-use App\Entity\Article\Articleauthor;
+use App\Domain\Article\Entity\Articleauthor;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;

@@ -1,7 +1,7 @@
 <?php
 namespace  App\Entity\Cave\Trait;
+use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
 use App\Entity\Cavern\Trait\Cave;
-use App\Entity\FieldDefinition\Fieldvaluecode;
 use Doctrine\ORM\Mapping as ORM;
 
 trait CavePartialDimensionTrait

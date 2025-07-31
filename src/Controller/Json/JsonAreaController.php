@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Controller\Json;
+use App\Domain\Area\Entity\{Area};
+use App\Domain\Area\Manager\{AreaManager};
+use App\Domain\Geonames\Entity\{Country};
+use App\Domain\Geonames\Entity\Admin1;
 use App\Domain\JsonApi\Serializers\{AreaSerializer};
-use App\Entity\{Area};
-use App\Entity\Geonames\{Admin1, Country};
-use App\Manager\{AreaManager};
 use App\Shared\JsonApi\ErrorSerializer\JsonErrorBag;
 use App\Shared\tobscure\jsonapi\{Collection, Document};
 use Doctrine\ORM\EntityManagerInterface;

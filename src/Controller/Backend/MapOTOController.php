@@ -1,12 +1,12 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
-use App\Entity\Map\Map;
-use App\Entity\Map\Mapcomment;
-use App\Entity\Map\Mapcontroller;
-use App\Entity\Map\Mapdetails;
-use App\Entity\Map\Mappublicationtext;
-use App\Entity\Map\Mapspecialmapsheet;
+use App\Domain\Map\Entity\Map\Map;
+use App\Domain\Map\Entity\Map\Mapcomment;
+use App\Domain\Map\Entity\Map\Mapcontroller;
+use App\Domain\Map\Entity\Map\Mapdetails;
+use App\Domain\Map\Entity\Map\Mappublicationtext;
+use App\Domain\Map\Entity\Map\Mapspecialmapsheet;
 use App\Form\backend\Map\MapCommentType;
 use App\Form\backend\Map\MapControllerType;
 use App\Form\backend\Map\MapPublicationtextType;

@@ -8,7 +8,7 @@ use App\Domain\JsonApi\Serializers\Geonames\Admin3Serializer;
 use App\Domain\JsonApi\Serializers\Geonames\CountrySerializer;
 use App\Domain\JsonApi\Serializers\OrganisationSerializer;
 use App\Domain\JsonApi\Serializers\PersonSerializer;
-use App\Entity\Map\Map;
+use App\Domain\Map\Entity\Map\Map;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;

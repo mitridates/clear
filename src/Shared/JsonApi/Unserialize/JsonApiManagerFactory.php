@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Shared\JsonApi\Unserialize;
-
+/**
+ * Registra y Crea objetos JsonApiSpec mediante un array serializado con formato jsonApi.
+ */
 class JsonApiManagerFactory {
     private static array $types = [];
     private static array $specs = [];
@@ -11,6 +13,13 @@ class JsonApiManagerFactory {
         self::$specs[$type] = $fn;
     }
 
+    /**
+     * Permite agregar clases heredadas (tipos) de JsonApiSpec para ampliar su funcionalidad.
+     * @example JsonApiManagerFactory::addType('person', fn(array $data) => new PersonSpecType($data));
+     * @param string $type
+     * @param callable $factory
+     * @return void
+     */
     public static function addType(string $type, callable $factory): void {
         self::$types[$type] = $factory;
     }
