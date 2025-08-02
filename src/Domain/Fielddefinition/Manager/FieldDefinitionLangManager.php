@@ -1,7 +1,7 @@
 <?php
 namespace App\Domain\Fielddefinition\Manager;
 use App\Domain\Fielddefinition\Entity\Fielddefinitionlang;
-use App\Manager\AbstractManager;
+use App\Shared\Manager\AbstractManager;
 use App\Shared\Paginator;
 use Doctrine\ORM\{AbstractQuery, EntityManagerInterface, NonUniqueResultException, NoResultException};
 

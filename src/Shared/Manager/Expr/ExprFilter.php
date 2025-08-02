@@ -1,6 +1,6 @@
 <?php
-namespace App\Manager\Expr;
-use Doctrine\ORM\{Query\Expr,QueryBuilder};
+namespace App\Shared\Manager\Expr;
+use Doctrine\ORM\{Query\Expr, QueryBuilder};
 
 class ExprFilter
 {

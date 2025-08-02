@@ -1,8 +1,8 @@
 <?php
 namespace App\Domain\Geonames\Manager;
 use App\Domain\Geonames\Entity\Admin3;
-use App\Manager\AbstractManager;
-use App\Manager\Expr\ExprFilter;
+use App\Shared\Manager\AbstractManager;
+use App\Shared\Manager\Expr\ExprFilter;
 use App\Shared\Paginator;
 use Doctrine\ORM\{EntityManagerInterface, NonUniqueResultException, NoResultException, Query\Expr};
 

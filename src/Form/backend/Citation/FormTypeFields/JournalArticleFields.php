@@ -2,7 +2,7 @@
 
 namespace App\Form\backend\Citation\FormTypeFields;
 
-use App\Entity\Citation\Citation;
+use App\Domain\Citation\Entity\Citation;
 use App\Form\backend\Citation\CommonFields\CitationEntityFields;
 use App\Form\backend\Citation\CommonFields\JsonBibliographyFields;
 use App\Form\backend\Citation\CommonFields\JsonHrefFields;

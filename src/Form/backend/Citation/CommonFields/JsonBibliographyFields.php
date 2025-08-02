@@ -2,16 +2,11 @@
 
 namespace App\Form\backend\Citation\CommonFields;
 
-use App\Entity\Citation\Citation;
+use App\Domain\Citation\Entity\Citation;
 use App\Form\FormFields\AbstractFormFields;
 use App\Form\FormFields\JsonFormFieldsEventInterface;
-use DateTime;
-use PharIo\Version\Exception;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Validator\Constraints\Length;
 
 class JsonBibliographyFields extends AbstractFormFields implements JsonFormFieldsEventInterface
 {

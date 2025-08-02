@@ -1,5 +1,5 @@
 <?php
-namespace  App\Entity\Citation\Trait;
+namespace  App\Domain\Citation\Entity\Trait;
 
 /**
  * Citation date

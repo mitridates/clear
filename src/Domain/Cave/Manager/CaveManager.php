@@ -1,10 +1,10 @@
 <?php
-namespace App\Manager;
-use App\Entity\Cavern\Trait;
-use App\Manager\Expr\ExprFilter;
-use App\Mitridates\Cavern\Entity\Cavename;
-use App\Mitridates\Cavern\Entity\Mapcave;
-use App\Mitridates\Cavern\Entity\Mapimage;
+namespace App\Domain\Cave\Manager;
+use App\Domain\Cave\Entity\Cave;
+use App\Domain\Map\Entity\Map\Mapcave;
+use App\Domain\Map\Entity\Map\Mapimage;
+use App\Shared\Manager\AbstractManager;
+use App\Shared\Manager\Expr\ExprFilter;
 use App\Shared\Paginator;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
@@ -169,7 +169,7 @@ class CaveManager extends AbstractManager
             $select.= $name!==$last? $s.',' : $s;
         }
         $select.=' FROM Cavern:Cave c WHERE c.id=:caveid';
-        $em = $this->getEm();
+        $em = $this->repo->getEm();
         return $em->createQuery($select)
             ->setParameter('caveid', $id)
             ->getSingleResult();

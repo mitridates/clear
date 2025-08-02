@@ -1,8 +1,7 @@
 <?php
 namespace App\EventListener;
-use App\Manager\SetupManager;
 use App\Services\Cache\FilesCache\DbStatusCache;
-use App\Utils\Cache\FilesCacheFactory;
+use App\Shared\Manager\SetupManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

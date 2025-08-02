@@ -1,5 +1,5 @@
 <?php
-namespace App\Manager;
+namespace App\Shared\Manager;
 use App\Domain\Fielddefinition\Entity\Fielddefinition;
 use App\Domain\Fielddefinition\Entity\Fielddefinitionlang;
 use App\Domain\Fielddefinition\Entity\Fieldvaluecode;

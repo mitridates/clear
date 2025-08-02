@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers;
+use App\Domain\Citation\Entity\Citation;
 use App\Domain\JsonApi\Serializers\Geonames\CountrySerializer;
-use App\Entity\Citation\Citation;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;

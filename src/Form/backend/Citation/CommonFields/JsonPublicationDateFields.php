@@ -2,10 +2,10 @@
 
 namespace App\Form\backend\Citation\CommonFields;
 
-use App\Entity\Citation\Citation;
+use App\Domain\Citation\Entity\Citation;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
 
 class JsonPublicationDateFields extends JsonDateFields
 {

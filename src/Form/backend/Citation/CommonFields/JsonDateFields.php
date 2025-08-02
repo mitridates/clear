@@ -1,7 +1,7 @@
 <?php
 namespace App\Form\backend\Citation\CommonFields;
 
-use App\Entity\Citation\Citation;
+use App\Domain\Citation\Entity\Citation;
 use App\Form\FormFields\AbstractFormFields;
 use App\Form\FormFields\JsonFormFieldsEventInterface;
 use DateTime;

@@ -2,12 +2,11 @@
 
 namespace App\Domain\Geonames\Entity;
 
-use App\Repository\Geonames\CommonRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'geonames_geonames')]
-#[ORM\Entity(repositoryClass: CommonRepository::class, readOnly: true)]
+#[ORM\Entity]
 class Geonames
 {
     /**

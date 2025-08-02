@@ -1,7 +1,5 @@
 <?php
-namespace  App\Entity\Citation;
-//use App\Entity\Citation\Trait\CitationRegisteredIdentifiersTrait;
-//use App\Entity\CommonTrait\OnlineResourceTrait;
+namespace  App\Domain\Citation\Entity;
 use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Cache\Exception\InvalidArgumentException;

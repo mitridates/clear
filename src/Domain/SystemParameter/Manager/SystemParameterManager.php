@@ -1,8 +1,8 @@
 <?php
 namespace App\Domain\SystemParameter\Manager;
 use App\Domain\SystemParameter\Entity\SystemParameter;
-use App\Manager\AbstractManager;
-use App\Manager\Expr\ExprFilter;
+use App\Shared\Manager\AbstractManager;
+use App\Shared\Manager\Expr\ExprFilter;
 use App\Shared\Paginator;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManagerInterface;

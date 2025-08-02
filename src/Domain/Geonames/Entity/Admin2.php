@@ -1,10 +1,9 @@
 <?php
 namespace App\Domain\Geonames\Entity;
-use App\Repository\Geonames\CommonRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'geonames_admin2')]
-#[ORM\Entity(repositoryClass: CommonRepository::class, readOnly: true)]
+#[ORM\Entity]
 #[ORM\Index(columns: ['country'], name: 'country_idx')]
 #[ORM\Index(columns: ['admin1'], name: 'admin1_idx')]
 class Admin2

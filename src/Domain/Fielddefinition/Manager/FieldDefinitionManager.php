@@ -2,9 +2,9 @@
 namespace App\Domain\Fielddefinition\Manager;
 use App\Domain\Fielddefinition\Entity\Fielddefinition;
 use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
-use App\Manager\AbstractManager;
-use App\Manager\Expr\ExprFilter;
-use App\Manager\Fielddefinitionlang;
+use App\Domain\Fielddefinition\Entity\Fielddefinitionlang;
+use App\Shared\Manager\AbstractManager;
+use App\Shared\Manager\Expr\ExprFilter;
 use App\Shared\Paginator;
 use App\Shared\reflection\EntityReflectionHelper;
 use Doctrine\ORM\{AbstractQuery, EntityManagerInterface, NonUniqueResultException, NoResultException, Query\Expr};

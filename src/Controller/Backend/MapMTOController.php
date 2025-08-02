@@ -12,6 +12,7 @@ use App\Domain\Map\Entity\Map\Mapimage;
 use App\Domain\Map\Entity\Map\Maplink;
 use App\Domain\Map\Entity\Map\Mapsurveyor;
 use App\Domain\Map\Manager\MapManager;
+use App\Domain\Map\Serialization\MapSerializerRegistry;
 use App\Domain\Map\Upload\MapUploader;
 use App\Form\backend\Map\MapCaveType;
 use App\Form\backend\Map\MapCitationType;
@@ -25,7 +26,6 @@ use App\Form\backend\Map\MapSurveyorType;
 use App\Shared\tobscure\jsonapi\Collection;
 use App\Shared\tobscure\jsonapi\Document;
 use App\Shared\Upload\UploaderParameters;
-use App\Utils\Helper\MapControllerHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -98,8 +98,8 @@ class MapMTOController extends BackendController
     public function listJsonAction(Request $request, Map $entity, string $relationship, MapManager $manager, ParameterBagInterface $bag,  UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $tokenManager): Response
     {
         $class= $this->getClass($relationship);
-        $serializer= MapControllerHelper::MTO_SERIALIZER[$relationship];
-        $serializerFields= MapControllerHelper::MTO_SERIALIZER_FIELDS[$relationship];
+        $serializer= MapSerializerRegistry::MTO_SERIALIZER[$relationship];
+        $serializerFields= MapSerializerRegistry::MTO_SERIALIZER_FIELDS[$relationship];
 
         $this->acceptOnlyXmlHttpRequest($request);
         $listOptions= $this->getRequestListOptions($request);

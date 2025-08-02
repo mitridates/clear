@@ -1,11 +1,11 @@
 <?php
 namespace  App\Domain\Map\Entity\Map;
+use App\Domain\Citation\Entity\Citation;
 use App\Domain\Map\Entity\Map\Model\MapManyToOneInterface;
 use App\Domain\Map\Entity\Map\Trait\MapManyToOneTrait;
-use App\Entity\Citation\Citation;
-use  App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
+use App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
+use App\Infrastructure\Doctrine\Trait\SequenceTrait;
 use Doctrine\ORM\Mapping as ORM;
-use  App\Infrastructure\Doctrine\Trait\SequenceTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**

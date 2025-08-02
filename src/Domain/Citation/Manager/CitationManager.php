@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Manager;
-use App\Entity\Citation\Citation;
-use App\Manager\Expr\ExprFilter;
+namespace App\Domain\Citation\Manager;
+use App\Domain\Citation\Entity\Citation;
+use App\Shared\Manager\AbstractManager;
+use App\Shared\Manager\Expr\ExprFilter;
 use App\Shared\Paginator;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;

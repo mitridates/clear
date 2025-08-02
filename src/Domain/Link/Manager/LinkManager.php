@@ -2,8 +2,8 @@
 
 namespace App\Domain\Link\Manager;
 use App\Domain\Link\Entity\Link;
-use App\Manager\AbstractManager;
-use App\Manager\Expr\ExprFilter;
+use App\Shared\Manager\AbstractManager;
+use App\Shared\Manager\Expr\ExprFilter;
 use App\Shared\Paginator;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;

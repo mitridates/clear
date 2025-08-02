@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Domain\Geonames\Entity;
-use App\Repository\Geonames\CommonRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Admin3 code for third administrative division, a county in the US, see file admin3Codes.txt; varchar(80)
  */
 #[ORM\Table(name: 'geonames_admin3')]
-#[ORM\Entity(repositoryClass: CommonRepository::class, readOnly: true)]
+#[ORM\Entity]
 #[ORM\Index(columns: ['country'], name: 'country_idx')]
 #[ORM\Index(columns: ['admin1'], name: 'admin1_idx')]
 #[ORM\Index(columns: ['admin2'], name: 'admin2_idx')]

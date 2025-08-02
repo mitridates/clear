@@ -1,7 +1,7 @@
 <?php
 namespace App\Form\EventListener;
 
-use App\Entity\Citation\Citation;
+use App\Domain\Citation\Entity\Citation;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

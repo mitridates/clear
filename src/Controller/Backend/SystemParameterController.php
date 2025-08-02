@@ -6,8 +6,8 @@ use App\Domain\SystemParameter\Entity\SystemParameter;
 use App\Domain\SystemParameter\Manager\SystemParameterManager;
 use App\Form\backend\SystemParameter\SystemParameterSearchType;
 use App\Form\backend\SystemParameter\SystemParameterType;
-use App\Manager\SetupManager;
 use App\Services\Cache\FilesCache\DbStatusCache;
+use App\Shared\Manager\SetupManager;
 use App\Shared\tobscure\jsonapi\{Collection, Document};
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\{DependencyInjection\ParameterBag\ParameterBagInterface,

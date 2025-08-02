@@ -3,6 +3,7 @@ namespace App\Controller\Backend;
 use App\Controller\BackendController;
 use App\Domain\JsonApi\Serializers\Map\MapSerializer;
 use App\Domain\Map\Entity\Map\Map;
+use App\Domain\Map\Serialization\MapSerializerRegistry;
 use App\Form\backend\Map\MapPartialCoordinatesType;
 use App\Form\backend\Map\MapPartialSourceType;
 use App\Form\backend\Map\MapPartialSurveyType;
@@ -11,7 +12,6 @@ use App\Services\Cache\FilesCache\Map\MapSerializedCache;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\Document;
 use App\Shared\tobscure\jsonapi\Resource;
-use App\Utils\Helper\MapControllerHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -38,7 +38,7 @@ class MapPartialController extends BackendController
     #[Route(path: '/edit/{relationship}/{id}', name: 'admin_map_partial_edit')]
     public function editRelationshipAction(Request $request, Map $map, string $relationship, EntityManagerInterface $em, UrlGeneratorInterface $urlGenerator): Response
     {
-        $classType= $this->getFormType($relationship);// MapControllerHelper::PARTIAL_FORM_TYPE[$relationship];
+        $classType= $this->getFormType($relationship);// MapSerializerRegistry::PARTIAL_FORM_TYPE[$relationship];
         $form= $this->createForm($classType, $map)->handleRequest($request);
         $twigArgs=[
             'entity' => $map,
@@ -79,7 +79,7 @@ class MapPartialController extends BackendController
         {
             /**@var PartialFormTypeInterface $type */
             $type= $this->getFormType($relationship);
-            EntityReflectionHelper::setNullProperties($entity, $type::FieldNames());
+            EntityReflectionHelper::setNullProperties($entity, $type::getFieldNames());
             $em->persist($entity);
             $em->flush();
             $em->clear();
@@ -96,9 +96,9 @@ class MapPartialController extends BackendController
         $serializer= new MapSerializer($urlGenerator);
         $resource = new Resource($map, $serializer);
         $resource->with(
-            MapControllerHelper::MAP_SERIALIZER_FIELDS['with']
+            MapSerializerRegistry::MAP_SERIALIZER_FIELDS['with']
         )->fields(
-            MapControllerHelper::MAP_SERIALIZER_FIELDS['fields']
+            MapSerializerRegistry::MAP_SERIALIZER_FIELDS['fields']
         )
         ;
         return new Document($resource);

@@ -2,7 +2,7 @@
 namespace App\Domain\Fielddefinition\Manager;
 use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
 use App\Domain\Fielddefinition\Entity\Fieldvaluecodelang;
-use App\Manager\AbstractManager;
+use App\Shared\Manager\AbstractManager;
 use Doctrine\ORM\EntityManagerInterface;
 
 class FieldValueCodeManager extends AbstractManager

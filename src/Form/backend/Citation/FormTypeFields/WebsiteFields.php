@@ -2,14 +2,12 @@
 
 namespace App\Form\backend\Citation\FormTypeFields;
 
-use App\Entity\Citation\Citation;
+use App\Domain\Citation\Entity\Citation;
 use App\Form\backend\Citation\CommonFields\CitationEntityFields;
 use App\Form\backend\Citation\CommonFields\JsonAccessDateFields;
 use App\Form\backend\Citation\CommonFields\JsonBibliographyFields;
 use App\Form\backend\Citation\CommonFields\JsonHrefFields;
 use App\Form\backend\Citation\CommonFields\JsonPublicationDateFields;
-use App\Form\FormFields\AbstractFormFields;
-use App\Form\FormFields\FormFieldsEventInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;

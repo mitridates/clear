@@ -5,6 +5,7 @@ use App\Domain\JsonApi\Serializers\Map\MapSerializer;
 use App\Domain\JsonApi\SpecTypes\JsonApiTypeRegistry;
 use App\Domain\Map\Entity\Map\Map;
 use App\Domain\Map\Manager\MapManager;
+use App\Domain\Map\Serialization\MapSerializerRegistry;
 use App\Form\backend\Map\MapSearchType;
 use App\Form\backend\Map\MapType;
 use App\Services\Cache\FilesCache\Map\MapSerializedCache;
@@ -13,7 +14,6 @@ use App\Shared\JsonApi\Unserialize\JsonApiSpec;
 use App\Shared\tobscure\jsonapi\Collection;
 use App\Shared\tobscure\jsonapi\Document;
 use App\Shared\tobscure\jsonapi\Resource;
-use App\Utils\Helper\MapControllerHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -129,8 +129,8 @@ class MapController extends BackendController
 
             /**
              * para agregar nuevas propiedades a la cache:
-             * MapControllerHelper::MAP_SERIALIZER_FIELDS['with']... propiedades
-             * MapControllerHelper::MAP_SERIALIZER_FIELDS['fields']...campos de propiedad si es relationship con otra tabla.
+             * MapSerializerRegistry::MAP_SERIALIZER_FIELDS['with']... propiedades
+             * MapSerializerRegistry::MAP_SERIALIZER_FIELDS['fields']...campos de propiedad si es relationship con otra tabla.
              * En caso de relaciones, agregar en MapSerializer su correspondiente clase de serialización.
             */
             $cache= $this->getCache();
@@ -157,9 +157,9 @@ class MapController extends BackendController
         $serializer= new MapSerializer($urlGenerator);
         $resource = new Resource($map, $serializer);
         $resource->with(
-            MapControllerHelper::MAP_SERIALIZER_FIELDS['with']
+            MapSerializerRegistry::MAP_SERIALIZER_FIELDS['with']
         )->fields(
-            MapControllerHelper::MAP_SERIALIZER_FIELDS['fields']
+            MapSerializerRegistry::MAP_SERIALIZER_FIELDS['fields']
         )
         ;
         return new Document($resource);

@@ -1,6 +1,6 @@
 <?php
-namespace App\Manager;
-use App\Manager\Expr\ExprFilter;
+namespace App\Shared\Manager;
+use App\Shared\Manager\Expr\ExprFilter;
 use App\Shared\Paginator;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;

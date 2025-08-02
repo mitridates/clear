@@ -2,11 +2,10 @@
 
 namespace App\Domain\Geonames\Entity;
 
-use App\Repository\Geonames\CommonRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'geonames_country')]
-#[ORM\Entity(repositoryClass: CommonRepository::class, readOnly: true)]
+#[ORM\Entity]
 class Country
 {
     # underscore separator

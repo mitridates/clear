@@ -93,6 +93,7 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Domain/SystemParameter/Entity'
                 prefix: 'App\Domain\SystemParameter\Entity'
                 alias: SystemParameter
+
 when@test:
     doctrine:
         dbal:

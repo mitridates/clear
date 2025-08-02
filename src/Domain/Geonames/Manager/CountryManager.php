@@ -1,17 +1,14 @@
 <?php
 namespace App\Domain\Geonames\Manager;
-use App\Entity\Geonames\{App\Domain\Geonames\Entity\Admin1,
-    App\Domain\Geonames\Entity\Admin2,
-    App\Domain\Geonames\Entity\Admin3,
-    App\Domain\Geonames\Entity\Country};
-use App\Manager\AbstractManager;
+use App\Domain\Geonames\Entity\Country;
+use App\Shared\Manager\AbstractManager;
 use Doctrine\ORM\EntityManagerInterface;
 
 class CountryManager extends AbstractManager
 {
     public function __construct(protected EntityManagerInterface $em)
     {
-        parent::__construct($em, \App\Domain\Geonames\Entity\Country::class);
+        parent::__construct($em, Country::class);
     }
 //
 //    public function getCountries(): array

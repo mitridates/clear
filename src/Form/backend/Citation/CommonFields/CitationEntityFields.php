@@ -2,7 +2,7 @@
 
 namespace App\Form\backend\Citation\CommonFields;
 
-use App\Entity\Citation\Citation;
+use App\Domain\Citation\Entity\Citation;
 use App\Form\FormFields\AbstractFormFields;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
