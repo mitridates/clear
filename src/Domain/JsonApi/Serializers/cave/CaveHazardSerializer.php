@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers\cave;
+use App\Domain\Cave\Entity\Cavehazard;
 use App\Domain\JsonApi\Serializers\FieldValueCodeSerializer;
-use App\Entity\Cave\Cavehazard;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;

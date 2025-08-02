@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers\cave;
-use App\Entity\Cave\Caveposition;
+use App\Domain\Cave\Entity\Caveposition;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;

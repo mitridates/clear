@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers\cave;
-use App\Entity\Cave\Cavepitch;
+use App\Domain\Cave\Entity\Cavepitch;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;

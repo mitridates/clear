@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers\cave;
+use App\Domain\Cave\Entity\Cavegrid;
 use App\Domain\JsonApi\Serializers\FieldValueCodeSerializer;
 use App\Domain\JsonApi\Serializers\Map\MapSerializer;
-use App\Entity\Cave\Cavegrid;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;

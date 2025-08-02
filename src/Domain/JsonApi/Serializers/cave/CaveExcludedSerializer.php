@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers\cave;
+use App\Domain\Cave\Entity\Caveexcluded;
 use App\Domain\JsonApi\Serializers\FieldDefinitionSerializer;
-use App\Entity\Cave\Caveexcluded;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;
@@ -38,7 +38,7 @@ class CaveExcludedSerializer extends AbstractSerializer
     {
         $data= EntityReflectionHelper::serializeClassProperties($model, $fields);
         $data['cave']= $model->getCave()->getId();
-        $data['excluded']= $model->getExcluded()->getCode();
+        $data['excluded']= $model->getExcluded()->getId();
         return $data;
     }
 

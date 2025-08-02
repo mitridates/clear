@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers\cave;
+use App\Domain\Cave\Entity\Cavespecie;
 use App\Domain\JsonApi\Serializers\article\ArticleSerializer;
 use App\Domain\JsonApi\Serializers\FieldValueCodeSerializer;
 use App\Domain\JsonApi\Serializers\SpecieSerializer;
-use App\Entity\Cave\Cavespecie;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;

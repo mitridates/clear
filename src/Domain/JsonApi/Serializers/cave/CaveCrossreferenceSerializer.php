@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers\cave;
+use App\Domain\Cave\Entity\Cavecrossreference;
 use App\Domain\JsonApi\Serializers\AreaSerializer;
 use App\Domain\JsonApi\Serializers\Geonames\Admin1Serializer;
 use App\Domain\JsonApi\Serializers\Geonames\CountrySerializer;
-use App\Entity\Cave\Cavecrossreference;
-use App\Entity\Cavern\Trait;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;
