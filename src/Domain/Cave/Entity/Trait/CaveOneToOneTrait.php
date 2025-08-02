@@ -1,6 +1,6 @@
 <?php
 namespace App\Domain\Cave\Entity\Trait;
-use App\Entity\Cave\Trait\Cave;
+use App\Domain\Cave\Entity\Cave;
 
 /**
  * Trait to include in OneToOne Entities
