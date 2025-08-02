@@ -2,10 +2,10 @@
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
 use App\Domain\JsonApi\Serializers\PersonSerializer;
-use App\Entity\Person;
+use App\Domain\Person\Entity\Person;
+use App\Domain\Person\Manager\PersonManager;
 use App\Form\backend\Person\PersonSearchType;
 use App\Form\backend\Person\PersonType;
-use App\Manager\PersonManager;
 use App\Shared\tobscure\jsonapi\Collection;
 use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;

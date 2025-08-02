@@ -1,8 +1,9 @@
 <?php
-namespace  App\Entity;
+namespace  App\Domain\SystemParameter\Entity;
 use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
 use App\Domain\Geonames\Entity\Country;
-use App\Entity\CommonTrait\CrupdatetimeTrait;
+use App\Domain\Organisation\Entity\Organisation;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 

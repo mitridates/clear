@@ -1,6 +1,6 @@
 <?php
-namespace  App\Entity\CommonTrait;
-use App\Entity\Link;
+
+use App\Domain\Link\Entity\Link;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 

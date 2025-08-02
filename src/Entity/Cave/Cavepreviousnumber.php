@@ -4,9 +4,9 @@ use App\Domain\Area\Entity\Area;
 use App\Domain\Geonames\Entity\{Country};
 use App\Domain\Geonames\Entity\Admin1;
 use App\Entity\Cave\Trait\CaveManyToOneTrait;
-use App\Entity\CommonTrait\{CrupdatetimeTrait};
-use App\Entity\CommonTrait\SequenceTrait;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
+use SequenceTrait;
 
 /**
  * CA0231 Previous cave numbers 0:n

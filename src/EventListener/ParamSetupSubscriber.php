@@ -1,7 +1,6 @@
 <?php
 namespace App\EventListener;
 use App\Manager\SetupManager;
-use App\Manager\SystemParameterManager;
 use App\Services\Cache\FilesCache\DbStatusCache;
 use App\Utils\Cache\FilesCacheFactory;
 use Doctrine\ORM\EntityManagerInterface;

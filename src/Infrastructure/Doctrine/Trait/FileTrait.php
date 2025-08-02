@@ -1,5 +1,5 @@
 <?php
-namespace  App\Entity\CommonTrait;
+
 use Doctrine\ORM\Mapping as ORM;
 
 trait FileTrait

@@ -2,9 +2,9 @@
 namespace  App\Entity\Cave;
 use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
 use App\Entity\Cave\Trait\CaveManyToOneTrait;
-use App\Entity\CommonTrait\{CrupdatetimeTrait};
-use App\Entity\CommonTrait\SequenceTrait;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
+use SequenceTrait;
 
 /**
  * CA0048 Cave importances 0:n

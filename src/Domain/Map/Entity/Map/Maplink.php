@@ -1,12 +1,12 @@
 <?php
 
 namespace  App\Domain\Map\Entity\Map;
+use App\Domain\Link\Entity\Link;
 use App\Domain\Map\Entity\Map\Model\MapManyToOneInterface;
 use App\Domain\Map\Entity\Map\Trait\MapManyToOneTrait;
-use App\Entity\CommonTrait\CrupdatetimeTrait;
-use App\Entity\CommonTrait\SequenceTrait;
-use App\Entity\Link;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
+use SequenceTrait;
 
 /**
  * No PL

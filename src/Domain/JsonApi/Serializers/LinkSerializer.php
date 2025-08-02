@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers;
-use App\Entity\Link;
+use App\Domain\Link\Entity\Link;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;

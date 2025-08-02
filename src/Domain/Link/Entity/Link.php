@@ -1,10 +1,12 @@
 <?php
-namespace  App\Entity;
-use App\Entity\CommonTrait\{CrupdatetimeTrait};
-use App\Entity\CommonTrait\HiddenTrait;
+namespace  App\Domain\Link\Entity;
+use App\Domain\Organisation\Entity\Organisation;
+use App\Domain\Person\Entity\Person;
 use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
+use CrupdatetimeTrait;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use HiddenTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 

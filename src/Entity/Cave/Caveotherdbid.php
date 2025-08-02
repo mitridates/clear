@@ -1,10 +1,10 @@
 <?php
 namespace  App\Entity\Cave;
+use App\Domain\Organisation\Entity\Organisation;
 use App\Entity\Cave\Trait\CaveManyToOneTrait;
-use App\Entity\CommonTrait\{CrupdatetimeTrait};
-use App\Entity\CommonTrait\SequenceTrait;
-use App\Entity\Organisation;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
+use SequenceTrait;
 
 /**
  * CA0259 Other db site Cave IDs for this cave 0:n

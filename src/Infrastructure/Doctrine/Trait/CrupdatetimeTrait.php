@@ -1,7 +1,7 @@
 <?php
-namespace  App\Entity\CommonTrait;
+
 use Doctrine\ORM\Mapping as ORM;
-use DateTime;
+
 /**
  * Fields create, update
  * Require HasLifecycleCallbacks annotation in entity

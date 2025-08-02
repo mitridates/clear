@@ -1,8 +1,8 @@
 <?php
 namespace App\Controller\Backend;
 use App\Domain\Geonames\Import\Sql\ImportSql;
-use App\Entity\{SystemParameter};
-use App\Entity\Organisation;
+use App\Domain\Organisation\Entity\Organisation;
+use App\Domain\SystemParameter\Entity\{SystemParameter};
 use App\Form\backend\setup\{InstallOrganisationType, SetupCountryType};
 use App\Geonamesdump\utils\GeonamesControllerLoader;
 use App\Manager\SetupManager;

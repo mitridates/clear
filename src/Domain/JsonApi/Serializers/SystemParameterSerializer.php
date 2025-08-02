@@ -2,8 +2,8 @@
 
 namespace App\Domain\JsonApi\Serializers;
 use App\Domain\JsonApi\Serializers\Geonames\CountrySerializer;
+use App\Domain\SystemParameter\Entity\SystemParameter;
 use App\Entity\Cavern\Sysparam;
-use App\Entity\SystemParameter;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;

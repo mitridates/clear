@@ -2,10 +2,10 @@
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
 use App\Domain\JsonApi\Serializers\SpecieSerializer;
-use App\Entity\Specie;
+use App\Domain\Specie\Entity\Specie;
+use App\Domain\Specie\Manager\SpecieManager;
 use App\Form\backend\Specie\SpecieSearchType;
 use App\Form\backend\Specie\SpecieType;
-use App\Manager\SpecieManager;
 use App\Shared\tobscure\jsonapi\Collection;
 use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;

@@ -1,7 +1,7 @@
 <?php
 namespace  App\Entity\Cave;
 use App\Entity\Cave\Trait\CaveOneToOneTrait;
-use App\Entity\CommonTrait\CrupdatetimeTrait;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

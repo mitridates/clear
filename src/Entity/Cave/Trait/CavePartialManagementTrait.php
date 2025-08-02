@@ -1,8 +1,8 @@
 <?php
 namespace  App\Entity\Cave\Trait;
 use App\Domain\Fielddefinition\Entity\{Fieldvaluecode};
-use App\Entity\Organisation;
-use App\Entity\Person;
+use App\Domain\Organisation\Entity\Organisation;
+use App\Domain\Person\Entity\Person;
 use Doctrine\ORM\Mapping as ORM;
 
 trait CavePartialManagementTrait

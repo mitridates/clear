@@ -2,11 +2,11 @@
 namespace  App\Entity\Cave;
 use App\Domain\Article\Entity\Article;
 use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
+use App\Domain\Specie\Entity\Specie;
 use App\Entity\Cave\Trait\CaveManyToOneTrait;
-use App\Entity\CommonTrait\{CrupdatetimeTrait};
-use App\Entity\CommonTrait\SequenceTrait;
-use App\Entity\Specie;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
+use SequenceTrait;
 
 /**
  * CA0037 Species found 0:n

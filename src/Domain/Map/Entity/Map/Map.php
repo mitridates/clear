@@ -7,13 +7,13 @@ use App\Domain\Geonames\Entity\Admin1;
 use App\Domain\Geonames\Entity\Admin2;
 use App\Domain\Geonames\Entity\Admin3;
 use App\Domain\Map\Entity\Map\Model\MapInterface;
-use App\Entity\CommonTrait\CrupdatetimeTrait;
-use App\Entity\CommonTrait\HiddenTrait;
-use App\Entity\Mapserie;
-use App\Entity\Organisation;
-use App\Entity\Person;
+use App\Domain\Mapserie\Entity\Mapserie;
+use App\Domain\Organisation\Entity\Organisation;
+use App\Domain\Person\Entity\Person;
 use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
+use HiddenTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
 ;

@@ -2,7 +2,7 @@
 
 namespace App\Shared\Doctrine\Orm\Id;
 
-use App\Entity\SystemParameter;
+use App\Domain\SystemParameter\Entity\SystemParameter;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Exception\NotSupported;

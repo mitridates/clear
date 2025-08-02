@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers;
-use App\Entity\Specie;
+use App\Domain\Specie\Entity\Specie;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;

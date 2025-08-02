@@ -1,6 +1,7 @@
 <?php
-namespace App\Manager;
-use App\Entity\Organisation;
+namespace App\Domain\Organisation\Manager;
+use App\Domain\Organisation\Entity\Organisation;
+use App\Manager\AbstractManager;
 use App\Manager\Expr\ExprFilter;
 use App\Shared\Paginator;
 use Doctrine\ORM\EntityManagerInterface;

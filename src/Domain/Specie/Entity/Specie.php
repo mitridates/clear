@@ -1,9 +1,9 @@
 <?php
-namespace  App\Entity;
-use App\Entity\CommonTrait\CrupdatetimeTrait;
-use App\Entity\CommonTrait\HiddenTrait;
+namespace  App\Domain\Specie\Entity;
 use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
+use HiddenTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
 ;

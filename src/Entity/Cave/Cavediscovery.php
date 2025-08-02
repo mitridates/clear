@@ -1,12 +1,12 @@
 <?php
 namespace  App\Entity\Cave;
 use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
+use App\Domain\Organisation\Entity\Organisation;
+use App\Domain\Person\Entity\Person;
 use App\Entity\Cave\Trait\CaveManyToOneTrait;
-use App\Entity\CommonTrait\{CrupdatetimeTrait};
-use App\Entity\CommonTrait\SequenceTrait;
-use App\Entity\Organisation;
-use App\Entity\Person;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
+use SequenceTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**

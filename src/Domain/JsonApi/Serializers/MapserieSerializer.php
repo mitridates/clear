@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Domain\JsonApi\Serializers;
-use App\Entity\Mapserie;
+use App\Domain\Mapserie\Entity\Mapserie;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;

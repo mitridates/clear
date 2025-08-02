@@ -2,9 +2,9 @@
 namespace  App\Entity\Cave;
 use App\Domain\Map\Entity\Map\Map;
 use App\Entity\Cave\Trait\CaveManyToOneTrait;
-use App\Entity\CommonTrait\{CrupdatetimeTrait};
-use App\Entity\CommonTrait\SequenceTrait;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
+use SequenceTrait;
 
 /**
  * CA0055 Widest map 0:n

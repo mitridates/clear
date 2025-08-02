@@ -4,7 +4,7 @@ namespace App\Form\EventListener;
 
 use App\Domain\Geonames\Entity\Admin1;
 use App\Domain\Geonames\Entity\Country;
-use App\Entity\Organisation;
+use App\Domain\Organisation\Entity\Organisation;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

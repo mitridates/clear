@@ -2,10 +2,10 @@
 namespace  App\Domain\Area\Entity;
 use App\Domain\Geonames\Entity\{Country};
 use App\Domain\Geonames\Entity\Admin1;
-use App\Entity\CommonTrait\{CrupdatetimeTrait};
-use App\Entity\CommonTrait\HiddenTrait;
 use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
+use HiddenTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**

@@ -1,7 +1,7 @@
 <?php
 namespace App\Twig;
-use App\Entity\SystemParameter;
-use App\Manager\SystemParameterManager;
+use App\Domain\SystemParameter\Entity\SystemParameter;
+use App\Domain\SystemParameter\Manager\SystemParameterManager;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 

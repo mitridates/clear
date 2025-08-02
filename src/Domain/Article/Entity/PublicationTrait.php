@@ -2,7 +2,7 @@
 namespace  App\Domain\Article\Entity;
 use App\Domain\Geonames\Entity\{Country};
 use App\Domain\Geonames\Entity\Admin1;
-use App\Entity\Link;
+use App\Domain\Link\Entity\Link;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 

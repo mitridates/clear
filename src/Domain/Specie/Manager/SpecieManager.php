@@ -1,31 +1,32 @@
 <?php
-namespace App\Manager;
-use App\Entity\Mapserie;
+namespace App\Domain\Specie\Manager;
+use App\Domain\Specie\Entity\Specie;
+use App\Manager\AbstractManager;
 use App\Manager\Expr\ExprFilter;
 use App\Shared\Paginator;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
+use Doctrine\ORM\Query\Expr;
 
-class MapSerieManager extends AbstractManager
+class SpecieManager extends AbstractManager
 {
     public function __construct(EntityManagerInterface $em)
     {
-        parent::__construct($em, Mapserie::class);
+        parent::__construct($em, Specie::class);
     }
 
     /**
      * Find by entity
      * @return array [Paginator, [result]]
      */
-    public function paginate(Mapserie $entity, array $listOptions): array
+    public function paginate(Specie $entity,  array $listOptions): array
     {
-        $alias = 'mapserie';
+        $alias = 'spcie';
         $qb = $this->repo->createQueryBuilder($alias);
 
         ExprFilter::addExprFilter($qb, $entity, $alias, [
-            'like'=>['name', 'code', 'scale', 'abbreviation'],
-            'eq'=>['publisher']
+            'like'=>['name', 'commonname', 'genus', 'phylum', 'class', 'orden', 'family']
         ]);
         /**
          * SELECT to count results
@@ -36,23 +37,23 @@ class MapSerieManager extends AbstractManager
             return [new Paginator($listOptions['page'], $listOptions['ipp'], 0), []];
         }
         return $this->getPagination($qb, $entity, $alias, $listOptions);
-
     }
 
     /**
-     * @param Mapserie $mapserie
+     * @param Specie $specie
      * @param string $alias
      * @return array|null
      */
-    public function findByMapserie(Mapserie $mapserie, string $alias= 'findByAdmin1'): ?array
+    public function findBySpecie(Specie $specie, string $alias= 'spe'): ?array
     {
         $qb = $this->repo->createQueryBuilder($alias);
+        $expr = new Expr();
 
-        return ExprFilter::addExprFilter($qb, $mapserie, $alias, [
-                'like'=> ['name'],
-                'eq'=>['id']
-            ]
-        )
+        $qb->where($expr->like($alias.'.name', ':string'))
+            ->orWhere($expr->like($alias.'.commonname', ':string'))
+            ->setParameter(':string', '%'.$specie->getName().'%');
+
+        return $qb
             ->getQuery()
             ->getResult();
     }

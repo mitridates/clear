@@ -1,6 +1,6 @@
 <?php
 namespace App\Form\backend\Organisation;
-use App\Entity\Organisation;
+use App\Domain\Organisation\Entity\Organisation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormError;

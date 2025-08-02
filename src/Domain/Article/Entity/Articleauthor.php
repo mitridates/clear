@@ -1,8 +1,8 @@
 <?php
 namespace  App\Domain\Article\Entity;
-use App\Entity\CommonTrait\{CrupdatetimeTrait};
-use App\Entity\CommonTrait\SequenceTrait;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
+use SequenceTrait;
 
 /**
  * AR0331 0:n

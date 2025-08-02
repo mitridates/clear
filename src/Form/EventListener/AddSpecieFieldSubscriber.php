@@ -1,7 +1,7 @@
 <?php
 namespace App\Form\EventListener;
 
-use App\Entity\Specie;
+use App\Domain\Specie\Entity\Specie;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

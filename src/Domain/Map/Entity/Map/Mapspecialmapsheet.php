@@ -2,7 +2,7 @@
 namespace  App\Domain\Map\Entity\Map;
 use App\Domain\Map\Entity\Map\Model\MapOneToOneInterface;
 use App\Domain\Map\Entity\Map\Trait\MapOneToOneTrait;
-use App\Entity\CommonTrait\CrupdatetimeTrait;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

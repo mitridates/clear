@@ -2,9 +2,9 @@
 namespace  App\Domain\Map\Entity\Map;
 use App\Domain\Map\Entity\Map\Model\MapOneToOneInterface;
 use App\Domain\Map\Entity\Map\Trait\MapOneToOneTrait;
-use App\Entity\CommonTrait\CrupdatetimeTrait;
-use App\Entity\Organisation;
-use App\Entity\Person;
+use App\Domain\Organisation\Entity\Organisation;
+use App\Domain\Person\Entity\Person;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

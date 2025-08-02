@@ -1,7 +1,4 @@
 <?php
-namespace  App\Entity\CommonTrait;
-use ReflectionClass;
-use ReflectionException;
 
 trait PropertiesTrait
 {

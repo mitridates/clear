@@ -11,11 +11,11 @@ use App\Entity\Cave\Trait\CaveOneToOneRelationshipTrait;
 use App\Entity\Cave\Trait\CavePartialCoarseTrait;
 use App\Entity\Cave\Trait\CavePartialDimensionTrait;
 use App\Entity\Cave\Trait\CavePartialEnvironmentTrait;
-use App\Entity\CommonTrait\{CrupdatetimeTrait};
-use App\Entity\CommonTrait\HiddenTrait;
 use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
 use App\Shared\reflection\EntityReflectionHelper;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
+use HiddenTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
 ;

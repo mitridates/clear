@@ -1,13 +1,14 @@
 <?php
-namespace  App\Entity;
+namespace  App\Domain\Person\Entity;
 use App\Domain\Geonames\Entity\{Country};
 use App\Domain\Geonames\Entity\Admin1;
 use App\Domain\Geonames\Entity\Admin2;
 use App\Domain\Geonames\Entity\Admin3;
-use App\Entity\CommonTrait\CrupdatetimeTrait;
-use App\Entity\CommonTrait\HiddenTrait;
+use App\Domain\Organisation\Entity\Organisation;
 use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
+use HiddenTrait;
 
 ;
 

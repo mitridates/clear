@@ -1,6 +1,6 @@
 <?php
 namespace App\Form\EventListener;
-use App\Entity\Link;
+use App\Domain\Link\Entity\Link;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

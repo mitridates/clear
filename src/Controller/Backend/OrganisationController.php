@@ -2,10 +2,10 @@
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
 use App\Domain\JsonApi\Serializers\OrganisationSerializer;
-use App\Entity\Organisation;
+use App\Domain\Organisation\Entity\Organisation;
+use App\Domain\Organisation\Manager\OrganisationManager;
 use App\Form\backend\Organisation\OrganisationSearchType;
 use App\Form\backend\Organisation\OrganisationType;
-use App\Manager\OrganisationManager;
 use App\Shared\tobscure\jsonapi\Collection;
 use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;

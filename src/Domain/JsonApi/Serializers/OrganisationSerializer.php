@@ -5,7 +5,7 @@ use App\Domain\JsonApi\Serializers\Geonames\Admin1Serializer;
 use App\Domain\JsonApi\Serializers\Geonames\Admin2Serializer;
 use App\Domain\JsonApi\Serializers\Geonames\Admin3Serializer;
 use App\Domain\JsonApi\Serializers\Geonames\CountrySerializer;
-use App\Entity\Organisation;
+use App\Domain\Organisation\Entity\Organisation;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Relationship;

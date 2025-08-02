@@ -6,7 +6,7 @@ use App\Domain\Geonames\Entity\Admin1;
 use App\Domain\Geonames\Entity\Admin2;
 use App\Domain\Geonames\Entity\Admin3;
 use App\Domain\Geonames\Entity\Country;
-use App\Entity\Organisation;
+use App\Domain\Organisation\Entity\Organisation;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;

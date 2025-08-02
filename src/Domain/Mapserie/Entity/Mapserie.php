@@ -1,10 +1,11 @@
 <?php
-namespace  App\Entity;
+namespace  App\Domain\Mapserie\Entity;
 use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
-use App\Entity\CommonTrait\CrupdatetimeTrait;
-use App\Entity\CommonTrait\HiddenTrait;
+use App\Domain\Organisation\Entity\Organisation;
 use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
+use CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
+use HiddenTrait;
 
 ;
 

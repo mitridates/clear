@@ -1,6 +1,6 @@
 <?php
 namespace App\Form\backend\Link;
-use App\Entity\Link;
+use App\Domain\Link\Entity\Link;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Mime\MimeTypes;
