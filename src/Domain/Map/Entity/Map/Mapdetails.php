@@ -4,7 +4,7 @@ use App\Domain\Map\Entity\Map\Model\MapOneToOneInterface;
 use App\Domain\Map\Entity\Map\Trait\MapOneToOneTrait;
 use App\Domain\Organisation\Entity\Organisation;
 use App\Domain\Person\Entity\Person;
-use CrupdatetimeTrait;
+use  App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 

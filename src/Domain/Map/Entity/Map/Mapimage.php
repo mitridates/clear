@@ -5,10 +5,10 @@ namespace  App\Domain\Map\Entity\Map;
 use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
 use App\Domain\Map\Entity\Map\Model\MapManyToOneInterface;
 use App\Domain\Map\Entity\Map\Trait\MapManyToOneTrait;
-use CrupdatetimeTrait;
+use  App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
+use App\Infrastructure\Doctrine\Trait\FileTrait;
 use Doctrine\ORM\Mapping as ORM;
-use FileTrait;
-use SequenceTrait;
+use  App\Infrastructure\Doctrine\Trait\SequenceTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**

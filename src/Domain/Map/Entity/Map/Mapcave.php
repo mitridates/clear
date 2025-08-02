@@ -3,9 +3,9 @@ namespace  App\Domain\Map\Entity\Map;
 use App\Domain\Map\Entity\Map\Model\MapManyToOneInterface;
 use App\Domain\Map\Entity\Map\Trait\MapManyToOneTrait;
 use App\Entity\Cave\Cave;
-use CrupdatetimeTrait;
+use  App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
-use SequenceTrait;
+use  App\Infrastructure\Doctrine\Trait\SequenceTrait;
 
 /**
  * Caves on map (PL0587)

@@ -5,9 +5,9 @@ use App\Domain\Geonames\Entity\{Country};
 use App\Domain\Geonames\Entity\Admin1;
 use App\Domain\Map\Entity\Map\Model\MapManyToOneInterface;
 use App\Domain\Map\Entity\Map\Trait\MapManyToOneTrait;
-use CrupdatetimeTrait;
+use  App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
-use SequenceTrait;
+use  App\Infrastructure\Doctrine\Trait\SequenceTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**

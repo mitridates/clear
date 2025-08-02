@@ -1,4 +1,5 @@
 <?php
+namespace  App\Infrastructure\Doctrine\Trait;
 
 use Doctrine\ORM\Mapping as ORM;
 

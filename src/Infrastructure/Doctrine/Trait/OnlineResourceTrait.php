@@ -1,4 +1,5 @@
 <?php
+namespace  App\Infrastructure\Doctrine\Trait;
 
 use App\Domain\Link\Entity\Link;
 use Doctrine\ORM\Mapping as ORM;

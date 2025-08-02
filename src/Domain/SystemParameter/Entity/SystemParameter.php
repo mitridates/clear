@@ -3,7 +3,7 @@ namespace  App\Domain\SystemParameter\Entity;
 use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
 use App\Domain\Geonames\Entity\Country;
 use App\Domain\Organisation\Entity\Organisation;
-use CrupdatetimeTrait;
+use  App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -22,7 +22,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class SystemParameter
 {
 
-    use CrupdatetimeTrait;
+    use  CrupdatetimeTrait;
 
     #[ORM\Column(name: 'id', type: 'integer')]
     #[ORM\Id]
