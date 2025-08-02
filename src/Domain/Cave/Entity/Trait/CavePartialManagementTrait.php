@@ -3,7 +3,7 @@ namespace  App\Domain\Cave\Entity\Trait;
 use App\Domain\Fielddefinition\Entity\{Fieldvaluecode};
 use App\Domain\Organisation\Entity\Organisation;
 use App\Domain\Person\Entity\Person;
-use App\Entity\Cave\Trait\Cave;
+use App\Domain\Cave\Entity\Cave;
 use Doctrine\ORM\Mapping as ORM;
 
 trait CavePartialManagementTrait

@@ -5,7 +5,6 @@ use App\Domain\Cave\Entity\Caveentrancememo;
 use App\Domain\Cave\Entity\Cavehistory;
 use App\Domain\Cave\Entity\Cavehowtofind;
 use App\Domain\Cave\Entity\Caveposition;
-use App\Entity\Cave\Cavedimension;
 use Doctrine\ORM\Mapping as ORM;
 
 //use  App\Entity\Cave\Caveenvironment;
