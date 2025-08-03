@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Controller\Json;
-use App\Domain\Fielddefinition\Entity\Fielddefinition;
-use App\Domain\Fielddefinition\Manager\FieldDefinitionManager;
+use App\Fielddefinition\Domain\Entity\Fielddefinition;
+use App\Fielddefinition\Domain\Manager\FieldDefinitionManager;
 use App\Services\Cache\FilesCache\FieldDefinitionCache;
 use App\Shared\JsonApi\ErrorSerializer\JsonErrorBag;
 use Doctrine\ORM\EntityManagerInterface;

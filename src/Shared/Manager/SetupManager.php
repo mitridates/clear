@@ -1,15 +1,15 @@
 <?php
 namespace App\Shared\Manager;
-use App\Domain\Fielddefinition\Entity\Fielddefinition;
-use App\Domain\Fielddefinition\Entity\Fielddefinitionlang;
-use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
-use App\Domain\Fielddefinition\Entity\Fieldvaluecodelang;
-use App\Domain\Geonames\Entity\Admin1;
-use App\Domain\Geonames\Entity\Admin2;
-use App\Domain\Geonames\Entity\Admin3;
-use App\Domain\Geonames\Entity\Country;
-use App\Domain\Organisation\Entity\Organisation;
-use App\Domain\SystemParameter\Entity\SystemParameter;
+use App\Fielddefinition\Domain\Entity\Fielddefinition;
+use App\Fielddefinition\Domain\Entity\Fielddefinitionlang;
+use App\Fielddefinition\Domain\Entity\Fieldvaluecode;
+use App\Fielddefinition\Domain\Entity\Fieldvaluecodelang;
+use App\Geonames\Domain\Entity\Admin1;
+use App\Geonames\Domain\Entity\Admin2;
+use App\Geonames\Domain\Entity\Admin3;
+use App\Geonames\Domain\Entity\Country;
+use App\Organisation\Domain\Entity\Organisation;
+use App\SystemParameter\Domain\Entity\SystemParameter;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 

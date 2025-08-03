@@ -1,6 +1,6 @@
 <?php
 namespace App\Form\EventListener;
-use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
+use App\Fielddefinition\Domain\Entity\Fieldvaluecode;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;

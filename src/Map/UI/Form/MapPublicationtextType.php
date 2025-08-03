@@ -1,0 +1,25 @@
+<?php
+namespace App\Map\UI\Form;
+use App\Map\UI\Form\Model\OneToOneFormTypeInterface;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+class MapPublicationtextType extends AbstractType implements OneToOneFormTypeInterface
+{
+    /** @inheritDoc */
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder->add('publicationtext', null, ['attr'=>['field_id'=>219], 'required'=>true]);
+    }
+
+    /** @inheritDoc */
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults(array(
+            'attr'=> ['id'=>(new \ReflectionClass($this))->getShortName().rand()]
+        ));
+    }
+}
+
+

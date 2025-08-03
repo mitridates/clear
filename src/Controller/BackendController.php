@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Domain\Area\Entity\Area;
-use App\Domain\Person\Entity\Person;
+use App\Area\Domain\Entity\Area;
+use App\Person\Domain\Entity\Person;
 use App\Shared\JsonApi\ErrorSerializer\JsonErrorBag;
 use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;

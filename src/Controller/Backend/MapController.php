@@ -1,14 +1,14 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
-use App\Domain\JsonApi\Serializers\Map\MapSerializer;
-use App\Domain\JsonApi\SpecTypes\JsonApiTypeRegistry;
-use App\Domain\Map\Entity\Map\Map;
-use App\Domain\Map\Manager\MapManager;
-use App\Domain\Map\Serialization\MapSerializerRegistry;
-use App\Form\backend\Map\MapSearchType;
-use App\Form\backend\Map\MapType;
+use App\Map\Domain\Entity\Map\Map;
+use App\Map\Domain\Manager\MapManager;
+use App\Map\Domain\Serialization\MapSerializerRegistry;
+use App\Map\Infrastructure\Serializer\MapSerializer;
+use App\Map\UI\Form\MapSearchType;
+use App\Map\UI\Form\MapType;
 use App\Services\Cache\FilesCache\Map\MapSerializedCache;
+use App\Shared\JsonApi\SpecTypes\JsonApiTypeRegistry;
 use App\Shared\JsonApi\Unserialize\JsonApiManager;
 use App\Shared\JsonApi\Unserialize\JsonApiSpec;
 use App\Shared\tobscure\jsonapi\Collection;

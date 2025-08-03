@@ -2,8 +2,8 @@
 
 namespace App\Services\Cache\FilesCache\Map;
 
-use App\Domain\Map\Entity\Map\Map;
-use App\Domain\Map\Entity\Map\Model\MapOneToOneInterface;
+use App\Map\Domain\Entity\Map\Map;
+use App\Map\Domain\Entity\Map\Model\MapOneToOneInterface;
 use App\Services\Cache\FilesCache;
 use App\Shared\tobscure\jsonapi\AbstractSerializer;
 use App\Shared\tobscure\jsonapi\Document;

@@ -1,11 +1,11 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
-use App\Domain\JsonApi\Serializers\OrganisationSerializer;
-use App\Domain\Organisation\Entity\Organisation;
-use App\Domain\Organisation\Manager\OrganisationManager;
-use App\Form\backend\Organisation\OrganisationSearchType;
-use App\Form\backend\Organisation\OrganisationType;
+use App\Organisation\Domain\Entity\Organisation;
+use App\Organisation\Domain\Manager\OrganisationManager;
+use App\Organisation\Infrastructure\Serializer\OrganisationSerializer;
+use App\Organisation\UI\Form\OrganisationSearchType;
+use App\Organisation\UI\Form\OrganisationType;
 use App\Shared\tobscure\jsonapi\Collection;
 use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;

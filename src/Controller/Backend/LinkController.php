@@ -1,11 +1,11 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
-use App\Domain\JsonApi\Serializers\LinkSerializer;
-use App\Domain\Link\Entity\Link;
-use App\Domain\Link\Manager\LinkManager;
-use App\Form\backend\Link\LinkSearchType;
-use App\Form\backend\Link\LinkType;
+use App\Link\Domain\Entity\Link;
+use App\Link\Domain\Manager\LinkManager;
+use App\Link\Infrastructure\Serializer\LinkSerializer;
+use App\Link\UI\Form\LinkSearchType;
+use App\Link\UI\Form\LinkType;
 use App\Shared\tobscure\jsonapi\Collection;
 use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;

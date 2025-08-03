@@ -1,7 +1,7 @@
 <?php
 namespace  App\Infrastructure\Doctrine\Trait;
 
-use App\Domain\Link\Entity\Link;
+use App\Link\Domain\Entity\Link;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 

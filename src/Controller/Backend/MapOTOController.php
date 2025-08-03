@@ -1,16 +1,16 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
-use App\Domain\Map\Entity\Map\Map;
-use App\Domain\Map\Entity\Map\Mapcomment;
-use App\Domain\Map\Entity\Map\Mapcontroller;
-use App\Domain\Map\Entity\Map\Mapdetails;
-use App\Domain\Map\Entity\Map\Mappublicationtext;
-use App\Domain\Map\Entity\Map\Mapspecialmapsheet;
-use App\Form\backend\Map\MapCommentType;
-use App\Form\backend\Map\MapControllerType;
-use App\Form\backend\Map\MapPublicationtextType;
-use App\Form\backend\Map\MapSpecialmapsheetType;
+use App\Map\Domain\Entity\Map\Map;
+use App\Map\Domain\Entity\Map\Mapcomment;
+use App\Map\Domain\Entity\Map\Mapcontroller;
+use App\Map\Domain\Entity\Map\Mapdetails;
+use App\Map\Domain\Entity\Map\Mappublicationtext;
+use App\Map\Domain\Entity\Map\Mapspecialmapsheet;
+use App\Map\UI\Form\MapCommentType;
+use App\Map\UI\Form\MapControllerType;
+use App\Map\UI\Form\MapPublicationtextType;
+use App\Map\UI\Form\MapSpecialmapsheetType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;

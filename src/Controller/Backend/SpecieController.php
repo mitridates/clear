@@ -1,13 +1,13 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
-use App\Domain\JsonApi\Serializers\SpecieSerializer;
-use App\Domain\Specie\Entity\Specie;
-use App\Domain\Specie\Manager\SpecieManager;
-use App\Form\backend\Specie\SpecieSearchType;
-use App\Form\backend\Specie\SpecieType;
 use App\Shared\tobscure\jsonapi\Collection;
 use App\Shared\tobscure\jsonapi\Document;
+use App\Specie\Domain\Entity\Specie;
+use App\Specie\Domain\Manager\SpecieManager;
+use App\Specie\Infrastructure\Serializer\SpecieSerializer;
+use App\Specie\UI\Form\SpecieSearchType;
+use App\Specie\UI\Form\SpecieType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\JsonResponse;

@@ -1,13 +1,13 @@
 <?php
 namespace App\Controller\Backend;
 use App\Controller\BackendController;
-use App\Domain\JsonApi\Serializers\Map\MapSerializer;
-use App\Domain\Map\Entity\Map\Map;
-use App\Domain\Map\Serialization\MapSerializerRegistry;
-use App\Form\backend\Map\MapPartialCoordinatesType;
-use App\Form\backend\Map\MapPartialSourceType;
-use App\Form\backend\Map\MapPartialSurveyType;
-use App\Form\backend\Map\Model\PartialFormTypeInterface;
+use App\Map\Domain\Entity\Map\Map;
+use App\Map\Domain\Serialization\MapSerializerRegistry;
+use App\Map\Infrastructure\Serializer\MapSerializer;
+use App\Map\UI\Form\MapPartialCoordinatesType;
+use App\Map\UI\Form\MapPartialSourceType;
+use App\Map\UI\Form\MapPartialSurveyType;
+use App\Map\UI\Form\Model\PartialFormTypeInterface;
 use App\Services\Cache\FilesCache\Map\MapSerializedCache;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\Document;

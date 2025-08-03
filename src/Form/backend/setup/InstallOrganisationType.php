@@ -1,11 +1,11 @@
 <?php
 namespace App\Form\backend\setup;
-use App\Domain\Fielddefinition\Entity\Fieldvaluecode;
-use App\Domain\Organisation\Entity\Organisation;
+use App\Fielddefinition\Domain\Entity\Fieldvaluecode;
 use App\Form\EventListener\AddAdmin1FieldSubscriber;
 use App\Form\EventListener\AddAdmin2FieldSubscriber;
 use App\Form\EventListener\AddAdmin3FieldSubscriber;
 use App\Form\EventListener\AddCountryFieldSubscriber;
+use App\Organisation\Domain\Entity\Organisation;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\{AbstractType, FormBuilderInterface, FormEvent, FormEvents};

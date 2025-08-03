@@ -1,7 +1,7 @@
 <?php
 namespace App\Form\EventListener;
 
-use App\Domain\Article\Entity\Article;
+use App\Article\Domain\Entity\Article;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

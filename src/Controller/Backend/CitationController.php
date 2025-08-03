@@ -1,16 +1,16 @@
 <?php
 namespace App\Controller\Backend;
 
+use App\Citation\Domain\Entity\Citation;
+use App\Citation\Domain\Manager\CitationManager;
+use App\Citation\Infrastructure\Serializer\CitationSerializer;
+use App\Citation\UI\Form\BookCarpetType;
+use App\Citation\UI\Form\BookType;
+use App\Citation\UI\Form\CitationSearchType;
+use App\Citation\UI\Form\JournalArticleType;
+use App\Citation\UI\Form\WebpageType;
+use App\Citation\UI\Form\WebsiteType;
 use App\Controller\BackendController;
-use App\Domain\Citation\Entity\Citation;
-use App\Domain\Citation\Manager\CitationManager;
-use App\Domain\JsonApi\Serializers\CitationSerializer;
-use App\Form\backend\Citation\BookCarpetType;
-use App\Form\backend\Citation\BookType;
-use App\Form\backend\Citation\CitationSearchType;
-use App\Form\backend\Citation\JournalArticleType;
-use App\Form\backend\Citation\WebpageType;
-use App\Form\backend\Citation\WebsiteType;
 use App\Shared\tobscure\jsonapi\Collection;
 use App\Shared\tobscure\jsonapi\Document;
 use Doctrine\ORM\EntityManagerInterface;

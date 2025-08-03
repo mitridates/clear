@@ -1,9 +1,9 @@
 <?php
 namespace App\Controller\Backend;
-use App\Domain\Geonames\Import\Sql\ImportSql;
+use App\Domain\Geonames\Geonamesdump\utils\GeonamesControllerLoader;
 use App\Form\backend\setup\SetupCountryType;
 use App\Form\backend\setup\SetupSqlLoaderType;
-use App\Geonamesdump\utils\GeonamesControllerLoader;
+use App\Geonames\Domain\Import\Sql\ImportSql;
 use App\Services\Cache\FilesCache\DbStatusCache;
 use App\Shared\Arraypath;
 use App\Shared\Manager\SetupManager;

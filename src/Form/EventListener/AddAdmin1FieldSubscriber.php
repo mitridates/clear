@@ -2,9 +2,9 @@
 
 namespace App\Form\EventListener;
 
-use App\Domain\Geonames\Entity\Admin1;
-use App\Domain\Geonames\Entity\Country;
-use App\Domain\Organisation\Entity\Organisation;
+use App\Geonames\Domain\Entity\Admin1;
+use App\Geonames\Domain\Entity\Country;
+use App\Organisation\Domain\Entity\Organisation;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
