@@ -2,9 +2,9 @@
 
 namespace  App\Cave\Domain\Entity;
 use App\Cave\Domain\Entity\Trait\CaveManyToOneTrait;
-use App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
-use App\Infrastructure\Doctrine\Trait\SequenceTrait;
 use App\Link\Domain\Entity\Link;
+use App\Shared\Doctrine\Trait\CrupdatetimeTrait;
+use App\Shared\Doctrine\Trait\SequenceTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

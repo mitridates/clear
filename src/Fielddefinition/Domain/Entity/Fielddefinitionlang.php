@@ -1,7 +1,7 @@
 <?php
 namespace  App\Fielddefinition\Domain\Entity;
 
-use App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
+use App\Shared\Doctrine\Trait\CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'fielddefinition_lang')]

@@ -4,8 +4,8 @@ use App\Area\Domain\Entity\Area;
 use App\Cave\Domain\Entity\Trait\CaveManyToOneTrait;
 use App\Domain\Geonames\Entity\{App\Geonames\Domain\Entity\Country};
 use App\Geonames\Domain\Entity\Admin1;
-use App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
-use App\Infrastructure\Doctrine\Trait\SequenceTrait;
+use App\Shared\Doctrine\Trait\CrupdatetimeTrait;
+use App\Shared\Doctrine\Trait\SequenceTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

@@ -3,11 +3,11 @@
 namespace  App\Map\Domain\Entity\Map;
 
 use App\Fielddefinition\Domain\Entity\Fieldvaluecode;
-use App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
-use App\Infrastructure\Doctrine\Trait\FileTrait;
-use App\Infrastructure\Doctrine\Trait\SequenceTrait;
 use App\Map\Domain\Entity\Map\Model\MapManyToOneInterface;
 use App\Map\Domain\Entity\Map\Trait\MapManyToOneTrait;
+use App\Shared\Doctrine\Trait\CrupdatetimeTrait;
+use App\Shared\Doctrine\Trait\FileTrait;
+use App\Shared\Doctrine\Trait\SequenceTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 

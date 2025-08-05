@@ -2,8 +2,8 @@
 namespace  App\Cave\Domain\Entity;
 use App\Article\Domain\Entity\Article;
 use App\Cave\Domain\Entity\Trait\CaveManyToOneTrait;
-use App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
-use App\Infrastructure\Doctrine\Trait\SequenceTrait;
+use App\Shared\Doctrine\Trait\CrupdatetimeTrait;
+use App\Shared\Doctrine\Trait\SequenceTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 

@@ -1,10 +1,10 @@
 <?php
 namespace  App\Map\Domain\Entity\Map;
-use App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
 use App\Map\Domain\Entity\Map\Model\MapOneToOneInterface;
 use App\Map\Domain\Entity\Map\Trait\MapOneToOneTrait;
 use App\Organisation\Domain\Entity\Organisation;
 use App\Person\Domain\Entity\Person;
+use App\Shared\Doctrine\Trait\CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

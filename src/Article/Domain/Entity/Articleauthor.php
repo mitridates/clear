@@ -1,7 +1,7 @@
 <?php
 namespace  App\Article\Domain\Entity;
-use App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
-use App\Infrastructure\Doctrine\Trait\SequenceTrait;
+use App\Shared\Doctrine\Trait\CrupdatetimeTrait;
+use App\Shared\Doctrine\Trait\SequenceTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

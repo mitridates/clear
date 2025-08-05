@@ -1,6 +1,6 @@
 <?php
 namespace  App\Fielddefinition\Domain\Entity;
-use App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
+use App\Shared\Doctrine\Trait\CrupdatetimeTrait;
 use Doctrine\Common\Collections\{Collection};
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;

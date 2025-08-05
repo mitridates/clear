@@ -9,7 +9,7 @@ use App\Form\FormFields\AdministrativeDivisionSubscriberTrait;
 class PublicationFields extends AbstractFormFields
 {
  use AdministrativeDivisionSubscriberTrait;
-    public static function getFields(): array
+    public  function getFields(): array
     {
         return [
             ['publicationyear', null, ['label'=>'','attr'=>['field_id'=>10308]]],

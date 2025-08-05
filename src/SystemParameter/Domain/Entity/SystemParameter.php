@@ -2,8 +2,8 @@
 namespace  App\SystemParameter\Domain\Entity;
 use App\Fielddefinition\Domain\Entity\Fieldvaluecode;
 use App\Geonames\Domain\Entity\Country;
-use App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
 use App\Organisation\Domain\Entity\Organisation;
+use App\Shared\Doctrine\Trait\CrupdatetimeTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 

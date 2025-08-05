@@ -4,10 +4,10 @@ use App\Domain\Geonames\Entity\{App\Geonames\Domain\Entity\Country};
 use App\Geonames\Domain\Entity\Admin1;
 use App\Geonames\Domain\Entity\Admin2;
 use App\Geonames\Domain\Entity\Admin3;
-use App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
-use App\Infrastructure\Doctrine\Trait\HiddenTrait;
 use App\Organisation\Domain\Entity\Organisation;
 use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
+use App\Shared\Doctrine\Trait\CrupdatetimeTrait;
+use App\Shared\Doctrine\Trait\HiddenTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 ;

@@ -1,0 +1,96 @@
+#Controladores genéricos
+controllers:
+    resource:
+        path: ../../src/Shared/Infrastructure/Controller/
+        namespace: App\Shared\Infrastructure\Controller
+    type: attribute
+#Controladores específicos
+install_controllers:
+    resource:
+        path: ../../src/Install/Infrastructure/Controller/
+        namespace: App\Install\Infrastructure\Controller
+    type: attribute
+
+area_controllers:
+    resource:
+        path: ../../src/Area/Infrastructure/Controller/
+        namespace: App\Area\Infrastructure\Controller
+    type: attribute
+
+article_controllers:
+    resource:
+        path: ../../src/Article/Infrastructure/Controller/
+        namespace: App\Article\Infrastructure\Controller
+    type: attribute
+
+cave_controllers:
+    resource:
+        path: ../../src/Cave/Infrastructure/Controller/
+        namespace: App\Cave\Infrastructure\Controller
+    type: attribute
+
+citation_controllers:
+    resource:
+        path: ../../src/Citation/Infrastructure/Controller/
+        namespace: App\Citation\Infrastructure\Controller
+    type: attribute
+
+fielddefinition_controllers:
+    resource:
+        path: ../../src/Fielddefinition/Infrastructure/Controller/
+        namespace: App\Fielddefinition\Infrastructure\Controller
+    type: attribute
+
+geonames_controllers:
+    resource:
+        path: ../../src/Geonames/Infrastructure/Controller/
+        namespace: App\Geonames\Infrastructure\Controller
+    type: attribute
+
+link_controllers:
+    resource:
+        path: ../../src/Link/Infrastructure/Controller/
+        namespace: App\Link\Infrastructure\Controller
+    type: attribute
+
+map_controllers:
+    resource:
+        path: ../../src/Map/Infrastructure/Controller/
+        namespace: App\Map\Infrastructure\Controller
+    type: attribute
+
+mapserie_controllers:
+    resource:
+        path: ../../src/Mapserie/Infrastructure/Controller/
+        namespace: App\Mapserie\Infrastructure\Controller
+    type: attribute
+
+organisation_controllers:
+    resource:
+        path: ../../src/Organisation/Infrastructure/Controller/
+        namespace: App\Organisation\Infrastructure\Controller
+    type: attribute
+
+person_controllers:
+    resource:
+        path: ../../src/Person/Infrastructure/Controller/
+        namespace: App\Person\Infrastructure\Controller
+    type: attribute
+
+publication_controllers:
+    resource:
+        path: ../../src/Publication/Infrastructure/Controller/
+        namespace: App\Publication\Infrastructure\Controller
+    type: attribute
+
+specie_controllers:
+    resource:
+        path: ../../src/Specie/Infrastructure/Controller/
+        namespace: App\Specie\Infrastructure\Controller
+    type: attribute
+
+systemparameter_controllers:
+    resource:
+        path: ../../src/SystemParameter/Infrastructure/Controller/
+        namespace: App\SystemParameter\Infrastructure\Controller
+    type: attribute    

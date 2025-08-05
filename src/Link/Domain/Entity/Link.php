@@ -1,10 +1,10 @@
 <?php
 namespace  App\Link\Domain\Entity;
-use App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
-use App\Infrastructure\Doctrine\Trait\HiddenTrait;
 use App\Organisation\Domain\Entity\Organisation;
 use App\Person\Domain\Entity\Person;
 use App\Shared\Doctrine\Orm\Id\CavernIdGenerator;
+use App\Shared\Doctrine\Trait\CrupdatetimeTrait;
+use App\Shared\Doctrine\Trait\HiddenTrait;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;

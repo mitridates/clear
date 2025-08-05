@@ -30,68 +30,68 @@ doctrine:
             Geonames:
                 is_bundle: false
                 type: attribute
-                dir: '%kernel.project_dir%/src/Domain/Geonames/Entity'
-                prefix: 'App\Domain\Geonames\Entity'
+                dir: '%kernel.project_dir%/src/Geonames/Domain/Entity'
+                prefix: 'App\Geonames\Domain\Entity'
                 alias: Geonames
             Map:
                 is_bundle: false
                 type: attribute
-                dir: '%kernel.project_dir%/src/Domain/Map/Entity'
-                prefix: 'App\Domain\Map\Entity'
+                dir: '%kernel.project_dir%/src/Map/Domain/Entity'
+                prefix: 'App\Map\Domain\Entity'
                 alias: Map
             Article:
                 is_bundle: false
                 type: attribute
-                dir: '%kernel.project_dir%/src/Domain/Article/Entity'
-                prefix: 'App\Domain\Article\Entity'
+                dir: '%kernel.project_dir%/src/Article/Domain/Entity'
+                prefix: 'App\Article\Domain\Entity'
                 alias: Article
             Fielddefinition:
                 is_bundle: false
                 type: attribute
-                dir: '%kernel.project_dir%/src/Domain/Fielddefinition/Entity'
-                prefix: 'App\Domain\Fielddefinition\Entity'
+                dir: '%kernel.project_dir%/src/Fielddefinition/Domain/Entity'
+                prefix: 'App\Fielddefinition\Domain\Entity'
                 alias: Fielddefinition
             Area:
                 is_bundle: false
                 type: attribute
-                dir: '%kernel.project_dir%/src/Domain/Area/Entity'
-                prefix: 'App\Domain\Area\Entity'
+                dir: '%kernel.project_dir%/src/Area/Domain/Entity'
+                prefix: 'App\Area\Domain\Entity'
                 alias: Area
             Organisation:
                 is_bundle: false
                 type: attribute
-                dir: '%kernel.project_dir%/src/Domain/Organisation/Entity'
-                prefix: 'App\Domain\Organisation\Entity'
+                dir: '%kernel.project_dir%/src/Organisation/Domain/Entity'
+                prefix: 'App\Organisation\Domain\Entity'
                 alias: Organisation
             Person:
                 is_bundle: false
                 type: attribute
-                dir: '%kernel.project_dir%/src/Domain/Person/Entity'
-                prefix: 'App\Domain\Person\Entity'
+                dir: '%kernel.project_dir%/src/Person/Domain/Entity'
+                prefix: 'App\Person\Domain\Entity'
                 alias: Person
             Specie:
                 is_bundle: false
                 type: attribute
-                dir: '%kernel.project_dir%/src/Domain/Specie/Entity'
-                prefix: 'App\Domain\Specie\Entity'
+                dir: '%kernel.project_dir%/src/Specie/Domain/Entity'
+                prefix: 'App\Specie\Domain\Entity'
                 alias: Specie
             Mapserie:
                 is_bundle: false
                 type: attribute
-                dir: '%kernel.project_dir%/src/Domain/Mapserie/Entity'
-                prefix: 'App\Domain\Mapserie\Entity'
+                dir: '%kernel.project_dir%/src/Mapserie/Domain/Entity'
+                prefix: 'App\Mapserie\Domain\Entity'
                 alias: Mapserie
             Link:
                 is_bundle: false
                 type: attribute
-                dir: '%kernel.project_dir%/src/Domain/Link/Entity'
-                prefix: 'App\Domain\Link\Entity'
+                dir: '%kernel.project_dir%/src/Link/Domain/Entity'
+                prefix: 'App\Link\Domain\Entity'
                 alias: Link
             SystemParameter:
                 is_bundle: false
                 type: attribute
-                dir: '%kernel.project_dir%/src/Domain/SystemParameter/Entity'
-                prefix: 'App\Domain\SystemParameter\Entity'
+                dir: '%kernel.project_dir%/src/SystemParameter/Domain/Entity'
+                prefix: 'App\SystemParameter\Domain\Entity'
                 alias: SystemParameter
 
 when@test:

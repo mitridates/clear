@@ -2,7 +2,7 @@
 namespace  App\Cave\Domain\Entity;
 use App\Cave\Domain\Entity\Trait\CaveOneToOneTrait;
 use App\Fielddefinition\Domain\Entity\Fieldvaluecode;
-use App\Infrastructure\Doctrine\Trait\CrupdatetimeTrait;
+use App\Shared\Doctrine\Trait\CrupdatetimeTrait;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
