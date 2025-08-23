@@ -8,8 +8,8 @@ use App\Citation\UI\Form\CommonFields\JsonAccessDateFields;
 use App\Citation\UI\Form\CommonFields\JsonBibliographyFields;
 use App\Citation\UI\Form\CommonFields\JsonHrefFields;
 use App\Citation\UI\Form\CommonFields\JsonPublicationDateFields;
-use App\Form\FormFields\AbstractFormFields;
-use App\Form\FormFields\FormFieldsEventInterface;
+use App\Shared\UI\Form\FormFields\AbstractFormFields;
+use App\Shared\UI\Form\FormFields\FormFieldsEventInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 

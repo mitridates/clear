@@ -3,10 +3,10 @@
 namespace App\SystemParameter\UI\Form;
 
 use App\Fielddefinition\Domain\Entity\Fieldvaluecode;
-use App\Form\EventListener\AddCountryFieldSubscriber;
-use App\Form\EventListener\AddOrganisationFieldSubscriber;
-use App\Form\FormFields\AbstractFormFields;
-use App\Form\FormFields\SubscribersTrait;
+use App\Geonames\UI\Form\EventSubscriber\CountryFieldSubscriber;
+use App\Organisation\UI\Form\EventSubscriber\OrganisationFieldSubscriber;
+use App\Shared\UI\Form\FormFields\AbstractFormFields;
+use App\Shared\UI\Form\FormFields\SubscribersTrait;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -79,7 +79,7 @@ class SystemParameterFields extends AbstractFormFields
         $this->subscribers=[
             [
                 'country',
-                AddCountryFieldSubscriber::class,
+                CountryFieldSubscriber::class,
                 [
                     'options'=>[
                         'required' => true,
@@ -88,7 +88,7 @@ class SystemParameterFields extends AbstractFormFields
             ],
             [
                 'getOrganisationdbm',
-                AddOrganisationFieldSubscriber::class,
+                OrganisationFieldSubscriber::class,
                 ['name'=>'organisationdbm',
                     'getMethod'=>'getOrganisationdbm',
                     'options'=>[
@@ -99,7 +99,7 @@ class SystemParameterFields extends AbstractFormFields
             ],
             [
                 'getOrganisationsite',
-                AddOrganisationFieldSubscriber::class,
+                OrganisationFieldSubscriber::class,
                 [
                     'name'=>'organisationsite',
                     'getMethod'=>'getOrganisationsite',

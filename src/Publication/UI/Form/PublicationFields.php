@@ -1,10 +1,10 @@
 <?php
 namespace App\Publication\UI\Form;
-use App\Form\EventListener\AddAdmin1FieldSubscriber;
-use App\Form\EventListener\AddCountryFieldSubscriber;
-use App\Form\EventListener\AddLinkFieldSubscriber;
-use App\Form\FormFields\AbstractFormFields;
-use App\Form\FormFields\AdministrativeDivisionSubscriberTrait;
+use App\Geonames\UI\Form\EventSubscriber\Admin1FieldSubscriber;
+use App\Geonames\UI\Form\EventSubscriber\CountryFieldSubscriber;
+use App\Link\UI\Form\EventSubscriber\LinkFieldSubscriber;
+use App\Shared\UI\Form\FormFields\AbstractFormFields;
+use App\Shared\UI\Form\FormFields\AdministrativeDivisionSubscriberTrait;
 
 class PublicationFields extends AbstractFormFields
 {
@@ -34,16 +34,16 @@ class PublicationFields extends AbstractFormFields
     public static function getSubscribers():array
     {
         return [
-            [ 'country', AddCountryFieldSubscriber::class, ['options'=>[
+            [ 'country', CountryFieldSubscriber::class, ['options'=>[
                 'label'=>'',
                 'required' => true,
                 'attr'=>['field_id'=>10319]
             ]]],
-            ['admin1',AddAdmin1FieldSubscriber::class, ['options'=>[
+            ['admin1',Admin1FieldSubscriber::class, ['options'=>[
                 'label'=>'',
                 'attr'=>['field_id'=>10321]
             ]]],
-            ['link',AddLinkFieldSubscriber::class, ['options'=>[
+            ['link',LinkFieldSubscriber::class, ['options'=>[
                 'label'=>'',
                 'attr'=>['field_id'=>10320]
             ]]]

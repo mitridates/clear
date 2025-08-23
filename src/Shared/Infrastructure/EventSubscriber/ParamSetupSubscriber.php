@@ -1,6 +1,6 @@
 <?php
 namespace App\Shared\Infrastructure\EventSubscriber;
-use App\Services\Cache\FilesCache\DbStatusCache;
+use App\Dashboard\Infrastructure\Cache\DbStatusCache;
 use App\Shared\Manager\SetupManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Cache\InvalidArgumentException;

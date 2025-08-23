@@ -3,7 +3,7 @@
 namespace App\Citation\UI\Form\CommonFields;
 
 use App\Citation\Domain\Entity\Citation;
-use App\Form\FormFields\AbstractFormFields;
+use App\Shared\UI\Form\FormFields\AbstractFormFields;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;

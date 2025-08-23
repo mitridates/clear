@@ -2,10 +2,10 @@
 
 namespace App\Area\UI\Form;
 
-use App\Form\EventListener\AddAdmin1FieldSubscriber;
-use App\Form\EventListener\AddCountryFieldSubscriber;
-use App\Form\FormFields\AbstractFormFields;
-use App\Form\FormFields\AdministrativeDivisionSubscriberTrait;
+use App\Geonames\UI\Form\EventSubscriber\Admin1FieldSubscriber;
+use App\Geonames\UI\Form\EventSubscriber\CountryFieldSubscriber;
+use App\Shared\UI\Form\FormFields\AbstractFormFields;
+use App\Shared\UI\Form\FormFields\AdministrativeDivisionSubscriberTrait;
 
 class AreaFields extends AbstractFormFields
 {
@@ -22,12 +22,12 @@ public function __construct()
     ];
 
     $this->subscribers= [
-        [ 'country', AddCountryFieldSubscriber::class, ['options'=>[
+        [ 'country', CountryFieldSubscriber::class, ['options'=>[
             'label'=>'',
             'required' => true,
             'attr'=>['field_id'=>224]
         ]]],
-        ['admin1',AddAdmin1FieldSubscriber::class, ['options'=>[
+        ['admin1',Admin1FieldSubscriber::class, ['options'=>[
             'label'=>'',
             'required' => true,
             'attr'=>['field_id'=>225]

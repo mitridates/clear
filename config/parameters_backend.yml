@@ -48,7 +48,7 @@ parameters:
         img: 'bundles/dashboard/img/'
     #Find csv for setup
     install:
-      dir: '%kernel.project_dir%/src/Resources/install/'
+      dir: '%kernel.project_dir%/src/Install/Data/'
       files:
         field_definition:
           name: 'Field definition'

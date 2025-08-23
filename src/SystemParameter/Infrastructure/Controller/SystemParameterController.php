@@ -1,6 +1,6 @@
 <?php
 namespace App\SystemParameter\Infrastructure\Controller;
-use App\Services\Cache\FilesCache\DbStatusCache;
+use App\Dashboard\Infrastructure\Cache\DbStatusCache;
 use App\Shared\Infrastructure\Controller\BackendController;
 use App\Shared\Manager\SetupManager;
 use App\Shared\tobscure\jsonapi\{Collection, Document};

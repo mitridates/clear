@@ -3,9 +3,9 @@
 namespace App\Mapserie\UI\Form;
 
 use App\Fielddefinition\Domain\Entity\Fieldvaluecode;
-use App\Form\EventListener\AddOrganisationFieldSubscriber;
-use App\Form\FormFields\AbstractFormFields;
-use App\Form\FormFields\AdministrativeDivisionSubscriberTrait;
+use App\Organisation\UI\Form\EventSubscriber\OrganisationFieldSubscriber;
+use App\Shared\UI\Form\FormFields\AbstractFormFields;
+use App\Shared\UI\Form\FormFields\AdministrativeDivisionSubscriberTrait;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
@@ -60,7 +60,7 @@ class MapserieFields extends AbstractFormFields
          ]]
      ];
      $this->subscribers=[
-         ['publisher', AddOrganisationFieldSubscriber::class,
+         ['publisher', OrganisationFieldSubscriber::class,
              [
                  'name'=>'publisher',
                  'getMethod'=>'getPublisher',

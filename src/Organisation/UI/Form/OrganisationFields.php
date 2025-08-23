@@ -3,13 +3,13 @@
 namespace App\Organisation\UI\Form;
 
 use App\Fielddefinition\Domain\Entity\Fieldvaluecode;
-use App\Form\EventListener\AddAdmin1FieldSubscriber;
-use App\Form\EventListener\AddAdmin2FieldSubscriber;
-use App\Form\EventListener\AddAdmin3FieldSubscriber;
-use App\Form\EventListener\AddCountryFieldSubscriber;
-use App\Form\EventListener\AddOrganisationFieldSubscriber;
-use App\Form\FormFields\AbstractFormFields;
-use App\Form\FormFields\AdministrativeDivisionSubscriberTrait;
+use App\Geonames\UI\Form\EventSubscriber\Admin1FieldSubscriber;
+use App\Geonames\UI\Form\EventSubscriber\Admin2FieldSubscriber;
+use App\Geonames\UI\Form\EventSubscriber\Admin3FieldSubscriber;
+use App\Geonames\UI\Form\EventSubscriber\CountryFieldSubscriber;
+use App\Organisation\UI\Form\EventSubscriber\OrganisationFieldSubscriber;
+use App\Shared\UI\Form\FormFields\AbstractFormFields;
+use App\Shared\UI\Form\FormFields\AdministrativeDivisionSubscriberTrait;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -92,38 +92,38 @@ class OrganisationFields extends AbstractFormFields
         ];
 
         $this->subscribers= [
-            [ 'country', AddCountryFieldSubscriber::class, ['options'=>[
+            [ 'country', CountryFieldSubscriber::class, ['options'=>[
                 'label'=>'Organisation country code',
                 'required' => true,
                 'attr'=>['field_id'=>376]
             ]]],
-            ['admin1',AddAdmin1FieldSubscriber::class, ['options'=>[
+            ['admin1',Admin1FieldSubscriber::class, ['options'=>[
                 'label'=>'State code',
                 'attr'=>['field_id'=>377]
             ]]],
-            ['admin2',AddAdmin2FieldSubscriber::class],
-            ['admin3',AddAdmin3FieldSubscriber::class],
-            [ 'countryaddress', AddCountryFieldSubscriber::class, [
+            ['admin2',Admin2FieldSubscriber::class],
+            ['admin3',Admin3FieldSubscriber::class],
+            [ 'countryaddress', CountryFieldSubscriber::class, [
                 'name'=>'countryaddress',
                 'options'=>[
                     'label'=>'Address country code',
                     'attr'=>['field_id'=>395]
                 ]
             ]],
-            ['admin1address',AddAdmin1FieldSubscriber::class, [
+            ['admin1address',Admin1FieldSubscriber::class, [
                 'name'=>'admin1address',
                 'options'=>[
                     'label'=>'State code',
                     'attr'=>['field_id'=>377]
                 ]
             ]],
-            ['admin2address',AddAdmin2FieldSubscriber::class, [
+            ['admin2address',Admin2FieldSubscriber::class, [
                 'name'=>'admin2address'
             ]],
-            ['admin3address',AddAdmin3FieldSubscriber::class, [
+            ['admin3address',Admin3FieldSubscriber::class, [
                 'name'=>'admin3address'
             ]],
-            ['currentidifdefunct', AddOrganisationFieldSubscriber::class,
+            ['currentidifdefunct', OrganisationFieldSubscriber::class,
                 ['name'=>'currentidifdefunct',
                     'options'=>[
                         'label'=>'Current org ID if defunct',

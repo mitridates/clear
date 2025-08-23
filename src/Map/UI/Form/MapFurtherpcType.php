@@ -1,6 +1,6 @@
 <?php
 namespace App\Map\UI\Form;
-use App\Form\EventListener\AddAreaFieldSubscriber;
+use App\Area\UI\Form\EventSubscriber\AreaFieldSubscriber;
 use App\Map\Domain\Entity\Map\Mapfurtherpc;
 use App\Map\UI\Form\FormTypeFields\MapFields;
 use App\Map\UI\Form\Model\ManyToOneFormTypeInterface;
@@ -26,7 +26,7 @@ class MapFurtherpcType extends AbstractType implements ManyToOneFormTypeInterfac
             ['field'=>'admin1']
         );
         $area= $fields->getSubscriberData('area');
-        $areaSubscriber = new AddAreaFieldSubscriber($factory, $adm['country']->getCountry(), $adm['admin1']->getAdmin1(), $area[2]);
+        $areaSubscriber = new AreaFieldSubscriber($factory, $adm['country']->getCountry(), $adm['admin1']->getAdmin1(), $area[2]);
         $builder->addEventSubscriber($areaSubscriber);
         $builder->add('position', NULL, ['attr'=>['field_id'=>10001]]);
 

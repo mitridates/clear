@@ -16,13 +16,12 @@ services:
     App\:
         resource: '../src/'
         exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
+#            - '../src/DependencyInjection/'
+#            - '../src/Entity/'
             - '../src/Kernel.php'
-            - '../src/Form/'
-            - '../src/Utils/'
+#            - '../src/Form/'
+#            - '../src/Utils/'
             - '../src/Share/'
-
             - '../src/vendor/'
             - '../src/Resources/'
     # add more service definitions when explicit configuration is needed

@@ -3,7 +3,7 @@
 namespace App\Citation\UI\Form\CommonFields;
 
 use App\Citation\Domain\Entity\Citation;
-use App\Form\FormFields\JsonFormFieldsEventInterface;
+use App\Shared\UI\Form\FormFields\JsonFormFieldsEventInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;

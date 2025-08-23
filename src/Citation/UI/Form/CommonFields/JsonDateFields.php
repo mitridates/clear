@@ -2,8 +2,8 @@
 namespace App\Citation\UI\Form\CommonFields;
 
 use App\Citation\Domain\Entity\Citation;
-use App\Form\FormFields\AbstractFormFields;
-use App\Form\FormFields\JsonFormFieldsEventInterface;
+use App\Shared\UI\Form\FormFields\AbstractFormFields;
+use App\Shared\UI\Form\FormFields\JsonFormFieldsEventInterface;
 use DateTime;
 use PharIo\Version\Exception;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;

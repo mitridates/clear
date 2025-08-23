@@ -1,6 +1,6 @@
 <?php
 namespace App\Map\UI\Form;
-use App\Form\EventListener\AddLinkFieldSubscriber;
+use App\Link\UI\Form\EventSubscriber\LinkFieldSubscriber;
 use App\Map\UI\Form\Model\ManyToOneFormTypeInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,7 +15,7 @@ class MapLinkType extends AbstractType implements ManyToOneFormTypeInterface
     {
         $factory = $builder->getFormFactory();
 
-        $builder->addEventSubscriber(new AddLinkFieldSubscriber($factory, array(
+        $builder->addEventSubscriber(new LinkFieldSubscriber($factory, array(
             'options'=>['attr'=>['field_id'=>587]]
         )));
 

@@ -33,6 +33,11 @@ abstract class AbstractManager
             return 0;
         }
     }
+//
+//    public function countAll(): int
+//    {
+//        return $this->count();
+//    }
 
     /**
      * Get Pagination class & array result

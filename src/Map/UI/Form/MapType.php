@@ -1,6 +1,6 @@
 <?php
 namespace App\Map\UI\Form;
-use App\Form\EventListener\AddAreaFieldSubscriber;
+use App\Area\UI\Form\EventSubscriber\AreaFieldSubscriber;
 use App\Map\UI\Form\FormTypeFields\MapFields;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -41,7 +41,7 @@ class MapType extends AbstractType
 
  //todo: subscribers... area está mal...
         $area= $fields->getSubscriberData('area');
-        $areaSubscriber = new AddAreaFieldSubscriber($factory, $adm['country']->getCountry(), $adm['admin1']->getAdmin1(), $area[2]);
+        $areaSubscriber = new AreaFieldSubscriber($factory, $adm['country']->getCountry(), $adm['admin1']->getAdmin1(), $area[2]);
         $builder->addEventSubscriber($areaSubscriber);
 
         foreach (['mapserie', 'principalsurveyorid', 'principaldrafterid', 'surveygradeorg' ] as $item) {

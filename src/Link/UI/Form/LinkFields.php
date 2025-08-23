@@ -2,11 +2,11 @@
 
 namespace App\Link\UI\Form;
 
-use App\Form\EventListener\AddMimeTypeSubscriber;
-use App\Form\EventListener\AddOrganisationFieldSubscriber;
-use App\Form\EventListener\AddPersonFieldSubscriber;
-use App\Form\FormFields\AbstractFormFields;
-use App\Form\FormFields\AdministrativeDivisionSubscriberTrait;
+use App\Map\UI\Form\EventSubscriber\MimeTypeSubscriber;
+use App\Organisation\UI\Form\EventSubscriber\OrganisationFieldSubscriber;
+use App\Person\UI\Form\EventSubscriber\PersonFieldSubscriber;
+use App\Shared\UI\Form\FormFields\AbstractFormFields;
+use App\Shared\UI\Form\FormFields\AdministrativeDivisionSubscriberTrait;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
@@ -34,18 +34,18 @@ public function __construct()
     ];
 
     $this->subscribers= [
-        [ 'organisation', AddOrganisationFieldSubscriber::class, ['options'=>[
+        [ 'organisation', OrganisationFieldSubscriber::class, ['options'=>[
             'required' => false,
             'attr'=>['field_id'=>1001]
         ]]],
-        ['author',AddPersonFieldSubscriber::class, [
+        ['author',PersonFieldSubscriber::class, [
             'name'=>'author',
             'getMethod'=>'getAuthor',
             'options'=>[
             'required' => false,
             'attr'=>['field_id'=>1003]
         ]]],
-        ['mime', AddMimeTypeSubscriber::class, [
+        ['mime', MimeTypeSubscriber::class, [
             'options'=>['required' => false,'attr'=>['field_id'=>1007]]]
         ]
     ];

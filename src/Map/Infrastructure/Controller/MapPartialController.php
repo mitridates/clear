@@ -2,12 +2,12 @@
 namespace App\Map\Infrastructure\Controller;
 use App\Map\Domain\Entity\Map\Map;
 use App\Map\Domain\Serialization\MapSerializerRegistry;
+use App\Map\Infrastructure\Cache\MapSerializedCache;
 use App\Map\Infrastructure\Serializer\MapSerializer;
 use App\Map\UI\Form\MapPartialCoordinatesType;
 use App\Map\UI\Form\MapPartialSourceType;
 use App\Map\UI\Form\MapPartialSurveyType;
 use App\Map\UI\Form\Model\PartialFormTypeInterface;
-use App\Services\Cache\FilesCache\Map\MapSerializedCache;
 use App\Shared\Infrastructure\Controller\BackendController;
 use App\Shared\reflection\EntityReflectionHelper;
 use App\Shared\tobscure\jsonapi\Document;

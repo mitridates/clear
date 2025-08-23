@@ -2,7 +2,7 @@
 
 namespace App\Specie\UI\Form;
 
-use App\Form\FormFields\AbstractFormFields;
+use App\Shared\UI\Form\FormFields\AbstractFormFields;
 
 class SpecieFields extends AbstractFormFields
 {

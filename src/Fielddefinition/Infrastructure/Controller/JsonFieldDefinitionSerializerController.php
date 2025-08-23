@@ -3,7 +3,7 @@
 namespace App\Fielddefinition\Infrastructure\Controller;
 use App\Fielddefinition\Domain\Entity\Fielddefinition;
 use App\Fielddefinition\Domain\Manager\FieldDefinitionManager;
-use App\Services\Cache\FilesCache\FieldDefinitionCache;
+use App\Fielddefinition\Infrastructure\Cache\FieldDefinitionCache;
 use App\Shared\JsonApi\ErrorSerializer\JsonErrorBag;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

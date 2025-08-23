@@ -1,6 +1,6 @@
 <?php
 namespace App\Map\UI\Form;
-use App\Form\EventListener\AddCitationFieldSubscriber;
+use App\Citation\UI\Form\EventSubscriber\CitationFieldSubscriber;
 use App\Map\UI\Form\Model\ManyToOneFormTypeInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,7 +15,7 @@ class MapCitationType extends AbstractType implements ManyToOneFormTypeInterface
     {
         $factory = $builder->getFormFactory();
 
-        $builder->addEventSubscriber(new AddCitationFieldSubscriber($factory, array(
+        $builder->addEventSubscriber(new CitationFieldSubscriber($factory, array(
             'options'=>['attr'=>['field_id'=>335], 'required'=>true]
         )));
 

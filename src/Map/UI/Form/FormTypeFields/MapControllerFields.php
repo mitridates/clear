@@ -2,12 +2,12 @@
 
 namespace App\Map\UI\Form\FormTypeFields;
 
-use App\Form\EventListener\AddOrganisationFieldSubscriber;
-use App\Form\EventListener\AddPersonFieldSubscriber;
-use App\Form\FormFields\AbstractFormFields;
-use App\Form\FormFields\AdministrativeDivisionSubscriberTrait;
 use App\Map\Domain\Entity\Map\Mapcontroller;
+use App\Organisation\UI\Form\EventSubscriber\OrganisationFieldSubscriber;
+use App\Person\UI\Form\EventSubscriber\PersonFieldSubscriber;
 use App\Shared\reflection\EntityReflectionHelper;
+use App\Shared\UI\Form\FormFields\AbstractFormFields;
+use App\Shared\UI\Form\FormFields\AdministrativeDivisionSubscriberTrait;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class MapControllerFields extends AbstractFormFields
@@ -23,10 +23,10 @@ class MapControllerFields extends AbstractFormFields
         ];
 
         $this->subscribers= [
-            ['organisation',AddOrganisationFieldSubscriber::class, [
+            ['organisation',OrganisationFieldSubscriber::class, [
                 'options'=>['attr'=>['field_id'=>406]]
             ]],
-            ['person',AddPersonFieldSubscriber::class, [
+            ['person',PersonFieldSubscriber::class, [
                 'options'=>['attr'=>['field_id'=>407]]
             ]]
         ];

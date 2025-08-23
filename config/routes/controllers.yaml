@@ -1,22 +1,16 @@
-#Controladores genéricos
-controllers:
-    resource:
-        path: ../../src/Shared/Infrastructure/Controller/
-        namespace: App\Shared\Infrastructure\Controller
-    type: attribute
-#Controladores específicos
-install_controllers:
-    resource:
-        path: ../../src/Install/Infrastructure/Controller/
-        namespace: App\Install\Infrastructure\Controller
-    type: attribute
 
+#Controladores específicos
 area_controllers:
     resource:
         path: ../../src/Area/Infrastructure/Controller/
         namespace: App\Area\Infrastructure\Controller
     type: attribute
 
+install_controllers:
+    resource:
+        path: ../../src/Install/Infrastructure/Controller/
+        namespace: App\Install\Infrastructure\Controller
+    type: attribute
 article_controllers:
     resource:
         path: ../../src/Article/Infrastructure/Controller/
@@ -93,4 +87,10 @@ systemparameter_controllers:
     resource:
         path: ../../src/SystemParameter/Infrastructure/Controller/
         namespace: App\SystemParameter\Infrastructure\Controller
-    type: attribute    
+    type: attribute
+#Controladores genéricos
+controllers:
+    resource:
+        path: ../../src/Shared/Infrastructure/Controller/
+        namespace: App\Shared\Infrastructure\Controller
+    type: attribute

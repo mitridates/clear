@@ -2,13 +2,13 @@
 
 namespace App\Person\UI\Form;
 
-use App\Form\EventListener\AddAdmin1FieldSubscriber;
-use App\Form\EventListener\AddAdmin2FieldSubscriber;
-use App\Form\EventListener\AddAdmin3FieldSubscriber;
-use App\Form\EventListener\AddCountryFieldSubscriber;
-use App\Form\EventListener\AddOrganisationFieldSubscriber;
-use App\Form\FormFields\AbstractFormFields;
-use App\Form\FormFields\AdministrativeDivisionSubscriberTrait;
+use App\Geonames\UI\Form\EventSubscriber\Admin1FieldSubscriber;
+use App\Geonames\UI\Form\EventSubscriber\Admin2FieldSubscriber;
+use App\Geonames\UI\Form\EventSubscriber\Admin3FieldSubscriber;
+use App\Geonames\UI\Form\EventSubscriber\CountryFieldSubscriber;
+use App\Organisation\UI\Form\EventSubscriber\OrganisationFieldSubscriber;
+use App\Shared\UI\Form\FormFields\AbstractFormFields;
+use App\Shared\UI\Form\FormFields\AdministrativeDivisionSubscriberTrait;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class PersonFields extends AbstractFormFields
@@ -52,28 +52,28 @@ class PersonFields extends AbstractFormFields
         ];
 
         $this->subscribers= [
-            [ 'country', AddCountryFieldSubscriber::class, ['options'=>[
+            [ 'country', CountryFieldSubscriber::class, ['options'=>[
                 'label'=>'',
                 'attr'=>['field_id'=>493]
             ]]],
-            ['admin1',AddAdmin1FieldSubscriber::class, ['options'=>[
+            ['admin1',Admin1FieldSubscriber::class, ['options'=>[
                 'label'=>'State code',
                 'attr'=>['field_id'=>490]
             ]]],
-            ['admin2',AddAdmin2FieldSubscriber::class],
-            ['admin3',AddAdmin3FieldSubscriber::class],
-            [ 'organisation', AddOrganisationFieldSubscriber::class, ['options'=>[
+            ['admin2',Admin2FieldSubscriber::class],
+            ['admin3',Admin3FieldSubscriber::class],
+            [ 'organisation', OrganisationFieldSubscriber::class, ['options'=>[
                 'label'=>'',
                 'attr'=>['field_id'=>501]
             ]]],
-            [ 'organisation2', AddOrganisationFieldSubscriber::class, [
+            [ 'organisation2', OrganisationFieldSubscriber::class, [
                 'name'=>'organisation2',
                 'options'=>[
                     'label'=>'',
                     'attr'=>['field_id'=>502]
                 ]
             ]],
-            [ 'organisation3', AddOrganisationFieldSubscriber::class, [
+            [ 'organisation3', OrganisationFieldSubscriber::class, [
                 'name'=>'organisation3',
                 'options'=>[
                     'label'=>'',

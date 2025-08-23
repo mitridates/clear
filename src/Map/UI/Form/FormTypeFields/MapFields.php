@@ -2,17 +2,17 @@
 
 namespace App\Map\UI\Form\FormTypeFields;
 
+use App\Area\UI\Form\EventSubscriber\AreaFieldSubscriber;
 use App\Fielddefinition\Domain\Entity\Fieldvaluecode;
-use App\Form\EventListener\AddAdmin1FieldSubscriber;
-use App\Form\EventListener\AddAdmin2FieldSubscriber;
-use App\Form\EventListener\AddAdmin3FieldSubscriber;
-use App\Form\EventListener\AddAreaFieldSubscriber;
-use App\Form\EventListener\AddCountryFieldSubscriber;
-use App\Form\EventListener\AddMapserieFieldSubscriber;
-use App\Form\EventListener\AddOrganisationFieldSubscriber;
-use App\Form\EventListener\AddPersonFieldSubscriber;
-use App\Form\FormFields\AbstractFormFields;
-use App\Form\FormFields\AdministrativeDivisionSubscriberTrait;
+use App\Geonames\UI\Form\EventSubscriber\Admin1FieldSubscriber;
+use App\Geonames\UI\Form\EventSubscriber\Admin2FieldSubscriber;
+use App\Geonames\UI\Form\EventSubscriber\Admin3FieldSubscriber;
+use App\Geonames\UI\Form\EventSubscriber\CountryFieldSubscriber;
+use App\Mapserie\UI\Form\EventSubscriber\MapserieFieldSubscriber;
+use App\Organisation\UI\Form\EventSubscriber\OrganisationFieldSubscriber;
+use App\Person\UI\Form\EventSubscriber\PersonFieldSubscriber;
+use App\Shared\UI\Form\FormFields\AbstractFormFields;
+use App\Shared\UI\Form\FormFields\AdministrativeDivisionSubscriberTrait;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormEvent;
@@ -81,10 +81,10 @@ class MapFields extends AbstractFormFields
         ];
 
         $this->subscribers= [
-            [ 'country', AddCountryFieldSubscriber::class, ['options'=>[
+            [ 'country', CountryFieldSubscriber::class, ['options'=>[
                 'attr'=>['field_id'=>196]
             ]]],
-            [ 'sourcecountry', AddCountryFieldSubscriber::class, [
+            [ 'sourcecountry', CountryFieldSubscriber::class, [
                 'name'=>'sourcecountry',
                 'getMethod'=>'getSourcecountry',
                 'options'=>[
@@ -92,30 +92,30 @@ class MapFields extends AbstractFormFields
                         'field_id'=>370
                     ]]
             ]],
-            ['admin1',AddAdmin1FieldSubscriber::class, ['options'=>[
+            ['admin1',Admin1FieldSubscriber::class, ['options'=>[
                 'attr'=>['field_id'=>197]
             ]]],
-            ['admin2',AddAdmin2FieldSubscriber::class, []],
-            ['admin3',AddAdmin3FieldSubscriber::class, []],
-            ['mapserie',AddMapserieFieldSubscriber::class, ['options'=>['attr'=>['field_id'=>366]]]],
-            ['area', AddAreaFieldSubscriber::class,['options' => ['attr' => ['field_id' => 198]]]],
-            ['maphostarea', AddAreaFieldSubscriber::class,['options' => ['attr' => ['field_id' => 211]]]],
+            ['admin2',Admin2FieldSubscriber::class, []],
+            ['admin3',Admin3FieldSubscriber::class, []],
+            ['mapserie',MapserieFieldSubscriber::class, ['options'=>['attr'=>['field_id'=>366]]]],
+            ['area', AreaFieldSubscriber::class,['options' => ['attr' => ['field_id' => 198]]]],
+            ['maphostarea', AreaFieldSubscriber::class,['options' => ['attr' => ['field_id' => 211]]]],
 
-            ['sourceorg', AddOrganisationFieldSubscriber::class,[
+            ['sourceorg', OrganisationFieldSubscriber::class,[
                 'options' => ['attr' => ['field_id' => 200]],
                 'name'=>'sourceorg',
                 'getMethod'=>'getSourceorg',
             ]
             ],
-            ['principalsurveyorid',AddPersonFieldSubscriber::class, [
+            ['principalsurveyorid',PersonFieldSubscriber::class, [
                 'name'=>'principalsurveyorid',
                 'options'=>['attr'=>['field_id'=>208]]
             ]],
-            ['principaldrafterid',AddPersonFieldSubscriber::class, [
+            ['principaldrafterid',PersonFieldSubscriber::class, [
                 'name'=>'principaldrafterid',
                 'options'=>['attr'=>['field_id'=>402]]
             ]],
-            ['surveygradeorg',AddOrganisationFieldSubscriber::class, [
+            ['surveygradeorg',OrganisationFieldSubscriber::class, [
                 'name'=>'surveygradeorg',
                 'options'=>['attr'=>['field_id'=>203]]
             ]]
